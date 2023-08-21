@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: mlbclo</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="a02339.html">Guide de référence du module fortran MEDlibrary</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="contents">
+<table cellspacing="0" cellpadding="0" border="0">
+  <tr>
+   <td valign="top">
+      <div class="navtab">
+        <table>
+          <tr><td class="navtab"><a class="qindexHL" href="a02339_gacdec3ecf7abb7190726a712300e764ad.html#gacdec3ecf7abb7190726a712300e764ad">mlbclo</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02339_gaedbf1c86fe6c264655f24af260fe314a.html#gaedbf1c86fe6c264655f24af260fe314a">mlbhnv</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02339_gadc559bc684dd2eae028eb60372577e72.html#gadc559bc684dd2eae028eb60372577e72">mlbhsv</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02339_gab23f8ebbdcbb04c2ef726fe03818f7f4.html#gab23f8ebbdcbb04c2ef726fe03818f7f4">mlbnuv</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02339_ga5a854f74a34b2ff0a3b6afaef37cfd03.html#ga5a854f74a34b2ff0a3b6afaef37cfd03">mlbstv</a></td></tr>
+        </table>
+      </div>
+   </td>
+   <td valign="top" class="mempage">
+<a id="gacdec3ecf7abb7190726a712300e764ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacdec3ecf7abb7190726a712300e764ad">&#9670;&nbsp;</a></span>mlbclo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine mlbclo </td>
+          <td>(</td>
+          <td class="paramtype">integer&#160;</td>
+          <td class="paramname"><em>cret</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette routine force l'écriture des données sur disque, nettoie la mémoire et ferme tous les fichiers MED ouverts (de même que tous les fichiers HDF). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cret</td><td>retour négatif en cas d'erreur (<a class="el" href="a01322_a423af226ed41bc119d8868b24d4d05b0.html#a423af226ed41bc119d8868b24d4d05b0">MED_ERR_HOWTO</a>), Zéro sinon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="a02324_ga4ae0b014dbc25d9a2178da1404f3c8f7.html#ga4ae0b014dbc25d9a2178da1404f3c8f7" title="Cette routine force l&#39;écriture des données sur disque, nettoie la mémoire et ferme tous les fichiers ...">MEDlibraryClose</a></dd></dl>
+<p>Cette routine force l'écriture des données sur disque, nettoie la mémoire et ferme tous les fichiers MED ouverts (de même que tous les fichiers HDF). Attention donc à l'emploi de cette routine qui doit utilisée en cas de force majeure dans un contexte d'E/S parallèles. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="a02018_source.html#l00019">19</a> du fichier <a class="el" href="a02018_source.html">medflibrary.f</a>.</p>
+
+</div>
+</div>
+    </td>
+  </tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:12 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

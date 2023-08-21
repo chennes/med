@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: MEDlinkInfo</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="a02325.html">Guide de référence du module MEDlink</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="contents">
+<table cellspacing="0" cellpadding="0" border="0">
+  <tr>
+   <td valign="top">
+      <div class="navtab">
+        <table>
+          <tr><td class="navtab"><a class="qindexHL" href="a02325_ga01f23204f72d19459c7c96b4b91b018e.html#ga01f23204f72d19459c7c96b4b91b018e">MEDlinkInfo</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02325_ga8b2e785cb3126e02569c8b4f5564cd3d.html#ga8b2e785cb3126e02569c8b4f5564cd3d">MEDlinkInfoByName</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02325_gabdf9a46ed125db6ae1df407e7bf1342d.html#gabdf9a46ed125db6ae1df407e7bf1342d">MEDlinkRd</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02325_ga08d1c8b15fbab77a11c6b59a0c600c4e.html#ga08d1c8b15fbab77a11c6b59a0c600c4e">MEDlinkWr</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02325_gafa53d1b44d84d4253e83af686857715d.html#gafa53d1b44d84d4253e83af686857715d">MEDnLink</a></td></tr>
+        </table>
+      </div>
+   </td>
+   <td valign="top" class="mempage">
+<a id="ga01f23204f72d19459c7c96b4b91b018e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga01f23204f72d19459c7c96b4b91b018e">&#9670;&nbsp;</a></span>MEDlinkInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a02309_abd29d7c6abaef5da2a5ed1b73464f0ba.html#abd29d7c6abaef5da2a5ed1b73464f0ba">med_err</a> MEDlinkInfo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a02309_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a>&#160;</td>
+          <td class="paramname"><em>fid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>linkit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>meshname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> *const&#160;</td>
+          <td class="paramname"><em>linksize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette routine permet de lire les informations sur un lien dans un fichier MED. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fid</td><td>Identificateur du fichier. </td></tr>
+    <tr><td class="paramname">linkit</td><td>Itérateur sur les liens du fichier. Un itérateur commence à 1. </td></tr>
+    <tr><td class="paramname">meshname</td><td>Nom du maillage, de longueur maximum <a class="el" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a> . </td></tr>
+    <tr><td class="paramname">linksize</td><td>Taille de la chaîne de caractères correspondant au lien. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valeurs retournées</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">med_err</td><td>retour négatif en cas d'erreur (<a class="el" href="a01322_a423af226ed41bc119d8868b24d4d05b0.html#a423af226ed41bc119d8868b24d4d05b0">MED_ERR_HOWTO</a>), Zéro sinon.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Cette routine permet de lire les informations sur un lien dans un fichier MED. L'accès au lien se fait via un itérateur. Les informations lues sont le nom du lien (nom du maillage dans le fichier référencé par le lien) ainsi que la taille de la chaîne de caractères correspondant au lien. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="a01640_source.html#l00038">38</a> du fichier <a class="el" href="a01640_source.html">MEDlinkInfo.c</a>.</p>
+
+</div>
+</div>
+    </td>
+  </tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:11 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

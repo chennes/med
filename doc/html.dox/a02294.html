@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: Référence du fichier libmedimport.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_922008759471ca0eb310ac45b5f91be6.html">tools</a></li><li class="navelem"><a class="el" href="dir_9c366db0edc8bcb5b0602ad782c15d46.html">medimport</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier libmedimport.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="a02312_source.html">med_config.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a02309_source.html">med.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a01340_source.html">med_outils.h</a>&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;2.3.6/med23v30.h&gt;</code><br />
+<code>#include &lt;2.3.6/med23v30_proto.h&gt;</code><br />
+<code>#include &quot;2.3.6/med23v30_misc.h&quot;</code><br />
+<code>#include &lt;libgen.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="a02282_source.html">MEDimport.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02270_source.html">MAJ_version.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02249_source.html">MAJ_21_22.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02252_source.html">MAJ_231_232.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02255_source.html">MAJ_236_300.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02258_source.html">MAJ_300_310.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02261_source.html">MAJ_310_320.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02264_source.html">MAJ_320_330.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a02267_source.html">MAJ_400_410.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de libmedimport.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="a02295.jpg" border="0" usemap="#libmedimport_8c" alt=""/></div>
+<map name="libmedimport_8c" id="libmedimport_8c">
+<area shape="rect" title=" " alt="" coords="1718,5,1825,32"/>
+<area shape="rect" href="a02312.html" title=" " alt="" coords="625,229,725,256"/>
+<area shape="rect" href="a02309.html" title=" " alt="" coords="826,229,885,256"/>
+<area shape="rect" href="a01340.html" title=" " alt="" coords="865,80,961,107"/>
+<area shape="rect" title=" " alt="" coords="985,80,1046,107"/>
+<area shape="rect" title=" " alt="" coords="1071,80,1136,107"/>
+<area shape="rect" title=" " alt="" coords="1160,80,1287,107"/>
+<area shape="rect" title=" " alt="" coords="1311,80,1474,107"/>
+<area shape="rect" title=" " alt="" coords="1499,80,1660,107"/>
+<area shape="rect" title=" " alt="" coords="1685,80,1751,107"/>
+<area shape="rect" href="a02282.html" title=" " alt="" coords="1775,80,1874,107"/>
+<area shape="rect" href="a02270.html" title=" " alt="" coords="1898,80,2007,107"/>
+<area shape="rect" href="a02249.html" title=" " alt="" coords="2032,80,2135,107"/>
+<area shape="rect" href="a02252.html" title=" " alt="" coords="2159,80,2275,107"/>
+<area shape="rect" href="a02255.html" title=" " alt="" coords="2299,80,2415,107"/>
+<area shape="rect" href="a02258.html" title=" " alt="" coords="2439,80,2555,107"/>
+<area shape="rect" href="a02261.html" title=" " alt="" coords="2579,80,2695,107"/>
+<area shape="rect" href="a02264.html" title=" " alt="" coords="2719,80,2835,107"/>
+<area shape="rect" href="a02267.html" title=" " alt="" coords="2859,80,2975,107"/>
+<area shape="rect" title=" " alt="" coords="725,304,783,331"/>
+<area shape="rect" href="a01343.html" title=" " alt="" coords="808,304,903,331"/>
+<area shape="rect" href="a01367.html" title=" " alt="" coords="798,453,913,480"/>
+<area shape="rect" href="a01400.html" title=" " alt="" coords="23,379,117,405"/>
+<area shape="rect" href="a01385.html" title=" " alt="" coords="141,379,215,405"/>
+<area shape="rect" href="a01412.html" title=" " alt="" coords="239,379,330,405"/>
+<area shape="rect" href="a01379.html" title=" " alt="" coords="354,379,437,405"/>
+<area shape="rect" href="a01376.html" title=" " alt="" coords="461,379,554,405"/>
+<area shape="rect" href="a01370.html" title=" " alt="" coords="579,379,705,405"/>
+<area shape="rect" href="a01427.html" title=" " alt="" coords="729,379,851,405"/>
+<area shape="rect" href="a01421.html" title=" " alt="" coords="875,379,969,405"/>
+<area shape="rect" href="a01391.html" title=" " alt="" coords="993,379,1075,405"/>
+<area shape="rect" href="a01406.html" title=" " alt="" coords="1099,379,1222,405"/>
+<area shape="rect" href="a01403.html" title=" " alt="" coords="1247,379,1325,405"/>
+<area shape="rect" href="a01424.html" title=" " alt="" coords="1349,379,1487,405"/>
+<area shape="rect" href="a01418.html" title=" " alt="" coords="1511,379,1627,405"/>
+<area shape="rect" href="a01397.html" title=" " alt="" coords="1651,379,1742,405"/>
+<area shape="rect" href="a01346.html" title=" " alt="" coords="669,155,767,181"/>
+<area shape="rect" title=" " alt="" coords="1236,155,1307,181"/>
+<area shape="rect" href="a01337.html" title=" " alt="" coords="1005,155,1098,181"/>
+<area shape="rect" href="a01331.html" title=" " alt="" coords="893,155,980,181"/>
+<area shape="rect" href="a02315.html" title=" " alt="" coords="1123,155,1212,181"/>
+<area shape="rect" title=" " alt="" coords="966,229,1035,256"/>
+<area shape="rect" href="a01325.html" title=" " alt="" coords="1060,229,1160,256"/>
+<area shape="rect" title=" " alt="" coords="1185,229,1249,256"/>
+<area shape="rect" href="a01322.html" title=" " alt="" coords="1273,229,1353,256"/>
+<area shape="rect" href="a02288.html" title=" " alt="" coords="1754,155,1895,181"/>
+</map>
+</div>
+</div>
+<p><a href="a02294_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aeaff0db5524987a2f50d71ac0162ceb2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_aeaff0db5524987a2f50d71ac0162ceb2.html#aeaff0db5524987a2f50d71ac0162ceb2">_Bool</a>&#160;&#160;&#160;signed char</td></tr>
+<tr class="separator:aeaff0db5524987a2f50d71ac0162ceb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb452686968e48b67397da5f97445f5b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_abb452686968e48b67397da5f97445f5b.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;&#160;&#160;<a class="el" href="a02294_aeaff0db5524987a2f50d71ac0162ceb2.html#aeaff0db5524987a2f50d71ac0162ceb2">_Bool</a></td></tr>
+<tr class="separator:abb452686968e48b67397da5f97445f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e9886d74aaee76545e83dd09011727"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_a65e9886d74aaee76545e83dd09011727.html#a65e9886d74aaee76545e83dd09011727">false</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a65e9886d74aaee76545e83dd09011727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_a41f9c5fb8b08eb5dc3edce4dcb37fee7.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">true</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665b0cc9ee2ced31785321d55cde349e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_a665b0cc9ee2ced31785321d55cde349e.html#a665b0cc9ee2ced31785321d55cde349e">__bool_true_false_are_defined</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a665b0cc9ee2ced31785321d55cde349e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a0be58e5f5a3be382a29ab11a18b6b23e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_a0be58e5f5a3be382a29ab11a18b6b23e.html#a0be58e5f5a3be382a29ab11a18b6b23e">MEDimport</a> (char *filein, char *fileout)</td></tr>
+<tr class="separator:a0be58e5f5a3be382a29ab11a18b6b23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:addbfa7540e2d024008e842991c1648f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a02294_addbfa7540e2d024008e842991c1648f5.html#addbfa7540e2d024008e842991c1648f5">HAVE_MEDimport</a> =1</td></tr>
+<tr class="separator:addbfa7540e2d024008e842991c1648f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:06 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: Foire aux questions du modèle MED</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Foire aux questions du modèle MED </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="____Foire aux questions du modèle MED____"></a>  </p><table class="doxtable">
+<tr>
+<td><ul>
+<li>
+<a href="#1.">Introduction</a> </li>
+<li>
+<a href="#2.">Liste des questions</a> <ol>
+<li>
+<a href="#2.1">A quoi correspondent les modes de stockage mémoire MED_FULL_INTERLACE et MED_NO_INTERLACE ? Comment les utiliser au sein d'une interface MED ? </a> </li>
+<li>
+<a href="#2.2">Peut-on stocker les éléments d'un maillage à la fois en connectivité nodale et descendante ?</a> </li>
+<li>
+<a href="#2.3">Quelle est la règle exacte à appliquer pour stocker des mailles de dimension inférieure à celle du maillage ?</a> </li>
+<li>
+<a href="#2.4">Doit-on avoir systématiquement dans un maillage MED les numéros et les noms des noeuds/éléments ?</a> </li>
+<li>
+<a href="#2.5">Quelle régle appliquer pour la définition des noms et numéros des familles d'un maillage ?</a> </li>
+<li>
+<a href="#2.6">Doit-on utiliser les numéros optionnels lors de la définition des connectivités ?</a> </li>
+<li>
+<a href="#2.7">Comment sont numérotés les élements ?</a> <br  />
+ </li>
+<li>
+<a href="#2.8">Combien de coordonnées dois-je définir pour les noeuds d'un maillage de dimension 2 dans un espace de dimension 3 ?</a> </li>
+<li>
+<a href="#2.9">A quoi correspondent exactement les équivalences entre éléments au sein d'un maillage ?</a> </li>
+<li>
+<a href="#2.10">A quoi correspondent exactement les maillages de calcul/ de support/ de section ?</a> </li>
+<li>
+<a href="#2.11">Quelles sont les conventions de nommage à appliquer à mes objets ?</a> </li>
+</ol>
+</li>
+</ul>
+</td></tr>
+</table>
+<hr  />
+<h1><a class="anchor" id="1."></a>Introduction</h1>
+<p>Cette rubrique constitue une "Foire Aux Questions". </p>
+<p>Elle a pour but de fournir des réponses simples aux questions les plus fréquemment posées par les utilisateurs en charge de développer une interface MED. </p>
+<h1><a class="anchor" id="2."></a>Liste des questions</h1>
+<ul>
+<li>
+<b><a class="anchor" id="2.1"></a>Question 1</b> <ul>
+<li>
+<b>Enoncé : </b> A quoi correspondent les modes de stockage mémoire MED_FULL_INTERLACE et MED_NO_INTERLACE ? Comment les utiliser au sein d'une interface MED ? </li>
+<li>
+<p class="startli"><b>Réponse : </b> Dans MED, on a la possibilité d'utiliser deux modes de stockage des données en mémoire : </p><ul>
+<li>
+<em>MED_FULL_INTERLACE</em> : Mode entrelacé. </li>
+<li>
+<em>MED_NO_INTERLACE</em> : Mode non entrelacé. </li>
+</ul>
+<p class="interli"></p>
+<p class="interli">Ces deux modes de représentation permettent au développeur d'indiquer comment sont rangées ses données en mémoire. Cela peut s'appliquer aux : </p><ol>
+<li>
+Coordonnées des noeuds. </li>
+<li>
+Connectivités des mailles/faces/arêtes. </li>
+<li>
+Composantes des champs de résultats. </li>
+</ol>
+<p class="interli"></p>
+<p class="interli"></p>
+<p class="interli"><em>Exemple d'utilisation</em> : Mode de stockage des coordonnées des noeuds définies dans un repère cartésien de dimension 3 dans un tableau mono-dimensionnel en mémoire : </p><ul>
+<li>
+En mode entrelacé (MED_FULL_INTERLACE) : X1, Y1, Z1, X2, Y2, Z2, .... , Xn, Yn, Zn. </li>
+<li>
+En mode non entrelacé (MED_NO_INTERLACE) : X1, X2, ..., Xn, Y1, Y2, ..., Yn, Z1, Z2, ..., Zn </li>
+</ul>
+<p class="endli"></p>
+</li>
+</ul>
+</li>
+<li>
+<b><a class="anchor" id="2.2"></a>Question 2</b> <ul>
+<li>
+<b>Enoncé :</b> Peut-on stocker les éléments d'un maillage à la fois en connectivité nodale et descendante ? </li>
+<li>
+<p class="startli"><b>Réponse : </b> La connectivité des mailles peut être au choix décrite soit en connectivité nodale (<em>MED_NODAL</em>) soit en connectivité descendante (<em>MED_DESCENDING</em>).</p>
+<p class="interli"></p>
+<p class="interli">Il est possible dans un fichier MED de stocker les 2 modes de connectivité. Cependant dans ce cas de figure les deux descriptions doivent être complètes (on ne peut pas définir une partie du maillage en connectivité nodale et l'autre en connectivité descendante). De la même manière, il n'y a pas de contrôle de cohérence des données entre les 2 modes de connectivité. </p>
+<p class="endli"></p>
+</li>
+</ul>
+</li>
+<li>
+<b><a class="anchor" id="2.3"></a>Question 3</b> <ul>
+<li>
+<b>Enoncé : </b> Quelle est la règle exacte à appliquer pour stocker des mailles de dimension inférieure à celle du maillage ? </li>
+<li>
+<b>Réponse : </b> Il n'y a plus de règle spécifique à appliquer depuis MED-fichier V2.2. La règle définie pour MED-fichier V2.1 est caduque (numéros supplémentaires pour la description de la connectivité des mailles de dimension inférieure à celle du maillage). </li>
+</ul>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.4"></a>Question 4</b> </p><ul>
+<li>
+<b>Enoncé : </b> Doit-on avoir systématiquement dans un maillage MED les numéros et les noms des noeuds/éléments ? </li>
+<li>
+<b>Réponse : </b> Les noms et les numéros que l'on peut associer aux noeuds et aux éléments d'un maillage sont optionnels. S'ils existent, ils doivent porter sur toutes les entités du maillage. </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.5"></a>Question 5</b> </p><ul>
+<li>
+<b>Enoncé : </b> Quelle régle appliquer pour la définition des noms et numéros des familles d'un maillage ? </li>
+<li>
+<b>Réponse : </b> Les conventions sur la d&eacute;finition des familles d'un maillage MED sont les suivantes : <ul>
+<li>
+On trouve dans un maillage : <ul>
+<li>
+La famille de num&eacute;ro 0 qui ne comporte aucun groupe. </li>
+<li>
+Z&eacute;ro ou plusieurs familles des noeuds dont le num&eacute;ro doit &ecirc;tre strictement positif. </li>
+<li>
+Z&eacute;ro ou plusieurs familles d'&eacute;l&eacute;ments (mailles/faces/ar&ecirc;tes) dont le num&eacute;ro doit &ecirc;tre strictement n&eacute;gatif. </li>
+</ul>
+</li>
+<li>
+La création de la famille vide de num&eacute;ro 0 est obligatoire, elle constitue la famille de r&eacute;f&eacute;rence pour tous les noeuds et les &eacute;l&eacute;ments qui n'appartiennent &agrave; aucun groupe et n'ont aucun attribut. Cependant l'écriture du numéro de famille 0 pour les noeuds ou les éléments est optionelle s'ils appartiennent tous à la famille 0. </li>
+<li>
+Une famille de noeuds peut porter le m&ecirc;me nom qu'un famille d'&eacute;l&eacute;ments. Par contre les familles d'&eacute;l&eacute;ments (respectivement de noeuds) doivent toutes avoir des noms diff&eacute;rents. </li>
+<li>
+Le num&eacute;ro de famille est le lien existant entre la famille consid&eacute;r&eacute;e et une entit&eacute; du maillage (noeud, maille, face ou ar&ecirc;te). Ce num&eacute;ro doit &ecirc;tre unique dans chaque famille d'un maillage. </li>
+</ul>
+</li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.6"></a>Question 6</b> </p><ul>
+<li>
+<b>Enoncé : </b> Doit-on utiliser les numéros optionnels lors de la définition des connectivités ? </li>
+<li>
+<b>Réponse : </b> Quelque soit le type de connectivité (nodale/descendante), la numérotation optionnelle si elle est présente n'est jamais utilisée dans la définition des connectivités. </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.7"></a>Question 7</b> </p><ul>
+<li>
+<b>Enoncé : </b> Comment sont numérotés les élements ? </li>
+<li>
+<b>Réponse : </b> Tous les éléments ont une numérotation propre à leur type géométrique. Par exemple, la définition d'une connectivité descendante MED_HEXA8 se base sur des faces MED_QUAD4 numérotés de 1..nq où nq correspond au nombre de faces MED_QUAD4. Une numérotion globale implicite existe sur les éléments, elle consiste à parcourir l'ensemble des types géométrique dans l'ordre de définition du modèle de données. </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.8"></a>Question 8</b> </p><ul>
+<li>
+<b>Enoncé : </b> Combien de coordonnées dois-je définir pour les noeuds d'un maillage de dimension 2 dans un espace de dimension 3 ? </li>
+<li>
+<b>Réponse : </b> La dimension de l'espace est par défaut celle du maillage. La dimension du maillage est égale à la dimension de l'élément géométrique de plus grande dimension. Un maillage de dimension 2 s'il est défini dans un espace de dimension 3 n'est pas forcément plan, il faut donc définir trois coordonnées pour chacun des noeuds du maillage. </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.9"></a>Question 9</b> </p><ul>
+<li>
+<b>Enoncé : </b> A quoi correspondent exactement les équivalences entre éléments au sein d'un maillage ? </li>
+<li>
+<b>Réponse : </b> Une équivalence est une liste de correspondances 2 à 2 entre des entités (noeuds, mailles, faces, arêtes) d'un même type. Les correspondances entre entités sont stockées 2 à 2 en mémoire et dans les fichier MED. <em>Exemple </em> : La liste suivante {1,2,3,4,5,6} appliquée à des entités de type MED_TRIA3, signifie qu'on a les 3 correspondances suivantes dans le maillage: <ul>
+<li>
+Triangles 1 et 2. </li>
+<li>
+Triangles 3 et 4. </li>
+<li>
+Triangles 5 et 6. </li>
+</ul>
+</li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.10"></a>Question 10</b> </p><ul>
+<li>
+<b>Enoncé : </b>A quoi correspondent exactement les maillages de calcul/ de support/ de section ? </li>
+<li>
+<b>Réponse : </b> <ul>
+<li>
+<p class="startli">Le maillage de section nommé "sectioname" est un maillage optionnel utilisé comme support à des sous-points d'intégration. Il est utilisé de façon optionnel à la définition d'une localisation des points d'intégration sur éléments de structure. <br  />
+ Un champ résultat sur éléments de structure qui utiliserait une telle localisation peut ainsi définir autant de sous points d'intégration qu'il y a de mailles dans le maillage section Il y a autant de sections par élément que de points d'intégrations définis dans la localisation. La vocation de ce maillage n'est pas de définir la géométrie des éléments de structures. Il n'y a donc aucun lien direct entre l'élément de structure elementname et le maillage sectionname.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Les maillages supports sont utilisés pour définir des modèles d'éléments de structure numériques. Ce ne sont pas des maillages utilisés directement pour la simulation numérique. Les caractéristiques utiles à la simulation numérique sont définies par les attributs constants/variables par élément de structure. Si il y a besoin de caractéristiques géométriques particulières il faut les définir par l'utilisation des ces attributs.</p>
+<p class="endli"></p>
+</li>
+<li>
+La maillage de calcul est le maillage utilisé par la simulation numérique. Il peut comporter tous types d'éléments finis et des éléments de structures. En ce qui concerne les éléments de structures, il définit la connectivité réelle des mailles supports de chacun des éléments de structure en se basant sur les numéros de noeuds du maillage de calcul. </li>
+</ul>
+</li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b><a class="anchor" id="2.11"></a>Question 11</b> </p><ul>
+<li>
+<b>Enoncé : </b>Quelles sont les conventions de nommage à appliquer à mes objets ? </li>
+<li>
+<b>Réponse : </b> <ul>
+<li>
+Les noms des objets med ne doivent pas utiliser le caractère '/' et ne doivent pas utiliser des blancs en fin de chaîne. </li>
+</ul>
+</li>
+</ul>
+<p class="endli"></p>
+</li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:10 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

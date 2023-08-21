@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: usecases/c/UsesCase_MEDstructElement_1.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">usecases/c/UsesCase_MEDstructElement_1.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="comment">/*  This file is part of MED.</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> *  COPYRIGHT (C) 1999 - 2021  EDF R&amp;D, CEA/DEN</span></div>
+<div class="line"><span class="comment"> *  MED is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><span class="comment"> *  it under the terms of the GNU Lesser General Public License as published by</span></div>
+<div class="line"><span class="comment"> *  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><span class="comment"> *  (at your option) any later version.</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> *  MED is distributed in the hope that it will be useful,</span></div>
+<div class="line"><span class="comment"> *  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><span class="comment"> *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><span class="comment"> *  GNU Lesser General Public License for more details.</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> *  You should have received a copy of the GNU Lesser General Public License</span></div>
+<div class="line"><span class="comment"> *  along with MED.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * StructElement use case 1 : write struct elements model in a file</span></div>
+<div class="line"><span class="comment"> * STEP 1 : suppport mesh creation</span></div>
+<div class="line"><span class="comment"> * STEP 2 : struct element model creation</span></div>
+<div class="line"><span class="comment"> * STEP 3 : computation mesh creation</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a02309.html">med.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#define MESGERR 1</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a02315.html">med_utils.h</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a name="a0"></a><a class="code" href="a03319_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line">  <a class="code" href="a02309_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a> fid;</div>
+<div class="line">  <span class="keywordtype">char</span> elementname[<a name="a1"></a><a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1]=<span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> ballsupportname[<a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1]=<span class="stringliteral">&quot;BALL_SUPPORT_MESH&quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> beamsupportname[<a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1]=<span class="stringliteral">&quot;BEAM_SUPPORT_MESH&quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> computmeshname[<a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1]=<span class="stringliteral">&quot;COMPUT_MESH&quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> beamsectionname[<a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1]=<span class="stringliteral">&quot;BEAM_SECTION_MESH&quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> elementdim = 3;</div>
+<div class="line">  <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> nnode;</div>
+<div class="line">  <a class="code" href="a02309_a1043613afc3cd2e24785dfc7c0452ab8.html#a1043613afc3cd2e24785dfc7c0452ab8">med_geometry_type</a> geotype=<a name="a2"></a><a class="code" href="a02309_a9a2843c7d6eacffdd9377b5bfb8a6de3.html#a9a2843c7d6eacffdd9377b5bfb8a6de3">MED_NONE</a>;</div>
+<div class="line">  <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> ncomp;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a> ballmeshnodescoo[3] = {0.0, 0.0, 0.0 };</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a> beammeshnodescoo[3*7] = {0.0,0.0,0.0,</div>
+<div class="line">                                           0.0,0.0,2.0,</div>
+<div class="line">                                           0.0,0.0,4.0,</div>
+<div class="line">                                           0.0,0.0,5.0,</div>
+<div class="line">                                           0.0,0.0,7.0,</div>
+<div class="line">                                           0.0,0.0,10.0,</div>
+<div class="line">                                           0.0,0.0,11.0 };</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a> beamsectioncoo[9*3] = {-0.2,-0.2,0.0,</div>
+<div class="line">                                         0.0,-0.2,0.0,</div>
+<div class="line">                                         0.2,-0.2,0.0,</div>
+<div class="line">                                         -0.2, 0.0,0.0,</div>
+<div class="line">                                         0.0, 0.0,0.0,</div>
+<div class="line">                                         0.2, 0.0,0.0,</div>
+<div class="line">                                         -0.2, 0.2,0.0,</div>
+<div class="line">                                         0.0, 0.2,0.0,</div>
+<div class="line">                                         0.2, 0.2,0.0 };</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> seg2connectivity[2*6] = {1,2, 2,3, 3,4, 4,5, 5,6, 6,7};</div>
+<div class="line">  <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> spacedim, meshdim,nseg2;</div>
+<div class="line">  <span class="comment">/*                                         123456789012345612345678901234561234567890123456 */</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> axisname[3*<a name="a3"></a><a class="code" href="a02309_a213ecd1a546eb96092b980a870bc386b.html#a213ecd1a546eb96092b980a870bc386b">MED_SNAME_SIZE</a>+1] = <span class="stringliteral">&quot;x               y               z               &quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> unitname[3*<a class="code" href="a02309_a213ecd1a546eb96092b980a870bc386b.html#a213ecd1a546eb96092b980a870bc386b">MED_SNAME_SIZE</a>+1] = <span class="stringliteral">&quot;cm              cm              cm              &quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a> attvalue[6] = {0.2,0.3,0.4,0.4,0.3,0.2};</div>
+<div class="line">  <span class="comment">/*                                            1234567890123456789012345678901234567890123456789012345678901234        */</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> attprovalue[2*<a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1] = {<span class="stringliteral">&quot;EXTREMITY_1_____________________________________________________&quot;</span> \</div>
+<div class="line">                                               <span class="stringliteral">&quot;EXTREMITY_2_____________________________________________________&quot;</span> };</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> profilename[<a class="code" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a>+1] = <span class="stringliteral">&quot;EXTREMITY_PROFILE_NAME&quot;</span>;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> profilesize = 2;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> profile[2] = {1,6};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a> meshcoo[3*12] = { 0.0, 0.0, 0.0,</div>
+<div class="line">                                    1.1, 1.1, 1.1,</div>
+<div class="line">                                    2.2, 2.2, 2.2,</div>
+<div class="line">                                    10., 10., 10.,</div>
+<div class="line">                                    12., 12., 12.,</div>
+<div class="line">                                    60., 20., 20.,</div>
+<div class="line">                                    70., 20., 20.,</div>
+<div class="line">                                    80., 20., 20.,</div>
+<div class="line">                                    90., 20., 20.,</div>
+<div class="line">                                    100., 20., 20.,</div>
+<div class="line">                                    110., 20., 20.,</div>
+<div class="line">                                    120., 20., 20.</div>
+<div class="line">  };</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> beamconnectivity[12] = {  6,7,</div>
+<div class="line">                                          7,8,</div>
+<div class="line">                                          8,9,</div>
+<div class="line">                                          9,10,</div>
+<div class="line">                                          10,11,</div>
+<div class="line">                                          11,12 };</div>
+<div class="line">  <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> nentity;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> labels[3] = { 1, 2, 3 }; <span class="comment">/* nodes numbers */</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> ballconnectivity[2] = { 4, 5 }; <span class="comment">/* nodes numbers */</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a> balldiameter[2] = { 2.0, 5.8 };</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> nquad4=4;</div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> beamsectionconnectivity[4*4] = { 4,5,2,1,</div>
+<div class="line">                                                 5,6,3,2,</div>
+<div class="line">                                                 7,8,5,4,</div>
+<div class="line">                                                 8,9,6,5};</div>
+<div class="line">  <span class="keywordtype">int</span> ret=-1;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* file creation */</span></div>
+<div class="line">  fid = <a name="a4"></a><a class="code" href="a02321_ga9376a1654b7bf099c3f8941074c5fdfb.html#ga9376a1654b7bf099c3f8941074c5fdfb">MEDfileOpen</a>(<span class="stringliteral">&quot;UsesCase_MEDstructElement_1.med&quot;</span>,<a name="a5"></a><a class="code" href="a02309_adcd0322de9fec3b5e199ffeda3f44c85.html#adcd0322de9fec3b5e199ffeda3f44c85aa23dd1c18b596924d5f50c8402b84c8e">MED_ACC_CREAT</a>);</div>
+<div class="line">  <span class="keywordflow">if</span> (fid &lt; 0) {</div>
+<div class="line">    <a name="a6"></a><a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : file creation&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* STEP 1 : support meshes creation */</span></div>
+<div class="line">  spacedim =  3;</div>
+<div class="line">  meshdim = 3;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Mesh 1 : support mesh for ball model */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a7"></a><a class="code" href="a02332_ga8d14cb8ed06c18d7a8c7a32d89b5ebd5.html#ga8d14cb8ed06c18d7a8c7a32d89b5ebd5">MEDsupportMeshCr</a>(fid, ballsupportname, spacedim, meshdim, <span class="stringliteral">&quot;Support mesh for a ball model&quot;</span>,</div>
+<div class="line">                       <a name="a8"></a><a class="code" href="a02309_a57867e4bed1d104c865cfc9d23c9204d.html#a57867e4bed1d104c865cfc9d23c9204da682ef7f1042079519664eae87f90297e">MED_CARTESIAN</a>, axisname, unitname) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating a support mesh ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="comment">/* 1 node and no cell in the mesh */</span></div>
+<div class="line">  nnode = 1;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a9"></a><a class="code" href="a02327_gab2a6fcbbb0dfb0dba573320ed07f503b.html#gab2a6fcbbb0dfb0dba573320ed07f503b">MEDmeshNodeCoordinateWr</a>(fid, ballsupportname, <a name="a10"></a><a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a name="a11"></a><a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, 0.0,</div>
+<div class="line">                              <a name="a12"></a><a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nnode, ballmeshnodescoo) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : write nodes coordinates ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Mesh 2 :support mesh for beam model */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02332_ga8d14cb8ed06c18d7a8c7a32d89b5ebd5.html#ga8d14cb8ed06c18d7a8c7a32d89b5ebd5">MEDsupportMeshCr</a>(fid, beamsupportname, spacedim, meshdim, <span class="stringliteral">&quot;Support mesh for a beam model&quot;</span>,</div>
+<div class="line">                       <a class="code" href="a02309_a57867e4bed1d104c865cfc9d23c9204d.html#a57867e4bed1d104c865cfc9d23c9204da682ef7f1042079519664eae87f90297e">MED_CARTESIAN</a>, axisname, unitname) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating a support mesh ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="comment">/* 7 nodes and 6 MED_SEG2 */</span></div>
+<div class="line">  nnode = 7;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_gab2a6fcbbb0dfb0dba573320ed07f503b.html#gab2a6fcbbb0dfb0dba573320ed07f503b">MEDmeshNodeCoordinateWr</a>(fid, beamsupportname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, 0.0,</div>
+<div class="line">                              <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nnode,  beammeshnodescoo) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : write nodes coordinates ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  nseg2 = 6;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a13"></a><a class="code" href="a02327_ga091f97ef25e5bb96e3d941b85131cea9.html#ga091f97ef25e5bb96e3d941b85131cea9">MEDmeshElementConnectivityWr</a>(fid, beamsupportname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, 0.0, <a name="a14"></a><a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67">MED_CELL</a>, <a name="a15"></a><a class="code" href="a02309_a29927daaa1a87f2129295a68264ad526.html#a29927daaa1a87f2129295a68264ad526">MED_SEG2</a>,</div>
+<div class="line">                                   <a name="a16"></a><a class="code" href="a02309_afcd26ca66a179b9aa82f5c90602c4ed8.html#afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa">MED_NODAL</a>, <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nseg2, seg2connectivity) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : write cells connectivity ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Mesh 3 : support mesh to define a section for integration points of</span></div>
+<div class="line"><span class="comment">     a struct element */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02332_ga8d14cb8ed06c18d7a8c7a32d89b5ebd5.html#ga8d14cb8ed06c18d7a8c7a32d89b5ebd5">MEDsupportMeshCr</a>(fid, beamsectionname, spacedim, meshdim, <span class="stringliteral">&quot;Support mesh for a section of the beam model&quot;</span>,</div>
+<div class="line">                       <a class="code" href="a02309_a57867e4bed1d104c865cfc9d23c9204d.html#a57867e4bed1d104c865cfc9d23c9204da682ef7f1042079519664eae87f90297e">MED_CARTESIAN</a>, axisname, unitname) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating a support mesh ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  nnode = 9;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_gab2a6fcbbb0dfb0dba573320ed07f503b.html#gab2a6fcbbb0dfb0dba573320ed07f503b">MEDmeshNodeCoordinateWr</a>(fid, beamsectionname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, 0.0,</div>
+<div class="line">                              <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nnode, beamsectioncoo) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : write nodes coordinates ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_ga091f97ef25e5bb96e3d941b85131cea9.html#ga091f97ef25e5bb96e3d941b85131cea9">MEDmeshElementConnectivityWr</a>(fid, beamsectionname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, 0.0, <a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67">MED_CELL</a>, <a name="a17"></a><a class="code" href="a02309_a24ea9c52f5bde41d9a072925249ec06c.html#a24ea9c52f5bde41d9a072925249ec06c">MED_QUAD4</a>,</div>
+<div class="line">                                   <a class="code" href="a02309_afcd26ca66a179b9aa82f5c90602c4ed8.html#afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa">MED_NODAL</a>, <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nquad4, beamsectionconnectivity) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : write cells connectivity ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* STEP 2 */</span></div>
+<div class="line">  <span class="comment">/* particle model creation : no support mesh */</span></div>
+<div class="line">  strcpy(elementname,<a name="a18"></a><a class="code" href="a02309_a786e7850e4d89a31047496e6fd48476d.html#a786e7850e4d89a31047496e6fd48476d">MED_PARTICLE_NAME</a>);</div>
+<div class="line">  <span class="keywordflow">if</span> ((geotype = <a name="a19"></a><a class="code" href="a02330_ga018cf42798055d8cd2a8ec80f733d31d.html#ga018cf42798055d8cd2a8ec80f733d31d">MEDstructElementCr</a>(fid, elementname, elementdim, <a name="a20"></a><a class="code" href="a02309_aff82475025000f628497e5c0d7117bcf.html#aff82475025000f628497e5c0d7117bcf">MED_NO_MESHNAME</a>,</div>
+<div class="line">                                    <a class="code" href="a02309_a9a2843c7d6eacffdd9377b5bfb8a6de3.html#a9a2843c7d6eacffdd9377b5bfb8a6de3">MED_NONE</a>,<a class="code" href="a02309_a9a2843c7d6eacffdd9377b5bfb8a6de3.html#a9a2843c7d6eacffdd9377b5bfb8a6de3">MED_NONE</a>)) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  ncomp=1;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a21"></a><a class="code" href="a02330_gab486f3f6ba5622b8e22562286921bdd1.html#gab486f3f6ba5622b8e22562286921bdd1">MEDstructElementVarAttCr</a>(fid, elementname,</div>
+<div class="line">                               <a name="a22"></a><a class="code" href="a02309_a1ccd58b1b04b04136557b619d5ce4c9d.html#a1ccd58b1b04b04136557b619d5ce4c9d">MED_PARTICLE_LABEL</a>, <a name="a23"></a><a class="code" href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8add7fd38889e057c70ed529bac85db4ee">MED_ATT_INT</a>, ncomp) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* ball model creation */</span></div>
+<div class="line">  strcpy(elementname,<a name="a24"></a><a class="code" href="a02309_aa86785fc7c9bc73e184da6e687f79f2b.html#aa86785fc7c9bc73e184da6e687f79f2b">MED_BALL_NAME</a>);</div>
+<div class="line">  <span class="keywordflow">if</span> ((geotype = <a class="code" href="a02330_ga018cf42798055d8cd2a8ec80f733d31d.html#ga018cf42798055d8cd2a8ec80f733d31d">MEDstructElementCr</a>(fid, elementname, elementdim, ballsupportname,</div>
+<div class="line">                                    <a name="a25"></a><a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a074507163b07b6d764823a78c5c07f0f">MED_NODE</a>,<a class="code" href="a02309_a9a2843c7d6eacffdd9377b5bfb8a6de3.html#a9a2843c7d6eacffdd9377b5bfb8a6de3">MED_NONE</a>)) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  ncomp=1;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02330_gab486f3f6ba5622b8e22562286921bdd1.html#gab486f3f6ba5622b8e22562286921bdd1">MEDstructElementVarAttCr</a>(fid, elementname,</div>
+<div class="line">                               <a name="a26"></a><a class="code" href="a02309_a0bd406d126080383a267241ac784fb41.html#a0bd406d126080383a267241ac784fb41">MED_BALL_DIAMETER</a>, <a name="a27"></a><a class="code" href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8acdee779d6931de0b056721831ae6bd95">MED_ATT_FLOAT64</a>, ncomp) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* A beam */</span></div>
+<div class="line">  strcpy(elementname,<a name="a28"></a><a class="code" href="a02309_a738baa2a243efa4f2e957c2a75b616c1.html#a738baa2a243efa4f2e957c2a75b616c1">MED_BEAM_NAME</a>);</div>
+<div class="line">  <span class="keywordflow">if</span> ((geotype = <a class="code" href="a02330_ga018cf42798055d8cd2a8ec80f733d31d.html#ga018cf42798055d8cd2a8ec80f733d31d">MEDstructElementCr</a>(fid, elementname, elementdim, beamsupportname,</div>
+<div class="line">                                    <a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67">MED_CELL</a>,<a class="code" href="a02309_a29927daaa1a87f2129295a68264ad526.html#a29927daaa1a87f2129295a68264ad526">MED_SEG2</a>)) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  ncomp=1;</div>
+<div class="line">  <span class="comment">/* a first constant attribute */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a29"></a><a class="code" href="a02330_ga4076c307f43a271a12071bb74b0690ef.html#ga4076c307f43a271a12071bb74b0690ef">MEDstructElementConstAttWr</a>(fid, elementname,</div>
+<div class="line">                                 <a name="a30"></a><a class="code" href="a02309_ac02c21964d5854d4a3a64a1fed762bad.html#ac02c21964d5854d4a3a64a1fed762bad">MED_BEAM_THICKNESS</a>, <a class="code" href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8acdee779d6931de0b056721831ae6bd95">MED_ATT_FLOAT64</a>, ncomp,</div>
+<div class="line">                                 <a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67">MED_CELL</a>,(<span class="keywordtype">void</span>*) attvalue) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="comment">/* a second constant attribute defined with a profile for the first and the</span></div>
+<div class="line"><span class="comment">     last segment */</span></div>
+<div class="line">  <span class="comment">/* create the profile */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a31"></a><a class="code" href="a02329_gaf7ec6ed01898dcfe98556f399ed044d1.html#gaf7ec6ed01898dcfe98556f399ed044d1">MEDprofileWr</a>(fid, profilename, profilesize, profile ) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : create profile ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="comment">/* write the constant attribute */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a32"></a><a class="code" href="a02330_ga10af186c4d6fa0cfd0aa3a6b2c90c0a4.html#ga10af186c4d6fa0cfd0aa3a6b2c90c0a4">MEDstructElementConstAttWithProfileWr</a>(fid,</div>
+<div class="line">                                            elementname,</div>
+<div class="line">                                            <span class="stringliteral">&quot;BEAM_EXTREMITIES_LABELS&quot;</span>,</div>
+<div class="line">                                            <a name="a33"></a><a class="code" href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8af8c39990c775c4813629cfb6947cbc9e">MED_ATT_NAME</a>,</div>
+<div class="line">                                            ncomp,</div>
+<div class="line">                                            <a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67">MED_CELL</a>,</div>
+<div class="line">                                            profilename,</div>
+<div class="line">                                            (<span class="keywordtype">void</span>*) attprovalue) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating struct element&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* STEP 3 : Computation mesh creation */</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* mesh creation */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a34"></a><a class="code" href="a02327_ga6007c3f1a62732e7a46c5eca232be78a.html#ga6007c3f1a62732e7a46c5eca232be78a">MEDmeshCr</a>(fid, computmeshname, spacedim, meshdim,  <a name="a35"></a><a class="code" href="a02309_a821a4dd94c5c6b095318432bdec8d8a1.html#a821a4dd94c5c6b095318432bdec8d8a1a3719e53a4838d222f0a58148292fda41">MED_UNSTRUCTURED_MESH</a>,</div>
+<div class="line">                <span class="stringliteral">&quot;Computation mesh&quot;</span>, <span class="stringliteral">&quot;s&quot;</span>, <a name="a36"></a><a class="code" href="a02309_a5b97067a30629cd60470d074691d6798.html#a5b97067a30629cd60470d074691d6798ae896b6adfbde9870b4e875e5167eddd0">MED_SORT_DTIT</a>,</div>
+<div class="line">                <a class="code" href="a02309_a57867e4bed1d104c865cfc9d23c9204d.html#a57867e4bed1d104c865cfc9d23c9204da682ef7f1042079519664eae87f90297e">MED_CARTESIAN</a>, axisname, unitname) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : creating computation mesh ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* mesh node creation */</span></div>
+<div class="line">  nnode = 12;</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_gab2a6fcbbb0dfb0dba573320ed07f503b.html#gab2a6fcbbb0dfb0dba573320ed07f503b">MEDmeshNodeCoordinateWr</a>(fid, computmeshname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, <a name="a37"></a><a class="code" href="a02309_a609885580ce660eb5b7c80074d64f93f.html#a609885580ce660eb5b7c80074d64f93f">MED_UNDEF_DT</a>,</div>
+<div class="line">                              <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nnode, meshcoo) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : writing nodes coordinates ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* 1 beam */</span></div>
+<div class="line">  nentity = 1;</div>
+<div class="line">  <a name="a38"></a><a class="code" href="a02315_a257959db0a78623caa051d11ceb2f8cb.html#a257959db0a78623caa051d11ceb2f8cb">SSCRUTE</a>(elementname);</div>
+<div class="line">  geotype = <a name="a39"></a><a class="code" href="a02330_gaf49779dbddeb78a562de0f913d3d087c.html#gaf49779dbddeb78a562de0f913d3d087c">MEDstructElementGeotype</a>(fid,elementname);</div>
+<div class="line">  <a name="a40"></a><a class="code" href="a02315_ae7ba0433e91c450cd44c3808c2acb497.html#ae7ba0433e91c450cd44c3808c2acb497">ISCRUTE_int</a>(geotype);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_ga091f97ef25e5bb96e3d941b85131cea9.html#ga091f97ef25e5bb96e3d941b85131cea9">MEDmeshElementConnectivityWr</a>(fid,computmeshname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, <a class="code" href="a02309_a609885580ce660eb5b7c80074d64f93f.html#a609885580ce660eb5b7c80074d64f93f">MED_UNDEF_DT</a>,</div>
+<div class="line">                                   <a name="a41"></a><a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470abdd6b14142920f599bbe4e97c4bb921e">MED_STRUCT_ELEMENT</a>, geotype, <a class="code" href="a02309_afcd26ca66a179b9aa82f5c90602c4ed8.html#afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa">MED_NODAL</a>,</div>
+<div class="line">                                   <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nentity, beamconnectivity) &lt; 0 ) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : beam connectivity ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* Get the dynamic geometry type of each struct element model.</span></div>
+<div class="line"><span class="comment">     Then for each type, write the connectivity and variable(s) attribute(s) */</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* 3 particles in the mesh */</span></div>
+<div class="line">  strcpy(elementname,<a class="code" href="a02309_a786e7850e4d89a31047496e6fd48476d.html#a786e7850e4d89a31047496e6fd48476d">MED_PARTICLE_NAME</a>);</div>
+<div class="line">  geotype = <a class="code" href="a02330_gaf49779dbddeb78a562de0f913d3d087c.html#gaf49779dbddeb78a562de0f913d3d087c">MEDstructElementGeotype</a>(fid,elementname);</div>
+<div class="line">  nentity = 3;</div>
+<div class="line">  <a class="code" href="a02315_ae7ba0433e91c450cd44c3808c2acb497.html#ae7ba0433e91c450cd44c3808c2acb497">ISCRUTE_int</a>(geotype);</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_ga091f97ef25e5bb96e3d941b85131cea9.html#ga091f97ef25e5bb96e3d941b85131cea9">MEDmeshElementConnectivityWr</a>(fid, computmeshname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, 0.0,</div>
+<div class="line">                                   <a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470abdd6b14142920f599bbe4e97c4bb921e">MED_STRUCT_ELEMENT</a>, geotype , <a class="code" href="a02309_afcd26ca66a179b9aa82f5c90602c4ed8.html#afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa">MED_NODAL</a>, <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>,</div>
+<div class="line">                                   nentity, 0) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : writing particles connectivity ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* no support mesh =&gt; no connectivity, the particles are localized with an association between</span></div>
+<div class="line"><span class="comment">     the mesh nodes and the label attribute defined in the struct model */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a42"></a><a class="code" href="a02330_gabebaf350609299e314c5950be79b0855.html#gabebaf350609299e314c5950be79b0855">MEDmeshStructElementVarAttWr</a>(fid, computmeshname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>,</div>
+<div class="line">                                   geotype, <a class="code" href="a02309_a1ccd58b1b04b04136557b619d5ce4c9d.html#a1ccd58b1b04b04136557b619d5ce4c9d">MED_PARTICLE_LABEL</a>,</div>
+<div class="line">                                   nentity, labels) &lt; 0 ) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : writing variable attributes  ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* 2 balls */</span></div>
+<div class="line">  strcpy(elementname,<a class="code" href="a02309_aa86785fc7c9bc73e184da6e687f79f2b.html#aa86785fc7c9bc73e184da6e687f79f2b">MED_BALL_NAME</a>);</div>
+<div class="line">  nentity = 2;</div>
+<div class="line">  geotype = <a class="code" href="a02330_gaf49779dbddeb78a562de0f913d3d087c.html#gaf49779dbddeb78a562de0f913d3d087c">MEDstructElementGeotype</a>(fid,elementname);</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02327_ga091f97ef25e5bb96e3d941b85131cea9.html#ga091f97ef25e5bb96e3d941b85131cea9">MEDmeshElementConnectivityWr</a>(fid,computmeshname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>, <a class="code" href="a02309_a609885580ce660eb5b7c80074d64f93f.html#a609885580ce660eb5b7c80074d64f93f">MED_UNDEF_DT</a>,</div>
+<div class="line">                                   <a class="code" href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470abdd6b14142920f599bbe4e97c4bb921e">MED_STRUCT_ELEMENT</a>, geotype, <a class="code" href="a02309_afcd26ca66a179b9aa82f5c90602c4ed8.html#afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa">MED_NODAL</a>,</div>
+<div class="line">                                   <a class="code" href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a>, nentity, ballconnectivity) &lt; 0 ) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : writing balls connectivity&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* variable attribute : write ball diameter */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="a02330_gabebaf350609299e314c5950be79b0855.html#gabebaf350609299e314c5950be79b0855">MEDmeshStructElementVarAttWr</a>(fid, computmeshname, <a class="code" href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a>, <a class="code" href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a>,</div>
+<div class="line">                                   geotype, <a class="code" href="a02309_a0bd406d126080383a267241ac784fb41.html#a0bd406d126080383a267241ac784fb41">MED_BALL_DIAMETER</a>,</div>
+<div class="line">                                   nentity, balldiameter) &lt; 0 ) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : writing variable attributes ...&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">goto</span> ERROR;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">  ret=0;</div>
+<div class="line"> ERROR:</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">/* close file */</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a43"></a><a class="code" href="a02321_ga12a0e901c376be997a41a073ce426283.html#ga12a0e901c376be997a41a073ce426283">MEDfileClose</a>(fid) &lt; 0) {</div>
+<div class="line">    <a class="code" href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a>(<span class="stringliteral">&quot;ERROR : file closing&quot;</span>);</div>
+<div class="line">    ret=-1;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+</div><!-- fragment --> </div><!-- contents -->
+<div class="ttc" id="aa02309_a57867e4bed1d104c865cfc9d23c9204d_html_a57867e4bed1d104c865cfc9d23c9204da682ef7f1042079519664eae87f90297e"><div class="ttname"><a href="a02309_a57867e4bed1d104c865cfc9d23c9204d.html#a57867e4bed1d104c865cfc9d23c9204da682ef7f1042079519664eae87f90297e">MED_CARTESIAN</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00258">med.h:258</a></div></div>
+<div class="ttc" id="aa02309_a0d451e4036adbb12b14cb16d7db0c37d_html_a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1"><div class="ttname"><a href="a02309_a0d451e4036adbb12b14cb16d7db0c37d.html#a0d451e4036adbb12b14cb16d7db0c37da9a1509b3f93e5915a24f555890c73ee1">MED_FULL_INTERLACE</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00096">med.h:96</a></div></div>
+<div class="ttc" id="aa02309_a0bd406d126080383a267241ac784fb41_html_a0bd406d126080383a267241ac784fb41"><div class="ttname"><a href="a02309_a0bd406d126080383a267241ac784fb41.html#a0bd406d126080383a267241ac784fb41">MED_BALL_DIAMETER</a></div><div class="ttdeci">#define MED_BALL_DIAMETER</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00460">med.h:460</a></div></div>
+<div class="ttc" id="aa02330_ga4076c307f43a271a12071bb74b0690ef_html_ga4076c307f43a271a12071bb74b0690ef"><div class="ttname"><a href="a02330_ga4076c307f43a271a12071bb74b0690ef.html#ga4076c307f43a271a12071bb74b0690ef">MEDstructElementConstAttWr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDstructElementConstAttWr(const med_idt fid, const char *const modelname, const char *const constattname, const med_attribute_type constatttype, const med_int ncomponent, const med_entity_type sentitytype, const void *const value)</div><div class="ttdoc">Cette routine définit un attribut caractéristique constant d'un modèle d'éléments de structure.</div><div class="ttdef"><b>Definition:</b> <a href="a01940_source.html#l00043">MEDstructElementConstAttWr.c:43</a></div></div>
+<div class="ttc" id="aa02309_a5b97067a30629cd60470d074691d6798_html_a5b97067a30629cd60470d074691d6798ae896b6adfbde9870b4e875e5167eddd0"><div class="ttname"><a href="a02309_a5b97067a30629cd60470d074691d6798.html#a5b97067a30629cd60470d074691d6798ae896b6adfbde9870b4e875e5167eddd0">MED_SORT_DTIT</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00309">med.h:309</a></div></div>
+<div class="ttc" id="aa02309_a1ccd58b1b04b04136557b619d5ce4c9d_html_a1ccd58b1b04b04136557b619d5ce4c9d"><div class="ttname"><a href="a02309_a1ccd58b1b04b04136557b619d5ce4c9d.html#a1ccd58b1b04b04136557b619d5ce4c9d">MED_PARTICLE_LABEL</a></div><div class="ttdeci">#define MED_PARTICLE_LABEL</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00459">med.h:459</a></div></div>
+<div class="ttc" id="aa02327_ga6007c3f1a62732e7a46c5eca232be78a_html_ga6007c3f1a62732e7a46c5eca232be78a"><div class="ttname"><a href="a02327_ga6007c3f1a62732e7a46c5eca232be78a.html#ga6007c3f1a62732e7a46c5eca232be78a">MEDmeshCr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDmeshCr(const med_idt fid, const char *const meshname, const med_int spacedim, const med_int meshdim, const med_mesh_type meshtype, const char *const description, const char *const dtunit, const med_sorting_type sortingtype, const med_axis_type axistype, const char *const axisname, const char *const axisunit)</div><div class="ttdoc">Cette routine permet de créer un maillage dans un fichier.</div><div class="ttdef"><b>Definition:</b> <a href="a01682_source.html#l00045">MEDmeshCr.c:45</a></div></div>
+<div class="ttc" id="aa02321_ga9376a1654b7bf099c3f8941074c5fdfb_html_ga9376a1654b7bf099c3f8941074c5fdfb"><div class="ttname"><a href="a02321_ga9376a1654b7bf099c3f8941074c5fdfb.html#ga9376a1654b7bf099c3f8941074c5fdfb">MEDfileOpen</a></div><div class="ttdeci">MEDC_EXPORT med_idt MEDfileOpen(const char *const filename, const med_access_mode accessmode)</div><div class="ttdoc">Ouverture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a01583_source.html#l00042">MEDfileOpen.c:42</a></div></div>
+<div class="ttc" id="aa02309_a1043613afc3cd2e24785dfc7c0452ab8_html_a1043613afc3cd2e24785dfc7c0452ab8"><div class="ttname"><a href="a02309_a1043613afc3cd2e24785dfc7c0452ab8.html#a1043613afc3cd2e24785dfc7c0452ab8">med_geometry_type</a></div><div class="ttdeci">int med_geometry_type</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00194">med.h:194</a></div></div>
+<div class="ttc" id="aa02309_a213ecd1a546eb96092b980a870bc386b_html_a213ecd1a546eb96092b980a870bc386b"><div class="ttname"><a href="a02309_a213ecd1a546eb96092b980a870bc386b.html#a213ecd1a546eb96092b980a870bc386b">MED_SNAME_SIZE</a></div><div class="ttdeci">#define MED_SNAME_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00082">med.h:82</a></div></div>
+<div class="ttc" id="aa02330_ga10af186c4d6fa0cfd0aa3a6b2c90c0a4_html_ga10af186c4d6fa0cfd0aa3a6b2c90c0a4"><div class="ttname"><a href="a02330_ga10af186c4d6fa0cfd0aa3a6b2c90c0a4.html#ga10af186c4d6fa0cfd0aa3a6b2c90c0a4">MEDstructElementConstAttWithProfileWr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDstructElementConstAttWithProfileWr(const med_idt fid, const char *const modelname, const char *const constattname, const med_attribute_type constatttype, const med_int ncomponent, const med_entity_type sentitytype, const char *const profilename, const void *const value)</div><div class="ttdoc">Cette routine définit un attribut caractéristique constant d'un modèle d'éléments de structure.</div><div class="ttdef"><b>Definition:</b> <a href="a01937_source.html#l00044">MEDstructElementConstAttWithProfileWr.c:44</a></div></div>
+<div class="ttc" id="aa02309_afcd26ca66a179b9aa82f5c90602c4ed8_html_afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa"><div class="ttname"><a href="a02309_afcd26ca66a179b9aa82f5c90602c4ed8.html#afcd26ca66a179b9aa82f5c90602c4ed8a4ae92e7de0898383577cbba640006baa">MED_NODAL</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00255">med.h:255</a></div></div>
+<div class="ttc" id="aa02309_a786e7850e4d89a31047496e6fd48476d_html_a786e7850e4d89a31047496e6fd48476d"><div class="ttname"><a href="a02309_a786e7850e4d89a31047496e6fd48476d.html#a786e7850e4d89a31047496e6fd48476d">MED_PARTICLE_NAME</a></div><div class="ttdeci">#define MED_PARTICLE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00454">med.h:454</a></div></div>
+<div class="ttc" id="aa02315_ae7ba0433e91c450cd44c3808c2acb497_html_ae7ba0433e91c450cd44c3808c2acb497"><div class="ttname"><a href="a02315_ae7ba0433e91c450cd44c3808c2acb497.html#ae7ba0433e91c450cd44c3808c2acb497">ISCRUTE_int</a></div><div class="ttdeci">#define ISCRUTE_int(entier)</div><div class="ttdef"><b>Definition:</b> <a href="a02315_source.html#l00314">med_utils.h:314</a></div></div>
+<div class="ttc" id="aa02309_afa4ec8284026c8c5545e5333475fb65a_html_afa4ec8284026c8c5545e5333475fb65a"><div class="ttname"><a href="a02309_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a></div><div class="ttdeci">hid_t med_idt</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00331">med.h:331</a></div></div>
+<div class="ttc" id="aa02309_a29927daaa1a87f2129295a68264ad526_html_a29927daaa1a87f2129295a68264ad526"><div class="ttname"><a href="a02309_a29927daaa1a87f2129295a68264ad526.html#a29927daaa1a87f2129295a68264ad526">MED_SEG2</a></div><div class="ttdeci">#define MED_SEG2</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00200">med.h:200</a></div></div>
+<div class="ttc" id="aa02309_aab0e957294723517d5c3641bb71b0470_html_aab0e957294723517d5c3641bb71b0470abdd6b14142920f599bbe4e97c4bb921e"><div class="ttname"><a href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470abdd6b14142920f599bbe4e97c4bb921e">MED_STRUCT_ELEMENT</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00144">med.h:144</a></div></div>
+<div class="ttc" id="aa02330_gabebaf350609299e314c5950be79b0855_html_gabebaf350609299e314c5950be79b0855"><div class="ttname"><a href="a02330_gabebaf350609299e314c5950be79b0855.html#gabebaf350609299e314c5950be79b0855">MEDmeshStructElementVarAttWr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDmeshStructElementVarAttWr(const med_idt fid, const char *const meshname, const med_int numdt, const med_int numit, const med_geometry_type mgeotype, const char *const varattname, const med_int nentity, const void *const value)</div><div class="ttdoc">Cette routine écrit les valeurs d'un attribut caractéristique variable sur les éléments de structure ...</div><div class="ttdef"><b>Definition:</b> <a href="a01838_source.html#l00042">MEDmeshStructElementVarAttWr.c:42</a></div></div>
+<div class="ttc" id="aa02309_aab0e957294723517d5c3641bb71b0470_html_aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67"><div class="ttname"><a href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a227d14957ec5f221685cb1d6ec3b6c67">MED_CELL</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00143">med.h:143</a></div></div>
+<div class="ttc" id="aa02309_aa86785fc7c9bc73e184da6e687f79f2b_html_aa86785fc7c9bc73e184da6e687f79f2b"><div class="ttname"><a href="a02309_aa86785fc7c9bc73e184da6e687f79f2b.html#aa86785fc7c9bc73e184da6e687f79f2b">MED_BALL_NAME</a></div><div class="ttdeci">#define MED_BALL_NAME</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00455">med.h:455</a></div></div>
+<div class="ttc" id="aa02315_a3756046b0a6a7e51b8eb544d0d77c17c_html_a3756046b0a6a7e51b8eb544d0d77c17c"><div class="ttname"><a href="a02315_a3756046b0a6a7e51b8eb544d0d77c17c.html#a3756046b0a6a7e51b8eb544d0d77c17c">MESSAGE</a></div><div class="ttdeci">#define MESSAGE(chaine)</div><div class="ttdef"><b>Definition:</b> <a href="a02315_source.html#l00324">med_utils.h:324</a></div></div>
+<div class="ttc" id="aa02309_ab6689ff0f472c1b88f02f030d34825b8_html_ab6689ff0f472c1b88f02f030d34825b8acdee779d6931de0b056721831ae6bd95"><div class="ttname"><a href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8acdee779d6931de0b056721831ae6bd95">MED_ATT_FLOAT64</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00173">med.h:173</a></div></div>
+<div class="ttc" id="aa02309_a88dc15143f934cc7b771bc89f46372dc_html_a88dc15143f934cc7b771bc89f46372dc"><div class="ttname"><a href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a></div><div class="ttdeci">int med_int</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00342">med.h:342</a></div></div>
+<div class="ttc" id="aa02309_aff82475025000f628497e5c0d7117bcf_html_aff82475025000f628497e5c0d7117bcf"><div class="ttname"><a href="a02309_aff82475025000f628497e5c0d7117bcf.html#aff82475025000f628497e5c0d7117bcf">MED_NO_MESHNAME</a></div><div class="ttdeci">#define MED_NO_MESHNAME</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00270">med.h:270</a></div></div>
+<div class="ttc" id="aa02309_html"><div class="ttname"><a href="a02309.html">med.h</a></div></div>
+<div class="ttc" id="aa02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a_html_ab1eab99ca56ac95ce5b1c0e4ae0f095a"><div class="ttname"><a href="a02309_ab1eab99ca56ac95ce5b1c0e4ae0f095a.html#ab1eab99ca56ac95ce5b1c0e4ae0f095a">med_float</a></div><div class="ttdeci">double med_float</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00336">med.h:336</a></div></div>
+<div class="ttc" id="aa02309_a8f72b6ceb3b6f5a67f9efd46cb90707a_html_a8f72b6ceb3b6f5a67f9efd46cb90707a"><div class="ttname"><a href="a02309_a8f72b6ceb3b6f5a67f9efd46cb90707a.html#a8f72b6ceb3b6f5a67f9efd46cb90707a">MED_NO_DT</a></div><div class="ttdeci">#define MED_NO_DT</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00320">med.h:320</a></div></div>
+<div class="ttc" id="aa02309_a9a2843c7d6eacffdd9377b5bfb8a6de3_html_a9a2843c7d6eacffdd9377b5bfb8a6de3"><div class="ttname"><a href="a02309_a9a2843c7d6eacffdd9377b5bfb8a6de3.html#a9a2843c7d6eacffdd9377b5bfb8a6de3">MED_NONE</a></div><div class="ttdeci">#define MED_NONE</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00231">med.h:231</a></div></div>
+<div class="ttc" id="aa02309_a738baa2a243efa4f2e957c2a75b616c1_html_a738baa2a243efa4f2e957c2a75b616c1"><div class="ttname"><a href="a02309_a738baa2a243efa4f2e957c2a75b616c1.html#a738baa2a243efa4f2e957c2a75b616c1">MED_BEAM_NAME</a></div><div class="ttdeci">#define MED_BEAM_NAME</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00456">med.h:456</a></div></div>
+<div class="ttc" id="aa02309_aab0e957294723517d5c3641bb71b0470_html_aab0e957294723517d5c3641bb71b0470a074507163b07b6d764823a78c5c07f0f"><div class="ttname"><a href="a02309_aab0e957294723517d5c3641bb71b0470.html#aab0e957294723517d5c3641bb71b0470a074507163b07b6d764823a78c5c07f0f">MED_NODE</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00143">med.h:143</a></div></div>
+<div class="ttc" id="aa02309_ab6689ff0f472c1b88f02f030d34825b8_html_ab6689ff0f472c1b88f02f030d34825b8af8c39990c775c4813629cfb6947cbc9e"><div class="ttname"><a href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8af8c39990c775c4813629cfb6947cbc9e">MED_ATT_NAME</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00175">med.h:175</a></div></div>
+<div class="ttc" id="aa02315_a257959db0a78623caa051d11ceb2f8cb_html_a257959db0a78623caa051d11ceb2f8cb"><div class="ttname"><a href="a02315_a257959db0a78623caa051d11ceb2f8cb.html#a257959db0a78623caa051d11ceb2f8cb">SSCRUTE</a></div><div class="ttdeci">#define SSCRUTE(chaine)</div><div class="ttdef"><b>Definition:</b> <a href="a02315_source.html#l00323">med_utils.h:323</a></div></div>
+<div class="ttc" id="aa02327_gab2a6fcbbb0dfb0dba573320ed07f503b_html_gab2a6fcbbb0dfb0dba573320ed07f503b"><div class="ttname"><a href="a02327_gab2a6fcbbb0dfb0dba573320ed07f503b.html#gab2a6fcbbb0dfb0dba573320ed07f503b">MEDmeshNodeCoordinateWr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDmeshNodeCoordinateWr(const med_idt fid, const char *const meshname, const med_int numdt, const med_int numit, const med_float dt, const med_switch_mode switchmode, const med_int nentity, const med_float *const coordinates)</div><div class="ttdoc">Cette routine permet d'écrire dans un maillage le tableau des coordonnées des noeuds,...</div><div class="ttdef"><b>Definition:</b> <a href="a01805_source.html#l00045">MEDmeshNodeCoordinateWr.c:45</a></div></div>
+<div class="ttc" id="aa02309_adcd0322de9fec3b5e199ffeda3f44c85_html_adcd0322de9fec3b5e199ffeda3f44c85aa23dd1c18b596924d5f50c8402b84c8e"><div class="ttname"><a href="a02309_adcd0322de9fec3b5e199ffeda3f44c85.html#adcd0322de9fec3b5e199ffeda3f44c85aa23dd1c18b596924d5f50c8402b84c8e">MED_ACC_CREAT</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00123">med.h:123</a></div></div>
+<div class="ttc" id="aa02309_ab6689ff0f472c1b88f02f030d34825b8_html_ab6689ff0f472c1b88f02f030d34825b8add7fd38889e057c70ed529bac85db4ee"><div class="ttname"><a href="a02309_ab6689ff0f472c1b88f02f030d34825b8.html#ab6689ff0f472c1b88f02f030d34825b8add7fd38889e057c70ed529bac85db4ee">MED_ATT_INT</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00174">med.h:174</a></div></div>
+<div class="ttc" id="aa02330_gaf49779dbddeb78a562de0f913d3d087c_html_gaf49779dbddeb78a562de0f913d3d087c"><div class="ttname"><a href="a02330_gaf49779dbddeb78a562de0f913d3d087c.html#gaf49779dbddeb78a562de0f913d3d087c">MEDstructElementGeotype</a></div><div class="ttdeci">MEDC_EXPORT med_geometry_type MEDstructElementGeotype(const med_idt fid, const char *const modelname)</div><div class="ttdoc">Cette routine renvoie le type géométrique mgeotype associé au modèle d'éléments de structure de nom m...</div><div class="ttdef"><b>Definition:</b> <a href="a01946_source.html#l00038">MEDstructElementGeotype.c:38</a></div></div>
+<div class="ttc" id="aa02309_ac02c21964d5854d4a3a64a1fed762bad_html_ac02c21964d5854d4a3a64a1fed762bad"><div class="ttname"><a href="a02309_ac02c21964d5854d4a3a64a1fed762bad.html#ac02c21964d5854d4a3a64a1fed762bad">MED_BEAM_THICKNESS</a></div><div class="ttdeci">#define MED_BEAM_THICKNESS</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00461">med.h:461</a></div></div>
+<div class="ttc" id="aa02329_gaf7ec6ed01898dcfe98556f399ed044d1_html_gaf7ec6ed01898dcfe98556f399ed044d1"><div class="ttname"><a href="a02329_gaf7ec6ed01898dcfe98556f399ed044d1.html#gaf7ec6ed01898dcfe98556f399ed044d1">MEDprofileWr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDprofileWr(const med_idt fid, const char *const profilename, const med_int profilesize, const med_int *const profilearray)</div><div class="ttdoc">Cette routine permet d'écrire un profil dans un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a01919_source.html#l00040">MEDprofileWr.c:40</a></div></div>
+<div class="ttc" id="aa02309_a0ae989cbbfeecbb5296b3ceba8dab886_html_a0ae989cbbfeecbb5296b3ceba8dab886"><div class="ttname"><a href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a></div><div class="ttdeci">#define MED_NAME_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00081">med.h:81</a></div></div>
+<div class="ttc" id="aa02309_a821a4dd94c5c6b095318432bdec8d8a1_html_a821a4dd94c5c6b095318432bdec8d8a1a3719e53a4838d222f0a58148292fda41"><div class="ttname"><a href="a02309_a821a4dd94c5c6b095318432bdec8d8a1.html#a821a4dd94c5c6b095318432bdec8d8a1a3719e53a4838d222f0a58148292fda41">MED_UNSTRUCTURED_MESH</a></div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00131">med.h:131</a></div></div>
+<div class="ttc" id="aa02321_ga12a0e901c376be997a41a073ce426283_html_ga12a0e901c376be997a41a073ce426283"><div class="ttname"><a href="a02321_ga12a0e901c376be997a41a073ce426283.html#ga12a0e901c376be997a41a073ce426283">MEDfileClose</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDfileClose(med_idt fid)</div><div class="ttdoc">Fermeture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a01550_source.html#l00030">MEDfileClose.c:30</a></div></div>
+<div class="ttc" id="aa02309_a609885580ce660eb5b7c80074d64f93f_html_a609885580ce660eb5b7c80074d64f93f"><div class="ttname"><a href="a02309_a609885580ce660eb5b7c80074d64f93f.html#a609885580ce660eb5b7c80074d64f93f">MED_UNDEF_DT</a></div><div class="ttdeci">#define MED_UNDEF_DT</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00322">med.h:322</a></div></div>
+<div class="ttc" id="aa02327_ga091f97ef25e5bb96e3d941b85131cea9_html_ga091f97ef25e5bb96e3d941b85131cea9"><div class="ttname"><a href="a02327_ga091f97ef25e5bb96e3d941b85131cea9.html#ga091f97ef25e5bb96e3d941b85131cea9">MEDmeshElementConnectivityWr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDmeshElementConnectivityWr(const med_idt fid, const char *const meshname, const med_int numdt, const med_int numit, const med_float dt, const med_entity_type entitype, const med_geometry_type geotype, const med_connectivity_mode cmode, const med_switch_mode switchmode, const med_int nentity, const med_int *const connectivity)</div><div class="ttdoc">Cette routine permet d'écrire dans un maillage le tableau des connectivités pour un type géométrique ...</div><div class="ttdef"><b>Definition:</b> <a href="a01700_source.html#l00042">MEDmeshElementConnectivityWr.c:42</a></div></div>
+<div class="ttc" id="aa02309_a95919207fd7a18ba26e6e03f04811e3f_html_a95919207fd7a18ba26e6e03f04811e3f"><div class="ttname"><a href="a02309_a95919207fd7a18ba26e6e03f04811e3f.html#a95919207fd7a18ba26e6e03f04811e3f">MED_NO_IT</a></div><div class="ttdeci">#define MED_NO_IT</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00321">med.h:321</a></div></div>
+<div class="ttc" id="aa02330_gab486f3f6ba5622b8e22562286921bdd1_html_gab486f3f6ba5622b8e22562286921bdd1"><div class="ttname"><a href="a02330_gab486f3f6ba5622b8e22562286921bdd1.html#gab486f3f6ba5622b8e22562286921bdd1">MEDstructElementVarAttCr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDstructElementVarAttCr(const med_idt fid, const char *const modelname, const char *const varattname, const med_attribute_type varatttype, const med_int ncomponent)</div><div class="ttdoc">Cette routine déclare la présence d'un attribut caractéristique variable attaché aux éléments de type...</div><div class="ttdef"><b>Definition:</b> <a href="a01958_source.html#l00042">MEDstructElementVarAttCr.c:42</a></div></div>
+<div class="ttc" id="aa02332_ga8d14cb8ed06c18d7a8c7a32d89b5ebd5_html_ga8d14cb8ed06c18d7a8c7a32d89b5ebd5"><div class="ttname"><a href="a02332_ga8d14cb8ed06c18d7a8c7a32d89b5ebd5.html#ga8d14cb8ed06c18d7a8c7a32d89b5ebd5">MEDsupportMeshCr</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDsupportMeshCr(const med_idt fid, const char *const supportmeshname, const med_int spacedim, const med_int meshdim, const char *const description, const med_axis_type axistype, const char *const axisname, const char *const axisunit)</div><div class="ttdoc">Cette routine permet de créer un maillage support.</div><div class="ttdef"><b>Definition:</b> <a href="a01988_source.html#l00046">MEDsupportMeshCr.c:46</a></div></div>
+<div class="ttc" id="aa03319_a3c04138a5bfe5d72780bb7e82a18e627_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="a03319_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="a03319_source.html#l00050">3.0.8/test10.c:50</a></div></div>
+<div class="ttc" id="aa02315_html"><div class="ttname"><a href="a02315.html">med_utils.h</a></div></div>
+<div class="ttc" id="aa02330_ga018cf42798055d8cd2a8ec80f733d31d_html_ga018cf42798055d8cd2a8ec80f733d31d"><div class="ttname"><a href="a02330_ga018cf42798055d8cd2a8ec80f733d31d.html#ga018cf42798055d8cd2a8ec80f733d31d">MEDstructElementCr</a></div><div class="ttdeci">MEDC_EXPORT med_geometry_type MEDstructElementCr(const med_idt fid, const char *const modelname, const med_int modeldim, const char *const supportmeshname, const med_entity_type sentitytype, const med_geometry_type sgeotype)</div><div class="ttdoc">Cette routine permet de créer un nouveau modèle d'éléments de structure dans un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a01943_source.html#l00050">MEDstructElementCr.c:50</a></div></div>
+<div class="ttc" id="aa02309_a24ea9c52f5bde41d9a072925249ec06c_html_a24ea9c52f5bde41d9a072925249ec06c"><div class="ttname"><a href="a02309_a24ea9c52f5bde41d9a072925249ec06c.html#a24ea9c52f5bde41d9a072925249ec06c">MED_QUAD4</a></div><div class="ttdeci">#define MED_QUAD4</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00204">med.h:204</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:05 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

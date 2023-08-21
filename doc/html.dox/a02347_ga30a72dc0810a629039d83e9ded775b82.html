@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: msmnan</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="a02347.html">Guide de référence du module fortran MEDsupportMesh</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="contents">
+<table cellspacing="0" cellpadding="0" border="0">
+  <tr>
+   <td valign="top">
+      <div class="navtab">
+        <table>
+          <tr><td class="navtab"><a class="qindex" href="a02347_gaa6323f29e87be5e3e2c4295f40564f07.html#gaa6323f29e87be5e3e2c4295f40564f07">msmcre</a></td></tr>
+          <tr><td class="navtab"><a class="qindexHL" href="a02347_ga30a72dc0810a629039d83e9ded775b82.html#ga30a72dc0810a629039d83e9ded775b82">msmnan</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02347_gad4855b3af93f1c3c83f03e7a75f9073e.html#gad4855b3af93f1c3c83f03e7a75f9073e">msmnax</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02347_gaae8ae70328938d4c2b2fb620b81314fa.html#gaae8ae70328938d4c2b2fb620b81314fa">msmnsm</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02347_ga051b0cd632e7bd97804bfd939cdbc25e.html#ga051b0cd632e7bd97804bfd939cdbc25e">msmsmi</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02347_gaed1bba40be52fad63bbecb0388a6722a.html#gaed1bba40be52fad63bbecb0388a6722a">msmsni</a></td></tr>
+        </table>
+      </div>
+   </td>
+   <td valign="top" class="mempage">
+<a id="ga30a72dc0810a629039d83e9ded775b82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga30a72dc0810a629039d83e9ded775b82">&#9670;&nbsp;</a></span>msmnan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine msmnan </td>
+          <td>(</td>
+          <td class="paramtype">integer*8&#160;</td>
+          <td class="paramname"><em>fid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character *(*)&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer&#160;</td>
+          <td class="paramname"><em>naxis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer&#160;</td>
+          <td class="paramname"><em>cret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette routine permet de lire dans un maillage support le nombre d'axes du repère des coordonnées des noeuds avec accès direct. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fid</td><td>Identificateur du fichier. </td></tr>
+    <tr><td class="paramname">name</td><td>Nom du maillage, de longueur maximum <a class="el" href="a02309_a0ae989cbbfeecbb5296b3ceba8dab886.html#a0ae989cbbfeecbb5296b3ceba8dab886">MED_NAME_SIZE</a> . </td></tr>
+    <tr><td class="paramname">naxis</td><td>Nombre d'axe dans le repère de coordonnées. </td></tr>
+    <tr><td class="paramname">cret</td><td>retour négatif en cas d'erreur (<a class="el" href="a01322_a423af226ed41bc119d8868b24d4d05b0.html#a423af226ed41bc119d8868b24d4d05b0">MED_ERR_HOWTO</a>), Zéro sinon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="a02332_ga8bee6a6c9e250ea6abf86c7749fa2b31.html#ga8bee6a6c9e250ea6abf86c7749fa2b31" title="Cette routine permet de lire dans un maillage support le nombre d&#39;axes du repère des coordonnées des ...">MEDsupportMeshnAxisByName</a></dd></dl>
+<p>Cette routine permet de lire dans un maillage support le nombre d'axes du repère des coordonnées des noeuds. le nombre d'axe correspond à la dimension de l'espace de calcul. L'accès au maillage support se fait directement via son nom. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="a02048_source.html#l00125">125</a> du fichier <a class="el" href="a02048_source.html">medsupport.f</a>.</p>
+
+</div>
+</div>
+    </td>
+  </tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:12 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

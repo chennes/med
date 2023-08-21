@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: getCyclicBlocksOfEntities</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a772e3069001940b0633c6a305062f73.html">tests</a></li><li class="navelem"><a class="el" href="dir_48d725a0c78bed79fb6fc7ce42c18c76.html">parallel</a></li><li class="navelem"><a class="el" href="a01052.html">getBlocksOfEntitiesPartition.h</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="contents">
+<table cellspacing="0" cellpadding="0" border="0">
+  <tr>
+   <td valign="top">
+      <div class="navtab">
+        <table>
+          <tr><td class="navtab"><a class="qindex" href="a01052_a0840a3697d10d765b337ab481cd77c75.html#a0840a3697d10d765b337ab481cd77c75">GetBlocksOfEntitiesType</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a01052_a1a1e5d889c1ec1e795b6663cbbac7e39.html#a1a1e5d889c1ec1e795b6663cbbac7e39">getContinuousBlocksOfEntities</a></td></tr>
+          <tr><td class="navtab"><a class="qindexHL" href="a01052_a5e46fdcd4375727565dc777e08881ffa.html#a5e46fdcd4375727565dc777e08881ffa">getCyclicBlocksOfEntities</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a01052_a8e315da8f14d473c025c8a1f6af2f979.html#a8e315da8f14d473c025c8a1f6af2f979">MESGERR</a></td></tr>
+        </table>
+      </div>
+   </td>
+   <td valign="top" class="mempage">
+<a id="a5e46fdcd4375727565dc777e08881ffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e46fdcd4375727565dc777e08881ffa">&#9670;&nbsp;</a></span>getCyclicBlocksOfEntities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getCyclicBlocksOfEntities </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>myrank</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>nproc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>nentities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a02309_abc4b2f6b68a545b7b3441b0d3d860629.html#abc4b2f6b68a545b7b3441b0d3d860629">med_size</a> *const&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a02309_abc4b2f6b68a545b7b3441b0d3d860629.html#abc4b2f6b68a545b7b3441b0d3d860629">med_size</a> *const&#160;</td>
+          <td class="paramname"><em>stride</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a02309_abc4b2f6b68a545b7b3441b0d3d860629.html#abc4b2f6b68a545b7b3441b0d3d860629">med_size</a> *const&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a02309_abc4b2f6b68a545b7b3441b0d3d860629.html#abc4b2f6b68a545b7b3441b0d3d860629">med_size</a> *&#160;</td>
+          <td class="paramname"><em>blocksize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *const&#160;</td>
+          <td class="paramname"><em>lastusedrank</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a02309_abc4b2f6b68a545b7b3441b0d3d860629.html#abc4b2f6b68a545b7b3441b0d3d860629">med_size</a> *const&#160;</td>
+          <td class="paramname"><em>lastblocksize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="a01049_source.html#l00079">79</a> du fichier <a class="el" href="a01049_source.html">getBlocksOfEntitiesPartition.c</a>.</p>
+
+</div>
+</div>
+    </td>
+  </tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:06 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

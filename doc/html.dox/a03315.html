@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: Nature des donn&eacute;es &eacute;changeables avec MED</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Nature des donn&eacute;es &eacute;changeables avec MED </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="____Nature des donn&eacute;es &eacute;changeables avec MED____"></a> Les donn&eacute;es du mod&egrave;le sont des donn&eacute;es destin&eacute;es &agrave; &ecirc;tre &eacute;chang&eacute;es entre codes de calcul au cours d'une &eacute;tude de simulation num&eacute;rique, ces donn&eacute;es portent sur les notions de maillage, de r&eacute;sultat de calcul et de param&egrave;tre num&eacute;rique. Une &eacute;tude correspond &agrave; un encha&icirc;nement de s&eacute;quences de calculs, elle s'appuie sur un ou plusieurs maillages et aboutit sur des r&eacute;sultats sur les maillages utilis&eacute;s en entr&eacute;e. Maillages, r&eacute;sultats et param&egrave;tres num&eacute;riques peuvent &eacute;voluer au cours des s&eacute;quences de calcul.</p>
+<p>Le maillage fournit une repr&eacute;sentation du domaine de calcul. A ce titre, un maillage contient les types d'informations suivants : les informations g&eacute;om&eacute;triques port&eacute;es par les entit&eacute;s du maillage (noeuds, mailles et &eacute;ventuellement faces et des ar&ecirc;tes), les informations sur l'interpolation par &eacute;l&eacute;ments finis, les informations permettant la mise en oeuvre des calculs physiques (rep&eacute;rages pour affecter les caract&eacute;ristiques physiques des mat&eacute;riaux, conditions initiales et conditions aux limites), <span style="font-weight: medium">les informations permettant la distribution du domaine de calcul sur plusieurs sous-domaines</span>. On distingue dans MED les maillages structur&eacute;s des maillages non structur&eacute;s. Un maillage est non structur&eacute; si sa connectivit&eacute; est quelconque. Un maillage structur&eacute; est un maillage dont la construction utilise des directions g&eacute;om&eacute;triques particuli&egrave;res.</p>
+<p>Un r&eacute;sultat est constitu&eacute; d'un ensemble de valeurs d&eacute;finies sur les entit&eacute;s du maillage. Un r&eacute;sultat est constitu&eacute; d'un ou plusieurs champs, les champs pouvant avoir plusieurs composantes (valeurs scalaires). Les champs peuvent &ecirc;tre d&eacute;finis sur les noeuds, les &eacute;l&eacute;ments, les points d'int&eacute;gration des &eacute;l&eacute;ments et aux noeuds des &eacute;l&eacute;ments. </p>
+<p>Un param&egrave;tre num&eacute;rique correspond &agrave; une variable scalaire ind&eacute;pendante de tout maillage et de tout r&eacute;sultat.</p>
+<div class="image">
+<img src="Content_of_MAILLAGE.png" alt=""/>
+</div>
+ <div class="image">
+<img src="Content_of_MAILLE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_FACE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_ARETE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_NOEUD.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_ELEMENT_DE_STRUCTURE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_EVOLUTION_TEMPORELLE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_PROFIL.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_FAMILLE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE0D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE1D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE2D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE3D.png" alt=""/>
+</div>
+ <div class="image">
+<img src="Content_of_RESULTAT.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_VALEURS_SUR_ENTITE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_VALEUR_SUR_ENTITE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_LOCALISATION_DES_POINTS_DE_GAUSS.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_VARIABLE_SCALAIRE_NUMERIQUE.png" alt=""/>
+</div>
+ <div class="image">
+<img src="Content_of_EQUIVALENCE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_FICHIER.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_DEFINITION_TYPE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_Exemple_Repere_Cartesien_3D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_Exemple_Repere_Cylindrique_3D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_Exemple_Repere_Spherique_3D.png" alt=""/>
+</div>
+<p> <br  />
+ </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:11 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

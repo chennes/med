@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MED fichier: mipbfr</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MED fichier
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.16 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="a02338.html">Guide de référence du module fortran MEDinterp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="contents">
+<table cellspacing="0" cellpadding="0" border="0">
+  <tr>
+   <td valign="top">
+      <div class="navtab">
+        <table>
+          <tr><td class="navtab"><a class="qindexHL" href="a02338_gaffcbfcdc12ace78e5fdfa3d3162f8785.html#gaffcbfcdc12ace78e5fdfa3d3162f8785">mipbfr</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02338_ga47fb2995a1a920e720901127669bddc8.html#ga47fb2995a1a920e720901127669bddc8">mipbfw</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02338_ga6043fb74b17a756d1cb0e0130560db67.html#ga6043fb74b17a756d1cb0e0130560db67">mipcre</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02338_gaab6a18c32556fc0a7d1501c304cc4c7d.html#gaab6a18c32556fc0a7d1501c304cc4c7d">mipcsz</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02338_gaa7dc205e0c8064ecfa76afaf828bb42e.html#gaa7dc205e0c8064ecfa76afaf828bb42e">mipiin</a></td></tr>
+          <tr><td class="navtab"><a class="qindex" href="a02338_gaf16d60904a25c13945f0164357228fda.html#gaf16d60904a25c13945f0164357228fda">mipipi</a></td></tr>
+        </table>
+      </div>
+   </td>
+   <td valign="top" class="mempage">
+<a id="gaffcbfcdc12ace78e5fdfa3d3162f8785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaffcbfcdc12ace78e5fdfa3d3162f8785">&#9670;&nbsp;</a></span>mipbfr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine mipbfr </td>
+          <td>(</td>
+          <td class="paramtype">integer*8&#160;</td>
+          <td class="paramname"><em>fid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character*(*)&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer&#160;</td>
+          <td class="paramname"><em>nc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer:dimension(*)&#160;</td>
+          <td class="paramname"><em>pw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real*8:dimension(*)&#160;</td>
+          <td class="paramname"><em>co</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer&#160;</td>
+          <td class="paramname"><em>cret</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette routine permet la lecture d'une fonction de base/forme de l'interpolation <em>interpname</em>. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fid</td><td>Identificateur du fichier. </td></tr>
+    <tr><td class="paramname">name</td><td>Nom de la fonction d'interpolation </td></tr>
+    <tr><td class="paramname">it</td><td>Itérateur sur les fonctions de base/forme (&gt;0). </td></tr>
+    <tr><td class="paramname">nc</td><td>Nombre de coefficients (non null) du polynômes. Nombre de monômes de la fonction de base </td></tr>
+    <tr><td class="paramname">pw</td><td>Tableau des puissances des monômes d'un polynôme (taille minimum <em>ncoef</em> * <em>nvariable</em>) </td></tr>
+    <tr><td class="paramname">co</td><td>Tableau contenant le coefficient multiplicateur de chaque monôme (taille minimum <em>ncoef</em>) </td></tr>
+    <tr><td class="paramname">cret</td><td>retour négatif en cas d'erreur (<a class="el" href="a01322_a423af226ed41bc119d8868b24d4d05b0.html#a423af226ed41bc119d8868b24d4d05b0">MED_ERR_HOWTO</a>), Zéro sinon. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="a02323_ga9bb3fc51617d624614d76cdcb309bff0.html#ga9bb3fc51617d624614d76cdcb309bff0" title="Cette routine permet la lecture d&#39;une fonction de base/forme de l&#39;interpolation interpname.">MEDinterpBaseFunctionRd</a></dd></dl>
+<p>Cette routine lit la fonction de base/forme n° <em>basisfuncit</em> de la fonction d'inerpolation <em>interpname</em>. Cette fonction possède <em>ncoef</em> monômes dont les coefficients sont lus dans <em>coefficient</em> et les puissances dans <em>power</em>. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="a02021_source.html#l00058">58</a> du fichier <a class="el" href="a02021_source.html">medinterp.f</a>.</p>
+
+</div>
+</div>
+    </td>
+  </tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 8 Octobre 2021 13:44:12 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>
