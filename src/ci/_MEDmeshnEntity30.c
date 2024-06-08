@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -37,9 +37,9 @@ _MEDmeshnEntity30(int dummy, ...)
   char                  _datagroupname2   [MED_TAILLE_NOM_ENTITE+1]="";
   char                  _datagroupname3   [MED_TAILLE_NOM_ENTITE+1]="";
   char                  _datagroupname4   [MAX(MED_TAILLE_VARATR,MED_TAILLE_COOTRF)]="";
-  char                  _datasetconame    [3 + 1 + 3 + 1 ]         ="";
+  /* char                  _datasetconame    [3 + 1 + 3 + 1 ]         =""; */
   char                  _profilename      [MED_NAME_SIZE+1]        ="";
-  char                  _geotypename      [MED_TAILLE_NOM_ENTITE+1]="";
+  /* char                  _geotypename      [MED_TAILLE_NOM_ENTITE+1]=""; */
   char                  _datasetname      [MED_TAILLE_NOM_ENTITE+1]="";
   med_sorting_type      _sortingtype       = 0;
   med_int               _intsortingtype    = 0;

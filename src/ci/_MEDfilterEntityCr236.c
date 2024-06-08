@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -27,7 +27,7 @@ void _MEDfilterEntityCr236(int dummy, ...)
 
   med_err           _ret=-1;
   med_int           _profilearraysize=0;
-  med_storage_mode  _storagemode;
+  /* med_storage_mode  _storagemode; */
   int               _i = 0;
 
   MED_VARGS_DECL(const, med_idt           , , fid                     );
@@ -59,7 +59,7 @@ void _MEDfilterEntityCr236(int dummy, ...)
   MED_VARGS_DEF(, med_filter*, const       , filter                  );
   MED_VARGS_DEF(, med_err *               ,, fret                    );
 
-  _storagemode=storagemode;
+  /* _storagemode=storagemode; */
 
   NOFINALBLANK(profilename,ERROR);
 

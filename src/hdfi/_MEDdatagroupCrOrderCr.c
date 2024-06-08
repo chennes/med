@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -29,11 +29,11 @@ _MEDdatagroupCrOrderCr(const med_idt pid, const char * const name)
   hid_t           _gcpl_id=0;
   med_idt         _ret=-1;
   med_access_mode _MED_ACCESS_MODE;
-  unsigned est_num_entries;
-  unsigned est_name_len;
+  /* unsigned est_num_entries; */
+  /* unsigned est_name_len; */
   unsigned max_compact =0;
   unsigned min_dense   =0;
-  
+
   if ( (_MED_ACCESS_MODE = _MEDmodeAcces(pid) ) == MED_ACC_UNDEF ) {
     MED_ERR_(_ret,MED_ERR_UNRECOGNIZED,MED_ERR_ACCESSMODE,MED_ERR_FILE_MSG);
     ISCRUTE_int(_MED_ACCESS_MODE);
@@ -63,14 +63,14 @@ _MEDdatagroupCrOrderCr(const med_idt pid, const char * const name)
   }
 
   /* HDF-5 : UG
-    Groups will be initially created in the compact‐or‐indexed format only when one or more of the following 
+    Groups will be initially created in the compact‐or‐indexed format only when one or more of the following
     conditions is met:
-   •    The low version bound value of the library version bounds property has been set to Release 1.8.0 
-        or later in the file access property list (see H5Pset_libver_bounds). Currently, that would 
+   •    The low version bound value of the library version bounds property has been set to Release 1.8.0
+        or later in the file access property list (see H5Pset_libver_bounds). Currently, that would
         require an H5Pset_libver_bounds call with the low parameter set to H5F_LIBVER_LATEST.
-        When this property is set for an HDF5 file, all objects in the file will be created using the latest 
+        When this property is set for an HDF5 file, all objects in the file will be created using the latest
         available format; no effort will be made to create a file that can be read by older libraries.
-	
+
    •   The creation order tracking property, H5P_CRT_ORDER_TRACKED, has been set in the group creation property list (see H5Pset_link_creation_order).
   */
   if ( H5Pset_link_creation_order( _gcpl_id, (H5P_CRT_ORDER_TRACKED | H5P_CRT_ORDER_INDEXED)) <0 ) {
@@ -79,7 +79,7 @@ _MEDdatagroupCrOrderCr(const med_idt pid, const char * const name)
     goto ERROR;
   }
 
-  
+
   /* H5Pget_est_link_info(_gcpl_id,&est_num_entries,&est_name_len); */
   /* ISCRUTE_int(est_num_entries); */
   /* ISCRUTE_int(est_name_len); */
@@ -87,11 +87,11 @@ _MEDdatagroupCrOrderCr(const med_idt pid, const char * const name)
   /* ISCRUTE_int(est_num_entries*est_name_len); */
 
   /*On impose le modèle de stockage pour gros volume de donneés :
-    En hdf5-1.10.0-5 le chgt automatique de structure de groupe 
+    En hdf5-1.10.0-5 le chgt automatique de structure de groupe
     ne conserve pas l'ordre de création des objets qu'il contient !
    */
   H5Pset_link_phase_change(_gcpl_id,max_compact,min_dense );
-  
+
   /* sinon on le crée */
   if (_id <= 0)
     if ((_id = H5Gcreate2( pid, name, H5P_DEFAULT, _gcpl_id, H5P_DEFAULT ) ) < 0) {

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -23,12 +23,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-med_err 
+med_err
 MEDscalaireEntierLire(med_idt fid,char *scalaire, med_int  *val,med_int numdt, med_int numo)
 {
   med_err ret = 0;
   med_idt gid, datagroup;
-  med_int type, i;
+  med_int type;
   char nomdatagroup[2*MED_MAX_PARA+1];
   char chemin[MED_TAILLE_NUM_DATA+MED_TAILLE_NOM+1];
   

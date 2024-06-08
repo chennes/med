@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -31,7 +31,6 @@ void _MEDmeshComputationStepInfo30(int dummy, ...) {
   med_idt  _meshid=0,_datagroup1=0;
   int      _num;
   char     _cstppath[MED_MESH_GRP_SIZE+MED_NAME_SIZE+1+2*MED_MAX_PARA+1+1]=MED_MESH_GRP;
-  char     _cstpname[2*MED_MAX_PARA+1]="";
 
 
   MED_VARGS_DECL(const, med_idt      , , fid         );

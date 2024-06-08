@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -49,13 +49,12 @@ MEDfileObjectExist(const med_idt           fid,
 		   const char      * const objectname,
 		         med_bool  * const objectexist )
 {
-  med_idt _fid = 0;
   med_err _ret = -1;
   char    _link[2*MED_NAME_SIZE+1]="";
   med_bool _datagroupexist=MED_FALSE,_isasoftlink=MED_FALSE;
   int _objsize = 0;
 
-  /* 
+  /*
    * On inhibe le gestionnaire d'erreur HDF
    */
   _MEDmodeErreurVerrouiller();
@@ -85,7 +84,7 @@ MEDfileObjectExist(const med_idt           fid,
 
   strncpy(_link+_objsize,objectname,MED_NAME_SIZE+1);
   _link[2*MED_NAME_SIZE]='\0';
-	 
+
   if( _MEDdatagroupExist(fid,_link,&_datagroupexist,&_isasoftlink) < 0 ) {
     MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"_MEDdatagroupExist");
     SSCRUTE(_link);goto ERROR;

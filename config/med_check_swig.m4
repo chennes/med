@@ -55,7 +55,7 @@ AS_IF([test ! x${with_swig} = xno ],
 
 # L'appel suivant med_check_python_devel/axpythondevel doit devancer l'appel à 
 # axswigpython qui appelle aussi cette macro sans argument si aucun appel préalable n'a été effectué 
-# PYTHON_CPPFLAGS   et PYTHON_LDFLAGS         for python C/API
+# PYTHON_CPPFLAGS   et PYTHON_LIBS            for python C/API
 # PYTHON_EXTRA_LIBS et PYTHON_EXTRA_LDFLAGS   for embedding Python in your code.
 # PYTHON_SITE_PKG
 

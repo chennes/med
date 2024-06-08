@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -31,7 +31,7 @@ _MEDfieldComputingStepMeshInfo236(int dummy,...)
 {
 
 
-  med_err   _ret=-1,_err=0;
+  med_err   _ret=-1;
   med_size  _num;
 
   med_idt   _datagroup1=0;
@@ -39,9 +39,9 @@ _MEDfieldComputingStepMeshInfo236(int dummy,...)
   char      _ent_geo       [2*MED_TAILLE_NOM_ENTITE+2]="";
   char      _path          [(MED_FIELD_GRP_SIZE+MED_TAILLE_NOM+1)+
 			    (2*MED_TAILLE_NOM_ENTITE+1)+1+(2*MED_MAX_PARA)+1]=MED_FIELD_GRP;
-  med_size _ncpst=0;
-  med_bool _checkmultiplemesh=MED_TRUE, _multiplemesh       =MED_FALSE;
-  med_bool _checkmeshname    =MED_TRUE,  _samedefaultmeshname=MED_FALSE;
+  /* med_size _ncpst=0; */
+  /* med_bool _checkmultiplemesh=MED_TRUE, _multiplemesh       =MED_FALSE; */
+  /* med_bool _checkmeshname    =MED_TRUE,  _samedefaultmeshname=MED_FALSE; */
 
 
   MED_VARGS_DECL(const, med_idt       , , fid       );

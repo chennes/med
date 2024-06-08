@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -29,19 +29,16 @@ void
 _MEDfield23nProfile236(int dummy, ...) {
 
 
-  med_int  _ret=-1,_err=-1;
+  med_int  _ret=-1;
   med_idt  _gid=0,_datagroup1=0;
   char     _path[(MED_FIELD_GRP_SIZE+MED_NAME_SIZE+1)+(2*MED_MAX_PARA+1)+1]=MED_FIELD_GRP;
   char     _datagroupname1  [2*MED_TAILLE_NOM_ENTITE+2]="";
   char     _nomdatagroup2   [2*MED_MAX_PARA+1]         ="";
-  char     _geotype         [MED_TAILLE_NOM_ENTITE+1]  ="";
+  /* char     _geotype         [MED_TAILLE_NOM_ENTITE+1]  =""; */
   char     _profilename     [MED_NAME_SIZE+1]          ="";
-  char     _meshname        [MED_NAME_SIZE+1]          ="";
+  /* char     _meshname        [MED_NAME_SIZE+1]          =""; */
   char     _localizationname[MED_NAME_SIZE+1]          ="";
   med_int  _numdt=0, _numit=0;
-  med_size _n=0,_ncpst=0;
-  med_bool _checkmultiplemesh=MED_TRUE, _multiplemesh        =MED_FALSE;
-  med_bool _checkmeshname    =MED_TRUE,  _samedefaultmeshname=MED_FALSE;
   char     _tmp1         [MED_TAILLE_NOM_ENTITE+1]="";
 /*   med_size _rank; */
   int      _num;

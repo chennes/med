@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -29,12 +29,12 @@
  *     - pid     (IN)    : l'ID de l'objet pere
  *     - nom     (IN)    : le nom de l'objet fils
  * - Resultat : l'ID du fils en cas de succes, -1 sinon
- */ 
+ */
 med_idt
 _MEDdatagroupCreer(med_idt pid, const char * const nom)
 {
   med_idt id;
-  med_err ret=0;
+  /* med_err ret=0; */
   med_access_mode MED_ACCESS_MODE;
 
   if ( (MED_ACCESS_MODE = _MEDmodeAcces(pid) ) == MED_ACC_UNDEF ) {

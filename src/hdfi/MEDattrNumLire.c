@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -28,10 +28,10 @@
  * - Parametres :
  *     - pere (IN)  : l'ID de l'objet HDF pere ou placer l'attribut
  *     - type (IN)  : le type du champ {MED_FLOAT64,MED_INT}
- *     - nom  (IN)  : le nom de l'attribut 
+ *     - nom  (IN)  : le nom de l'attribut
  *     - val  (OUT) : la valeur de l'attribut
  * - Resultat : 0 en cas de succes, -1 sinon
- */ 
+ */
 /* med_err _MEDattrNumLire(med_idt pere,med_field_type type,const char * const nom,unsigned char *val) */
 med_err _MEDattrNumLire(med_idt pere,med_field_type type,const char * const nom, void * const val)
 {
@@ -51,7 +51,7 @@ med_err _MEDattrNumLire(med_idt pere,med_field_type type,const char * const nom,
     case MED_FLOAT64 :
       type_hdf = H5T_NATIVE_DOUBLE;
       break;
-      
+
     case MED_INT :
 #if defined(HAVE_F77INT64)
       type_hdf = MED_H5T_INT64;
@@ -61,21 +61,21 @@ med_err _MEDattrNumLire(med_idt pere,med_field_type type,const char * const nom,
 #endif
       break;
 
-    case MED_INTERNAL_INT8:
-      type_hdf = H5T_NATIVE_B8;
-      break;
-      
+    /* case MED_INTERNAL_INT8: */
+    /*   type_hdf = H5T_NATIVE_B8; */
+    /*   break; */
+
     case MED_INTERNAL_INT32:
       type_hdf = H5T_NATIVE_B32;
       break;
-      
+
     default :
       return -1;
     }
 
   if ((ret = H5Aread(attid,type_hdf, val)) < 0)
     return -1;
-  
+
   if ((ret = H5Aclose(attid)) < 0)
     return -1;
 

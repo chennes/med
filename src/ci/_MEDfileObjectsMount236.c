@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -40,9 +40,9 @@ void _MEDfileObjectsMount236(int dummy,...) {
   char _link[MED_NAME_SIZE+1];
   med_access_mode _accessMode;
   med_int  majeur=0, mineur=0, release=0;
-  med_int  rfileversionMMR,rfileversionMM,rfileversionM;
-  med_int  lfileversionMMR,lfileversionMM,lfileversionM;
-  med_bool _datagroupexist=MED_FALSE,_isasoftlink=MED_FALSE;
+  med_int  rfileversionMMR,rfileversionMM;
+  med_int  lfileversionMMR,lfileversionMM;
+  /* med_bool _datagroupexist=MED_FALSE,_isasoftlink=MED_FALSE; */
 
   MED_VARGS_DECL(const, med_idt         , , fid           );
   MED_VARGS_DECL(const, med_idt         , , gid           );
@@ -66,7 +66,7 @@ void _MEDfileObjectsMount236(int dummy,...) {
     ISCRUTE(majeur);ISCRUTE(mineur);ISCRUTE(release);
     goto ERROR;
   }
-  lfileversionM   = 100*majeur;
+  /* lfileversionM   = 100*majeur; */
   lfileversionMM  = 100*majeur+10*mineur;
   lfileversionMMR = lfileversionMM+release;
 
@@ -97,7 +97,7 @@ void _MEDfileObjectsMount236(int dummy,...) {
     SSCRUTE(mountfilename);ISCRUTE(majeur);ISCRUTE(mineur); ISCRUTE(release);
     goto ERROR;
   }
-  rfileversionM   = 100*majeur;
+  /* rfileversionM   = 100*majeur; */
   rfileversionMM  = 100*majeur+10*mineur;
   rfileversionMMR = rfileversionMM+release;
 

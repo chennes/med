@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -27,10 +27,10 @@
  * Nombre de Couple (PDT,NOR) associe a une variable scalaire
  */
 
-med_int 
+med_int
 MEDnScalairePasdetemps(med_idt fid,char *scalaire)
 {
-  med_err ret;
+  /* med_err ret; */
   int n1;
   char chemin       [MED_TAILLE_NUM_DATA+MED_TAILLE_NOM+1];
 
@@ -40,8 +40,8 @@ MEDnScalairePasdetemps(med_idt fid,char *scalaire)
   _MEDmodeErreurVerrouiller();
 if (MEDcheckVersion(fid) < 0) return -1;
 
-  
-  /* 
+
+  /*
    * Creation du chemin d'accès aux différents (PDT,NOR)
    */
   strcpy(chemin,MED_NUM_DATA);
@@ -49,6 +49,6 @@ if (MEDcheckVersion(fid) < 0) return -1;
 
   n1 =0;
   _MEDnObjets(fid,chemin,&n1);
-      
+
   return (med_int) n1;
 }

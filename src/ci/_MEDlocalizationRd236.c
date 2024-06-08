@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -32,11 +32,11 @@ _MEDlocalizationRd236(int dummy, ...) {
 
 
   med_err _ret = -1;
-  med_idt _lzid=0, _root=0;
-  med_int _nentity=0,_nipoint=0,_spacedimension=0;
-  med_int _intgeotype = -1;
-  char    _path[MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]=MED_LOCALIZATION_GRP;
-  med_filter     _filter        = MED_FILTER_INIT;
+  /* med_idt _lzid=0, _root=0; */
+  /* med_int _nentity=0,_nipoint=0,_spacedimension=0; */
+  /* med_int _intgeotype = -1; */
+  /* char    _path[MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]=MED_LOCALIZATION_GRP; */
+  /* med_filter     _filter        = MED_FILTER_INIT; */
 
 
   MED_VARGS_DECL(const, med_idt                 , , fid               );

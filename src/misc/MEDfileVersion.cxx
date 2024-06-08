@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -43,7 +43,7 @@ extern "C" valueType  _MEDfileVersion(const med_idt oid) {
 
   if (it != MedfileVersion.end() ) return (*it).second;
 
-  /* On ouvre le group ou se trouvent les infos à la racine du fichier,
+  /* On ouvre le group où se trouvent les infos à la racine du fichier,
      puis au niveau de l'objet courant */
   if ((gid = _MEDdatagroupOuvrir(oid,MED_INFOS)) < 0) {
     if ((gid = _MEDdatagroupOuvrir(oid,&MED_INFOS[1])) < 0) {

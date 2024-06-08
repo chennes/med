@@ -1,6 +1,6 @@
 C*  This file is part of MED.
 C*
-C*  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+C*  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
 C*  MED is free software: you can redistribute it and/or modify
 C*  it under the terms of the GNU Lesser General Public License as published by
 C*  the Free Software Foundation, either version 3 of the License, or
@@ -64,8 +64,8 @@ C
       integer indgeo(ngeo+1)
       character*200 attdes,gro
       integer attval,attide
-      integer typgeo
-      integer indtmp
+      integer typgeo(0)
+      integer indtmp(0)
 C
       data nomgro    / "GROUPE1","GROUPE2","GROUPE3"    /
       data ent       /  1,2, 3,4,6, 1,4                 /

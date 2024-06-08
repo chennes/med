@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -23,12 +23,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-med_err 
+med_err
 MEDprofilInfo(med_idt fid, int indice, char *profilname, med_int *n)
 {
   int numero=0;
   med_idt proid=0;
-  med_err ret=-1;
+  /* med_err ret=-1; */
   char chemin[MED_TAILLE_PROFILS+MED_TAILLE_NOM+1]="";
 
   /*
@@ -40,27 +40,27 @@ if (MEDcheckVersion(fid) < 0) return -1;
 
   /*
    * On recupere le nom du groupe de rang "indice"
-   */ 
+   */
   numero = indice-1;
   if ( _MEDobjetIdentifier(fid,MED_PROFILS,numero,profilname) < 0)
     goto ERROR;
 
   /*
-   * On va chercher l'attribut taille du profil 
+   * On va chercher l'attribut taille du profil
    */
   strcpy(chemin,MED_PROFILS);
   strcat(chemin,profilname);
   if ((proid = _MEDdatagroupOuvrir(fid,chemin)) < 0)
-    goto ERROR;   
+    goto ERROR;
   if (_MEDattrEntierLire(proid,MED_NOM_NBR,n) < 0)
     goto ERROR;
- 
-  ret = 0;
+
+  /* ret = 0; */
 
  ERROR:
   if ( proid > 0 ) if (_MEDdatagroupFermer(proid) < 0)
     goto ERROR;
-  
+
   return 0;
 }
 

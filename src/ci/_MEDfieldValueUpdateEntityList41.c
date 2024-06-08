@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -59,12 +59,12 @@
 */
 
 static med_int  _MEDfieldValueUpdateEntityList(const char *            const gid0name    ,
-					const char *            const gid1name    ,
-					const med_idt                 gid0	  ,
-					const med_idt                 gid1	  ,
-					const med_entity_type         entitytype  ,
-					const med_geometry_type       geotype     ,
-					const med_bool                forentity   ) {
+                                               const char *            const gid1name    ,
+                                               const med_idt                 gid0        ,
+                                               const med_idt                 gid1        ,
+                                               const med_entity_type         entitytype  ,
+                                               const med_geometry_type       geotype     ,
+                                               const med_bool                forentity   ) {
 
   med_bool _attexist                              = MED_FALSE;
   med_err  _ret                                   = -1;
@@ -72,7 +72,7 @@ static med_int  _MEDfieldValueUpdateEntityList(const char *            const gid
   uint32_t  _lentitytype2   		    	  = 0;
   uint32_t  _lentitytype1sav   		    	  = 0;
   uint32_t  _lentitytype2sav   		    	  = 0;
-  uint32_t _lgeotype	   		    	  = 0;
+  /* uint32_t _lgeotype	   		    	  = 0; */
   med_int  _nsamelentitype    		    	  = 0;
   med_int  _nsamelentitypesav 		    	  = 0;
   med_idt  _gid				    	  = gid0;

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -24,10 +24,10 @@
 #include <stdlib.h>
 
 med_err
-MEDpolygoneInfo(med_idt fid, char *maa, med_entite_maillage type_ent, med_connectivite type_conn, 
+MEDpolygoneInfo(med_idt fid, char *maa, med_entite_maillage type_ent, med_connectivite type_conn,
 		med_int *consize)
 {
-  med_idt root=0, maaid=0, entid=0,geoid=0, dataset=0;
+  med_idt maaid=0, entid=0,geoid=0, dataset=0;
   med_err ret = -1;
   char chemin[MED_TAILLE_MAA+MED_TAILLE_NOM+1];
   char nom_ent[MED_TAILLE_NOM_ENTITE+1];

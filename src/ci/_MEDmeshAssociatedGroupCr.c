@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ _MEDmeshAssociatedGroupCr(const med_idt               fid,
 {
   med_access_mode       _MED_ACCESS_MODE;
   med_idt               _ret=-1;
-  med_idt               _root=0,_meshid=0,_datagroup1=0,_datagroup2=0,_datagroup3=0;
+  med_idt               _root=0,_datagroup1=0,_datagroup2=0,_datagroup3=0;
   char                  _datagroupname2   [2*MED_MAX_PARA+1]="";
   med_sorting_type      _sortingtype=0;
   med_bool              _datagp3created = MED_FALSE;

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -54,9 +54,9 @@ MEDmeshPolyhedronRd(const med_idt               fid,
 {
 
   med_access_mode _MED_ACCESS_MODE;
-  med_idt         _meshid=0;
+  /* med_idt         _meshid=0; */
   med_err         _ret         = -1;
-  med_data_type   _datatype    = MED_UNDEF_DATATYPE;
+  /* med_data_type   _datatype    = MED_UNDEF_DATATYPE; */
   med_entity_type _entitytype=entitype;
 
   /*

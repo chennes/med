@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -162,6 +162,8 @@ med_idt _MEDparFileCreate(const char * const filename, const med_access_mode acc
 extern MEDC_EXPORT
 med_idt _MEDfileOpen(const char * const filename,const med_access_mode accessmode);
 
+  extern MEDC_EXPORT
+med_idt _MEDfileOpenForImport(const char * const filename,const med_access_mode accessmode);
 
 extern MEDC_EXPORT
 med_int _MEDfileName(med_idt id, char * const filename, const med_int filenamesize);

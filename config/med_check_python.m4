@@ -43,9 +43,9 @@ AC_DEFUN([MED_CHECK_PYTHON], [
 #  Elle permet de positionner les flags de compilation/édition des liens (python devel)
 #  pour compiler les interfaces python embarquées en essayant de trouver la version PYTHON_VERSION_REF
 #  ou au minimum  PYTHON_VERSION_MIN
-# Elle définie également la version de python utilisée via ac_python_version, les tests suivants ont besoin
+# Elle définie également la version de python utilisée via ac_python_version, les tests suivants en ont besoin
 # La version est codée  "x.y" (pas de release).
-# Ne pas utiliser PYTHON_VERSION qui est une variable préciseuse
+# Ne pas utiliser PYTHON_VERSION qui est une variable précieuse utilisateur
  AS_IF([test x$enable_python = xyes && test -z "$ac_python_version"],[MED_CHECK_PYTHON_DEVEL])
 
  test x"$WITH_SWIG" = x1 && test x"$enable_python" = xno && AC_MSG_ERROR([python is needed because swig is activated.])

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -28,8 +28,8 @@ MEDpolyedreConnLire(med_idt fid,char *maa,med_int *indexp,med_int np,med_int *in
 		   med_int *con,med_connectivite type_conn)
 {
   med_err ret;
-  med_idt maaid, entid, geoid, dataset;
-  char chemin[MED_TAILLE_MAA+MED_TAILLE_NOM+1];  
+  med_idt maaid, entid, geoid;
+  char chemin[MED_TAILLE_MAA+MED_TAILLE_NOM+1];
   char nom_ent[MED_TAILLE_NOM_ENTITE+1];
   char nom_geo[MED_TAILLE_NOM_ENTITE+1];
   char nom_dataset1[MED_TAILLE_NOM_ENTITE+1];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MED fichier:  Fichier source de MEDimport.h</title>
+<title>MED fichier:  Fichier source de MEDimport.hxx</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,17 +38,17 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_922008759471ca0eb310ac45b5f91be6.html">tools</a></li><li class="navelem"><a class="el" href="dir_9c366db0edc8bcb5b0602ad782c15d46.html">medimport</a></li><li class="navelem"><a class="el" href="dir_b67824511841553d9e3c9505a4a18e48.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_a830f741db581dcaa304159e4719a4c1.html">tools</a></li><li class="navelem"><a class="el" href="dir_ba9cbb9186f9f1d19db2fcfab21a9df7.html">medimport</a></li><li class="navelem"><a class="el" href="dir_66c44ed2de37b7c29d732460005cd623.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">MEDimport.h</div>  </div>
+<div class="title">MEDimport.hxx</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a02282.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*  This file is part of MED.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  COPYRIGHT (C) 1999 - 2021  EDF R&amp;D, CEA/DEN</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  COPYRIGHT (C) 1999 - 2023  EDF R&amp;D, CEA/DEN</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  MED is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  it under the terms of the GNU Lesser General Public License as published by</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -66,19 +66,20 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef MED_IMPORT_H</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define MED_IMPORT_H</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a02288.html">medimport_win_dll.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a02288.html">medimportcxx_win_dll.h</a>&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <a class="code" href="a02288_aa70aa0b01ad103d109037215c9fca367.html#aa70aa0b01ad103d109037215c9fca367">MEDIMPORT_EXPORT</a></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a02282_a19fe92429f3f72558fb4360b8f2c2eb8.html#a19fe92429f3f72558fb4360b8f2c2eb8">MEDimport</a>(<span class="keywordtype">char</span> * filein, <span class="keywordtype">char</span> *  fileout);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">extern</span> <a class="code" href="a02288_adb2376c23c74c6fe6831caaef089ad6f.html#adb2376c23c74c6fe6831caaef089ad6f">MEDIMPORTCXX_EXPORT</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="a02282_a150af53f6b8a79cc52d805eca175a1af.html#a150af53f6b8a79cc52d805eca175a1af">MEDimport</a>(<span class="keywordtype">char</span> * filein, <span class="keywordtype">char</span> *  fileout);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa02282_a19fe92429f3f72558fb4360b8f2c2eb8_html_a19fe92429f3f72558fb4360b8f2c2eb8"><div class="ttname"><a href="a02282_a19fe92429f3f72558fb4360b8f2c2eb8.html#a19fe92429f3f72558fb4360b8f2c2eb8">MEDimport</a></div><div class="ttdeci">MEDIMPORT_EXPORT int MEDimport(char *filein, char *fileout)</div><div class="ttdef"><b>Definition:</b> <a href="a02294_source.html#l00094">libmedimport.c:94</a></div></div>
-<div class="ttc" id="aa02288_aa70aa0b01ad103d109037215c9fca367_html_aa70aa0b01ad103d109037215c9fca367"><div class="ttname"><a href="a02288_aa70aa0b01ad103d109037215c9fca367.html#aa70aa0b01ad103d109037215c9fca367">MEDIMPORT_EXPORT</a></div><div class="ttdeci">#define MEDIMPORT_EXPORT</div><div class="ttdef"><b>Definition:</b> <a href="a02288_source.html#l00028">medimport_win_dll.h:28</a></div></div>
-<div class="ttc" id="aa02288_html"><div class="ttname"><a href="a02288.html">medimport_win_dll.h</a></div></div>
+<div class="ttc" id="aa02282_a150af53f6b8a79cc52d805eca175a1af_html_a150af53f6b8a79cc52d805eca175a1af"><div class="ttname"><a href="a02282_a150af53f6b8a79cc52d805eca175a1af.html#a150af53f6b8a79cc52d805eca175a1af">MEDimport</a></div><div class="ttdeci">MEDIMPORTCXX_EXPORT int MEDimport(char *filein, char *fileout)</div><div class="ttdef"><b>Definition:</b> <a href="a02291_source.html#l00094">libmedimport.c:94</a></div></div>
+<div class="ttc" id="aa02288_adb2376c23c74c6fe6831caaef089ad6f_html_adb2376c23c74c6fe6831caaef089ad6f"><div class="ttname"><a href="a02288_adb2376c23c74c6fe6831caaef089ad6f.html#adb2376c23c74c6fe6831caaef089ad6f">MEDIMPORTCXX_EXPORT</a></div><div class="ttdeci">#define MEDIMPORTCXX_EXPORT</div><div class="ttdef"><b>Definition:</b> <a href="a02288_source.html#l00028">medimportcxx_win_dll.h:28</a></div></div>
+<div class="ttc" id="aa02288_html"><div class="ttname"><a href="a02288.html">medimportcxx_win_dll.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 8 Octobre 2021 13:44:05 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 6 Juin 2023 16:57:42 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

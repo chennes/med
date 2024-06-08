@@ -63,14 +63,16 @@
 #   modified version of the Autoconf Macro, you may extend this special
 #   exception to the GPL to apply to your modified version as well.
 
-#serial 13
+#serial 15
 
 AC_DEFUN([AX_PKG_SWIG],[
         # Find path to the "swig" executable.
         AC_PATH_PROGS([SWIG],[swig swig3.0 swig2.0])
         if test -z "$SWIG" ; then
                 m4_ifval([$3],[$3],[:])
-        elif test -n "$1" ; then
+        elif test -z "$1" ; then
+                m4_ifval([$2],[$2],[:])
+	else
                 AC_MSG_CHECKING([SWIG version])
                 [swig_version=`$SWIG -version 2>&1 | grep 'SWIG Version' | sed 's/.*\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\).*/\1/g'`]
                 AC_MSG_RESULT([$swig_version])
@@ -82,12 +84,12 @@ AC_DEFUN([AX_PKG_SWIG],[
                         if test -z "$required_major" ; then
                                 [required_major=0]
                         fi
-                        [required=`echo $required | sed 's/[0-9]*[^0-9]//'`]
+                        [required=`echo $required. | sed 's/[0-9]*[^0-9]//'`]
                         [required_minor=`echo $required | sed 's/[^0-9].*//'`]
                         if test -z "$required_minor" ; then
                                 [required_minor=0]
                         fi
-                        [required=`echo $required | sed 's/[0-9]*[^0-9]//'`]
+                        [required=`echo $required. | sed 's/[0-9]*[^0-9]//'`]
                         [required_patch=`echo $required | sed 's/[^0-9].*//'`]
                         if test -z "$required_patch" ; then
                                 [required_patch=0]
@@ -124,7 +126,7 @@ AC_DEFUN([AX_PKG_SWIG],[
                                 m4_ifval([$3],[$3],[])
                         else
                                 AC_MSG_CHECKING([for SWIG library])
-                                SWIG_LIB=`$SWIG -swiglib`
+                                SWIG_LIB=`$SWIG -swiglib | tr '\r\n' '  '`
                                 AC_MSG_RESULT([$SWIG_LIB])
                                 m4_ifval([$2],[$2],[])
                         fi

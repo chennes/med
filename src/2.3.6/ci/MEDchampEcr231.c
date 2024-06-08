@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -79,9 +79,9 @@ void  MEDchampEcr231(int dummy,...) {
 /*   char maaNoBlc   [MED_TAILLE_NOM+1]=""; */
   char pflname   [MED_TAILLE_NOM+1]="";
   char locname_i [MED_TAILLE_NOM+1]="";
-  char maillage[MED_TAILLE_NOM+1]="";
+  /* char maillage[MED_TAILLE_NOM+1]=""; */
   char tmp1[MED_TAILLE_NOM_ENTITE+1]="";
-  med_size dimd[1],psize=0,lsize=0;
+  med_size dimd[1],psize=0;
   med_int   *pfltabtmp=0;
   med_size *pfltab=0;
   char chemin[MED_TAILLE_CHA+MED_TAILLE_NOM+1]="";

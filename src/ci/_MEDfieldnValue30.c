@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -32,23 +32,24 @@ _MEDfieldnValue30(int dummy, ...)
   med_idt  _gid=0,_locgid=0,_datagroup1=0,_datagroup2=0;
   char     _path[(MED_FIELD_GRP_SIZE+MED_NAME_SIZE+1)+(2*MED_MAX_PARA+1)+1]=MED_FIELD_GRP;
   char     _datagroupname1[2*MED_TAILLE_NOM_ENTITE+2]="";
-  char     _datagroupname2[MED_NAME_SIZE+1]="";
+  /* char     _datagroupname2[MED_NAME_SIZE+1]=""; */
   char     _tmpprofilename[MED_NAME_SIZE+1]="", *_profilename=0;
   char     _geotypename      [MED_TAILLE_NOM_ENTITE+1]="";
   char     _locgidname        [MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]="";
   char     _sectionmeshname      [MED_NAME_SIZE+1]="";
   char     _localizationname  [MED_NAME_SIZE+1]=""; /*TODO DEFAULT? */
-  med_int  _nconstituentpervalue=0,_nvaluesperentityfromloc=0;
+  /* med_int  _nconstituentpervalue=0; */
+  med_int  _nvaluesperentityfromloc=0;
   med_int  _numdt=0, _numit=0;
   med_int  _profilearraysize=0,_nvaluesperentity=0;
   med_int  _nsectioncell=1;
   med_size _n=0;
   med_int  _intn=0;
-  med_geometry_type    _locgeotype   =0,_sectiongeotype=0;
+  med_geometry_type    _locgeotype   =0;
   med_int              _intlocgeotype=0;
   int      _num;
   med_bool _anyprofile=MED_FALSE;
-  med_bool _chgt=MED_FALSE,_trsf=MED_FALSE;
+  /* med_bool _chgt=MED_FALSE,_trsf=MED_FALSE; */
 
 
   MED_VARGS_DECL(const, med_idt           , , fid                        );

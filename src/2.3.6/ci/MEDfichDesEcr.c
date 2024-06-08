@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -22,10 +22,10 @@
 
 #include <string.h>
 
-med_err 
+med_err
 MEDfichDesEcr(med_idt fid, char *des)
-{ 
-  med_idt attr; 
+{
+  /* med_idt attr;  */
   med_idt root;
   med_err ret;
   char nom[] = MED_NOM_DESCRIPTEUR;

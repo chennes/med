@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -59,7 +59,7 @@ _MEDequivalenceCorrespondenceRd236(int dummy, ...) {
   if ( MEDequivLire(fid, (char *) meshname, (char *) equivname, correspondence, -1 ,
 		    entitype, geotype) < 0 ) {
     MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"MEDequivLire");
-    SSCRUTE(meshname); SSCRUTE(equivname); 
+    SSCRUTE(meshname); SSCRUTE(equivname);
     ISCRUTE_int(entitype);ISCRUTE_int(geotype);goto ERROR;
 
   }

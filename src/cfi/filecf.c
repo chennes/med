@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -26,18 +26,18 @@ extern void *MedVersionedApi3F;
 extern void f77Api3IsSet(void * obj);
 
 /*
-From Fortran call of following C functions : 
+From Fortran call of following C functions :
 - MEDfileOpen
-- MEDfileClose      
-- MEDfileCommentWr   
-- MEDfileCommentRd    
-- MEDfileNumVersionRd  
+- MEDfileClose
+- MEDfileCommentWr
+- MEDfileCommentRd
+- MEDfileNumVersionRd
 - MEDfileStrVersionRd
-- MEDfileCompatibility  
-- MEDfileObjectsMount  
-- MEDfileObjectsUnmount  
-- MEDfileObjectExist  
-- MEDfileExist  
+- MEDfileCompatibility
+- MEDfileObjectsMount
+- MEDfileObjectsUnmount
+- MEDfileObjectExist
+- MEDfileExist
 */
 
 #define nmfifope F77_FUNC(mfifope,MFIFOPE)
@@ -60,17 +60,17 @@ From Fortran call of following C functions :
 med_idt
 MFIFVOP(const char const *name,
 	const unsigned int bidon,
-	const int const *access, 
-	const med_int* const major, 
-	const med_int* const minor, 
+	const int const *access,
+	const med_int* const major,
+	const med_int* const minor,
 	const med_int* const release,
 	const med_int* const len)
 #else
 med_idt
 nmfifvop (const char const *name,
-	  const int const *access, 
-	  const med_int* const major, 
-	  const med_int* const minor, 
+	  const int const *access,
+	  const med_int* const major,
+	  const med_int* const minor,
 	  const med_int* const release,
 	  const med_int* const len )
 #endif
@@ -89,12 +89,12 @@ nmfifvop (const char const *name,
   _fn = _MED2cstring((char *) name, (int) *len);
   if (!_fn) return(-1);
   _access = (med_access_mode) *access;
-  
-  _ret = (med_idt) MEDfileVersionOpen(_fn, _access,*major,*minor,*release); 
+
+  _ret = (med_idt) MEDfileVersionOpen(_fn, _access,*major,*minor,*release);
  /* ISCRUTE_long(_ret); */
   _MEDcstringFree(_fn);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
@@ -103,12 +103,12 @@ nmfifvop (const char const *name,
 med_idt
 MFIFOPE(const char const *name,
 	const unsigned int bidon,
-	const int const *access, 
+	const int const *access,
 	const med_int const *len)
 #else
 med_idt
 nmfifope (const char const *name,
-	  const int const *access, 
+	  const int const *access,
 	  const med_int const *len)
 #endif
 {
@@ -126,12 +126,12 @@ nmfifope (const char const *name,
   _fn = _MED2cstring((char *) name, (int) *len);
   if (!_fn) return(-1);
   _access = (med_access_mode) *access;
-  
-  _ret = (med_idt) MEDfileOpen(_fn, _access); 
+
+  _ret = (med_idt) MEDfileOpen(_fn, _access);
   /* ISCRUTE_id(_ret); */
   _MEDcstringFree(_fn);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
@@ -151,7 +151,7 @@ nmfifnam(med_idt *fid,
         const med_int const *filenamelen)
 #endif
 {
-  char *_fn=NULL;
+  /* char *_fn=NULL; */
   med_int _ret=-1;
 
   /* ISCRUTE(*filenamesize); */
@@ -161,19 +161,19 @@ nmfifnam(med_idt *fid,
   /* ISCRUTE(_ret); */
   /* if ( (_ret<0) || ( (*filenamesize) == 0) ) return _ret; */
   if ( (_ret<0) || ( (*filenamelen) == 0) ) return _ret;
-  if ( (*filenamelen != 0) && 
+  if ( (*filenamelen != 0) &&
        ( (_ret) > (*filenamelen) ) ) return -1;
 
   char *_fs1=(char *) malloc(_ret*sizeof(char)+1);
 
-  _ret = (med_int) MEDfileName(*fid,_fs1, *filenamelen); 
+  _ret = (med_int) MEDfileName(*fid,_fs1, *filenamelen);
   /* SSCRUTE(_fs1); */
   /* ISCRUTE(*filenamesize); */
   /* ISCRUTE_id(*fid); */
   _MEDc2fString(_fs1,(char*)filename,*filenamelen);
   free(_fs1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
@@ -252,19 +252,19 @@ nmfifcor(const med_idt const *fid,
 #ifdef PPRO_NT
 med_int
 MFIFNVR(const med_idt const *fid,
-		  med_int* const major, 
-		  med_int* const minor, 
+		  med_int* const major,
+		  med_int* const minor,
 		  med_int* const release)
 #else
 med_int
 nmfifnvr(const med_idt const *fid,
-	 med_int* const major, 
-	 med_int* const minor, 
+	 med_int* const major,
+	 med_int* const minor,
 	 med_int* const release)
 #endif
 {
   med_int _ret;
-  
+
   _ret = (med_int) MEDfileNumVersionRd(*fid,major,minor,release);
 
   return(_ret);
@@ -275,13 +275,13 @@ nmfifnvr(const med_idt const *fid,
 #ifdef PPRO_NT
 med_int
 MFIFSVR(const med_idt const *fid,
-		  char* const medversion, 
-		  const unsigned int bidon, 
+		  char* const medversion,
+		  const unsigned int bidon,
 		  const med_int const *len)
 #else
 med_int
 nmfifsvr(const med_idt const *fid,
-	 char* const medversion, 
+	 char* const medversion,
 	 const med_int const *len)
 #endif
 {
@@ -353,10 +353,10 @@ nmfifomn(med_idt *fid,
   if (!_fn) return(-1);
 
   _ret = MEDfileObjectsMount(*fid, _fn, _class );
- 
+
   _MEDcstringFree(_fn);
 
-  return(_ret); 
+  return(_ret);
 }
 
 #ifdef PPRO_NT
@@ -374,11 +374,11 @@ nmfifoun(const med_idt const *fid,
   med_int _ret;
   med_class _class = (med_class) *class;
 
-  _ret = (med_int) MEDfileObjectsUnmount(*fid, 
+  _ret = (med_int) MEDfileObjectsUnmount(*fid,
 					 *mid,
 					 _class);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
@@ -406,15 +406,15 @@ nmfifoex(const med_idt const *fid,
 
   _fn = _MED2cstring((char *) oname, (int) *len);
   if (!_fn) return(-1);
-  
-  _ret = (med_int) MEDfileObjectExist(*fid, 
+
+  _ret = (med_int) MEDfileObjectExist(*fid,
 				      _class,
 				      _fn,
 				      &_oexist);
   *oexist = (med_int) _oexist;
   _MEDcstringFree(_fn);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
@@ -424,14 +424,14 @@ med_int
 MFIFEXI (const char * const fname,
 	 unsigned int       bidon,
 	 med_int            *len,
-	 const int const    *access, 
+	 const int const    *access,
 	 med_int            *fexist,
 	 med_int            *accok)
 #else
 med_int
 nmfifexi(const char * const fname,
 	 med_int *len,
-	 const int const *access, 
+	 const int const *access,
 	 med_int *fexist,
 	 med_int *accok)
 #endif
@@ -443,8 +443,8 @@ nmfifexi(const char * const fname,
 
   _fn = _MED2cstring((char *) fname, (int) *len);
   if (!_fn) return(-1);
-  
-  _ret = (med_int) MEDfileExist(_fn, 
+
+  _ret = (med_int) MEDfileExist(_fn,
 				_access,
 				&_fexist,
 				&_accok);
@@ -452,5 +452,5 @@ nmfifexi(const char * const fname,
   *accok = (med_int) _accok;
   _MEDcstringFree(_fn);
 
-  return(_ret); 
+  return(_ret);
 }

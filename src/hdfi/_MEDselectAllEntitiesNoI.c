@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,8 @@ med_err _MEDselectAllEntitiesNoI(const med_idt          fid,
 				 med_filter*    const   filter) {
 
   med_idt    _memspace[1]={0},_diskspace[1]={0};
-  med_size   _memspacesize[1],_diskspacesize[1];
+  /* med_size   _diskspacesize[1]; */
+  med_size   _memspacesize[1];
   med_size   _start_mem[1]={0};
   med_err    _ret=-1;
   med_size   _onedimallvaluesdiskoffset[1]={0};
@@ -60,7 +61,7 @@ med_err _MEDselectAllEntitiesNoI(const med_idt          fid,
 
   _onedimallvaluesdiskoffset[0] = nentity*nvaluesperentity;
   _memspacesize[0]  = _onedimallvaluesdiskoffset[0]*nconstituentpervalue;
-  _diskspacesize[0] = _memspacesize[0];
+  /* _diskspacesize[0] = _memspacesize[0]; */
 
   if ( (_memspace[0] = H5Screate_simple (1, _memspacesize, NULL)) <0) {
     MED_ERR_(_ret,MED_ERR_CREATE,MED_ERR_MEMSPACE,MED_ERR_SIZE_MSG);

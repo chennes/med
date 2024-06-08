@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -32,14 +32,13 @@ void _MEDmeshComputationStepInfo236(int dummy, ...) {
 
 
   med_err   _ret            = -1;
-  int       _num;
   med_bool  _changement     = MED_FALSE;
   med_bool  _transformation = MED_FALSE;
   med_int   _n=0,_numdt=MED_NO_DT,_numit=MED_NO_IT;
   int       _dummy = 0;
   char      _profilename[MED_TAILLE_NOM+1]="";
   med_int   _profilesize=0;
-  
+
   MED_VARGS_DECL(const, med_idt      , , fid         );
   MED_VARGS_DECL(const, char * , const , meshname    );
   MED_VARGS_DECL(const, int          , , csit        );
@@ -61,7 +60,7 @@ void _MEDmeshComputationStepInfo236(int dummy, ...) {
   MED_VARGS_DEF(, med_bool           ,, musthave1cs );
   MED_VARGS_DEF(, med_err *          ,, fret        );
 
-  _num            = csit - 1;
+  /* _num            = csit - 1; */
 
   if ( csit != 1 ) {
     MED_ERR_(_ret,MED_ERR_INVALID,MED_ERR_PARAMETER,"");

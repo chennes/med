@@ -34,6 +34,7 @@
 "MEDfileVersionOpenBrief=Ouverture d'un fichier MED en indiquant la version du modèle à utiliser en cas de création d'un nouveau fichier." \
 "MEDfileVersionOpenDetails=\MEDfileOpenBrief" \
 "MEDfileVersionOpenNote= \
+ \li La bibliothèque med-5.y1.z1/hdf5-1.12.(z) accepte la création de fichier med 4.y.0/hdf5-1.10.() sans la présence de la bibliothèque hdf5-1.12 (magie) \
  \li La bibliothèque med-4.y1.z1/hdf5-1.10.(>2) accepte la création de fichier med 3.y.0/hdf5-1.8.6 sans la présence de la bibliothèque hdf5-1.8 (magie) \
  \li Le numéro \a minor ne peut être que dans la plage des versions mineures des bibliothèques distribuées avec le numéro majeur demandé. \
  \li Le numéro \a release n'est pas pris en compte. Le numéro release utilisé sera 0 (sans conséquence sur le modèle interne utilisé puisqu'il ne dépend pas du numéro de release). \
@@ -91,7 +92,35 @@ Une fois le fichier mémoire fermé par \ref MEDfileClose, le fichier mémoire r
 	L'utilisateur a pré-alloué un emplacement d'acceuil au fichier mémoire, cet emplacement sera utilisé par MED dans les différentes fonctions de l'API. Si la taille réservée est insuffisante, MED réallouera la taille nécessaire et mettra à jour le champ \a memfile.app_image_size. Ce mécanisme  suppose que l'utilisateur n'utilise pas d'alias du pointeur \a memfile.app_image_ptr de façon concurrente à MED.\n Il est de la responsabilité de l'utilisateur de prendre connaissance des eventuels changements de taille et de valeur du pointeur.\n\
 	Après l'appel à \ref MEDfileClose, MED  n'utilise plus l'image mémoire. Il est possible de vérifier qu'il n'existe plus d'accès à l'image mémoire en s'assurant que \a memfile.fapl_ref_count et \a memfile.vfd_ref_count sont tous les deux nuls. " \
 \
-"MEDmemFileOpenNote2=\par Gestion des droits et fichier disque ^^\
+\
+\
+"MEDmemFileOpenNote2=\par Gestion des versions et fichier disque ^^\
+\
+\n	Si le paramètre \a syncfile est à #MED_FALSE, \ref MEDmemFileOpen ne s'occupera pas de la présence d'un fichier disque de même nom que l'image mémoire et la version du modèle utilisé dépend du mode d'accès et de la version du modèle du fichier mémoire (s'il est fourni).\
+\n	Si le paramètre syncfile est à #MED_TRUE, \ref MEDmemFileOpen gardera la cohérence entre le fichier disque crée ou déjà présent et l'image mémoire, la version du modèle utilisé dépend de la réutilisation d'un fichier existant, du mode d'accès demandé et de la version du modèle du fichier mémoire (s'il est fourni).\
+\
+\li Mode #MED_ACC_RDEXT : Mode interdit.\
+\li Mode #MED_ACC_CREAT :\
+\
+\n Si \a filesync == #MED_FALSE : Un nouvel accès \a fid au fichier mémoire \a memfile est crée, aucun fichier disque n'est utilisé (un fichier disque de même nom peut exister mais ne sera pas utilisé). Si le fichier mémoire possédait une image MED valide, elle sera réinitialisée. Le modèle interne utilisé sera celui de la version courante de MED.\
+\
+\n Si \a filesync == #MED_TRUE : Un nouvel accès \a fid au fichier mémoire \a memfile est crée, un nouveau fichier disque de même nom est également crée (un fichier disque de même nom peut déjà exister, il sera alors écrasé). Tous les appels MED seront effectués en mémoire et sur le fichier jusqu'à l'appel de \ref MEDfileClose (pas forcément de façon synchrone jusqu'à la fermeture). Le modèle interne utilisé sera celui de la version courante de MED.\
+\
+\li Mode #MED_ACC_RDWR :\
+\
+\n Si \a filesync == #MED_FALSE : Un nouvel accès \a fid au fichier mémoire \a memfile existant et valide est crée qu'un fichier disque de même nom existe ou non. Les appels MED seront effectués uniquement en mémoire. Le modèle interne utilisé sera celui du fichier mémoire.\
+\
+\n Si \a filesync == #MED_TRUE : Un nouvel accès \a fid au fichier mémoire \a memfile est crée.\
+S'il n'existe pas de fichier disque de même nom, l'image memfile doit exister et être valide; un fichier disque de même nom est crée et maintenu en cohérence (il faut au moins un appel MED en écriture/création pour que la synchronisation du fichier se fasse). Le modèle interne utilisé sera celui du fichier mémoire.\
+S'il existe un fichier disque de même nom, l'image \a memfile est réinitialisée par le contenu du fichier. La cohérence est maintenue entre fichier mémoire et fichier disque. Le modèle interne utilisé sera celui du fichier.\
+\
+\li Mode #MED_ACC_RDONLY :\
+\
+\n \a filesync = #MED_TRUE | #MED_FALSE : Le fichier mémoire est initialisé à partir d'un fichier disque de même nom (forcément existant). Les appels MED en lecture seront effectués uniquement en mémoire, le fichier restera dans son état intial. Le modèle interne utilisé sera celui du fichier. Les appels MED en écriture échoueront." \
+\
+\
+\
+"MEDmemFileOpenNote3=\par Gestion des droits et fichier disque ^^\
 \
 \n	Si le paramètre \a syncfile est à #MED_FALSE, \ref MEDmemFileOpen ne s'occupera pas de la présence d'un fichier disque de même nom que l'image mémoire.\
 \n	Si le paramètre syncfile est à #MED_TRUE, \ref MEDmemFileOpen gardera la cohérence entre le fichier disque crée ou déjà présent et l'image mémoire en fonction du mode d'accès demandé.\

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ void _MEDequivalenceComputingStepInfo30(int dummy, ...) {
   med_idt  _eqid=0,_datagroup1=0;
   int      _num;
   char     _cstppath[MED_EQUIVALENCE_GRP_SIZE+2*MED_NAME_SIZE+2+2*MED_MAX_PARA+1]=MED_EQUIVALENCE_GRP;
-  char     _cstpname[2*MED_MAX_PARA+1]="";
+  /* char     _cstpname[2*MED_MAX_PARA+1]=""; */
   med_size _ncorrespondence=0;
 
   MED_VARGS_DECL(const, med_idt      , , fid                    );

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -64,11 +64,11 @@ med_idt _MEDparFileCreate(const char * const filename, const med_access_mode acc
    * En HDF5-1.10.0p1 cela n'a aucun effet ! 
    * Un test autoconf permet de fixer un intervalle de version HDF à MED.
    */
-#if H5_VERS_MINOR > 10
+#if H5_VERS_MINOR > 12
 #error "Don't forget to change the compatibility version of the library !"
 #endif
    
-  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_18, H5F_LIBVER_18 ) ) {
+  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_V112, H5F_LIBVER_V112 ) ) {
     MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
     goto ERROR;
   }

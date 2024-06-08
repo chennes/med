@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ MEDgaussInfo(med_idt fid, int indice, char * locname, med_geometrie_element * ty
 {
   int numero=0;
   med_idt locid=0;
-  med_err ret=-1;
+  /* med_err ret=-1; */
   char chemin[MED_TAILLE_GAUSS+MED_TAILLE_NOM+1]="";
   med_int typegeo;
 
@@ -63,7 +63,7 @@ if (MEDcheckVersion(fid) < 0) return -1;
     MESSAGE("Erreur à la lecture de l'attribut MED_NOM_NBR : ");
     ISCRUTE(*ngauss);goto ERROR;
   };
-  
+
   /* Lecture <type_geo> sous forme d'attribut */
   if (_MEDattrEntierLire(locid,MED_NOM_GEO,&typegeo) < 0) {
     MESSAGE("Erreur à la lecture de l'attribut MED_NOM_GEO : ");
@@ -71,11 +71,11 @@ if (MEDcheckVersion(fid) < 0) return -1;
   };
   *type_geo = ( med_geometrie_element ) typegeo;
 
-  ret = 0;
+  /* ret = 0; */
 
  ERROR:
   if ( locid > 0 ) if (_MEDdatagroupFermer(locid) < 0)
     goto ERROR;
-  
+
   return 0;
 }

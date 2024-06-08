@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -36,8 +36,8 @@ _MEDmeshUniversalNameRd236(int dummy, ...)
 
 
   med_err _ret=-1;
-  med_idt _meshid;
-  char    _path [MED_MESH_GRP_SIZE+MED_NAME_SIZE+1]=MED_MESH_GRP;
+  /* med_idt _meshid; */
+  /* char    _path [MED_MESH_GRP_SIZE+MED_NAME_SIZE+1]=MED_MESH_GRP; */
 
 
   MED_VARGS_DECL(const, med_idt      , , fid       );
@@ -61,7 +61,7 @@ _MEDmeshUniversalNameRd236(int dummy, ...)
   _ret = MEDunvLire( fid, (char *) meshname,univname);
 
 
- ERROR:
+ /* ERROR: */
 
   va_end(params);
   *fret = _ret;

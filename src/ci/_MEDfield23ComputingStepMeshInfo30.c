@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -27,9 +27,8 @@ _MEDfield23ComputingStepMeshInfo30(int dummy,...)
 
 
   med_err _ret=-1;
-  med_idt _gid=0,_datagroup1=0,_meshgid=0,_linkgid=0;
+  med_idt _gid=0,_meshgid=0,_linkgid=0;
   int     _num;
-  char    _datagroupname1[2*MED_MAX_PARA+1]="";
   char    _path          [(MED_FIELD_GRP_SIZE+MED_NAME_SIZE+1)+2*MED_MAX_PARA+1]=MED_FIELD_GRP;
   char    _meshpath [MED_MESH_GRP_SIZE+MED_NAME_SIZE+1]=MED_MESH_GRP;
   char    _linkpath [MED_TAILLE_LIENS+MED_NAME_SIZE+1]=MED_LIENS;

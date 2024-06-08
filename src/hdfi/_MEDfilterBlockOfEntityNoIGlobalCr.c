@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -62,13 +62,15 @@ med_err _MEDfilterBlockOfEntityNoIGlobalCr(const med_idt          fid,
   med_size   _1[1]={1};
   med_idt    _memspace [MED_MAX_FILTER_SPACES]= MED_MAX_FILTER_SPACES_INIT;
   med_idt    _filespace[MED_MAX_FILTER_SPACES]= MED_MAX_FILTER_SPACES_INIT;
-  med_size   _memspacesize[1]={0},_filespacesize[1]={0};
+  /* med_size   _filespacesize[1]={0}; */
+  med_size   _memspacesize[1]={0};
   med_size   _startmem[1]={0},_stride[1]={0},_startmem_lastblock[1]={0};
   med_size   _blocksize[1]={0},_memlastblocksize[1]={0};
   med_size   _onedimallvaluesfileoffset=0;
   med_err    _ret=-1;
   int        _dim=0, _firstdim=0, _dimutil=0, _lastdim=0,_index=0 ;
-  med_size   _nconstituentpervalue[1]={0},_anylastblock[1]={0};
+  /* med_size   _nconstituentpervalue[1]={0}; */
+  med_size   _anylastblock[1]={0};
 
   /*   if ( constituentselect != MED_ALL_CONSTITUENT) { */
   /*       MED_ERR_(_ret,MED_ERR_SELECT,MED_ERR_PARAMETER,MED_ERR_VALUE_MSG); */
@@ -112,7 +114,7 @@ med_err _MEDfilterBlockOfEntityNoIGlobalCr(const med_idt          fid,
   }
 
 
-  _nconstituentpervalue[0] = nconstituentpervalue;
+  /* _nconstituentpervalue[0] = nconstituentpervalue; */
   /*Trigger the specific lastblock selection */
   if ( (count > 1) && (lastblocksize != blocksize) && lastblocksize ) /*Tester ou non si lastblocksize est bien > blocksize */
     {--_count;_anylastblock[0]=1;}
@@ -122,7 +124,7 @@ med_err _MEDfilterBlockOfEntityNoIGlobalCr(const med_idt          fid,
 
   _onedimallvaluesfileoffset = nentity*nvaluesperentity;
   _memspacesize [0]  = _onedimallvaluesfileoffset*nconstituentpervalue;
-  _filespacesize[0] = _memspacesize[0];
+  /* _filespacesize[0] = _memspacesize[0]; */
   _blocksize    [0] = blocksize*nvaluesperentity;
   _stride       [0] = stride*nvaluesperentity;
   _memlastblocksize   [0] = lastblocksize*nvaluesperentity;

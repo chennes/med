@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ MEDjointLire  (med_idt fid, char *maa, char *jn, med_int *corrtab,med_int n,
   char chemin[MED_TAILLE_MAA+MED_TAILLE_JNT+2*MED_TAILLE_NOM+1]; 
   char nomdatagroup[MED_TAILLE_NOM+1+MED_TAILLE_NOM+1];
   char tmp[MED_TAILLE_NOM_ENTITE+1];
-  med_size dimd[1];
+  /* med_size dimd[1]; */
 
 /*   if (typ_geo_local   == MED_TETRA4 || typ_geo_local    == MED_TETRA10 || */
 /*       typ_geo_local   == MED_HEXA8  || typ_geo_local    == MED_HEXA20  || */

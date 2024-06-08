@@ -1,6 +1,6 @@
 C*  This file is part of MED.
 C*
-C*  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+C*  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
 C*  MED is free software: you can redistribute it and/or modify
 C*  it under the terms of the GNU Lesser General Public License as published by
 C*  the Free Software Foundation, either version 3 of the License, or
@@ -241,7 +241,7 @@ C     ** Ecriture du champ n°1
 C     ** - enregistre uniquement la composante n°2 de valr1_1
 C     ** - pas de pas de temps, ni de numero d'ordre
 	dt = 0.0D0
-	call efchae(fid,maa1,nomcha1,valr1_1,USER_INTERLACE,nval1_1,
+	call efchre(fid,maa1,nomcha1,valr1_1,USER_INTERLACE,nval1_1,
      1               gauss1_1,2,MED_NOPFL,MED_NO_PFLMOD,
      2               MED_MAILLE,MED_TRIA6,
      3               MED_NOPDT,dtunit1,dt,MED_NONOR,ret)
@@ -253,7 +253,7 @@ C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** Nouvelle Ecriture du champ reel en mode remplacement
 C     ** - complete le champ precedent en enregistrant les composantes 1
 C     ** - pas de pas de temps, ni de numero d'ordre 
-	call efchae(fid,maa1,nomcha1,valr1_1,USER_INTERLACE,nval1_1,
+	call efchre(fid,maa1,nomcha1,valr1_1,USER_INTERLACE,nval1_1,
      1               gauss1_1,1,MED_NOPFL,MED_NO_PFLMOD,
      2               MED_MAILLE,MED_TRIA6,
      3               MED_NOPDT,dtunit1,dt,MED_NONOR,ret)
@@ -268,7 +268,7 @@ C     ** - Avec un pas de temps égal a 5.5
 C     ** - Pas de numero d'ordre
 C     ** - maa2 est distant
 	dt = 5.5D0
-	call efchae(fid,maa2,nomcha1,valr1_2,USER_INTERLACE,nval1_2,
+	call efchre(fid,maa2,nomcha1,valr1_2,USER_INTERLACE,nval1_2,
      1               gauss1_2,1,MED_NOPFL,MED_NO_PFLMOD,
      2               MED_MAILLE,MED_TRIA6,
      3               1,"ms",dt,MED_NONOR,ret)
@@ -283,7 +283,7 @@ C     ** - Avec un pas de temps égal a 5.5
 C     ** - Pas de numero d'ordre
 C     ** - maa1 est local
 	dt = 5.5D0
-	call efchae(fid,maa1,nomcha1,valr1_1,USER_INTERLACE,nval1_1,
+	call efchre(fid,maa1,nomcha1,valr1_1,USER_INTERLACE,nval1_1,
      1               gauss1_1,2,MED_NOPFL,MED_NO_PFLMOD,
      2               MED_MAILLE,MED_TRIA6,
      3               1,"ms",dt,MED_NONOR,ret)
@@ -299,7 +299,7 @@ C     ** - Avec un pas de temps égal a 5.5
 C     ** - Numero d'ordre egal a 2
 C     ** - maa3 est local
 	dt = 5.5D0
-	call efchae(fid,maa3,nomcha1,valr1_2,USER_INTERLACE,nval1_2,
+	call efchre(fid,maa3,nomcha1,valr1_2,USER_INTERLACE,nval1_2,
      1               gauss1_2,1,MED_NOPFL,MED_NO_PFLMOD,
      2               MED_MAILLE,MED_TRIA6,
      3               1,"ms",dt,2,ret)
@@ -323,7 +323,7 @@ C     ** - Extrait a partir du profil de nom "profil1(1)"
 C     ** - Pas de temps = 5.6
 C     ** - Numero d'ordre = 2 
 	dt = 5.6D0
-	call efchae(fid,maa1,nomcha1,valr1_3p,USER_INTERLACE,nval1_3,
+	call efchre(fid,maa1,nomcha1,valr1_3p,USER_INTERLACE,nval1_3,
      1               MED_NOGAUSS,MED_ALL,nomprofil1,USER_MODE,
      2               MED_MAILLE,MED_TRIA6,
      3               2,"ms",dt,2,ret)
@@ -338,7 +338,7 @@ C     ** - Extrait a partir du profil de nom "profil1(1)"
 C     ** - Pas de temps = 5.6
 C     ** - Numero d'ordre = 2 
 	dt = 5.6D0
-	call efchae(fid,maa2,nomcha1,valr1_2p,USER_INTERLACE,nval1_2,
+	call efchre(fid,maa2,nomcha1,valr1_2p,USER_INTERLACE,nval1_2,
      1               gauss1_2,MED_ALL,nomprofil1,USER_MODE,
      2               MED_MAILLE,MED_TRIA6,
      3               2,"ms",dt,2,ret)
@@ -354,7 +354,7 @@ C     ** - Extrait a partir du profil de nom "profil1(1)"
 C     ** - Pas de temps = 5.7
 C     ** - Numero d'ordre = 2 
 	dt = 5.7D0
-	call efchae(fid,maa1,nomcha1,valr1_3p,USER_INTERLACE,nval1_3,
+	call efchre(fid,maa1,nomcha1,valr1_3p,USER_INTERLACE,nval1_3,
      1               MED_NOGAUSS,2,nomprofil1,USER_MODE,
      2               MED_MAILLE,MED_TRIA6,
      3               3,"ms",dt,2,ret)
@@ -368,7 +368,7 @@ C     ** Ecriture du champ entier n°2
 C     ** - 1ere composante des éléments de valr2
 C     ** - pas de pas de temps, ni de numero d'ordre
 	dt = 0.0D0
-	call efchae(fid,maa1,nomcha2,valr2,USER_INTERLACE,nval2,
+	call efchie(fid,maa1,nomcha2,valr2,USER_INTERLACE,nval2,
      1     MED_NOGAUSS,1,MED_NOPFL,MED_NO_PFLMOD,MED_ARETE,
      1               MED_SEG2,MED_NOPDT,nounit,dt,MED_NONOR,ret)
 	if (ret .ne. 0 ) then
@@ -381,7 +381,7 @@ C     ** - 2ere composante des éléments de valr2
 C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** - pour des raisons de complétude des tests on change 
 C     **   le type d'élément (aucun sens phys.))
-	call efchae(fid,maa1,nomcha2,valr2,USER_INTERLACE,nval2,
+	call efchie(fid,maa1,nomcha2,valr2,USER_INTERLACE,nval2,
      1     MED_NOGAUSS,2,MED_NOPFL,MED_NO_PFLMOD,MED_NOEUD,
      1               0,MED_NOPDT,nounit,dt,MED_NONOR,ret)
 	if (ret .ne. 0 ) then
@@ -395,7 +395,7 @@ C     ** - 3ere composante des éléments de valr2
 C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** - pour des raisons de complétude des tests on change 
 C     **   le type d'élément (aucun sens phys.))
-	call efchae(fid,maa1,nomcha2,valr2,USER_INTERLACE,nval2,
+	call efchie(fid,maa1,nomcha2,valr2,USER_INTERLACE,nval2,
      1     MED_NOGAUSS,3,MED_NOPFL,MED_NO_PFLMOD,MED_FACE,
      1               MED_TRIA6,MED_NOPDT,nounit,dt,MED_NONOR,ret)
 	if (ret .ne. 0 ) then
@@ -419,7 +419,7 @@ C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** - profils 
 C     ** - pour des raisons de complétude des tests on change 
 C     **   le type d'élément (aucun sens phys.))
-	call efchae(fid,maa1,nomcha2,valr2p,USER_INTERLACE,nval2,
+	call efchie(fid,maa1,nomcha2,valr2p,USER_INTERLACE,nval2,
      1     MED_NOGAUSS,3,"PROFIL(champ2)",USER_MODE,MED_MAILLE,
      1               MED_TRIA6,MED_NOPDT,nounit,dt,MED_NONOR,ret)
 	if (ret .ne. 0 ) then
@@ -440,7 +440,7 @@ C     ** - 1ere composante des éléments de valr3
 C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** - pour des raisons de complétude des tests on change
 C     **   le type d'élément (aucun sens phys.))
-	call efchae(fid,maa1,nomcha3,valr3,USER_INTERLACE,nval3,
+	call efchie(fid,maa1,nomcha3,valr3,USER_INTERLACE,nval3,
      1     MED_NOGAUSS,1,MED_NOPFL,MED_NO_PFLMOD,MED_NOEUD_MAILLE,
      1               MED_QUAD4,MED_NOPDT,nounit,dt,MED_NONOR,ret)
 	if (ret .ne. 0 ) then
@@ -453,7 +453,7 @@ C     ** - les composantes des éléments de valr3
 C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** - pour des raisons de complétude des tests on change
 C     **   le type d'élément (aucun sens phys.))
-	call efchae(fid,maa2,nomcha3,valr3,USER_INTERLACE,nval3,
+	call efchie(fid,maa2,nomcha3,valr3,USER_INTERLACE,nval3,
      1     MED_NOGAUSS,MED_ALL,MED_NOPFL,MED_NO_PFLMOD,
      1               MED_NOEUD_MAILLE,
      1               MED_QUAD4,MED_NOPDT,nounit,dt,MED_NONOR,ret)
@@ -468,7 +468,7 @@ C     ** - pas de pas de temps, ni de numero d'ordre
 C     ** - profils
 C     ** - pour des raisons de complétude des tests on change
 C     **   le type d'élément (aucun sens phys.))
-	call efchae(fid,maa3,nomcha3,valr3p,USER_INTERLACE,nval3,
+	call efchie(fid,maa3,nomcha3,valr3p,USER_INTERLACE,nval3,
      1     MED_NOGAUSS,MED_ALL,"PROFIL(champ2)",USER_MODE,
      1               MED_NOEUD_MAILLE,
      1               MED_QUAD4,MED_NOPDT,nounit,dt,MED_NONOR,ret)

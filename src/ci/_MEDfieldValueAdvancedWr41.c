@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -32,20 +32,21 @@ void  _MEDfieldValueAdvancedWr41(int dummy,...) {
   med_int               _nconstituentpervalue=0, _profilearraysize=0;
   med_bool              _defaultprofileexist=MED_FALSE,_defaultlocalizationexist=MED_FALSE;
   med_bool              _attexist=MED_FALSE;
-  med_bool              _profilehaschanged=MED_FALSE,_filterparameterexist=MED_FALSE;
+  /* med_bool              _profilehaschanged=MED_FALSE; */
+  med_bool              _filterparameterexist=MED_FALSE;
   med_int               _nvaluesperentity  =0;
   med_int               _nsectioncell      =1;
   med_field_type        _fieldtype	   =0;
   med_int               _intfieldtype	   =0;
   med_geometry_type     _locgeotype	   =0;
   med_int               _intlocgeotype	   =0;
-  uint32_t               _lentitytype1	   =0;
-  uint32_t               _lentitytype2	   =0;
-  uint32_t               _lentitytype1sav   =0;
-  uint32_t               _lentitytype2sav   =0;
-  uint32_t              _lgeotype	   =0;
-  med_int               _nsamelentitype    =0;
-  med_int               _nsamelentitypesav =0;
+  /* uint32_t               _lentitytype1	   =0; */
+  /* uint32_t               _lentitytype2	   =0; */
+  /* uint32_t               _lentitytype1sav   =0; */
+  /* uint32_t               _lentitytype2sav   =0; */
+  /* uint32_t              _lgeotype	   =0; */
+  /* med_int               _nsamelentitype    =0; */
+  /* med_int               _nsamelentitypesav =0; */
   
   char _gidname                [MED_FIELD_GRP_SIZE+MED_NAME_SIZE+1]="";
   char _datagroupname1         [2*MED_MAX_PARA+1]="";
@@ -53,7 +54,7 @@ void  _MEDfieldValueAdvancedWr41(int dummy,...) {
   char _profilename            [MED_NAME_SIZE+1]="";
   char _locgidname             [MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]=MED_LOCALIZATION_GRP;
   char _sectionmeshname        [MED_NAME_SIZE+1]="";
-  char _sectiongeotypename     [MED_NAME_SIZE+1]="";
+  /* char _sectiongeotypename     [MED_NAME_SIZE+1]=""; */
   char _defaultprofilename     [MED_NAME_SIZE+1]=MED_NO_PROFILE;
   char _defaultlocalizationname[MED_NAME_SIZE+1]=MED_NO_LOCALIZATION;
   med_filter *               _filter           = NULL;
@@ -61,7 +62,7 @@ void  _MEDfieldValueAdvancedWr41(int dummy,...) {
   med_filter                 _paramfilter      = MED_FILTER_INIT;
   med_int                    _MED_NO_DT = MED_NO_DT;
   med_int                    _MED_NO_IT = MED_NO_IT;
-  med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE;
+  /* med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE; */
   
 
   MED_VARGS_DECL(const, med_idt               , , fid              );

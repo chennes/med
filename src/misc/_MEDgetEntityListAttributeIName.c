@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -30,6 +30,7 @@ const char * const  _MEDgetEntityListAttributeIName(const med_entity_type entity
     case  MED_DESCENDING_EDGE   : return MED_NOM_LGE; break;
     case  MED_NODE_ELEMENT      : return MED_NOM_LGT; break;
     case  MED_STRUCT_ELEMENT    : return MED_NOM_LGS; break;
+    default: return NULL;
   }
 }
 /*ALL : Nombre d'étapes partageant la liste globale des types utilisés dans ttes les étapes .*/
@@ -42,5 +43,6 @@ const char * const  _MEDgetEntityListAttributeINameAll(const med_entity_type ent
     case  MED_DESCENDING_EDGE   : return MED_NOM_LEA; break;
     case  MED_NODE_ELEMENT      : return MED_NOM_LTA; break;
     case  MED_STRUCT_ELEMENT    : return MED_NOM_LSA; break;
+    default: return NULL;
   }
 }

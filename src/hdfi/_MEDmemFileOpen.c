@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -84,7 +84,7 @@ image_malloc(size_t size, H5FD_file_image_op_t file_image_op, void *_udata)
                 if (udata->app_image_size != 0)                    goto out;
 	    /*ICI;*/
 	    /* Allocation d'une image mémoire (non fournie) */
-                if (NULL == (udata->app_image_ptr = malloc(size))) goto out; 
+                if (NULL == (udata->app_image_ptr = malloc(size))) goto out;
                 udata->app_image_size = size;
 	    }
 	    /*ICI;*/
@@ -117,10 +117,10 @@ image_malloc(size_t size, H5FD_file_image_op_t file_image_op, void *_udata)
             if (udata->vfd_image_size != 0    )                  goto out;
             if (udata->vfd_ref_count  != 0    )                  goto out;
 
-	    //si l'on positionne une image mémoire fapl et qu'un fichier de même nom existe 
+	    //si l'on positionne une image mémoire fapl et qu'un fichier de même nom existe
 	    //une ouverture RD_ONLY ou RDWR génère une erreur dans H5FD_core_open
 	    //il faut ne faut donc pas positionner d'image mais
-	    //utiliser directement le buffer utilisateur app_image_ptr 
+	    //utiliser directement le buffer utilisateur app_image_ptr
 	    if (udata->fapl_image_ptr  == NULL ) { /*Une image mémoire est-elle positionée*/
 	      /*ICI;*/
 	      /*Si le buffer utilisateur existe, je l'utilise, sinon le l'alloue */
@@ -128,7 +128,7 @@ image_malloc(size_t size, H5FD_file_image_op_t file_image_op, void *_udata)
 	      if ( !(udata->app_image_ptr) && (udata->app_image_size > 0 ) ) goto out;
 	      /* Si le buffer  utilisateur est plus grand, on le garde à sa taille */
 	      /*ICI;*/
-	      if   (udata->app_image_size < size) { 
+	      if   (udata->app_image_size < size) {
 		/*ICI;*/
 		if  (NULL == ( udata->app_image_ptr =
 			       realloc(udata->app_image_ptr,size))) goto out;
@@ -239,10 +239,10 @@ image_realloc(void *ptr, size_t size, H5FD_file_image_op_t file_image_op, void *
 {
     H5LT_file_image_ud_t *udata = (H5LT_file_image_ud_t *)_udata;
     void * return_value  = NULL;
- 
- 
+
+
     /* realloc() is not allowed if the image is open in read-only mode */
-    if ((udata->flags == MED_ACC_RDONLY))         goto out; 
+    if ((udata->flags == MED_ACC_RDONLY))         goto out;
     if (file_image_op == H5FD_FILE_IMAGE_OP_FILE_RESIZE) {
 
 /* XSCRUTE(ptr); */
@@ -262,16 +262,16 @@ image_realloc(void *ptr, size_t size, H5FD_file_image_op_t file_image_op, void *
 	  /*      (udata->app_image_size != udata->vfd_image_size) ) goto out; */
 
 	  /* if (size > udata->vfd_image_size ) goto out; */
-  
-	  udata->vfd_image_ptr  = udata->app_image_ptr;  
-          udata->vfd_image_size = udata->app_image_size;  
+
+	  udata->vfd_image_ptr  = udata->app_image_ptr;
+          udata->vfd_image_size = udata->app_image_size;
 	  udata->vfd_ref_count++;
 	}
 
         if ( (udata->vfd_image_ptr != ptr) && ptr )                  { /* ICI; */ goto out; }
-						                     
+
         if ( (udata->vfd_ref_count != 1)          )                  { /* ICI; */ goto out; }
-						                     
+
 	if ( size > udata->vfd_image_size         )                  { /* ICI; */
 	  if (NULL == (udata->vfd_image_ptr = realloc(ptr, size)))   { /* ICI; */ goto out; }
 	  udata->vfd_image_size  = size;
@@ -310,8 +310,8 @@ image_free(void *ptr, H5FD_file_image_op_t file_image_op, void *_udata)
             if (udata->fapl_ref_count == 0  )             goto out;
             udata->fapl_ref_count--;
 
-            /* release the shared buffer only if indicated by the respective 
-	       flag and there are no outstanding references */ 
+            /* release the shared buffer only if indicated by the respective
+	       flag and there are no outstanding references */
             // if (udata->fapl_ref_count == 0 && udata->vfd_ref_count == 0 &&
             //         !(udata->flags & H5LT_FILE_IMAGE_DONT_RELEASE)) {
             //     HDfree(udata->fapl_image_ptr);
@@ -393,7 +393,7 @@ udata_free(void *_udata)
 
     return(SUCCEED);
 
-out:        
+out:
     ICI;
     return(FAIL);
 } /* end udata_free */
@@ -404,13 +404,18 @@ out:
 med_idt _MEDmemFileOpen(const char * const filename, med_memfile * const memfile, const med_bool filesync,
 			  const med_access_mode accessmode)
 {
-  med_idt _fid=-1,_gid=-1;
-  med_int _major   = MED_NUM_MAJEUR;
-  med_int _minor   = MED_NUM_MINEUR;
-  med_int _release = MED_NUM_RELEASE;
-  hid_t   _fapl    = H5P_DEFAULT;
-  med_access_mode _accessmode = accessmode;
-  med_bool         file_exist = MED_FALSE;
+  med_err _ret                  = -1;
+  med_idt _fid                  = -1,_gid=-1;
+  med_int _major                = MED_NUM_MAJEUR;
+  med_int _minor                = MED_NUM_MINEUR;
+  med_int _release              = MED_NUM_RELEASE;
+  med_int _fmajor               = 0;
+  med_int _fminor               = 0;
+  med_int _frelease             = 0;
+  med_int _fversionMM           = 0;
+  hid_t   _fapl                 = H5P_DEFAULT;
+  med_access_mode _accessmode   = accessmode;
+  med_bool         file_exist   = MED_FALSE;
 
 #define KB              1024U
 #define CORE_INCREMENT  (4*KB)
@@ -434,22 +439,23 @@ med_idt _MEDmemFileOpen(const char * const filename, med_memfile * const memfile
     goto ERROR;
   }
 
-#if H5_VERS_MINOR > 10
+#if H5_VERS_MINOR > 12
 #error "Don't forget to change the compatibility version of the library !"
 #endif
-  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_18, H5F_LIBVER_18) ) {
+  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_V112, H5F_LIBVER_V112 ) ) {
     MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
     goto ERROR;
   }
 
+  /* H5Pset_file_image_callbacks :
+     Appel de udata->malloc
+     Attention : Le udata->free n'est jamais appelé
+   */
   if ( H5Pset_file_image_callbacks(_fapl, &callbacks) < 0) {
     MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_MEMFILE_MSG);
     goto ERROR;
   }
-  /* H5Pset_file_image_callbacks :
-     Appel de udata->malloc 
-     Attention : Le udata->free n'est jamais appelé
-   */
+
 /*   MESSAGE("-------- 0 ---------");*/
 
 /*  ISCRUTE(filesync);*/
@@ -458,35 +464,62 @@ med_idt _MEDmemFileOpen(const char * const filename, med_memfile * const memfile
     goto ERROR;
   }
 
-  /*MESSAGE("-------- 0b ---------");*/
-   /* ISCRUTE(file_exist); */
-  if (    (memfile->app_image_size != 0) 
+  /* Si une image mémoire est donnée, elle est utilisée.
+      - Si le mode d'accès est la création, l'image est réinitialisée (version MED/HDF (courant,1.12))
+      - Si aucun fichier n'existe,
+           elle sera utilisée avec création de fichier si sync == true (mode RW, erreur si RDONLY).
+           (version MED/HDF (celle du fichier mémoire (automatique), forcer 1.8 si MED<5))
+      - Si un fichier de même nom existe et sync == true,
+           elle sera réinitialisée avec le contenu du fichier (mode RW, et RDONLY même si sync == false)
+           (version MED/HDF (celle du fichier (automatique), forcer 1.8 si MED<5))
+  */
+  /* MESSAGE("-------- 0b ---------");*/
+  /* ISCRUTE(file_exist); */
+  if ( (memfile->app_image_size != 0)
        && ( (!file_exist) || (_accessmode == MED_ACC_CREAT) )
      ) {
-    assert(memfile->app_image_ptr); 
-/*    ISCRUTE_long(memfile->app_image_size);*/
+    assert(memfile->app_image_ptr);
+    /*    ISCRUTE_long(memfile->app_image_size);*/
     H5Pset_file_image(_fapl, memfile->app_image_ptr, memfile->app_image_size);
-    /*le contenu sera réinitialisé  par H5FCreate */
-   /*MESSAGE("-------- 1 ---------");*/
+    /* Le contenu sera réinitialisé  par H5FCreate */
+    /*MESSAGE("-------- 1 ---------");*/
   }
   /*
     H5Pset_file_image (qui copie _fapl) :
     Appel de image_malloc H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET
     puis  de image_copy   H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET
-   */
+  */
 
   switch(_accessmode)
     {
     case MED_ACC_RDWR :
     case MED_ACC_RDONLY :
-   /*MESSAGE("-------- 2 ---------");*/
+
+    /*MESSAGE("-------- 2 ---------");*/
       if ((_fid = H5Fopen(filename,_accessmode, _fapl)) < 0) {
 	MED_ERR_(_fid,MED_ERR_OPEN,MED_ERR_FILE,filename);
 	goto ERROR;
       }
-  /*
-    H5Fopen :
-   */
+
+      if ( MEDfileNumVersionRd(_fid,&_fmajor,&_fminor,&_frelease) < 0) {
+	MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"MEDfileNumVersionRd");
+	goto ERROR;
+      }
+      _fversionMM = 100*_fmajor+10*_fminor;
+#if H5_VERS_MINOR > 12
+#error "Don't forget to change the compatibility version of the library !"
+#endif
+      if ( _fversionMM < 500 ) { /*100*MED_NUM_MAJEUR+10*MED_NUM_MINEUR*/
+	if ( H5Fset_libver_bounds( _fid, H5F_LIBVER_V18, H5F_LIBVER_V18 ) ) {
+	  MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
+	  goto ERROR;
+	}
+      } else {
+	if ( H5Fset_libver_bounds( _fid, H5F_LIBVER_V112, H5F_LIBVER_V112 ) ) {
+	  MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
+	  goto ERROR;
+	}
+      }
     /*MESSAGE("-------- 2b ---------");*/
       break;
 
@@ -499,10 +532,10 @@ med_idt _MEDmemFileOpen(const char * const filename, med_memfile * const memfile
 	goto ERROR;
       }
   /*
-    H5Fcreate avec sync==false (normalement idem avec syn==true)  :
+    H5Fcreate avec sync==false (normalement idem avec sync==true)  :
     Appel de image_malloc H5FD_FILE_IMAGE_OP_FILE_OPEN
     puis  de image_copy   H5FD_FILE_IMAGE_OP_FILE_OPEN
-    puis  de image_free   H5FD_FILE_IMAGE_OP_FILE_CLOSE 
+    puis  de image_free   H5FD_FILE_IMAGE_OP_FILE_CLOSE
     (l'image est vierge, les écritures ds la nouvelle image donnent lieu à des  réallocations)
    */
    /*MESSAGE("-------- 3b ---------");*/
@@ -517,7 +550,7 @@ med_idt _MEDmemFileOpen(const char * const filename, med_memfile * const memfile
 
   if ( H5Pclose(_fapl) < 0 ) {
     MED_ERR_(_fid,MED_ERR_CLOSE,MED_ERR_PROPERTY,"");
-    _fid=-1;goto ERROR;
+    goto ERROR;
   }
   /*
     H5Pclose  :

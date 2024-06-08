@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ MEDfamInfo(med_idt fid,char *maa,int indice, char *famille,
   char chemin[MED_TAILLE_MAA+MED_TAILLE_FAS+MED_TAILLE_FAS_ENTITE+2*MED_TAILLE_NOM+1];
   char stockage[MED_TAILLE_MAA+MED_TAILLE_FAS+MED_TAILLE_FAS_ENTITE+2*MED_TAILLE_NOM+1];
   int num;
-  int nfamnoe,nfammai;
+  int nfammai;
   int n_tmp;
   med_booleen _isfam0=MED_FAUX;
 

@@ -1,3 +1,14 @@
+Modifications dans la version 5.0.0 :
+
+- Portage HDF5-1.12: med-5 est capable de lire/modifier/créer les fichier med 3.y.z/4.y.z mais les bibliothèques med 3.y.z/4.y.z ne peuvent pas relire des fichiers med-5
+- Interdiction de compiler Med-5 avec une version autre que hdf5-1.12.z
+- Autorise la création de fichier 3.y/4.y par MEDfileVersionOpen
+   Le fichier crée est bien respectivement en hdf5-1.8/hdf5-1.10 independamment du fait que la bibiliothèque utilise HDF5-1.12 (magie)
+   La version mineure est choisie par l'utilisateur (impact sur le modèle interne utilisé)
+   La version release est forcément nulle car n'a aucun inpact sur le modèle interne
+- Mise à jour medimport, la version medimport 4.1.1 n'ajoutait pas les métadonnées nécessaires à l'accès rapide des types d'entités/géométriques utilisés aux différentes étapes de calcul et globalement dans les champs résultats
+- Corrections diverses (warning)
+
 Modifications dans la version 4.1.1 :
 
 - Correction concernant Windows pour l'écriture/la lecture des fichiers 2.3 avec med-fichier configuré pour des entiers 64bits

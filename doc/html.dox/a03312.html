@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MED fichier: Introduction</title>
+<title>MED fichier: Nature des donn&eacute;es &eacute;changeables avec MED</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,37 +39,112 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Introduction </div>  </div>
+<div class="title">Nature des donn&eacute;es &eacute;changeables avec MED </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="____Introduction____"></a>  </p><h3><a class="anchor" id="1."></a><a class="anchor" id="2.1"></a>Pourquoi MED ?</h3>
-<p style="margin-bottom: 0cm"></p>
-<p>Les &eacute;changes de donn&eacute;es sont devenus une n&eacute;cessit&eacute; dans le cadre des &eacute;tudes de simulation multi-physiques faisant collaborer diff&eacute;rents logiciels de calcul scientifique. Pour r&eacute;aliser ces &eacute;changes, il est n&eacute;cessaire de d&eacute;velopper entre les codes des passerelles logicielles. Pour cela deux approches sont possibles. L'approche au cas par cas o&ugrave; pour chaque couple de code devant communiquer, on r&eacute;alise une passerelle sp&eacute;cifique et non r&eacute;utilisable. L'approche standardis&eacute;e qui consiste &agrave; r&eacute;aliser des passerelles logicielles &agrave; base de modules externes r&eacute;utilisables par diff&eacute;rents couples de codes. </p>
-<p style="margin-bottom: 0cm"></p>
-<p>La d&eacute;marche MED (Mod&eacute;lisation et Echange de Donn&eacute;es) s'inscrit dans cette seconde optique. </p>
-<h3>Qu'est-ce que MED ?</h3>
-<p style="margin-bottom: 0cm"></p>
-<p>Cette d&eacute;marche initi&eacute;e par EDF R&amp;D &agrave; la fin des ann&eacute;es 90, a consist&eacute; d'une part &agrave; pr&eacute;ciser la nature des donn&eacute;es &eacute;chang&eacute;es pour d&eacute;finir un mod&egrave;le d'&eacute;change de donn&eacute;es et d'autre part d&eacute;velopper une biblioth&egrave;que informatique permettant de cr&eacute;er et de repr&eacute;senter les donn&eacute;es du mod&egrave;le commun dans des fichiers.</p>
-<p style="margin-bottom: 0cm"></p>
-<p>Le mod&egrave;le de donn&eacute;es MED offre une repr&eacute;sentation standardis&eacute;e des maillages et les champs de r&eacute;sultats. Ce mod&egrave;le est g&eacute;n&eacute;rique et r&eacute;pond aux besoins de beaucoup de codes de calculs scientifiques (thermo-m&eacute;canique, thermo-hydraulique, &eacute;lectromagn&eacute;tisme, etc). La biblioth&egrave;que MED d&eacute;velopp&eacute;e en C et offrant une API C, PYTHON et FORTRAN, permet de cr&eacute;er et lire les maillages et les champs tels que d&eacute;finis par le mod&egrave;le dans des fichiers au format HDF5 (<a href="http://www.hdfgroup.org/HDF5">http://www.hdfgroup.org/HDF5</a>). HDF5 est un format de fichier binaire, portable sur la plupart des syst&egrave;mes d'exploitation (en particulier UNIX, LINUX et WINDOWS).</p>
-<p style="margin-bottom: 0cm"></p>
-<p>HDF5 est &eacute;galement associ&eacute; &agrave; une biblioth&egrave;que informatique qui constitue un pr&eacute;-requis de la biblioth&egrave;que MED. Ces deux biblioth&egrave;ques sont &laquo;&#160;open source&#160;&raquo;, MED &eacute;tant diffus&eacute;e sous les termes de la licence L-GPL.</p>
-<p style="margin-bottom: 0cm"></p>
-<p>Depuis le d&eacute;but des ann&eacute;es 2000, MED est utilis&eacute;e pour standardiser les &eacute;changes de donn&eacute;es entre de nombreux codes de calcul scientifique en particulier &agrave; EDF et au CEA. MED est d'ailleurs depuis cette &eacute;poque co-propri&eacute;t&eacute; d'EDF et du CEA. MED constitue le mod&egrave;le d'&eacute;changes de donn&eacute;es de la plate-forme de simulation num&eacute;rique SALOME (<a href="http://www.salome-platform.org/">http://www.salome-platform.org</a>). Depuis 2001, SALOME est une plate-forme logicielle co-d&eacute;velopp&eacute;e par le CEA et EDF qui offre un environnement d'&eacute;tude int&eacute;gr&eacute; et standardis&eacute; pour les codes de calcul scientifique. </p>
-<p><br  />
-<br  />
- </p>
-<p><br  />
-<br  />
- </p>
-<p><br  />
-<br  />
+<div class="textblock"><p><a class="anchor" id="____Nature des donn&eacute;es &eacute;changeables avec MED____"></a> Les donn&eacute;es du mod&egrave;le sont des donn&eacute;es destin&eacute;es &agrave; &ecirc;tre &eacute;chang&eacute;es entre codes de calcul au cours d'une &eacute;tude de simulation num&eacute;rique, ces donn&eacute;es portent sur les notions de maillage, de r&eacute;sultat de calcul et de param&egrave;tre num&eacute;rique. Une &eacute;tude correspond &agrave; un encha&icirc;nement de s&eacute;quences de calculs, elle s'appuie sur un ou plusieurs maillages et aboutit sur des r&eacute;sultats sur les maillages utilis&eacute;s en entr&eacute;e. Maillages, r&eacute;sultats et param&egrave;tres num&eacute;riques peuvent &eacute;voluer au cours des s&eacute;quences de calcul.</p>
+<p>Le maillage fournit une repr&eacute;sentation du domaine de calcul. A ce titre, un maillage contient les types d'informations suivants : les informations g&eacute;om&eacute;triques port&eacute;es par les entit&eacute;s du maillage (noeuds, mailles et &eacute;ventuellement faces et des ar&ecirc;tes), les informations sur l'interpolation par &eacute;l&eacute;ments finis, les informations permettant la mise en oeuvre des calculs physiques (rep&eacute;rages pour affecter les caract&eacute;ristiques physiques des mat&eacute;riaux, conditions initiales et conditions aux limites), <span style="font-weight: medium">les informations permettant la distribution du domaine de calcul sur plusieurs sous-domaines</span>. On distingue dans MED les maillages structur&eacute;s des maillages non structur&eacute;s. Un maillage est non structur&eacute; si sa connectivit&eacute; est quelconque. Un maillage structur&eacute; est un maillage dont la construction utilise des directions g&eacute;om&eacute;triques particuli&egrave;res.</p>
+<p>Un r&eacute;sultat est constitu&eacute; d'un ensemble de valeurs d&eacute;finies sur les entit&eacute;s du maillage. Un r&eacute;sultat est constitu&eacute; d'un ou plusieurs champs, les champs pouvant avoir plusieurs composantes (valeurs scalaires). Les champs peuvent &ecirc;tre d&eacute;finis sur les noeuds, les &eacute;l&eacute;ments, les points d'int&eacute;gration des &eacute;l&eacute;ments et aux noeuds des &eacute;l&eacute;ments. </p>
+<p>Un param&egrave;tre num&eacute;rique correspond &agrave; une variable scalaire ind&eacute;pendante de tout maillage et de tout r&eacute;sultat.</p>
+<div class="image">
+<img src="Content_of_MAILLAGE.png" alt=""/>
+</div>
+ <div class="image">
+<img src="Content_of_MAILLE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_FACE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_ARETE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_NOEUD.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_ELEMENT_DE_STRUCTURE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_EVOLUTION_TEMPORELLE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_PROFIL.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_FAMILLE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE0D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE1D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE2D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_MAILLE3D.png" alt=""/>
+</div>
+ <div class="image">
+<img src="Content_of_RESULTAT.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_VALEURS_SUR_ENTITE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_VALEUR_SUR_ENTITE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_LOCALISATION_DES_POINTS_DE_GAUSS.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_VARIABLE_SCALAIRE_NUMERIQUE.png" alt=""/>
+</div>
+ <div class="image">
+<img src="Content_of_EQUIVALENCE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_FICHIER.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_DEFINITION_TYPE.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_Exemple_Repere_Cartesien_3D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_Exemple_Repere_Cylindrique_3D.png" alt=""/>
+</div>
+<p> <br  />
+ </p><div class="image">
+<img src="Content_of_Exemple_Repere_Spherique_3D.png" alt=""/>
+</div>
+<p> <br  />
  </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 8 Octobre 2021 13:44:10 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 6 Juin 2023 16:57:48 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

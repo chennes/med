@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -439,7 +439,7 @@ med_err getFieldsOn(med_idt fid, char * nomcha, med_field_type typcha, med_int n
 	      	printf(" %d ",*(((med_int32*)val)+(m*ngroup*ncomp)+n));
 	      	break;
 	      case MED_INT64  :
-	      	printf(" %lld ",*(((med_int64*)val)+(m*ngroup*ncomp)+n));
+	      	printf(" %ld ",*(((med_int64*)val)+(m*ngroup*ncomp)+n));
 	      	break;
 	      case MED_INT    :
 	      	printf(" "IFORMAT" ",*(((med_int*)val)+(m*ngroup*ncomp)+n));
@@ -468,7 +468,7 @@ med_err getFieldsOn(med_idt fid, char * nomcha, med_field_type typcha, med_int n
 	      	printf(" %d ",*(((med_int32*)val)+(m*nval*ngauss)+n));
 	      	break;
 	      case MED_INT64  :
-	      	printf(" %lld ",*(((med_int64*)val)+(m*nval*ngauss)+n));
+	      	printf(" %ld ",*(((med_int64*)val)+(m*nval*ngauss)+n));
 	      	break;
 	      case MED_INT    :
 	      	printf(" "IFORMAT" ",*(((med_int*)val)+(m*nval*ngauss)+n));

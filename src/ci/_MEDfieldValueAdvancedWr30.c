@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,8 @@ void  _MEDfieldValueAdvancedWr30(int dummy,...) {
   med_bool              _defaultprofileexist=MED_FALSE,_defaultlocalizationexist=MED_FALSE;
   med_bool              _attexist=MED_FALSE;
 /*   med_bool              _profilparameterexist=MED_FALSE; */
-  med_bool              _profilehaschanged=MED_FALSE,_filterparameterexist=MED_FALSE;
+  /* med_bool              _profilehaschanged=MED_FALSE; */
+  med_bool              _filterparameterexist=MED_FALSE;
   med_int               _nvaluesperentity=0,_nsectioncell=1;
   med_field_type        _fieldtype=0;
   med_int               _intfieldtype=0;
@@ -44,7 +45,7 @@ void  _MEDfieldValueAdvancedWr30(int dummy,...) {
   char _profilename       [MED_NAME_SIZE+1]="";
   char _locgidname        [MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]=MED_LOCALIZATION_GRP;
   char _sectionmeshname      [MED_NAME_SIZE+1]="";
-  char _sectiongeotypename   [MED_NAME_SIZE+1]="";
+  /* char _sectiongeotypename   [MED_NAME_SIZE+1]=""; */
   char _geotypename       [MED_TAILLE_NOM_ENTITE+1]="";
   char _defaultprofilename[MED_NAME_SIZE+1]=MED_NO_PROFILE;
   char _defaultlocalizationname[MED_NAME_SIZE+1]=MED_NO_LOCALIZATION;
@@ -53,7 +54,7 @@ void  _MEDfieldValueAdvancedWr30(int dummy,...) {
   med_filter                 _paramfilter      = MED_FILTER_INIT;
   med_int                    _MED_NO_DT = MED_NO_DT;
   med_int                    _MED_NO_IT = MED_NO_IT;
-  med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE;
+  /* med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE; */
 
 
   MED_VARGS_DECL(const, med_idt               , , fid              );

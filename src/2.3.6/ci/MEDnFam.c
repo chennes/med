@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -23,22 +23,22 @@
 #include <string.h>
 #include <stdlib.h>
 
-med_int 
+med_int
 MEDnFam(med_idt fid,char *maa)
 {
-  med_idt datagroup,famid;
+  /* med_idt datagroup,famid; */
   med_err ret;
   char chemin[MED_TAILLE_MAA+MED_TAILLE_FAS+MED_TAILLE_FAS_ENTITE+2*MED_TAILLE_NOM+1];
   char stockage[MED_TAILLE_MAA+MED_TAILLE_FAS+MED_TAILLE_FAS_ENTITE+2*MED_TAILLE_NOM+1];
   med_int n;
   int n_tmp;
-  int num;
-  char famille[MED_TAILLE_NOM+1];
-  int nfamnoe,nfammai;
+  /* int num; */
+  /* char famille[MED_TAILLE_NOM+1]; */
+  /* int nfamnoe,nfammai; */
 
 
-  /* 
-   * On inhibe le gestionnaire d'erreur HDF 
+  /*
+   * On inhibe le gestionnaire d'erreur HDF
    */
   _MEDmodeErreurVerrouiller();
 if (MEDcheckVersion(fid) < 0) return -1;

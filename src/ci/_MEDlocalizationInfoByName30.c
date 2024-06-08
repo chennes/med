@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -30,12 +30,13 @@ _MEDlocalizationInfoByName30(int dummy, ...) {
   med_idt           _lzid =  0;
   med_err           _ret  = -1;
   char              _path[MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]=MED_LOCALIZATION_GRP;
-  char              _sectiongeotypename[MED_TAILLE_NOM_ENTITE+1]="";
-  med_int           _intgeotype      = -1,_nsectiongeotype=0, _nsectionmeshcell=0;
+  /* char              _sectiongeotypename[MED_TAILLE_NOM_ENTITE+1]=""; */
+  /* med_int           _nsectiongeotype=0; */
+  med_int           _intgeotype      = -1, _nsectionmeshcell=0;
   med_entity_type   _sectionentitype = MED_CELL;
   med_geometry_type _sectiongeotype  = MED_UNDEF_GEOTYPE;
-  med_data_type     _conorcoo        = MED_CONNECTIVITY;
-  med_bool          _chgt=MED_FALSE,_trsf=MED_FALSE;
+  /* med_data_type     _conorcoo        = MED_CONNECTIVITY; */
+  /* med_bool          _chgt=MED_FALSE,_trsf=MED_FALSE; */
 
 
   MED_VARGS_DECL(const, med_idt                   , , fid                  );

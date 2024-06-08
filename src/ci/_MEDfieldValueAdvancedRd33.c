@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,8 @@ void _MEDfieldValueAdvancedRd33(int dummy,...) {
   med_bool              _filterparameterexist=MED_FALSE;
   med_field_type        _fieldtype=0;
   med_int               _intfieldtype=0;
-  med_geometry_type     _locgeotype=0,_sectiongeotype=0;
+  /* med_geometry_type     _sectiongeotype=0; */
+  med_geometry_type     _locgeotype=0;
   med_int               _intlocgeotype=0;
   char _gidname           [MED_FIELD_GRP_SIZE+MED_NAME_SIZE+1]=MED_FIELD_GRP;
   char _datagroupname1    [2*MED_MAX_PARA+1]="";
@@ -46,7 +47,7 @@ void _MEDfieldValueAdvancedRd33(int dummy,...) {
   med_filter *               _filter           = NULL;
   med_filter                 _tmpfilter        = MED_FILTER_INIT;
   med_filter                 _paramfilter      = MED_FILTER_INIT;
-  med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE;
+  /* med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE; */
 
 
   MED_VARGS_DECL(const, med_idt               , , fid              );

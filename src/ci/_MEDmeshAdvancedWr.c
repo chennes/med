@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -58,7 +58,7 @@ med_err _MEDmeshAdvancedWr(const med_idt               fid,
   char                  _profilename      [MED_NAME_SIZE+1]="";
   char                  _geotypename      [MED_TAILLE_NOM_ENTITE+1]="";
   char                  _datasetname[MED_TAILLE_NOM_ENTITE+1]="";
-  char                  _MED_NOM_COO[]=MED_NOM_COO, _MED_NOM_NOD[]=MED_NOM_NOD,_MED_NOM_DES[]=MED_NOM_DES;
+  /* char                  _MED_NOM_COO[]=MED_NOM_COO, _MED_NOM_NOD[]=MED_NOM_NOD,_MED_NOM_DES[]=MED_NOM_DES; */
   med_bool              _profilehaschanged=MED_TRUE,_mustnothaveprofile=MED_FALSE;
   med_bool              _filterparameterexist=MED_FALSE,copyfromprevious=MED_FALSE;
   med_bool              _create_dataset = MED_TRUE;

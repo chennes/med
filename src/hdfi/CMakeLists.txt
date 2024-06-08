@@ -36,6 +36,7 @@ SET(hdfi_SOURCES
     _MEDfileCreate.c
     _MEDfileName.c
     _MEDfileOpen.c
+    _MEDfileOpenForImport.c
     _MEDfilterBlockOfEntityFullICompactCr.c
     _MEDfilterBlockOfEntityFullIGlobalCr.c
     _MEDfilterBlockOfEntityNoICompactCr.c

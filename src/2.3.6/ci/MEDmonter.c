@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -18,9 +18,9 @@
 
 #include <med.h>
 #include <med_config.h>
-#include <med_outils.h> 
+#include <med_outils.h>
 #include <string.h>
- 
+
 #ifdef PPRO_NT_CALL
 #define F_OK 0
 #else
@@ -31,7 +31,7 @@ med_idt
 MEDmonter(med_idt fid, const char *acces,med_type_donnee type)
 {
   med_err ret;
-  med_idt root,id, did;
+  med_idt root,id;
   char chemin[MED_TAILLE_NOM+1];
   char acces_montage[2*MED_TAILLE_NOM+1];
   med_mode_acces MED_MODE_ACCES;

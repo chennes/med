@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -71,11 +71,14 @@ MEDfileCompatibility(const char* const filename,
   _hversionMMR=10000*_hmajeur+100*_hmineur+_hrelease;
   /* ISCRUTE(_hversionMMR); */
   /* ISCRUTE(HDF_VERSION_NUM_REF); */
-  if ( (_hversionMMR >= HDF_VERSION_NUM_REF) && (_hmineur == HDF_VERSION_MINOR_REF) ) *hdfok = MED_TRUE;
+  if ( (_hversionMMR >= HDF_VERSION_NUM_REF) &&
+       (_hmajeur == HDF_VERSION_MAJOR_REF  )  && 
+       (_hmineur == HDF_VERSION_MINOR_REF  ) ) *hdfok = MED_TRUE;
 
   /* TODO : Vérifier si la version mineure HDF du fichier est supérieure
      à la version mineure de la bibliothèque HDF utilisée :
-     -  Je n'ai pas trouvé de mécanisme HDF pour trouver la version HDF du fichier 
+     -  Je n'ai pas trouvé de mécanisme HDF pour trouver 
+        les versions minimale et maximale des objets HDF du fichier 
   */
 
   /* On appelle _MEDfileOpen et non MEDfileOpen car l'accessibilité du fichier 
@@ -110,10 +113,10 @@ MEDfileCompatibility(const char* const filename,
   */
   if ( _fversionMM > 100*MED_NUM_MAJEUR+10*MED_NUM_MINEUR ) *medok = MED_FALSE;
 
-#if MED_NUM_MAJEUR != 4
+#if MED_NUM_MAJEUR != 5
 #error "Don't forget to update the test version here when you change the major version of the library !"
 #endif
-#if H5_VERS_MINOR > 10
+#if H5_VERS_MINOR > 12
 #error "Don't forget to check the compatibility version of the library, depending on the internal hdf model choice !"
 #error "Cf. _MEDfileCreate ..."
 #endif

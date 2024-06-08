@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -37,19 +37,20 @@ void _MEDmeshAdvancedRd30(int dummy, ...)
   char                  _datagroupname4   [MED_NAME_SIZE+1]="";
   char                  _profilename      [MED_NAME_SIZE+1]="";
   char                  _geotypename      [MED_TAILLE_NOM_ENTITE+1]="";
-/*   char                  *_datasetname=NULL; */
+  /* char                  *_datasetname=NULL; */
   char                  _datasetname[MED_TAILLE_NOM_ENTITE+1]="";
-  char                  _MED_NOM_COO[]=MED_NOM_COO, _MED_NOM_NOD[]=MED_NOM_NOD,_MED_NOM_DES[]=MED_NOM_DES;
+  /* char                  _MED_NOM_COO[]=MED_NOM_COO, _MED_NOM_NOD[]=MED_NOM_NOD,_MED_NOM_DES[]=MED_NOM_DES; */
   med_bool              _filterparameterexist=MED_FALSE;
-/*   int                   _entitydim=0,_entitynnodes=0,_entityndes=0; */
+  /* int                   _entitydim=0,_entitynnodes=0,_entityndes=0; */
   med_filter *          _filter           = NULL;
   med_filter            _tmpfilter        = MED_FILTER_INIT;
   med_filter            _paramfilter      = MED_FILTER_INIT;
   med_int               _nconstituentpervalue=0,_spacedim=0;
   med_sorting_type      _sortingtype=0;
   med_int               _intsortingtype=0;
-  med_int               _false=0,_true=1,_true_or_false=_false;
-/*   med_int               _profilearraysize=0; */
+  /* med_int               _true=1,_true_or_false=_false; */
+  /* med_int               _false=0; */
+  /* med_int               _profilearraysize=0; */
   char                  _MED_NO_PROFILE_INTERNAL[]=MED_NO_PROFILE_INTERNAL;
   char *                _tmpprofilename=_MED_NO_PROFILE_INTERNAL;
   med_internal_type     _datatype;

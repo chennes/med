@@ -1,6 +1,6 @@
 !*  This file is part of MED.
 !*
-!*  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+!*  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
 !*  MED is free software: you can redistribute it and/or modify
 !*  it under the terms of the GNU Lesser General Public License as published by
 !*  the Free Software Foundation, either version 3 of the License, or
@@ -493,7 +493,7 @@ integer function getFieldsOn(fid, nomcha, typcha, ncomp, entite, stockage)
                        if (typcha .eq. MED_FLOAT64) then
                           allocate(valr(ncomp*nval),STAT=retmem)
 
-                          call efchal(fid,maa_ass,nomcha,valr,stockage,MED_ALL,locname, &
+                          call efchrl(fid,maa_ass,nomcha,valr,stockage,MED_ALL,locname, &
                                & pflname,USER_MODE,entite,type_geo(k),numdt,numo,ret)
 
                           if (ret.ne.0) then
@@ -505,7 +505,7 @@ integer function getFieldsOn(fid, nomcha, typcha, ncomp, entite, stockage)
                        else	  
                           allocate(vale(ncomp*nval),STAT=retmem)
 
-                          call efchal(fid,maa_ass,nomcha,vale,stockage,MED_ALL,locname, &
+                          call efchil(fid,maa_ass,nomcha,vale,stockage,MED_ALL,locname, &
                                &  pflname,USER_MODE,entite,type_geo(k),numdt,numo,ret)
                           if (ret.ne.0) then
                              print *,"Erreur a la lecture des valeurs du champ : ",&

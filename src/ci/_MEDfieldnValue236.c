@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -36,8 +36,8 @@ _MEDfieldnValue236(int dummy, ...)
   med_int               _ret                 =-1;
   med_int               _nprofile         = 0;
   med_int               _n                   = 0;
-  med_int               _profilearraysize    = 0,_nvaluesperentity=0;
-  med_int               _nintegrationpoint= 0;
+  med_int               _profilearraysize    = 0;
+  /* med_int               _nintegrationpoint= 0; */
   med_bool              _anyprofile          = MED_FALSE;
   med_geometrie_element _locgeotype          = 0;
   med_int               _intlocgeotype       = 0;
@@ -46,7 +46,7 @@ _MEDfieldnValue236(int dummy, ...)
   char     _localizationname  [MED_TAILLE_NOM+1]                 = "";
   char     _tmpprofilename    [MED_NAME_SIZE+1]                  = "", *_profilename=0;
   char     _path              [MED_LOCALIZATION_GRP_SIZE+MED_TAILLE_NOM+1]= MED_LOCALIZATION_GRP;
-  char     _geotype           [MED_TAILLE_NOM_ENTITE+1]          = "";
+  /* char     _geotype           [MED_TAILLE_NOM_ENTITE+1]          = ""; */
 
 
   MED_VARGS_DECL(const, med_idt           , , fid                        );

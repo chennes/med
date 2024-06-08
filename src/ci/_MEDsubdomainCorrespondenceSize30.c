@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -26,14 +26,15 @@ void _MEDsubdomainCorrespondenceSize30(int dummy, ...) {
 
 
   med_err  _ret=-1;
-  med_idt  _eqid=0,_datagroup1=0,_dataset=0;
+  med_idt  _datagroup1=0;
+  med_idt  _eqid=0,_dataset=0;
   char     _path[MED_JOINT_GRP_SIZE+2*MED_NAME_SIZE+2+2*MED_MAX_PARA+1+4*MED_TAILLE_NOM_ENTITE+4]=MED_JOINT_GRP;
-  char     _datagroupname1[2*MED_TAILLE_NOM_ENTITE+2]="";
-  char     _cstpname[2*MED_MAX_PARA+1]="";
-  med_size          _njointarray=0;
+  /* char     _datagroupname1[2*MED_TAILLE_NOM_ENTITE+2]=""; */
+  /* char     _cstpname[2*MED_MAX_PARA+1]=""; */
+  /* med_size          _njointarray=0; */
   med_sorting_type  _sortingtype=0;
-  med_int           _intlocalentitype;
-  med_int           _intlocalgeotype;
+  /* med_int           _intlocalentitype; */
+  /* med_int           _intlocalgeotype; */
   char              _localgeotypename [MED_TAILLE_NOM_ENTITE+1]="";
   char              _remotegeotypename  [MED_TAILLE_NOM_ENTITE+1]="";
 

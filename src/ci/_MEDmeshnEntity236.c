@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,7 @@ _MEDmeshnEntity236(int dummy, ...)
    med_bool         _isasoftlink   =MED_FALSE;
    int              _cmodeit=0, _ncmode=1;
    med_connectivite _cmode[2] = { MED_NO_CMODE, MED_NO_CMODE };
- 
+
   MED_VARGS_DECL(const, med_idt                , , fid           );
   MED_VARGS_DECL(const, char * , const           , meshname      );
   MED_VARGS_DECL(const, med_int                , , numdt         );
@@ -80,8 +80,8 @@ _MEDmeshnEntity236(int dummy, ...)
   MED_VARGS_DEF(, med_int  *             ,, fret                );
 
   _meddatatype=meddatatype;
-   
- 
+
+
   if ( (numdt != MED_NO_DT) || (numit != MED_NO_IT) ) {
     MED_ERR_(_ret,MED_ERR_RANGE,MED_ERR_COMPUTINGSTEP,MED_ERR_MESH_MSG);
     SSCRUTE(meshname);ISCRUTE(numdt);ISCRUTE(numit);
@@ -175,7 +175,7 @@ _MEDmeshnEntity236(int dummy, ...)
       /* Cette notion n'existe pas en 2.3.6 */
       _n=0;
       break;
-      
+
     case MED_NAME:
     case MED_NUMBER:
     case MED_FAMILY_NUMBER:
@@ -212,7 +212,7 @@ _MEDmeshnEntity236(int dummy, ...)
     case MED_COORDINATE: /*Par extension au CONNECTIVITY mais ne devrait pas être utilisé.*/
     case MED_CONNECTIVITY:
 
-      
+
       if ( geotype == MED_POLYGON2 ) {_n=0; break;}
       if ( geotype == MED_POLYGON ) {
 	  if ( MEDpolygoneInfo( fid,(char *)meshname, (med_entite_maillage) entitytype, (med_connectivite) _cmode[0],
@@ -235,9 +235,9 @@ _MEDmeshnEntity236(int dummy, ...)
       }
       goto CALL_NENT;
 
-      
+
     case MED_INDEX_FACE:
-      
+
       if ( geotype == MED_POLYHEDRON ) {
 
 	_meddatatype = MED_CONNECTIVITY;
@@ -258,9 +258,9 @@ _MEDmeshnEntity236(int dummy, ...)
 	ISCRUTE_int(geotype);
 	goto ERROR;
       }
-      
+
     case MED_INDEX_NODE:
-      
+
       if ( geotype == MED_POLYHEDRON ) {
 	if ( MEDpolyedreInfo(fid,(char *) meshname, (med_connectivite) _cmode[0],&_nfaces, &_n) < 0) {
 /* 	  MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"MEDpolyedreInfo");SSCRUTE(meshname); */
@@ -277,7 +277,7 @@ _MEDmeshnEntity236(int dummy, ...)
 	  MED_ERR_(_ret,MED_ERR_RANGE,MED_ERR_GEOMETRY,MED_ERR_VALUE_MSG);
 	  ISCRUTE_int(geotype);goto ERROR;
 	}
-      
+
     case MED_COORDINATE_AXIS1:
     case MED_COORDINATE_AXIS2:
     case MED_COORDINATE_AXIS3:

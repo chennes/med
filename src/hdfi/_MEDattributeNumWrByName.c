@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,9 @@ med_err _MEDattributeNumWrByName(med_idt pid,
   med_err _ret=-1;
   med_idt  type_hdf;
   med_access_mode MED_ACCESS_MODE;
-  H5O_info_t      _oinfo;
+  /* H5O_info_t _oinfo; */
+  /*Depuis hdf5-1.12, malgré -DH5_USE_16_API, H5version.h choisi la version 3*/
+  H5O_info1_t _oinfo;
 
   if ( (MED_ACCESS_MODE = _MEDmodeAcces(pid) ) == MED_ACC_UNDEF ) {
     MED_ERR_(_ret,MED_ERR_INVALID,MED_ERR_ACCESSMODE, "MED_ACC_UNDEF" );
@@ -68,7 +70,9 @@ med_err _MEDattributeNumWrByName(med_idt pid,
 
   if  ( (_attid=H5Aopen_by_name( pid, path, attname, H5P_DEFAULT, H5P_DEFAULT )) >= 0 ) {
 
-    if ( H5Oget_info( pid, &_oinfo ) <0) {
+    /*Depuis hdf5-1.12, malgré -DH5_USE_16_API, H5version.h choisi la version 3*/
+    /* if ( H5Oget_info( pid, &_oinfo ) <0) { */
+    if ( H5Oget_info1( pid, &_oinfo ) <0) {
 	MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"H5Oget_info");
 	goto ERROR;
     }

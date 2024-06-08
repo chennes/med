@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -23,70 +23,70 @@
 #include <stdlib.h>
 
 /*
-From Fortran call of following C functions : 
-- MEDmeshCr  
-- MEDnMesh     
-- MEDmeshnAxis 
-- MEDmeshnAxisByName  
-- MEDmeshInfo   
+From Fortran call of following C functions :
+- MEDmeshCr
+- MEDnMesh
+- MEDmeshnAxis
+- MEDmeshnAxisByName
+- MEDmeshInfo
 - MEDmeshInfoByName
 - MEDmeshUniversalNameWr
-- MEDmeshAttributeRd    
-- MEDmeshAttributeWr 
+- MEDmeshAttributeRd
+- MEDmeshAttributeWr
 - MEDmeshUniversalNameRd
-- MEDmeshGridTypeWr  
-- MEDmeshGridTypeRd  
-- MEDmeshGridStructWr  
-- MEDmeshGridStructRd  
+- MEDmeshGridTypeWr
+- MEDmeshGridTypeRd
+- MEDmeshGridStructWr
+- MEDmeshGridStructRd
 - MEDmeshNodeCoordinateWr
-- MEDmeshNodeCoordinateRd   
+- MEDmeshNodeCoordinateRd
 - MEDmeshNodeCoordinateWithProfileWr
-- MEDmeshNodeCoordinateWithProfileRd  
-- MEDmeshGridIndexCoordinateWr  
-- MEDmeshGridIndexCoordinateRd  
-- MEDmeshEntityFamilyNumberWr     
-- MEDmeshEntityNumberWr   
-- MEDmeshEntityNameWr 
+- MEDmeshNodeCoordinateWithProfileRd
+- MEDmeshGridIndexCoordinateWr
+- MEDmeshGridIndexCoordinateRd
+- MEDmeshEntityFamilyNumberWr
+- MEDmeshEntityNumberWr
+- MEDmeshEntityNameWr
 - MEDmeshnEntity
-- MEDmeshEntityNameRd                                                                          
-- MEDmeshEntityNumberRd     
-- MEDmeshEntityFamilyNumberRd                               
-- MEDmeshElementConnectivityRd                          
-- MEDmeshElementConnectivityWr     
+- MEDmeshEntityNameRd
+- MEDmeshEntityNumberRd
+- MEDmeshEntityFamilyNumberRd
+- MEDmeshElementConnectivityRd
+- MEDmeshElementConnectivityWr
 - MEDmeshElementConnectivityWithProfileRd
-- MEDmeshnEntityWithProfile 
-- MEDmeshElementConnectivityWithProfileWr  
-- MEDmeshNodeWr   
-- MEDmeshNodeRd   
+- MEDmeshnEntityWithProfile
+- MEDmeshElementConnectivityWithProfileWr
+- MEDmeshNodeWr
+- MEDmeshNodeRd
 - MEDmeshElementWr
-                                                                                
-- MEDmeshElementRd   
-- MEDmeshNodeCoordinateAdvancedWr   
-- MEDmeshNodeCoordinateAdvancedRd    
-- MEDmeshElementConnectivityAdvancedRd     
-- MEDmeshElementConnectivityAdvancedWr 
-- MEDmeshPolygonWr   
-- MEDmeshPolygonRd  
-- MEDmeshPolyhedronRd  
+
+- MEDmeshElementRd
+- MEDmeshNodeCoordinateAdvancedWr
+- MEDmeshNodeCoordinateAdvancedRd
+- MEDmeshElementConnectivityAdvancedRd
+- MEDmeshElementConnectivityAdvancedWr
+- MEDmeshPolygonWr
+- MEDmeshPolygonRd
+- MEDmeshPolyhedronRd
 - MEDmeshPolyhedronWr
-- MEDmeshGlobalNumberWr    
-- MEDmeshGlobalNumberRd   
-- MEDmeshComputationStepCr    
-- MEDmeshComputationStepInfo             
-- MEDmeshComputationStepDtRd      
-- MEDmeshSortingTypeRd                   
+- MEDmeshGlobalNumberWr
+- MEDmeshGlobalNumberRd
+- MEDmeshComputationStepCr
+- MEDmeshComputationStepInfo
+- MEDmeshComputationStepDtRd
+- MEDmeshSortingTypeRd
 - MEDmeshStructElementVarAttRd
-- MEDmeshStructElementVarAttWr  
+- MEDmeshStructElementVarAttWr
 - MEDmeshEntityInfo
-- MEDmeshNodeCoordinateTrsfRd        
+- MEDmeshNodeCoordinateTrsfRd
 - MEDmeshNodeCoordinateTrsfWr
 - MEDmeshEntityAttributeAdvancedWr
 - MEDmeshEntityAttributeAdvancedRd
 */
 
-#define nmmhfcre F77_FUNC(mmhfcre,MMHFCRE) 
+#define nmmhfcre F77_FUNC(mmhfcre,MMHFCRE)
 #define nmmhfnmh F77_FUNC(mmhfnmh,MMHFNMH)
-#define nmmhfnax F77_FUNC(mmhfnax,MMHFNAX) 
+#define nmmhfnax F77_FUNC(mmhfnax,MMHFNAX)
 #define nmmhfnan F77_FUNC(mmhfnan,MMHFNAN)
 #define nmmhfmhi F77_FUNC(mmhfmhi,MMHFMHI)
 #define nmmhfmin F77_FUNC(mmhfmin,MMHFMIN)
@@ -150,15 +150,15 @@ From Fortran call of following C functions :
 
 
 #ifdef PPRO_NT
-med_int 
-MMHFCRE(med_idt *fid, char *mname, unsigned int bidon, 
+med_int
+MMHFCRE(med_idt *fid, char *mname, unsigned int bidon,
                   med_int *mnamelen, med_int * sdim, med_int * mdim, med_int *mtype,
 		  char *desc, unsigned int bidon2, med_int *desclen,
 		  char *dtunit, unsigned int bidon3, med_int *dtunitlen,
 		  med_int *stype, med_int *atype, char *aname, unsigned int bidon4,
 		  med_int *anamelen, char *aunit, unsigned int bidon5, med_int* aunitlen)
 #else
-med_int 
+med_int
 nmmhfcre(med_idt *fid, char *mname, med_int *mnamelen, med_int * sdim,
 	 med_int *mdim, med_int *mtype, char *desc, med_int *desclen,
 	 char *dtunit, med_int *dtunitlen,
@@ -244,32 +244,32 @@ nmmhfnan(med_idt *fid, char *mname, med_int *mnamelen)
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFNAX(med_idt *fid, med_int *it)
 #else
-med_int 
+med_int
 nmmhfnax(med_idt *fid, med_int *it)
 #endif
 {
-  med_int _ret; 
-  
-  _ret = (med_int) MEDmeshnAxis((const med_idt) *fid, (const med_int) *it); 
+  med_int _ret;
 
-  return(_ret); 
+  _ret = (med_int) MEDmeshnAxis((const med_idt) *fid, (const med_int) *it);
+
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
-MMHFMHI(med_idt *fid, med_int *it, char*mname, unsigned int bidon, 
+med_int
+MMHFMHI(med_idt *fid, med_int *it, char*mname, unsigned int bidon,
                   med_int * sdim, med_int * mdim, med_int *mtype,
 		  char *desc, unsigned int bidon2,
-		  char *dtunit, unsigned int bidon3, 
-		  med_int *stype, med_int *nstep, med_int *atype, 
-		  char *aname, unsigned int bidon4, 
+		  char *dtunit, unsigned int bidon3,
+		  med_int *stype, med_int *nstep, med_int *atype,
+		  char *aname, unsigned int bidon4,
 		  char *aunit, unsigned int bidon5)
 #else
-med_int 
+med_int
 nmmhfmhi(med_idt *fid, med_int *it, char *mname, med_int * sdim,
 	 med_int *mdim, med_int *mtype, char *desc,
 	 char *dtunit, med_int *stype, med_int *nstep,
@@ -399,7 +399,7 @@ nmmhfunw(med_idt *fid, char *uname, med_int *unamelen)
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshUniversalNameWr((const med_idt) *fid, (const char*) _fn1); 
+  _ret = (med_int) MEDmeshUniversalNameWr((const med_idt) *fid, (const char*) _fn1);
 
   _MEDcstringFree(_fn1);
 
@@ -453,57 +453,57 @@ nmmhfatw(med_idt *fid, char *mname, med_int *mnamelen,
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshAttributeWr((const med_idt) *fid, (const char*) _fn1, (const med_int) *nin,
-				      (const med_int) *nvn, (const med_int) *nnc); 
+				      (const med_int) *nvn, (const med_int) *nnc);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFATR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *nin, med_int *nvn, med_int *nnc)
 #else
-med_int 
+med_int
 nmmhfatr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *nin, med_int *nvn, med_int *nnc)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshAttributeRd((const med_idt) *fid, (const char*) _fn1, (med_int *) nin,
-				      (med_int *) nvn, (med_int *) nnc); 
+				      (med_int *) nvn, (med_int *) nnc);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGTW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *gtype)
 #else
-med_int 
+med_int
 nmmhfgtw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *gtype)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_grid_type _gtype = (med_grid_type) *gtype;
 
@@ -511,28 +511,28 @@ nmmhfgtw(med_idt *fid, char *mname, med_int *mnamelen,
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
-  _ret = (med_int) MEDmeshGridTypeWr((const med_idt) *fid, (const char*) _fn1, _gtype); 
+
+  _ret = (med_int) MEDmeshGridTypeWr((const med_idt) *fid, (const char*) _fn1, _gtype);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGTR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *gtype)
 #else
-med_int 
+med_int
 nmmhfgtr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *gtype)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_grid_type _gtype;
 
@@ -551,11 +551,11 @@ nmmhfgtr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGSW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt, med_int *gstruct)
 #else
-med_int 
+med_int
 nmmhfgsw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float *dt, med_int *gstruct)
 #endif
@@ -568,7 +568,7 @@ nmmhfgsw(med_idt *fid, char *mname, med_int *mnamelen,
     return(-1);
 
   _ret = (med_int) MEDmeshGridStructWr((const med_idt) *fid, (const char*) _fn1, (const med_int) *numdt,
-				       (const med_int) *numit, (med_float) *dt, (const med_int *) gstruct); 
+				       (const med_int) *numit, (med_float) *dt, (const med_int *) gstruct);
 
   _MEDcstringFree(_fn1);
 
@@ -579,106 +579,106 @@ nmmhfgsw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGSR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *gstruct)
 #else
-med_int 
+med_int
 nmmhfgsr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *gstruct)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshGridStructRd((med_idt) *fid, (char*) _fn1, (med_int) *numdt,
-				       (med_int) *numit, (med_int *) gstruct); 
+				       (med_int) *numit, (med_int *) gstruct);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCOW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt, med_int *swm,
 		  med_int *n, med_float *coo)
 #else
-med_int 
+med_int
 nmmhfcow(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_float *dt,  
+	 med_int *numdt, med_int *numit, med_float *dt,
 	 med_int *swm, med_int *n, med_float *coo)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_switch_mode _swm = (med_switch_mode) *swm;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshNodeCoordinateWr((med_idt) *fid, (char*) _fn1, (med_int) *numdt,
 					   (med_int) *numit, (med_float) *dt, _swm, (med_int) *n,
-					   (med_float *) coo); 
+					   (med_float *) coo);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCOR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *swm,
 		  med_float *coo)
 #else
-med_int 
+med_int
 nmmhfcor(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit,
 	 med_int *swm, med_float *coo)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_switch_mode _swm = (med_switch_mode) *swm;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshNodeCoordinateRd((med_idt) *fid, (char*) _fn1, (med_int) *numdt,
-					   (med_int) *numit, _swm, (med_float *) coo); 
+					   (med_int) *numit, _swm, (med_float *) coo);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCPW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_float *dt, 
+		  med_int *numdt, med_int *numit, med_float *dt,
 		  med_int *smode, char *pname, unsigned int bidon2, med_int *pnamelen,
 		  med_int *swm, med_int *dim, med_int *n, med_float *coo)
 #else
-med_int 
+med_int
 nmmhfcpw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_float *dt,  
+	 med_int *numdt, med_int *numit, med_float *dt,
 	 med_int *smode, char *pname, med_int *pnamelen,
 	 med_int *swm, med_int *dim, med_int *n, med_float *coo)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_switch_mode _swm = (med_switch_mode) *swm;
   med_storage_mode _smode = (med_storage_mode) *smode;
@@ -689,34 +689,34 @@ nmmhfcpw(med_idt *fid, char *mname, med_int *mnamelen,
   _fn2 = _MED2cstring((char *) pname, (int) *pnamelen);
   if (!_fn2)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshNodeCoordinateWithProfileWr((med_idt) *fid, (char*) _fn1, (med_int) *numdt,
 						      (med_int) *numit, (med_float) *dt,
 						      _smode, _fn2,
-						      _swm, (med_int) *dim, (med_int) *n, (med_float *) coo); 
+						      _swm, (med_int) *dim, (med_int) *n, (med_float *) coo);
 
   _MEDcstringFree(_fn1);
   _MEDcstringFree(_fn2);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCPR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit,  
+		  med_int *numdt, med_int *numit,
 		  med_int *smode, char *pname, unsigned int bidon2, med_int *pnamelen,
 		  med_int *swm, med_int *dim, med_float *coo)
 #else
-med_int 
+med_int
 nmmhfcpr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit,
 	 med_int *smode, char *pname, med_int *pnamelen,
 	 med_int *swm, med_int *dim, med_float *coo)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_switch_mode _swm = (med_switch_mode) *swm;
   med_storage_mode _smode = (med_storage_mode) *smode;
@@ -727,66 +727,66 @@ nmmhfcpr(med_idt *fid, char *mname, med_int *mnamelen,
   _fn2 = _MED2cstring((char *) pname, (int) *pnamelen);
   if (!_fn2)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshNodeCoordinateWithProfileRd((med_idt) *fid, (char*) _fn1, (med_int) *numdt, (med_int) *numit,
 						      _smode, _fn2,
-						      _swm, (med_int) *dim, (med_float *) coo); 
+						      _swm, (med_int) *dim, (med_float *) coo);
 
   _MEDcstringFree(_fn1);
   _MEDcstringFree(_fn2);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGCW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_float *dt, 
+		  med_int *numdt, med_int *numit, med_float *dt,
 		  med_int *axis, med_int *size, med_float *index)
 #else
-med_int 
+med_int
 nmmhfgcw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_float *dt,  
+	 med_int *numdt, med_int *numit, med_float *dt,
 	 med_int *axis, med_int *size, med_float *index)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshGridIndexCoordinateWr((med_idt) *fid, (char*) _fn1, (med_int) *numdt,
-						(med_int) *numit, (med_float) *dt, 
+						(med_int) *numit, (med_float) *dt,
 						(med_int) *axis, (med_int) *size,(med_float *) index);
 
     _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGCR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, 
+		  med_int *numdt, med_int *numit,
 		  med_int *axis, med_float *index)
 #else
-med_int 
+med_int
 nmmhfgcr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit,
 	 med_int *axis, med_float *index)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
+
   _ret = (med_int) MEDmeshGridIndexCoordinateRd((med_idt) *fid, (char*) _fn1, (med_int) *numdt,
 						(med_int) *numit,
 						(med_int) *axis, (med_float *) index);
@@ -798,18 +798,18 @@ nmmhfgcr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFENW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *n, med_int *num)
 #else
-med_int 
+med_int
 nmmhfenw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, 
+	 med_int *numdt, med_int *numit, med_int *entype,
 	 med_int *geotype, med_int *n, med_int *num)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -818,12 +818,12 @@ nmmhfenw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int)  MEDmeshEntityNumberWr((med_idt) *fid, 
-					  (char*) _fn1, 
+  _ret = (med_int)  MEDmeshEntityNumberWr((med_idt) *fid,
+					  (char*) _fn1,
 					  (med_int) *numdt,
-					  (med_int) *numit, 
-					  _etype, 
-					  _gtype, 
+					  (med_int) *numit,
+					  _etype,
+					  _gtype,
 					  (med_int) *n,
 					  (med_int *) num);
 
@@ -834,18 +834,18 @@ nmmhfenw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFENR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *num)
 #else
-med_int 
+med_int
 nmmhfenr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, 
+	 med_int *numdt, med_int *numit, med_int *entype,
 	 med_int *geotype, med_int *num)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -854,11 +854,11 @@ nmmhfenr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int)  MEDmeshEntityNumberRd((med_idt) *fid, 
-					  (char*) _fn1, 
+  _ret = (med_int)  MEDmeshEntityNumberRd((med_idt) *fid,
+					  (char*) _fn1,
 					  (med_int) *numdt,
-					  (med_int) *numit, 
-					  _etype, 
+					  (med_int) *numit,
+					  _etype,
 					  _gtype,
 					  (med_int *) num);
 
@@ -870,18 +870,18 @@ nmmhfenr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFFNW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *n, med_int *num)
 #else
-med_int 
+med_int
 nmmhffnw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, 
+	 med_int *numdt, med_int *numit, med_int *entype,
 	 med_int *geotype, med_int *n, med_int *num)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -902,18 +902,18 @@ nmmhffnw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFFNR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *num)
 #else
-med_int 
+med_int
 nmmhffnr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, 
+	 med_int *numdt, med_int *numit, med_int *entype,
 	 med_int *geotype, med_int *num)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -934,19 +934,19 @@ nmmhffnr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFEAW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *n, char *ename, unsigned int bidon2, med_int *enamelen)
 #else
-med_int 
+med_int
 nmmhfeaw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 	 med_int *n, char *ename, med_int *enamelen)
 #endif
 {
-  med_int _ret; 
-  char *_fn1, *_fn2;
+  med_int _ret;
+  char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
 
@@ -972,18 +972,18 @@ nmmhfeaw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFEAR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  char *ename, unsigned int bidon2)
 #else
-med_int 
+med_int
 nmmhfear(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 	 char *ename)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fs2;
   med_int _n;
   med_entity_type _etype = (med_entity_type) *entype;
@@ -1023,12 +1023,12 @@ nmmhfear(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFNME(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
-		  med_int *datatype, med_int *cmode, med_int *chgt, med_int *tsf) 
+		  med_int *datatype, med_int *cmode, med_int *chgt, med_int *tsf)
 #else
-med_int 
+med_int
 nmmhfnme(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 	 med_int *datatype, med_int *cmode, med_int *chgt, med_int *tsf)
@@ -1038,7 +1038,7 @@ nmmhfnme(med_idt *fid, char *mname, med_int *mnamelen,
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
-  med_data_type _datatype = (med_data_type) *datatype; 
+  med_data_type _datatype = (med_data_type) *datatype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
   med_bool _changement;
   med_bool _transformation;
@@ -1057,26 +1057,26 @@ nmmhfnme(med_idt *fid, char *mname, med_int *mnamelen,
 
   _MEDcstringFree(_fn1);
 
-  return(ret); 
+  return(ret);
 }
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCYW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float* dt,
-		  med_int *entype, med_int *geotype, med_int *cmode, 
+		  med_int *entype, med_int *geotype, med_int *cmode,
 		  med_int *swm, med_int *n, med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfcyw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float* dt,
-	 med_int *entype, med_int *geotype, med_int *cmode, 
+	 med_int *entype, med_int *geotype, med_int *cmode,
 	 med_int *swm, med_int *n, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -1087,12 +1087,12 @@ nmmhfcyw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshElementConnectivityWr((med_idt) *fid, 
-						(char*) _fn1, 
+  _ret = (med_int) MEDmeshElementConnectivityWr((med_idt) *fid,
+						(char*) _fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
+						(med_int) *numit,
 						(med_float) *dt,
-						_etype, 
+						_etype,
 						_gtype,
 						_cmode,
 						_swm,
@@ -1106,20 +1106,20 @@ nmmhfcyw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCYR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, 
-		  med_int *entype, med_int *geotype, med_int *cmode, 
+		  med_int *numdt, med_int *numit,
+		  med_int *entype, med_int *geotype, med_int *cmode,
 		  med_int *swm, med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfcyr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, 
-	 med_int *entype, med_int *geotype, med_int *cmode, 
+	 med_int *numdt, med_int *numit,
+	 med_int *entype, med_int *geotype, med_int *cmode,
 	 med_int *swm, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -1130,11 +1130,11 @@ nmmhfcyr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshElementConnectivityRd((med_idt) *fid, 
-						(char*) _fn1, 
+  _ret = (med_int) MEDmeshElementConnectivityRd((med_idt) *fid,
+						(char*) _fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
-						_etype, 
+						(med_int) *numit,
+						_etype,
 						_gtype,
 						_cmode,
 						_swm,
@@ -1146,14 +1146,14 @@ nmmhfcyr(med_idt *fid, char *mname, med_int *mnamelen,
 }
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFYPW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float* dt,
 		  med_int *entype, med_int *geotype, med_int *cmode,
 		  med_int *stmode, char *pname, unsigned int bidon2,med_int *pnamelen,
 		  med_int *swm, med_int *dim, med_int *n, med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfypw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float* dt,
 	 med_int *entype, med_int *geotype, med_int *cmode,
@@ -1161,7 +1161,7 @@ nmmhfypw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *swm, med_int *dim, med_int *n, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1,*_fn2;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -1177,12 +1177,12 @@ nmmhfypw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn2)
     return(-1);
 
-  _ret = (med_int) MEDmeshElementConnectivityWithProfileWr((med_idt) *fid, 
-							   (char*) _fn1, 
+  _ret = (med_int) MEDmeshElementConnectivityWithProfileWr((med_idt) *fid,
+							   (char*) _fn1,
 							   (med_int) *numdt,
-							   (med_int) *numit, 
+							   (med_int) *numit,
 							   (med_float) *dt,
-							   _etype, 
+							   _etype,
 							   _gtype,
 							   _cmode,
 							   _stmode,
@@ -1200,22 +1200,22 @@ nmmhfypw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFYPR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, 
-		  med_int *entype, med_int *geotype, med_int *cmode, 
+		  med_int *numdt, med_int *numit,
+		  med_int *entype, med_int *geotype, med_int *cmode,
 		  med_int *stmode, char* pname, unsigned int bidon2, med_int *pnamelen,
 		  med_int *swm, med_int*dim, med_int *n, med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfypr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, 
-	 med_int *entype, med_int *geotype, med_int *cmode, 
+	 med_int *numdt, med_int *numit,
+	 med_int *entype, med_int *geotype, med_int *cmode,
 	 med_int *stmode, char* pname, med_int *pnamelen,
 	 med_int *swm, med_int*dim, med_int *n, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -1231,11 +1231,11 @@ nmmhfypr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn2)
     return(-1);
 
-  _ret = (med_int) MEDmeshElementConnectivityWithProfileRd((med_idt) *fid, 
-							   (char*) _fn1, 
+  _ret = (med_int) MEDmeshElementConnectivityWithProfileRd((med_idt) *fid,
+							   (char*) _fn1,
 							   (med_int) *numdt,
-							   (med_int) *numit, 
-							   _etype, 
+							   (med_int) *numit,
+							   _etype,
 							   _gtype,
 							   _cmode,
 							   _stmode,
@@ -1254,17 +1254,17 @@ nmmhfypr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFNEP(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
-		  med_int *datatype, med_int *cmode, 
+		  med_int *datatype, med_int *cmode,
 		  med_int *stmode, char* pname, unsigned int bidon1, med_int *psize,
-		  med_int *chgt, med_int *tsf) 
+		  med_int *chgt, med_int *tsf)
 #else
-med_int 
+med_int
 nmmhfnep(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
-	 med_int *datatype, med_int *cmode, 
+	 med_int *datatype, med_int *cmode,
 	 med_int *stmode, char* pname, med_int *psize,
 	 med_int *chgt, med_int *tsf)
 #endif
@@ -1274,7 +1274,7 @@ nmmhfnep(med_idt *fid, char *mname, med_int *mnamelen,
   char _fs2[MED_NAME_SIZE+1]="";
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
-  med_data_type _datatype = (med_data_type) *datatype; 
+  med_data_type _datatype = (med_data_type) *datatype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
   med_bool _changement;
   med_bool _transformation;
@@ -1283,12 +1283,12 @@ nmmhfnep(med_idt *fid, char *mname, med_int *mnamelen,
   _fn1 = _MED2cstring((char *) mname, (int) * mnamelen);
   if (!_fn1 ) return(-1);
 
-  ret = (med_int) MEDmeshnEntityWithProfile((med_idt) *fid, 
-					    (char*) _fn1, 
+  ret = (med_int) MEDmeshnEntityWithProfile((med_idt) *fid,
+					    (char*) _fn1,
 					    (med_int) *numdt,
-					    (med_int) *numit, 
-					    _etype, 
-					    _gtype, 
+					    (med_int) *numit,
+					    _etype,
+					    _gtype,
 					    _datatype,
 					    _cmode,
 					    _stmode,
@@ -1310,14 +1310,14 @@ nmmhfnep(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFNOW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt, med_int *swm,
 		  med_int *n, med_float *coo,
 		  med_int *iname, char*nname, unsigned int bidon2, med_int *nnamelen,
 		  med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #else
-med_int 
+med_int
 nmmhfnow(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float *dt, med_int *swm,
 	 med_int *n, med_float *coo,
@@ -1325,7 +1325,7 @@ nmmhfnow(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_switch_mode _swm = (med_switch_mode) *swm;
   med_bool _iname = (med_bool) *iname;
@@ -1340,13 +1340,13 @@ nmmhfnow(med_idt *fid, char *mname, med_int *mnamelen,
   _fn2 = _MED1cstring(nname, (int) *nnamelen,(int) *n*MED_SNAME_SIZE);
   if (!_fn2)
     return(-1);
-  
-  _ret = (med_int) MEDmeshNodeWr((med_idt) *fid, 
-				 (char*) _fn1, 
+
+  _ret = (med_int) MEDmeshNodeWr((med_idt) *fid,
+				 (char*) _fn1,
 				 (med_int) *numdt,
-				 (med_int) *numit, 
-				 (med_float) *dt, 
-				 _swm, 
+				 (med_int) *numit,
+				 (med_float) *dt,
+				 _swm,
 				 (med_int) *n,
 				 (med_float *) coo,
 				 _iname,
@@ -1354,30 +1354,30 @@ nmmhfnow(med_idt *fid, char *mname, med_int *mnamelen,
 				 _inum,
 				 (med_int*) num,
 				 _ifam,
-				 (med_int *) fam); 
+				 (med_int *) fam);
 
   _MEDcstringFree(_fn1);
   _MEDcstringFree(_fn2);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFNOR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *swm,med_float *coo,
 		  med_int *iname, char*nname, unsigned int bidon,
 		  med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #else
-med_int 
+med_int
 nmmhfnor(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *swm, med_float *coo,
-	 med_int *iname, char*nname, med_int *inum, med_int *num, 
+	 med_int *iname, char*nname, med_int *inum, med_int *num,
 	 med_int *ifam, med_int *fam)
 #endif
 {
-  med_int _ret,_n; 
+  med_int _ret,_n;
   char *_fn1, *_fs2;
   med_switch_mode _swm = (med_switch_mode) *swm;
   med_bool _iname,_inum,_ifam,_changement,_transformation;
@@ -1386,7 +1386,7 @@ nmmhfnor(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _n = MEDmeshnEntity((med_idt) *fid,_fn1,(med_int) *numdt,(med_int) *numit, 
+  _n = MEDmeshnEntity((med_idt) *fid,_fn1,(med_int) *numdt,(med_int) *numit,
 		     MED_NODE,MED_NONE,MED_NAME,MED_NO_CMODE,&_changement,
 		     &_transformation);
   if (_n < 0)
@@ -1395,19 +1395,19 @@ nmmhfnor(med_idt *fid, char *mname, med_int *mnamelen,
   _fs2 = (char *) malloc(sizeof(char)*MED_SNAME_SIZE*_n+1);*_fs2='\0';
   if (!_fs2)
     return (-1);
-  
-  _ret = (med_int) MEDmeshNodeRd((med_idt) *fid, 
-				 (char*) _fn1, 
+
+  _ret = (med_int) MEDmeshNodeRd((med_idt) *fid,
+				 (char*) _fn1,
 				 (med_int) *numdt,
-				 (med_int) *numit, 
-				 _swm, 
+				 (med_int) *numit,
+				 _swm,
 				 (med_float *) coo,
 				 &_iname,
 				 _fs2,
 				 &_inum,
 				 (med_int*) num,
 				 &_ifam,
-				 (med_int *) fam); 
+				 (med_int *) fam);
 
   _MEDc2fString(_fs2,nname,MED_SNAME_SIZE*_n);
 
@@ -1418,30 +1418,30 @@ nmmhfnor(med_idt *fid, char *mname, med_int *mnamelen,
   _MEDcstringFree(_fn1);
   free(_fs2);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFELW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt,  med_int *entype, med_int *geotype,
-		  med_int *cmode, med_int *swm, 
+		  med_int *cmode, med_int *swm,
 		  med_int *n, med_int *connectivity,
 		  med_int *iname, char*nname, unsigned int bidon2, med_int *nnamelen,
 		  med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #else
-med_int 
+med_int
 nmmhfelw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float *dt, med_int *entype, med_int *geotype,
-	 med_int *cmode, med_int *swm, 
+	 med_int *cmode, med_int *swm,
 	 med_int *n, med_int *connectivity,
 	 med_int *iname, char*nname, med_int *nnamelen,
 	 med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_switch_mode _swm = (med_switch_mode) *swm;
   med_bool _iname = (med_bool) *iname;
@@ -1459,16 +1459,16 @@ nmmhfelw(med_idt *fid, char *mname, med_int *mnamelen,
   _fn2 = _MED1cstring(nname, (int) *nnamelen,(int) *n*MED_SNAME_SIZE);
   if (!_fn2)
     return(-1);
-  
-  _ret = (med_int) MEDmeshElementWr((med_idt) *fid, 
-				    (char*) _fn1, 
+
+  _ret = (med_int) MEDmeshElementWr((med_idt) *fid,
+				    (char*) _fn1,
 				    (med_int) *numdt,
-				    (med_int) *numit, 
-				    (med_float) *dt, 
+				    (med_int) *numit,
+				    (med_float) *dt,
 				    _etype,
 				    _gtype,
 				    _cmode,
-				    _swm, 
+				    _swm,
 				    (med_int) *n,
 				    (med_int *) connectivity,
 				    _iname,
@@ -1476,30 +1476,30 @@ nmmhfelw(med_idt *fid, char *mname, med_int *mnamelen,
 				    _inum,
 				    (med_int*) num,
 				    _ifam,
-				    (med_int *) fam); 
+				    (med_int *) fam);
 
   _MEDcstringFree(_fn1);
   _MEDcstringFree(_fn2);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFELR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
-		  med_int *cmode, med_int *swm, 
+		  med_int *cmode, med_int *swm,
 		  med_int *connectivity,
 		  med_int *iname, char*nname, unsigned int bidon,
 		  med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #else
-med_int 
+med_int
 nmmhfelr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 	 med_int *cmode, med_int *swm, med_int *connectivity,
-	 med_int *iname, char*nname, 
+	 med_int *iname, char*nname,
 	 med_int *inum, med_int *num, med_int *ifam, med_int *fam)
 #endif
 {
@@ -1515,7 +1515,7 @@ nmmhfelr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _n = MEDmeshnEntity((med_idt) *fid,_fn1,(med_int) *numdt,(med_int) *numit, 
+  _n = MEDmeshnEntity((med_idt) *fid,_fn1,(med_int) *numdt,(med_int) *numit,
 		      _etype,_gtype,MED_NAME,_cmode,&_changement,
 		      &_transformation);
   if (_n < 0)
@@ -1525,21 +1525,21 @@ nmmhfelr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fs2)
     return (-1);
 
-  _ret = (med_int) MEDmeshElementRd((med_idt) *fid, 
-				    _fn1, 
+  _ret = (med_int) MEDmeshElementRd((med_idt) *fid,
+				    _fn1,
 				    (med_int) *numdt,
-				    (med_int) *numit, 
+				    (med_int) *numit,
 				    _etype,
 				    _gtype,
 				    _cmode,
-				    _swm, 
+				    _swm,
 				    (med_int *) connectivity,
 				    &_iname,
 				    _fs2,
 				    &_inum,
 				    (med_int*) num,
 				    &_ifam,
-				    (med_int *) fam); 
+				    (med_int *) fam);
 
   *iname = (med_int) _iname;
   *inum = (med_int) _inum;
@@ -1550,111 +1550,111 @@ nmmhfelr(med_idt *fid, char *mname, med_int *mnamelen,
   _MEDcstringFree(_fn1);
   free(_fs2);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCAW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt,
 		  unsigned char **flt, med_float *coo)
 #else
-med_int 
+med_int
 nmmhfcaw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_float *dt,  
+	 med_int *numdt, med_int *numit, med_float *dt,
 	 unsigned char **flt,med_float *coo)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
-  _ret = (med_int) MEDmeshNodeCoordinateAdvancedWr((med_idt) *fid, 
-						   _fn1, 
+
+  _ret = (med_int) MEDmeshNodeCoordinateAdvancedWr((med_idt) *fid,
+						   _fn1,
 						   (med_int) *numdt,
-						   (med_int) *numit, 
+						   (med_int) *numit,
 						   (med_float) *dt,
 						   _filter,
-						   (med_float *) coo); 
+						   (med_float *) coo);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCAR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, unsigned char **flt,
 		  med_float *coo)
 #else
-med_int 
+med_int
 nmmhfcar(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, unsigned char **flt,
 	 med_float *coo)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
-  _ret = (med_int) MEDmeshNodeCoordinateAdvancedRd((med_idt) *fid, 
-						   _fn1, 
+
+  _ret = (med_int) MEDmeshNodeCoordinateAdvancedRd((med_idt) *fid,
+						   _fn1,
 						   (med_int) *numdt,
-						   (med_int) *numit, 
-						   _filter, 
-						   (med_float *) coo); 
+						   (med_int) *numit,
+						   _filter,
+						   (med_float *) coo);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFYAW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float* dt,
 		  med_int *entype, med_int *geotype,  med_int *cmode, unsigned char **flt,
 		  med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfyaw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float* dt,
 	 med_int *entype, med_int *geotype, med_int *cmode,
 	 unsigned char **flt, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshElementConnectivityAdvancedWr((med_idt) *fid, 
-							 _fn1, 
+  _ret = (med_int) MEDmeshElementConnectivityAdvancedWr((med_idt) *fid,
+							 _fn1,
 							(med_int) *numdt,
-							(med_int) *numit, 
+							(med_int) *numit,
 							(med_float) *dt,
-							_etype, 
+							_etype,
 							_gtype,
 							_cmode,
 							_filter,
@@ -1667,35 +1667,35 @@ nmmhfyaw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFYAR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, 
-		  med_int *entype, med_int *geotype, med_int *cmode, 
+		  med_int *numdt, med_int *numit,
+		  med_int *entype, med_int *geotype, med_int *cmode,
 		  unsigned char **flt, med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfyar(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, 
-	 med_int *entype, med_int *geotype, med_int *cmode, 
+	 med_int *numdt, med_int *numit,
+	 med_int *entype, med_int *geotype, med_int *cmode,
 	 unsigned char **flt, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshElementConnectivityAdvancedRd((med_idt) *fid, 
-							(char*) _fn1, 
+  _ret = (med_int) MEDmeshElementConnectivityAdvancedRd((med_idt) *fid,
+							(char*) _fn1,
 							(med_int) *numdt,
-							(med_int) *numit, 
-							_etype, 
+							(med_int) *numit,
+							_etype,
 							_gtype,
 							_cmode,
 							_filter,
@@ -1709,20 +1709,20 @@ nmmhfyar(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFPGW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float* dt,
-		  med_int *entype, med_int *cmode, 
+		  med_int *entype, med_int *cmode,
 		  med_int *indexsize, med_int *index, med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfpgw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float* dt,
-	 med_int *entype, med_int *cmode, 
+	 med_int *entype, med_int *cmode,
 	 med_int *indexsize, med_int *index, med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
@@ -1731,17 +1731,17 @@ nmmhfpgw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshPolygonWr((med_idt) *fid, 
-				    (char*)   _fn1, 
+  _ret = (med_int) MEDmeshPolygonWr((med_idt) *fid,
+				    (char*)   _fn1,
 				    (med_int) *numdt,
-				    (med_int) *numit, 
+				    (med_int) *numit,
 				    (med_float) *dt,
-				    _etype, 
+				    _etype,
 				    _cmode,
 				    (med_int) *indexsize,
 				    (med_int *) index,
 				    (med_int *) connectivity);
-  
+
   _MEDcstringFree(_fn1);
 
   return (_ret);
@@ -1749,22 +1749,22 @@ nmmhfpgw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFPGR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, 
-		  med_int *entype, med_int *cmode, 
+		  med_int *numdt, med_int *numit,
+		  med_int *entype, med_int *cmode,
 		  med_int *index,
 		  med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfpgr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, 
-	 med_int *entype, med_int *cmode, 
+	 med_int *numdt, med_int *numit,
+	 med_int *entype, med_int *cmode,
 	 med_int *index,
 	 med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
@@ -1773,11 +1773,11 @@ nmmhfpgr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshPolygonRd((med_idt) *fid, 
-				    (char*) _fn1, 
+  _ret = (med_int) MEDmeshPolygonRd((med_idt) *fid,
+				    (char*) _fn1,
 				    (med_int) *numdt,
-				    (med_int) *numit, 
-				    _etype, 
+				    (med_int) *numit,
+				    _etype,
 				    _cmode,
 				    (med_int *) index,
 				    (med_int *) connectivity);
@@ -1789,24 +1789,24 @@ nmmhfpgr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFPHW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float* dt,
-		  med_int *entype, med_int *cmode, 
+		  med_int *entype, med_int *cmode,
 		  med_int *findexsize, med_int *findex,
  		  med_int *nindexsize, med_int *nindex,
 		  med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfphw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float* dt,
-	 med_int *entype, med_int *cmode, 
+	 med_int *entype, med_int *cmode,
 	 med_int *findexsize, med_int *findex,
 	 med_int *nindexsize, med_int *nindex,
 	 med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
@@ -1815,19 +1815,19 @@ nmmhfphw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshPolyhedronWr((med_idt) *fid, 
-				       (char*)   _fn1, 
+  _ret = (med_int) MEDmeshPolyhedronWr((med_idt) *fid,
+				       (char*)   _fn1,
 				       (med_int) *numdt,
-				       (med_int) *numit, 
+				       (med_int) *numit,
 				       (med_float) *dt,
-				       _etype, 
+				       _etype,
 				       _cmode,
 				       (med_int) *findexsize,
 				       (med_int *) findex,
 				       (med_int) *nindexsize,
 				       (med_int *) nindex,
 				       (med_int *) connectivity);
-  
+
   _MEDcstringFree(_fn1);
 
   return (_ret);
@@ -1836,24 +1836,24 @@ nmmhfphw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFPHR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit,
-		  med_int *entype, med_int *cmode, 
+		  med_int *entype, med_int *cmode,
 		  med_int *findex,
  		  med_int *nindex,
 		  med_int *connectivity)
 #else
-med_int 
+med_int
 nmmhfphr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit,
-	 med_int *entype, med_int *cmode, 
+	 med_int *entype, med_int *cmode,
 	 med_int *findex,
 	 med_int *nindex,
 	 med_int *connectivity)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_connectivity_mode _cmode = (med_connectivity_mode) *cmode;
@@ -1862,34 +1862,34 @@ nmmhfphr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshPolyhedronRd((med_idt) *fid, 
-				       (char*)   _fn1, 
+  _ret = (med_int) MEDmeshPolyhedronRd((med_idt) *fid,
+				       (char*)   _fn1,
 				       (med_int) *numdt,
-				       (med_int) *numit, 
-				       _etype, 
+				       (med_int) *numit,
+				       _etype,
 				       _cmode,
 				       (med_int *) findex,
 				       (med_int *) nindex,
 				       (med_int *) connectivity);
-  
+
   _MEDcstringFree(_fn1);
 
   return (_ret);
 }
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGNW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *n, med_int *num)
 #else
-med_int 
+med_int
 nmmhfgnw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, 
+	 med_int *numdt, med_int *numit, med_int *entype,
 	 med_int *geotype, med_int *n, med_int *num)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -1898,12 +1898,12 @@ nmmhfgnw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int)  MEDmeshGlobalNumberWr((med_idt) *fid, 
-					  (char*) _fn1, 
+  _ret = (med_int)  MEDmeshGlobalNumberWr((med_idt) *fid,
+					  (char*) _fn1,
 					  (med_int) *numdt,
-					  (med_int) *numit, 
-					  _etype, 
-					  _gtype, 
+					  (med_int) *numit,
+					  _etype,
+					  _gtype,
 					  (med_int) *n,
 					  (med_int *) num);
 
@@ -1914,18 +1914,18 @@ nmmhfgnw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFGNR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_int *entype, med_int *geotype,
 		  med_int *num)
 #else
-med_int 
+med_int
 nmmhfgnr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, 
+	 med_int *numdt, med_int *numit, med_int *entype,
 	 med_int *geotype, med_int *num)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -1934,11 +1934,11 @@ nmmhfgnr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int)  MEDmeshGlobalNumberRd((med_idt) *fid, 
-					  (char*) _fn1, 
+  _ret = (med_int)  MEDmeshGlobalNumberRd((med_idt) *fid,
+					  (char*) _fn1,
 					  (med_int) *numdt,
-					  (med_int) *numit, 
-					  _etype, 
+					  (med_int) *numit,
+					  _etype,
 					  _gtype,
 					  (med_int *) num);
 
@@ -1948,14 +1948,14 @@ nmmhfgnr(med_idt *fid, char *mname, med_int *mnamelen,
 }
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCSC(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt1, med_int *numit1, 
+		  med_int *numdt1, med_int *numit1,
 		  med_int *numdt2, med_int *numit2, med_float *dt2)
 #else
-med_int 
+med_int
 nmmhfcsc(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt1, med_int *numit1, 
+	 med_int *numdt1, med_int *numit1,
 	 med_int *numdt2, med_int *numit2, med_float *dt2)
 #endif
 {
@@ -1966,13 +1966,13 @@ nmmhfcsc(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshComputationStepCr((const med_idt) *fid, 
-					    (const char*) _fn1, 
+  _ret = (med_int) MEDmeshComputationStepCr((const med_idt) *fid,
+					    (const char*) _fn1,
 					    (const med_int) *numdt1,
-					    (const med_int) *numit1, 
+					    (const med_int) *numit1,
 					    (const med_int) *numdt2,
-					    (const med_int) *numit2, 
-					    (med_float) *dt2); 
+					    (const med_int) *numit2,
+					    (med_float) *dt2);
 
   _MEDcstringFree(_fn1);
 
@@ -1981,13 +1981,13 @@ nmmhfcsc(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCSI(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *csit, med_int *numdt, med_int *numit, med_float *dt)
 #else
-med_int 
+med_int
 nmmhfcsi(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *csit, med_int *numdt, med_int *numit, 
+	 med_int *csit, med_int *numdt, med_int *numit,
 	 med_float *dt)
 #endif
 {
@@ -1998,12 +1998,12 @@ nmmhfcsi(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshComputationStepInfo((const med_idt) *fid, 
-					      (const char*) _fn1, 
+  _ret = (med_int) MEDmeshComputationStepInfo((const med_idt) *fid,
+					      (const char*) _fn1,
 					      (const med_int) *csit,
 					      (med_int *) numdt,
-					      (med_int *) numit, 
-					      (med_float *) dt); 
+					      (med_int *) numit,
+					      (med_float *) dt);
 
   _MEDcstringFree(_fn1);
 
@@ -2013,13 +2013,13 @@ nmmhfcsi(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFCSR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt)
 #else
-med_int 
+med_int
 nmmhfcsr(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, 
+	 med_int *numdt, med_int *numit,
 	 med_float *dt)
 #endif
 {
@@ -2030,11 +2030,11 @@ nmmhfcsr(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshComputationStepDtRd((const med_idt) *fid, 
-					      (const char*) _fn1, 
+  _ret = (med_int) MEDmeshComputationStepDtRd((const med_idt) *fid,
+					      (const char*) _fn1,
 					      (const med_int) *numdt,
-					      (const med_int) *numit, 
-					      (med_float *) dt); 
+					      (const med_int) *numit,
+					      (med_float *) dt);
 
   _MEDcstringFree(_fn1);
 
@@ -2043,11 +2043,11 @@ nmmhfcsr(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFSTR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *stype)
 #else
-med_int 
+med_int
 nmmhfstr(med_idt *fid, char *mname, med_int *mnamelen,med_int *stype)
 #endif
 {
@@ -2059,8 +2059,8 @@ nmmhfstr(med_idt *fid, char *mname, med_int *mnamelen,med_int *stype)
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshSortingTypeRd((const med_idt) *fid, 
-					(const char*) _fn1, 
+  _ret = (med_int) MEDmeshSortingTypeRd((const med_idt) *fid,
+					(const char*) _fn1,
 					&_st);
 
   *stype = (med_int) _st;
@@ -2072,20 +2072,20 @@ nmmhfstr(med_idt *fid, char *mname, med_int *mnamelen,med_int *stype)
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFRAW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_int *geotype, 
+		  med_int *numdt, med_int *numit, med_int *geotype,
 		  char *aname, unsigned int bidon2, med_int *anamelen,
 		  med_int *n, med_float *val)
 #else
-med_int 
+med_int
 nmmhfraw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *geotype, 
+	 med_int *numdt, med_int *numit, med_int *geotype,
 	 char *aname, med_int *anamelen,
 	 med_int *n, med_float *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
 
@@ -2097,10 +2097,10 @@ nmmhfraw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn2)
     return(-1);
 
-  _ret = (med_int) MEDmeshStructElementVarAttWr((med_idt) *fid, 
-						_fn1, 
+  _ret = (med_int) MEDmeshStructElementVarAttWr((med_idt) *fid,
+						_fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
+						(med_int) *numit,
 						_gtype,
 						_fn2,
 						(med_int) *n,
@@ -2114,20 +2114,20 @@ nmmhfraw(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFIAW(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_int *geotype, 
+		  med_int *numdt, med_int *numit, med_int *geotype,
 		  char *aname, unsigned int bidon2, med_int *anamelen,
 		  med_int *n, med_int *val)
 #else
-med_int 
+med_int
 nmmhfiaw(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *geotype, 
+	 med_int *numdt, med_int *numit, med_int *geotype,
 	 char *aname, med_int *anamelen,
 	 med_int *n, med_int *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
 
@@ -2139,10 +2139,10 @@ nmmhfiaw(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn2)
     return(-1);
 
-  _ret = (med_int) MEDmeshStructElementVarAttWr((med_idt) *fid, 
-						_fn1, 
+  _ret = (med_int) MEDmeshStructElementVarAttWr((med_idt) *fid,
+						_fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
+						(med_int) *numit,
 						_gtype,
 						_fn2,
 						(med_int) *n,
@@ -2232,14 +2232,14 @@ MMHFRAR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
 		  char *aname, unsigned int bidon2, med_int *anamelen,
 		  med_float *val)
 #else
-med_int 
+med_int
 nmmhfrar(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *geotype, 
+	 med_int *numdt, med_int *numit, med_int *geotype,
 	 char *aname, med_int *anamelen,
 	 med_float *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
 
@@ -2251,10 +2251,10 @@ nmmhfrar(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn2)
     return(-1);
 
-  _ret = (med_int) MEDmeshStructElementVarAttRd((med_idt) *fid, 
-						_fn1, 
+  _ret = (med_int) MEDmeshStructElementVarAttRd((med_idt) *fid,
+						_fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
+						(med_int) *numit,
 						_gtype,
 						_fn2,
 						(void *) val);
@@ -2267,20 +2267,20 @@ nmmhfrar(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFIAR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_int *geotype, 
+		  med_int *numdt, med_int *numit, med_int *geotype,
 		  char *aname, unsigned int bidon2, med_int *anamelen,
 		  med_int *val)
 #else
-med_int 
+med_int
 nmmhfiar(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *geotype, 
+	 med_int *numdt, med_int *numit, med_int *geotype,
 	 char *aname, med_int *anamelen,
 	 med_int *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
 
@@ -2292,10 +2292,10 @@ nmmhfiar(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn2)
     return(-1);
 
-  _ret = (med_int) MEDmeshStructElementVarAttRd((med_idt) *fid, 
-						_fn1, 
+  _ret = (med_int) MEDmeshStructElementVarAttRd((med_idt) *fid,
+						_fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
+						(med_int) *numit,
 						_gtype,
 						_fn2,
 						(void *) val);
@@ -2309,20 +2309,20 @@ nmmhfiar(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFSAR(med_idt *fid, char *mname, unsigned int bidon1, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_int *geotype, 
+		  med_int *numdt, med_int *numit, med_int *geotype,
 		  char *aname, unsigned int bidon2, med_int *anamelen,
 		  char *val, unsigned int bidon3)
 #else
-med_int 
+med_int
 nmmhfsar(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *geotype, 
+	 med_int *numdt, med_int *numit, med_int *geotype,
 	 char *aname, med_int *anamelen,
 	 char *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1, *_fn2;
   char *_fs3;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
@@ -2343,31 +2343,31 @@ nmmhfsar(med_idt *fid, char *mname, med_int *mnamelen,
     return(-1);
 
   /* on recupere le nom du modèle de structure */
-  _ret = MEDstructElementName((med_idt) *fid, 
-			      _gtype, 
-			      _modelname);   
+  _ret = MEDstructElementName((med_idt) *fid,
+			      _gtype,
+			      _modelname);
   if (_ret < 0)
     return (-1);
 
   /* on recupere le nombre de composante de l'attribut */
-  if (MEDstructElementVarAttInfoByName((med_idt ) *fid, 
-				       _modelname,  
-				       _fn2, 
-				       &_atype, 
-				       &_nacomp) < 0) 
+  if (MEDstructElementVarAttInfoByName((med_idt ) *fid,
+				       _modelname,
+				       _fn2,
+				       &_atype,
+				       &_nacomp) < 0)
     return -1;
 
  /* On recupere le nombre d'element correspondant
     au type de modele de structure dans le maillage
-    de calcul 
+    de calcul
   */
-  _n =  MEDmeshnEntity((med_idt) *fid, 
-		       _fn1, 
+  _n =  MEDmeshnEntity((med_idt) *fid,
+		       _fn1,
 		       (med_int) *numdt,
-		       (med_int) *numit, 
+		       (med_int) *numit,
 		       MED_STRUCT_ELEMENT,
 		       _gtype,
-		       MED_CONNECTIVITY, 
+		       MED_CONNECTIVITY,
 		       MED_NODAL,
 		       &_coordinatechangement,
 		       &_geotransformation);
@@ -2381,10 +2381,10 @@ nmmhfsar(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fs3)
     return(-1);
 
-  _ret = (med_int) MEDmeshStructElementVarAttRd((med_idt) *fid, 
-						_fn1, 
+  _ret = (med_int) MEDmeshStructElementVarAttRd((med_idt) *fid,
+						_fn1,
 						(med_int) *numdt,
-						(med_int) *numit, 
+						(med_int) *numit,
 						_gtype,
 						_fn2,
 						(void *) _fs3);
@@ -2401,18 +2401,18 @@ nmmhfsar(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFENI(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *numdt, med_int *numit, med_int *entype, med_int *it, 
+		  med_int *numdt, med_int *numit, med_int *entype, med_int *it,
 		  char *geoname, unsigned int bidon1, med_int *geotype)
 #else
-med_int 
+med_int
 nmmhfeni(med_idt *fid, char *mname, med_int *mnamelen,
-	 med_int *numdt, med_int *numit, med_int *entype, med_int *it, 
+	 med_int *numdt, med_int *numit, med_int *entype, med_int *it,
 	 char *geoname, med_int *geotype)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   char _fs1[MED_NAME_SIZE+1]="";
   med_entity_type _etype = (med_entity_type) *entype;
@@ -2422,18 +2422,18 @@ nmmhfeni(med_idt *fid, char *mname, med_int *mnamelen,
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int)  MEDmeshEntityInfo((med_idt) *fid, 
-				      (char*) _fn1, 
+  _ret = (med_int)  MEDmeshEntityInfo((med_idt) *fid,
+				      (char*) _fn1,
 				      (med_int) *numdt,
-				      (med_int) *numit, 
-				      _etype, 
+				      (med_int) *numit,
+				      _etype,
 				      (med_int) *it,
 				      _fs1,
 				      &_gtype);
-  
+
   *geotype = (med_int) _gtype;
   _MEDc2fString(_fs1,geoname,MED_NAME_SIZE);
-  
+
   _MEDcstringFree(_fn1);
 
   return (_ret);
@@ -2441,107 +2441,107 @@ nmmhfeni(med_idt *fid, char *mname, med_int *mnamelen,
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFTFW(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		  med_int *numdt, med_int *numit, med_float *dt, med_float *tsf)
 #else
-med_int 
+med_int
 nmmhftfw(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float *dt, med_float *tsf)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
-  _ret = (med_int) MEDmeshNodeCoordinateTrsfWr((med_idt) *fid, 
-					       (char*) _fn1, 
+
+  _ret = (med_int) MEDmeshNodeCoordinateTrsfWr((med_idt) *fid,
+					       (char*) _fn1,
 					       (med_int) *numdt,
-					       (med_int) *numit, 
+					       (med_int) *numit,
 					       (med_float) *dt,
-					       (med_float *) tsf); 
+					       (med_float *) tsf);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 #ifdef PPRO_NT
-med_int 
+med_int
 MMHFTFR(med_idt *fid, char *mname, unsigned int bidon, med_int *mnamelen,
 		med_int *numdt, med_int *numit, med_float *tsf)
 #else
-med_int 
+med_int
 nmmhftfr(med_idt *fid, char *mname, med_int *mnamelen,
 	 med_int *numdt, med_int *numit, med_float *tsf)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
-  
-  _ret = (med_int) MEDmeshNodeCoordinateTrsfRd((med_idt) *fid, 
-					       (char*) _fn1, 
+
+  _ret = (med_int) MEDmeshNodeCoordinateTrsfRd((med_idt) *fid,
+					       (char*) _fn1,
 					       (med_int) *numdt,
-					       (med_int) *numit, 
-					       (med_float *) tsf); 
+					       (med_int) *numit,
+					       (med_float *) tsf);
 
   _MEDcstringFree(_fn1);
 
-  return(_ret); 
+  return(_ret);
 }
 
 
 
 
 #ifdef PPRO_NT
-med_int 
-MMHFAAW(med_idt *fid, 
+med_int
+MMHFAAW(med_idt *fid,
 		  char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *datatype, 
-		  med_int *numdt, 
+		  med_int *datatype,
+		  med_int *numdt,
 		  med_int *numit,
-		  med_int *entype, 
-		  med_int *geotype,  
+		  med_int *entype,
+		  med_int *geotype,
 		  unsigned char **flt,
 		  med_int *val)
 #else
-med_int 
-nmmhfaaw(med_idt *fid, 
+med_int
+nmmhfaaw(med_idt *fid,
 	 char *mname, med_int *mnamelen,
 	 med_int *datatype,
-	 med_int *numdt, 
-	 med_int *numit, 
+	 med_int *numdt,
+	 med_int *numit,
 	 med_int *entype,
-	 med_int *geotype, 
-	 unsigned char **flt, 
+	 med_int *geotype,
+	 unsigned char **flt,
 	 med_int *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
   med_data_type _datatype = (med_data_type) *datatype;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshEntityAttributeAdvancedWr((med_idt) *fid, 
+  _ret = (med_int) MEDmeshEntityAttributeAdvancedWr((med_idt) *fid,
 						    _fn1,
 						    _datatype,
 						    (med_int) *numdt,
-						    (med_int) *numit, 
-						    _etype, 
+						    (med_int) *numit,
+						    _etype,
 						    _gtype,
 						    _filter,
 						    (med_int *) val);
@@ -2554,46 +2554,46 @@ nmmhfaaw(med_idt *fid,
 
 
 #ifdef PPRO_NT
-med_int 
-MMHFAAR(med_idt *fid, 
+med_int
+MMHFAAR(med_idt *fid,
 		  char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *datatype, 
-		  med_int *numdt, 
+		  med_int *datatype,
+		  med_int *numdt,
 		  med_int *numit,
-		  med_int *entype, 
-		  med_int *geotype,  
+		  med_int *entype,
+		  med_int *geotype,
 		  unsigned char **flt,
 		  med_int *val)
 #else
-med_int 
-nmmhfaar(med_idt *fid, 
+med_int
+nmmhfaar(med_idt *fid,
 	 char *mname, med_int *mnamelen,
 	 med_int *datatype,
-	 med_int *numdt, 
-	 med_int *numit, 
+	 med_int *numdt,
+	 med_int *numit,
 	 med_int *entype,
-	 med_int *geotype, 
-	 unsigned char **flt, 
+	 med_int *geotype,
+	 unsigned char **flt,
 	 med_int *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
   med_data_type _datatype = (med_data_type) *datatype;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshEntityAttributeAdvancedRd((med_idt) *fid, 
+  _ret = (med_int) MEDmeshEntityAttributeAdvancedRd((med_idt) *fid,
 						    _fn1,
 						    _datatype,
 						    (med_int) *numdt,
-						    (med_int) *numit, 
-						    _etype, 
+						    (med_int) *numit,
+						    _etype,
 						    _gtype,
 						    _filter,
 						    (med_int *) val);
@@ -2608,46 +2608,46 @@ nmmhfaar(med_idt *fid,
 
 
 #ifdef PPRO_NT
-med_int 
-MMHFASW(med_idt *fid, 
+med_int
+MMHFASW(med_idt *fid,
 		  char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *datatype, 
-		  med_int *numdt, 
+		  med_int *datatype,
+		  med_int *numdt,
 		  med_int *numit,
-		  med_int *entype, 
-		  med_int *geotype,  
+		  med_int *entype,
+		  med_int *geotype,
 		  unsigned char **flt,
 		  char *val)
 #else
-med_int 
-nmmhfasw(med_idt *fid, 
+med_int
+nmmhfasw(med_idt *fid,
 	 char *mname, med_int *mnamelen,
 	 med_int *datatype,
-	 med_int *numdt, 
-	 med_int *numit, 
+	 med_int *numdt,
+	 med_int *numit,
 	 med_int *entype,
-	 med_int *geotype, 
-	 unsigned char **flt, 
+	 med_int *geotype,
+	 unsigned char **flt,
 	 char *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
   med_data_type _datatype = (med_data_type) *datatype;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshEntityAttributeAdvancedWr((med_idt) *fid, 
+  _ret = (med_int) MEDmeshEntityAttributeAdvancedWr((med_idt) *fid,
 						    _fn1,
 						    _datatype,
 						    (med_int) *numdt,
-						    (med_int) *numit, 
-						    _etype, 
+						    (med_int) *numit,
+						    _etype,
 						    _gtype,
 						    _filter,
 						    val);
@@ -2661,46 +2661,46 @@ nmmhfasw(med_idt *fid,
 
 
 #ifdef PPRO_NT
-med_int 
-MMHFASR(med_idt *fid, 
+med_int
+MMHFASR(med_idt *fid,
 		  char *mname, unsigned int bidon, med_int *mnamelen,
-		  med_int *datatype, 
-		  med_int *numdt, 
+		  med_int *datatype,
+		  med_int *numdt,
 		  med_int *numit,
-		  med_int *entype, 
-		  med_int *geotype,  
+		  med_int *entype,
+		  med_int *geotype,
 		  unsigned char **flt,
 		  char *val)
 #else
-med_int 
-nmmhfasr(med_idt *fid, 
+med_int
+nmmhfasr(med_idt *fid,
 	 char *mname, med_int *mnamelen,
 	 med_int *datatype,
-	 med_int *numdt, 
-	 med_int *numit, 
+	 med_int *numdt,
+	 med_int *numit,
 	 med_int *entype,
-	 med_int *geotype, 
-	 unsigned char **flt, 
+	 med_int *geotype,
+	 unsigned char **flt,
 	 char *val)
 #endif
 {
-  med_int _ret; 
+  med_int _ret;
   char *_fn1;
   med_entity_type _etype = (med_entity_type) *entype;
   med_geometry_type _gtype = (med_geometry_type) *geotype;
   med_data_type _datatype = (med_data_type) *datatype;
-  med_filter *_filter = (med_filter*) *flt; 
+  med_filter *_filter = (med_filter*) *flt;
 
   _fn1 = _MED2cstring((char *) mname, (int) *mnamelen);
   if (!_fn1)
     return(-1);
 
-  _ret = (med_int) MEDmeshEntityAttributeAdvancedRd((med_idt) *fid, 
+  _ret = (med_int) MEDmeshEntityAttributeAdvancedRd((med_idt) *fid,
 						    _fn1,
 						    _datatype,
 						    (med_int) *numdt,
-						    (med_int) *numit, 
-						    _etype, 
+						    (med_int) *numit,
+						    _etype,
 						    _gtype,
 						    _filter,
 						    val);

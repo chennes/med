@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -44,7 +44,7 @@ med_err _MEDgetDatatype(med_internal_type * const datatype, const med_data_type 
     }
 
   _ret = 0;
- ERROR:
+ /* ERROR: */
   return _ret;
 }
 

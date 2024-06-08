@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -25,9 +25,14 @@
 med_idt _MEDfileOpen(const char * const filename,const med_access_mode accessmode)
 {
 
-  med_idt _fid =-1;
-  int     _hdf_mode=-1;
-  hid_t   _fapl    = H5P_DEFAULT;
+  med_idt _ret          =  0;
+  med_idt _fid		=  0;
+  int     _hdf_mode	= -1;
+  hid_t   _fapl		=  H5P_DEFAULT;
+  med_int _fmajor	=  0;
+  med_int _fminor	=  0;
+  med_int _frelease	=  0;
+  med_int _fversionMM	=  0;
 
   /* H5AC_cache_config_t config; */
 
@@ -43,24 +48,58 @@ med_idt _MEDfileOpen(const char * const filename,const med_access_mode accessmod
       break;
 
     default :
-      MED_ERR_(_fid,MED_ERR_RANGE,MED_ERR_ACCESS,filename);
+      MED_ERR_(_ret,MED_ERR_RANGE,MED_ERR_ACCESS,filename);
       goto ERROR;
     }
 
   if ( (_fapl = H5Pcreate (H5P_FILE_ACCESS)) < 0 ) {
-    MED_ERR_(_fid,MED_ERR_CREATE,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
+    MED_ERR_(_ret,MED_ERR_CREATE,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
     goto ERROR;
   }
 
 
-  /* Cette ligne, présente depuis la 3.0, impose l'utilisation du modèle de données HDF 1.8 pour :
+  if ((_fid = H5Fopen(filename,_hdf_mode,_fapl)) < 0) {
+    /*La gestion de l'affichage des erreurs se fait dans la couche supérieure*/
+    /*cela permet de tester l'ouverture du fichier (cf MEDfileExist, MEDfileCompatibility) sans provoquer
+     d'affichage intempestif.*/
+    _fid = MED_ERR_OPEN MED_ERR_FILE;
+    /* MED_ERR_(_fid,MED_ERR_OPEN,MED_ERR_FILE,""); */
+    /* ISCRUTE_int(accessmode); */
+    /* Ne pas activer la ligne suivante en production, car certains code
+       utlisent MEDfileOpen pour tester la présence d'un fichier */
+    /*    H5Eprint1(stderr); */
+    goto ERROR;
+  }
+
+
+  if ( H5Pclose(_fapl) < 0 ) {
+    MED_ERR_(_fid,MED_ERR_CLOSE,MED_ERR_PROPERTY,"");
+    goto ERROR;
+  }
+
+
+  if ( MEDfileNumVersionRd(_fid,&_fmajor,&_fminor,&_frelease) < 0) {
+    /* Si le fichier _fid ne possède pas la structure MED_INFOS 
+       (mountById, cf test20-0.med.hdf où la struct MED est dans un ss-groupe)
+       le fichier est considéré en version 0.0.0 et ne sera pas inscrit
+       en cache de version. cf. plus bas
+    */
+    /* MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"MEDfileNumVersionRd"); */
+    /* goto ERROR; */
+  }
+
+  _fversionMM = 100*_fmajor+10*_fminor;
+
+  /* OLD: EN MED4/HDF5-1.10 -> transposer en MED5/HDF5-1.12
+    Cette ligne, présente depuis la 3.0, impose l'utilisation du modèle de données HDF 1.8 pour :
      - Utiliser les nouvelles représentations HDF plus efficaces que dans les versions précédentes
      - Empêcher l'utilisation de nvlles représentations d'une future bibliothèque HDF 1.10
        qui poseait d'eventuels problèmes de relecture aux bibliothèques med
        utilisant encore la 1.8 (ce choix doit être manuel) :
     Les fichiers HDF 1.8 utilisent la nouvelle représentation des liens au sein des groupes :
-    compact (header) ou dense (hors header)  
+    compact (header) ou dense (hors header)
   */
+
   /* HDF-5 : UG
     Groups will be initially created in the compact‐or‐indexed format only when one or more of the following
     conditions is met:
@@ -70,37 +109,28 @@ med_idt _MEDfileOpen(const char * const filename,const med_access_mode accessmod
         When this property is set for an HDF5 file, all objects in the file will be created using the latest
         available format; no effort will be made to create a file that can be read by older libraries.
 
-   •   The creation order tracking property, H5P_CRT_ORDER_TRACKED, has been set in the group creation property list (see H5Pset_link_creation_order). 
+   •   The creation order tracking property, H5P_CRT_ORDER_TRACKED,
+       has been set in the group creation property list (see H5Pset_link_creation_order).
   */
-#if H5_VERS_MINOR > 10
+
+#if H5_VERS_MINOR > 12
 #error "Don't forget to change the compatibility version of the library !"
 #endif
-/* L'avantage de bloquer le modèle interne HDF5 
+/* L'avantage de bloquer le modèle interne HDF5
    est que l'on peut modifier des fichiers med de différentes versions majeures de fichiers.
-   L'inconvénient est que l'on ne profite pas des évolutions de performances d'HDF.
+   L'inconvénient est que l'on ne profite pas des évolutions de performances d'HDF (ou des bugs ;).
 */
-  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_18, H5F_LIBVER_18 ) ) {
-    MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
-    goto ERROR;
-  }
 
-  if ((_fid = H5Fopen(filename,_hdf_mode,_fapl)) < 0) {
-    /*La gestion de l'affichage des erreurs se fait dans la couche supérieure*/
-    /*cela permet de tester l'ouverture du fichier (cf MEDfileExist, MEDfileCompatibility) sans provoquer 
-     d'affichage intempestif.*/
-    _fid = MED_ERR_OPEN MED_ERR_FILE;
-    /* MED_ERR_(_fid,MED_ERR_OPEN,MED_ERR_FILE,""); */
-    /* ISCRUTE_int(accessmode); */
-    /* Ne pas activer la ligne suivante en production, car certains code 
-       utlisent MEDfileOpen pour tester la présence d'un fichier */
-    /*    H5Eprint1(stderr); */
-    goto ERROR;
-  }
-
-
-  if ( H5Pclose(_fapl) < 0 ) {
-    MED_ERR_(_fid,MED_ERR_CLOSE,MED_ERR_PROPERTY,"");
-    _fid=-1;goto ERROR;
+  if ( _fversionMM < 500 ) /*100*MED_NUM_MAJEUR+10*MED_NUM_MINEUR*/ {
+    if (H5Fset_libver_bounds(_fid, H5F_LIBVER_V18, H5F_LIBVER_V18) < 0) {
+      MED_ERR_(_ret,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
+      goto ERROR;
+    }
+  } else {
+    if ( H5Fset_libver_bounds(_fid, H5F_LIBVER_V112, H5F_LIBVER_V112) < 0) {
+      MED_ERR_(_ret,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
+      goto ERROR;
+    }
   }
 
 /* Adjust the size of metadata cache */
@@ -120,5 +150,26 @@ med_idt _MEDfileOpen(const char * const filename,const med_access_mode accessmod
 
  ERROR:
 
-  return _fid;
+  if (_fid > 0 ) {
+    if ( _ret < 0 ) {
+      MEDfileClose(_fid);
+      return _ret;
+    }
+    return _fid;
+  } else {
+    if (_fid == 0 ) {
+      return _ret;
+    }
+    return _fid;
+  }
+
+  /* if ( (_fid > 0 ) && ( _ret < 0 ) ) { */
+  /*   MEDfileClose(_fid); */
+  /*   return _ret; */
+  /* } */
+  /* if (_fid == 0 ) { */
+  /*   return _ret; */
+  /* } */
+  /* return _fid; */
+  
 }

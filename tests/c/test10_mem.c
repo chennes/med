@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -46,12 +46,41 @@
 
 #define USER_MODE MED_COMPACT_STMODE
 
+#ifdef DEF_MED_FLOAT32
+#define FTYPECHA MED_FLOAT32
+#define ftypecha med_float32
+#define filename_ "test10_f32"
+#else
+#define FTYPECHA MED_DOUBLE
+#define ftypecha med_double
+#define filename_ "test10"
+#endif
+
+#ifdef   DEF_MED_INT32
+#define ITYPECHA MED_INT32
+#define itypecha med_int32
+#define filename__ filename_ "_i32"
+#elif   DEF_MED_INT64
+#define ITYPECHA MED_INT64
+#define itypecha med_int64
+#define filename__ filename_ "_i64"
+#else
+#define ITYPECHA MED_INT
+#define itypecha med_int
+#define filename__ filename_
+#endif
+
+
+#define filename filename__ ".med"
+
 int main (int argc, char **argv)
 
 
 {
   med_err ret=0;
   med_idt fid;
+
+
 
   /* Maillage support aux champs*/
   /* Ces maillages sont vides*/
@@ -67,7 +96,7 @@ int main (int argc, char **argv)
                                    /*12345678901234561234567890123456*/
   char unit1[2*MED_SNAME_SIZE+1] = "unit1           unit2           ";
   med_int ncomp1  = 2;
-  /* Caractéristiques du model n° 1 de localisation des points de gauss pour le champ n° 1*/
+  /* Caractéristiques du model n° 1 de localisation des points de gauss pour le champ n°1*/
   med_int ngauss1_1 = 6;
   char gauss1_1[MED_NAME_SIZE+1]  = "Model n1";
   med_float refcoo1[12] = { -1.0,1.0, -1.0,-1.0, 1.0,-1.0, -1.0,0.0, 0.0,-1.0, 0.0,0.0 };
@@ -80,21 +109,21 @@ int main (int argc, char **argv)
 
   med_int   nval1_1= 1*6; /*1 valeurs et 6 points de gauss par valeur */
   med_int   _nent1_1= 1; /*1 valeurs et 6 points de gauss par valeur */
-  med_float valr1_1[1*6*2]  = {0.0,1.0, 2.0,3.0, 10.0,11.0, 12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
-  /* Caractéristiques du model n° 2 de localisation des points de gauss pour le champ n° 1*/
+  ftypecha  valr1_1[1*6*2]  = {0.0,1.0, 2.0,3.0, 10.0,11.0, 12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
+  /* Caractéristiques du model n° 2 de localisation des points de gauss pour le champ n°1*/
   med_int ngauss1_2 = 3;
   char gauss1_2[MED_NAME_SIZE+1]  = "Model n2";
   med_float gscoo1_2[6] = { -2.0/3,1.0/3, -2.0/3,-2.0/3, 1.0/3,-2.0/3  };
   med_float wg1_2[3] = { 2.0/3, 2.0/3, 2.0/3 };
   med_int   nval1_2= 2*3; /*2 valeurs et 3 points de gauss par valeur */
   med_int   _nent1_2= 2; /*2 valeurs et 3 points de gauss par valeur */
-  med_float valr1_2[2*3*2]  = {0.0,1.0, 2.0,3.0, 10.0,11.0,   12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
-  med_float valr1_2p[2*3*2]  = {                              12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
- /* Caractéristiques du model n° 3 sans points de gauss pour le champ n° 1*/
+  ftypecha  valr1_2[2*3*2]  = {0.0,1.0, 2.0,3.0, 10.0,11.0,   12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
+  ftypecha  valr1_2p[2*3*2]  = {                              12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
+ /* Caractéristiques du model n° 3 sans points de gauss pour le champ n°1*/
   med_int   nval1_3= 6; /*6 valeurs et pas de points de gauss */
   med_int   _nent1_3= 6; /*6 valeurs et pas de points de gauss */
-  med_float valr1_3[2*3*2]  = {0.0,1.0, 2.0,3.0, 10.0,11.0, 12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
-  med_float valr1_3p[2*2*2] = {         2.0,3.0, 10.0,11.0                                 };  /* 2 composantes profil1 */
+  ftypecha  valr1_3[2*3*2]  = {0.0,1.0, 2.0,3.0, 10.0,11.0, 12.0,13.0, 20.0,21.0, 22.0,23.0};  /* 2 composantes*/
+  ftypecha  valr1_3p[2*2*2] = {         2.0,3.0, 10.0,11.0                                 };  /* 2 composantes profil1 */
 
   /* Caractéristiques du champ n° 2 */
   char nomcha2[MED_NAME_SIZE+1]  = "champ entier";
@@ -103,8 +132,10 @@ int main (int argc, char **argv)
   char unit2[3*MED_SNAME_SIZE+1] = "unit1           unit2           unit3           ";
   med_int ncomp2  = 3; 
   med_int nval2 = 5;   /*5 valeurs */
-  med_int   valr2[5*3  ]  = {0,1,2, 10,11,12, 20,21,22, 30,31,32, 40,41,42};              /* 3 composantes*/
-  med_int   valr2p[3*3  ] = {0,1,2,           20,21,22,           40,41,42};              /* 3 composantes*/
+  itypecha   valr2[5*3  ]  = {0,1,2, 10,11,12, 20,21,22, 30,31,32, 40,41,42};              /* 3 composantes*/
+  /* u32b : 4294967296 s32b : 2147483647 -2147483647  */
+  itypecha   valr2_[5*3  ]  = {2147483647, -2147483648, 4294967296, 10,11,12, 20,21,22, 30,31,32, 40,41,42};
+  itypecha   valr2p[3*3  ] = {0,1,2,           20,21,22,           40,41,42};              /* 3 composantes*/
 
   /* Profils utilisés */
   char nomprofil1[MED_NAME_SIZE+1]  = "PROFIL(champ(1))";
@@ -123,12 +154,12 @@ int main (int argc, char **argv)
   med_int ncomp3  = 2;
   med_int nval3 = 5*4;     /*5 valeurs et 4 noeuds par element*/
   med_int _nent3 = 5;     /*5 valeurs et 4 noeuds par element*/
-  med_int valr3[5*4*2]   = {0,1, 10,11, 20,21, 30,31,
+  itypecha valr3[5*4*2]   = {0,1, 10,11, 20,21, 30,31,
                             40,41, 50,51, 60,61, 70,71,
                             80,81, 90,91, 100,101, 110,111,
                             120,121, 130,131, 140,141, 150,151,
                             160,161, 170,171, 180,181, 190,191};    /* 2 composantes*/
-  med_int valr3p[3*4*2]  = {0,1, 10,11, 20,21, 30,31,
+  itypecha valr3p[3*4*2]  = {0,1, 10,11, 20,21, 30,31,
                             80,81, 90,91, 100,101, 110,111,
                             160,161, 170,171, 180,181, 190,191};    /* 2 composantes*/
 
@@ -152,7 +183,7 @@ int main (int argc, char **argv)
   med_access_mode _accessmode;
   
   /* Il n'est pas necessaire de  pré-allouer la mémoire.
-   med-fichier s'occupe d'allouer la mémoire au fil de l'utilsation de l'API.*/
+   med-fichier s'occupe d'allouer la mémoire au fil de l'utilisation de l'API.*/
   /* Attention la structure doit être initialisée à MED_MEMFILE_INIT avant toute première utilisation.*/
   med_memfile memfile[1]    = MED_MEMFILE_INIT;
 
@@ -175,7 +206,7 @@ int main (int argc, char **argv)
          -> erreur car nous n'avons pas initialisé une image mémoire valide ! 
   */
   _accessmode = MED_ACC_CREAT;
-  if ((fid = MEDmemFileOpen("test10.med",memfile,MED_TRUE,_accessmode) ) < 0){
+  if ((fid = MEDmemFileOpen("test10_mem.med",memfile,MED_TRUE,_accessmode) ) < 0){
     MESSAGE("Erreur à l'ouverture du fichier : ");
     return -1;
   }
@@ -218,14 +249,14 @@ int main (int argc, char **argv)
   }
 
 
-  /* creation du champ réel n° 1 */
-  if ( MEDfieldCr(fid,nomcha1,MED_FLOAT64,ncomp1,comp1,unit1,dtunit,maa1 ) < 0) {
+  /* creation du champ réel n°1 */
+  if ( MEDfieldCr(fid,nomcha1,FTYPECHA,ncomp1,comp1,unit1,dtunit,maa1 ) < 0) {
     MESSAGE("Erreur à la création du champ : ");SSCRUTE(nomcha1);
     ret = -1;
   };
 
-  /* creation du champ entier n° 2 */
-  if ( MEDfieldCr(fid,nomcha2,MED_INT32,ncomp2,comp2,unit2,dtunit,maa2 ) < 0) {
+  /* creation du champ entier n°2 */
+  if ( MEDfieldCr(fid,nomcha2,ITYPECHA,ncomp2,comp2,unit2,dtunit,maa2 ) < 0) {
     MESSAGE("Erreur à la création du champ : ");SSCRUTE(nomcha2);
     ret = -1;
   };
@@ -286,11 +317,11 @@ int main (int argc, char **argv)
     ret = -1;
   };
 
-  /* Le test initial utilisait un deuxième maillage epour un même champ et une même étape de calcul,
-     ceci n'existe plus en 3.0*/
-  /* enregistre uniquement les composantes n° 2 de valr1_2, au pas de temps n° 1(5.5), n'utilise pas de n° d'ordre*/
+/*Ce test utilise un deuxième maillage pour un même champ, ceci n'existe plus en 3.0*/
+  /* enregistre uniquement les composantes n°2 de valr1_2, au pas de temps n°1(5.5), n'utilise pas de n°d'ordre*/
   /* ce champ repose sur le maillage maa1 qui est local */
 
+  /*Ce test utilise un deuxième maillage pour un même champ, ceci n'existe plus en 3.0*/
   if ( MEDfieldValueWithProfileWr(fid, nomcha1,1,1,5.5,MED_CELL,MED_TRIA6,USER_MODE,MED_ALLENTITIES_PROFILE,
 		       gauss1_1,USER_INTERLACE, 2, _nent1_1, (unsigned char*)valr1_1 ) < 0) {
     MESSAGE("Erreur à l'écriture du champ : ");
@@ -407,8 +438,8 @@ int main (int argc, char **argv)
     ret = -1;
   };
 
-  /* creation du champ entier n° 3 */
-  if ( MEDfieldCr(fid,nomcha3,MED_INT32,ncomp3,comp3,unit3,dtunit,maa1) < 0) {
+  /* creation du champ entier n°3 */
+  if ( MEDfieldCr(fid,nomcha3,ITYPECHA,ncomp3,comp3,unit3,dtunit,maa1) < 0) {
     MESSAGE("Erreur à la création du champ : ");SSCRUTE(nomcha3);
     ret = -1;
   };
@@ -450,8 +481,9 @@ AFF_MEMFILE;
 
   /* H5Fflush(fid, H5F_SCOPE_GLOBAL ); */
   _accessmode = MED_ACC_RDWR;
+  /* Utilisation du fichier mémoire et synchronisation avec un nouveau fichier.*/
   /*ATTENTION : Il faut au moins une écriture/création dans le fichier pour que le sync se fasse en mode RW*/
-  if ((fid = MEDmemFileOpen("test10_mem.med",memfile,MED_TRUE,_accessmode) ) < 0){
+  if ((fid = MEDmemFileOpen("test10_mem_ext.med",memfile,MED_TRUE,_accessmode) ) < 0){
     MESSAGE("Erreur à l'ouverture du fichier : ");
     return -1;
   }
@@ -467,7 +499,7 @@ AFF_MEMFILE;
   /*Il faut une écriture pour que le sync se fasse en mode RW*/
   if ( (ncha == 3) || (_accessmode == MED_ACC_RDWR) )
   /* creation du champ complémentaire  n° 2 */
-    if ( MEDfieldCr(fid,"Ajout Complémentaire 2",MED_FLOAT64,ncomp1,comp1,unit1,dtunit,maa1 ) < 0) {
+    if ( MEDfieldCr(fid,"Ajout Complémentaire 2",FTYPECHA,ncomp1,comp1,unit1,dtunit,maa1 ) < 0) {
       MESSAGE("Erreur à la création du champ : Complémentaire 2");
       ret = -1;
     };

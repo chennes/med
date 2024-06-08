@@ -1,6 +1,6 @@
 dnl  This file is part of MED.
 dnl
-dnl  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+dnl  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
 dnl  MED is free software: you can redistribute it and/or modify
 dnl  it under the terms of the GNU Lesser General Public License as published by
 dnl  the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,7 @@ dnl [mpi_wanted_test="no"])
 AC_DEFUN([_MED_BEFORE_CC_MPI], [
 AC_REQUIRE([AC_PROG_SED])
        
-if test "x`sed -n '/^#define *H5_HAVE_PARALLEL *1\{0,1\}/{s/.*/MED_CATCH_H5_HAVE_PARALLEL/p;}' ${hdf5include}/H5pubconf.h`" = "xMED_CATCH_H5_HAVE_PARALLEL"
+if test "x`sed -n '/^#define *H5_HAVE_PARALLEL *1/{s/.*/MED_CATCH_H5_HAVE_PARALLEL/p;}' ${hdf5include}/H5pubconf.h`" = "xMED_CATCH_H5_HAVE_PARALLEL"
 then
  mpi_wanted_test="yes"
 else

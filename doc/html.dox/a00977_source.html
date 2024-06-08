@@ -38,7 +38,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_a772e3069001940b0633c6a305062f73.html">tests</a></li><li class="navelem"><a class="el" href="dir_4efb71908f8f3ec8ce18fd279b2c03b0.html">f</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_85a9f8e8d934cc90e45f1214541356c3.html">tests</a></li><li class="navelem"><a class="el" href="dir_e3b24e6abcd2fdcd780f0b8ff39d7842.html">f</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -48,7 +48,7 @@ $(function() {
 <div class="contents">
 <a href="a00977.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">C*  This file is part of MED.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">C*</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">C*  COPYRIGHT (C) 1999 - 2021  EDF R&amp;D, CEA/DEN</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">C*  COPYRIGHT (C) 1999 - 2023  EDF R&amp;D, CEA/DEN</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">C*  MED is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">C*  it under the terms of the GNU Lesser General Public License as published by</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">C*  the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">data</span>  numnoe /1,2,3,4/, nufano /0,1,2,2/</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">C       ** Creation du fichier test4.med          **</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">call </span><a class="code" href="a02336_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a>(fid,<span class="stringliteral">&#39;test4.med&#39;</span>,med_acc_rdwr, cret)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">call </span><a class="code" href="a02333_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a>(fid,<span class="stringliteral">&#39;test4.med&#39;</span>,med_acc_rdwr, cret)</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        print *,cret</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;           print *,<span class="stringliteral">&#39;Erreur creation du fichier&#39;</span></div>
@@ -116,7 +116,7 @@ $(function() {
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">C       ** Creation du maillage maa de dimension 2 **</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">C       **  et de type non structure               **</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">call </span><a class="code" href="a02342_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,maa,mdim,sdim,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">call </span><a class="code" href="a02339_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,maa,mdim,sdim,</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;     &amp;     med_unstructured_mesh,<span class="stringliteral">&#39;un premier maillage pour test4&#39;</span>, </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;     &amp;     <span class="stringliteral">&quot;&quot;</span>,med_sort_dtit,med_cartesian,nomcoo,unicoo,cret)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        print *,cret</div>
@@ -127,7 +127,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">C       ** Ecriture des coordonnees en mode MED_FULL_INTERLACE : **</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">C       ** (X1,Y1, X2,Y2, X3,Y3, ...)  dans un repere cartesien **</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">call </span><a class="code" href="a02342_gadb3dbf89cb22d5e80a4ded7d6a35adf8.html#gadb3dbf89cb22d5e80a4ded7d6a35adf8">mmhcow</a>(fid,maa,med_no_dt,med_no_it,dt,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">call </span><a class="code" href="a02339_gadb3dbf89cb22d5e80a4ded7d6a35adf8.html#gadb3dbf89cb22d5e80a4ded7d6a35adf8">mmhcow</a>(fid,maa,med_no_dt,med_no_it,dt,</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;     &amp;     med_full_interlace,nnoe,coo,cret)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        print *,cret         </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
@@ -136,7 +136,7 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordflow">        endif</span>      </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">C       ** Ecriture des noms des noeuds (optionnel dans un maillage MED) **</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">call </span><a class="code" href="a02342_ga27356154f96bb6373410ab208299eaf7.html#ga27356154f96bb6373410ab208299eaf7">mmheaw</a>(fid,maa,med_no_dt,med_no_it,med_node,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">call </span><a class="code" href="a02339_ga27356154f96bb6373410ab208299eaf7.html#ga27356154f96bb6373410ab208299eaf7">mmheaw</a>(fid,maa,med_no_dt,med_no_it,med_node,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;     &amp;              med_none,nnoe,nomnoe,cret)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        print *,cret</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
@@ -145,7 +145,7 @@ $(function() {
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordflow">        endif</span>      </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;         </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">C       ** Ecriture des numeros des noeuds (optionnel dans un maillage MED) **</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">call </span><a class="code" href="a02342_gab1e24c695e9bb39370d3e2fafe2474c7.html#gab1e24c695e9bb39370d3e2fafe2474c7">mmhenw</a>(fid,maa,med_no_dt,med_no_it,med_node,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">call </span><a class="code" href="a02339_gab1e24c695e9bb39370d3e2fafe2474c7.html#gab1e24c695e9bb39370d3e2fafe2474c7">mmhenw</a>(fid,maa,med_no_dt,med_no_it,med_node,</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;     &amp;              med_none,nnoe,numnoe,cret)</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        print *,cret</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
@@ -155,7 +155,7 @@ $(function() {
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;         </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">C       ** Ecriture des numeros de familles des noeuds **</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">call </span><a class="code" href="a02342_ga8d0d2d15c7996a41ae2fb3ceba30d288.html#ga8d0d2d15c7996a41ae2fb3ceba30d288">mmhfnw</a>(fid,maa,med_no_dt,med_no_it,med_node,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">call </span><a class="code" href="a02339_ga8d0d2d15c7996a41ae2fb3ceba30d288.html#ga8d0d2d15c7996a41ae2fb3ceba30d288">mmhfnw</a>(fid,maa,med_no_dt,med_no_it,med_node,</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;     &amp;              med_none,nnoe,nufano,cret)        </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        print *,cret</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
@@ -164,7 +164,7 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordflow">        endif</span>      </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">C       ** Fermeture du fichier **</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">call </span><a class="code" href="a02336_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a>(fid,cret)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">call </span><a class="code" href="a02333_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a>(fid,cret)</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        print *,cret</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;           print *,<span class="stringliteral">&#39;Erreur fermeture du fichier&#39;</span></div>
@@ -177,17 +177,17 @@ $(function() {
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa02336_gabaf92f77da8cad332344587fca32c410_html_gabaf92f77da8cad332344587fca32c410"><div class="ttname"><a href="a02336_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a></div><div class="ttdeci">subroutine mficlo(fid, cret)</div><div class="ttdoc">Fermeture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00082">medfile.f:82</a></div></div>
-<div class="ttc" id="aa02342_gadb3dbf89cb22d5e80a4ded7d6a35adf8_html_gadb3dbf89cb22d5e80a4ded7d6a35adf8"><div class="ttname"><a href="a02342_gadb3dbf89cb22d5e80a4ded7d6a35adf8.html#gadb3dbf89cb22d5e80a4ded7d6a35adf8">mmhcow</a></div><div class="ttdeci">subroutine mmhcow(fid, name, numdt, numit, dt, swm, n, coo, cret)</div><div class="ttdoc">Cette routine permet d'écrire dans un maillage le tableau des coordonnées des noeuds,...</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00299">medmesh.f:299</a></div></div>
-<div class="ttc" id="aa02342_gab1e24c695e9bb39370d3e2fafe2474c7_html_gab1e24c695e9bb39370d3e2fafe2474c7"><div class="ttname"><a href="a02342_gab1e24c695e9bb39370d3e2fafe2474c7.html#gab1e24c695e9bb39370d3e2fafe2474c7">mmhenw</a></div><div class="ttdeci">subroutine mmhenw(fid, name, numdt, numit, entype, geotype, n, num, cret)</div><div class="ttdoc">Cette routine permet d'écrire les numéros d'un type d'entité d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00424">medmesh.f:424</a></div></div>
-<div class="ttc" id="aa02342_ga2197e06484561ced5e71f6edd39fd1fd_html_ga2197e06484561ced5e71f6edd39fd1fd"><div class="ttname"><a href="a02342_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a></div><div class="ttdeci">subroutine mmhcre(fid, name, sdim, mdim, mtype, desc, dtunit, stype, atype, aname, aunit, cret)</div><div class="ttdoc">Cette routine permet de créer un maillage dans un fichier.</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00020">medmesh.f:20</a></div></div>
-<div class="ttc" id="aa02336_ga68bd28216f39b6aac3f3cdeb58ca0343_html_ga68bd28216f39b6aac3f3cdeb58ca0343"><div class="ttname"><a href="a02336_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a></div><div class="ttdeci">subroutine mfiope(fid, name, access, cret)</div><div class="ttdoc">Ouverture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00042">medfile.f:42</a></div></div>
+<div class="ttc" id="aa02339_ga8d0d2d15c7996a41ae2fb3ceba30d288_html_ga8d0d2d15c7996a41ae2fb3ceba30d288"><div class="ttname"><a href="a02339_ga8d0d2d15c7996a41ae2fb3ceba30d288.html#ga8d0d2d15c7996a41ae2fb3ceba30d288">mmhfnw</a></div><div class="ttdeci">subroutine mmhfnw(fid, name, numdt, numit, entype, geotype, n, num, cret)</div><div class="ttdoc">Cette routine permet l'écriture des numéros de famille d'un type d'entité d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00466">medmesh.f:466</a></div></div>
+<div class="ttc" id="aa02339_ga27356154f96bb6373410ab208299eaf7_html_ga27356154f96bb6373410ab208299eaf7"><div class="ttname"><a href="a02339_ga27356154f96bb6373410ab208299eaf7.html#ga27356154f96bb6373410ab208299eaf7">mmheaw</a></div><div class="ttdeci">subroutine mmheaw(fid, mname, numdt, numit, entype, geotype, n, ename, cret)</div><div class="ttdoc">Cette routine permet d'écrire les noms d'un type d'entité d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00508">medmesh.f:508</a></div></div>
+<div class="ttc" id="aa02339_ga2197e06484561ced5e71f6edd39fd1fd_html_ga2197e06484561ced5e71f6edd39fd1fd"><div class="ttname"><a href="a02339_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a></div><div class="ttdeci">subroutine mmhcre(fid, name, sdim, mdim, mtype, desc, dtunit, stype, atype, aname, aunit, cret)</div><div class="ttdoc">Cette routine permet de créer un maillage dans un fichier.</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00020">medmesh.f:20</a></div></div>
+<div class="ttc" id="aa02339_gab1e24c695e9bb39370d3e2fafe2474c7_html_gab1e24c695e9bb39370d3e2fafe2474c7"><div class="ttname"><a href="a02339_gab1e24c695e9bb39370d3e2fafe2474c7.html#gab1e24c695e9bb39370d3e2fafe2474c7">mmhenw</a></div><div class="ttdeci">subroutine mmhenw(fid, name, numdt, numit, entype, geotype, n, num, cret)</div><div class="ttdoc">Cette routine permet d'écrire les numéros d'un type d'entité d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00424">medmesh.f:424</a></div></div>
+<div class="ttc" id="aa02333_gabaf92f77da8cad332344587fca32c410_html_gabaf92f77da8cad332344587fca32c410"><div class="ttname"><a href="a02333_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a></div><div class="ttdeci">subroutine mficlo(fid, cret)</div><div class="ttdoc">Fermeture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00082">medfile.f:82</a></div></div>
 <div class="ttc" id="aa00977_a3eaddb17ae9d4903a563d6d58fd7d2c4_html_a3eaddb17ae9d4903a563d6d58fd7d2c4"><div class="ttname"><a href="a00977_a3eaddb17ae9d4903a563d6d58fd7d2c4.html#a3eaddb17ae9d4903a563d6d58fd7d2c4">test4</a></div><div class="ttdeci">program test4</div><div class="ttdef"><b>Definition:</b> <a href="a00977_source.html#l00024">test4.f:24</a></div></div>
-<div class="ttc" id="aa02342_ga27356154f96bb6373410ab208299eaf7_html_ga27356154f96bb6373410ab208299eaf7"><div class="ttname"><a href="a02342_ga27356154f96bb6373410ab208299eaf7.html#ga27356154f96bb6373410ab208299eaf7">mmheaw</a></div><div class="ttdeci">subroutine mmheaw(fid, mname, numdt, numit, entype, geotype, n, ename, cret)</div><div class="ttdoc">Cette routine permet d'écrire les noms d'un type d'entité d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00508">medmesh.f:508</a></div></div>
-<div class="ttc" id="aa02342_ga8d0d2d15c7996a41ae2fb3ceba30d288_html_ga8d0d2d15c7996a41ae2fb3ceba30d288"><div class="ttname"><a href="a02342_ga8d0d2d15c7996a41ae2fb3ceba30d288.html#ga8d0d2d15c7996a41ae2fb3ceba30d288">mmhfnw</a></div><div class="ttdeci">subroutine mmhfnw(fid, name, numdt, numit, entype, geotype, n, num, cret)</div><div class="ttdoc">Cette routine permet l'écriture des numéros de famille d'un type d'entité d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00466">medmesh.f:466</a></div></div>
+<div class="ttc" id="aa02339_gadb3dbf89cb22d5e80a4ded7d6a35adf8_html_gadb3dbf89cb22d5e80a4ded7d6a35adf8"><div class="ttname"><a href="a02339_gadb3dbf89cb22d5e80a4ded7d6a35adf8.html#gadb3dbf89cb22d5e80a4ded7d6a35adf8">mmhcow</a></div><div class="ttdeci">subroutine mmhcow(fid, name, numdt, numit, dt, swm, n, coo, cret)</div><div class="ttdoc">Cette routine permet d'écrire dans un maillage le tableau des coordonnées des noeuds,...</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00299">medmesh.f:299</a></div></div>
+<div class="ttc" id="aa02333_ga68bd28216f39b6aac3f3cdeb58ca0343_html_ga68bd28216f39b6aac3f3cdeb58ca0343"><div class="ttname"><a href="a02333_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a></div><div class="ttdeci">subroutine mfiope(fid, name, access, cret)</div><div class="ttdoc">Ouverture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00042">medfile.f:42</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 8 Octobre 2021 13:44:06 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 6 Juin 2023 16:57:43 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ _MEDmeshnAxisByName30(int dummy, ...)
   med_int  _ret=0;
   med_idt _meshid=0;
   char    _meshpath[MED_MESH_SUPPORT_GRP_SIZE+MED_NAME_SIZE+1]="";
-  char    _meshname[MED_NAME_SIZE+1]="";
+  /* char    _meshname[MED_NAME_SIZE+1]=""; */
   med_int _spacedim =-1;
 
 

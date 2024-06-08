@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,7 @@
 void _MEDmeshGridIndexCoordinateRd236(int dummy, ...) {
 
 
-  med_access_mode _MED_ACCESS_MODE;
+  /* med_access_mode _MED_ACCESS_MODE; */
   med_idt         _meshid=0;
   med_err         _ret         = -1;
   med_data_type   _datatype    = MED_UNDEF_DATATYPE;
@@ -33,7 +33,7 @@ void _MEDmeshGridIndexCoordinateRd236(int dummy, ...) {
   med_int         _intgridtype = 0;
   med_int         _meshdim     = 0;
   char            _meshpath[MED_MESH_GRP_SIZE+MED_NAME_SIZE+1]=MED_MESH_GRP;
-  med_int  _intaxistype=0;
+  /* med_int         _intaxistype=0; */
 
 
   MED_VARGS_DECL(const, med_idt               , , fid       );

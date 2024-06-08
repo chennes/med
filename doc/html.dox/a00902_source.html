@@ -38,7 +38,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_a772e3069001940b0633c6a305062f73.html">tests</a></li><li class="navelem"><a class="el" href="dir_4efb71908f8f3ec8ce18fd279b2c03b0.html">f</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_85a9f8e8d934cc90e45f1214541356c3.html">tests</a></li><li class="navelem"><a class="el" href="dir_e3b24e6abcd2fdcd780f0b8ff39d7842.html">f</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -48,7 +48,7 @@ $(function() {
 <div class="contents">
 <a href="a00902.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">C*  This file is part of MED.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">C*</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">C*  COPYRIGHT (C) 1999 - 2021  EDF R&amp;D, CEA/DEN</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">C*  COPYRIGHT (C) 1999 - 2023  EDF R&amp;D, CEA/DEN</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">C*  MED is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">C*  it under the terms of the GNU Lesser General Public License as published by</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">C*  the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -87,11 +87,11 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">C  ** verifie que le fichier test1.med existe et est accessible  **</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_ga25a050e72faf164453471cdd0e2d1ffc.html#ga25a050e72faf164453471cdd0e2d1ffc">mfiexi</a>(<span class="stringliteral">&#39;test1.med&#39;</span>, med_acc_rdonly, fexist, accok, cret)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_ga25a050e72faf164453471cdd0e2d1ffc.html#ga25a050e72faf164453471cdd0e2d1ffc">mfiexi</a>(<span class="stringliteral">&#39;test1.med&#39;</span>, med_acc_rdonly, fexist, accok, cret)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      print *,<span class="stringliteral">&quot;fexistf :&quot;</span>,fexist, <span class="stringliteral">&quot; ; accok :&quot;</span>, accok</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">C  ** verifie que le fichier test1.med est au bon format **</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_gafe8966708bfc658ffa1b8b83550624c1.html#gafe8966708bfc658ffa1b8b83550624c1">mficom</a>(<span class="stringliteral">&#39;test1.med&#39;</span>,hdfok,medok,cret)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_gafe8966708bfc658ffa1b8b83550624c1.html#gafe8966708bfc658ffa1b8b83550624c1">mficom</a>(<span class="stringliteral">&#39;test1.med&#39;</span>,hdfok,medok,cret)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      print *,hdfok, medok, cret</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;         print *,<span class="stringliteral">&#39;Erreur à la vérification du format&#39;</span></div>
@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordflow">      endif</span>      </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">C  ** Ouverture en mode de lecture du fichier test1.med</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a>(fid,<span class="stringliteral">&#39;test1.med&#39;</span>,med_acc_rdonly, cret)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a>(fid,<span class="stringliteral">&#39;test1.med&#39;</span>,med_acc_rdonly, cret)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;         print *,<span class="stringliteral">&#39;Erreur ouverture du fichier en lecture&#39;</span></div>
@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordflow">      endif</span>      </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">C  ** Lecture de l&#39;en-tete du fichier</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_gab26d974190257fbd793fe0ea03b7efe0.html#gab26d974190257fbd793fe0ea03b7efe0">mficor</a>(fid,des,cret)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_gab26d974190257fbd793fe0ea03b7efe0.html#gab26d974190257fbd793fe0ea03b7efe0">mficor</a>(fid,des,cret)</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;         print *,<span class="stringliteral">&#39;Erreur lecture en-tete du fichier&#39;</span></div>
@@ -117,7 +117,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">C  ** Fermeture du fichier test1.med </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a>(fid,cret)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a>(fid,cret)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;         print *,<span class="stringliteral">&#39;Erreur fermeture du fichier&#39;</span></div>
@@ -125,11 +125,11 @@ $(function() {
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordflow">      endif</span>      </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_ga25a050e72faf164453471cdd0e2d1ffc.html#ga25a050e72faf164453471cdd0e2d1ffc">mfiexi</a>(<span class="stringliteral">&#39;test2.med&#39;</span>, med_acc_rdwr, fexist, accok, cret)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_ga25a050e72faf164453471cdd0e2d1ffc.html#ga25a050e72faf164453471cdd0e2d1ffc">mfiexi</a>(<span class="stringliteral">&#39;test2.med&#39;</span>, med_acc_rdwr, fexist, accok, cret)</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      print *,<span class="stringliteral">&quot;fexistf :&quot;</span>,fexist, <span class="stringliteral">&quot; ; accok :&quot;</span>, accok</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">C     ** Ouverture en mode de creation du fichier test2.med</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a>(fid,<span class="stringliteral">&#39;test2.med&#39;</span>,med_acc_rdwr, cret)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a>(fid,<span class="stringliteral">&#39;test2.med&#39;</span>,med_acc_rdwr, cret)</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         print *,<span class="stringliteral">&#39;Erreur creation du fichier&#39;</span></div>
@@ -138,13 +138,13 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">C  **  Creation du maillage maa1 de type non structure</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">C  **  et de dimension 2</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keyword">call </span><a class="code" href="a02342_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,<span class="stringliteral">&#39;maa1&#39;</span>,2,2,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keyword">call </span><a class="code" href="a02339_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,<span class="stringliteral">&#39;maa1&#39;</span>,2,2,</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;     &amp;     med_unstructured_mesh,<span class="stringliteral">&#39;un premier maillage&#39;</span>, </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;     &amp;     <span class="stringliteral">&quot;&quot;</span>,med_sort_dtit,med_cartesian,nomcoo,unicoo,ret)</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      cret = cret + ret</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">C     **  Creation du nom universel</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keyword">call </span><a class="code" href="a02342_gaccce02e88f72eed44705c3b5dfbab820.html#gaccce02e88f72eed44705c3b5dfbab820">mmhunw</a>(fid,<span class="stringliteral">&#39;maa1&#39;</span>,ret)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keyword">call </span><a class="code" href="a02339_gaccce02e88f72eed44705c3b5dfbab820.html#gaccce02e88f72eed44705c3b5dfbab820">mmhunw</a>(fid,<span class="stringliteral">&#39;maa1&#39;</span>,ret)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      cret = cret + ret</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
@@ -153,7 +153,7 @@ $(function() {
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordflow">      endif</span>      </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      </div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">C  **  Creation du maillage maa2 de type non structure</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="keyword">call </span><a class="code" href="a02342_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,<span class="stringliteral">&#39;maa2&#39;</span>,2,2,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="keyword">call </span><a class="code" href="a02339_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,<span class="stringliteral">&#39;maa2&#39;</span>,2,2,</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;     &amp;     med_unstructured_mesh,<span class="stringliteral">&#39;un second maillage&#39;</span>, </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;     &amp;     <span class="stringliteral">&quot;&quot;</span>,med_sort_dtit,med_cartesian,nomcoo,unicoo,ret)</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      cret = cret + ret </div>
@@ -164,7 +164,7 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">C  ** Creation du maillage maa3 de type structure</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="keyword">call </span><a class="code" href="a02342_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,<span class="stringliteral">&#39;maa3&#39;</span>,2,2,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="keyword">call </span><a class="code" href="a02339_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a>(fid,<span class="stringliteral">&#39;maa3&#39;</span>,2,2,</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;     &amp;     med_structured_mesh,<span class="stringliteral">&#39;un troisieme maillage&#39;</span>, </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;     &amp;     <span class="stringliteral">&quot;&quot;</span>,med_sort_dtit,med_cartesian,nomcoo,unicoo,ret)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      cret = cret + ret</div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordflow">      endif</span>      </div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">C **  Fermeture du fichier</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keyword">call </span><a class="code" href="a02336_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a>(fid,cret)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keyword">call </span><a class="code" href="a02333_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a>(fid,cret)</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      print *,cret</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">if</span> (cret .ne. 0 ) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;         print *,<span class="stringliteral">&#39;Erreur fermeture du fichier&#39;</span></div>
@@ -189,17 +189,17 @@ $(function() {
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa02336_gab26d974190257fbd793fe0ea03b7efe0_html_gab26d974190257fbd793fe0ea03b7efe0"><div class="ttname"><a href="a02336_gab26d974190257fbd793fe0ea03b7efe0.html#gab26d974190257fbd793fe0ea03b7efe0">mficor</a></div><div class="ttdeci">subroutine mficor(fid, cmt, cret)</div><div class="ttdoc">Lecture d'un descripteur dans un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00116">medfile.f:116</a></div></div>
-<div class="ttc" id="aa02336_gabaf92f77da8cad332344587fca32c410_html_gabaf92f77da8cad332344587fca32c410"><div class="ttname"><a href="a02336_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a></div><div class="ttdeci">subroutine mficlo(fid, cret)</div><div class="ttdoc">Fermeture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00082">medfile.f:82</a></div></div>
+<div class="ttc" id="aa02333_gafe8966708bfc658ffa1b8b83550624c1_html_gafe8966708bfc658ffa1b8b83550624c1"><div class="ttname"><a href="a02333_gafe8966708bfc658ffa1b8b83550624c1.html#gafe8966708bfc658ffa1b8b83550624c1">mficom</a></div><div class="ttdeci">subroutine mficom(fname, hdfok, medok, cret)</div><div class="ttdoc">Vérification de la compatibilité d'un fichier avec HDF et MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00170">medfile.f:170</a></div></div>
 <div class="ttc" id="aa00902_a9b25640dcd682d50a16889ca355954bb_html_a9b25640dcd682d50a16889ca355954bb"><div class="ttname"><a href="a00902_a9b25640dcd682d50a16889ca355954bb.html#a9b25640dcd682d50a16889ca355954bb">test2</a></div><div class="ttdeci">program test2</div><div class="ttdef"><b>Definition:</b> <a href="a00902_source.html#l00024">test2.f:24</a></div></div>
-<div class="ttc" id="aa02342_ga2197e06484561ced5e71f6edd39fd1fd_html_ga2197e06484561ced5e71f6edd39fd1fd"><div class="ttname"><a href="a02342_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a></div><div class="ttdeci">subroutine mmhcre(fid, name, sdim, mdim, mtype, desc, dtunit, stype, atype, aname, aunit, cret)</div><div class="ttdoc">Cette routine permet de créer un maillage dans un fichier.</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00020">medmesh.f:20</a></div></div>
-<div class="ttc" id="aa02336_gafe8966708bfc658ffa1b8b83550624c1_html_gafe8966708bfc658ffa1b8b83550624c1"><div class="ttname"><a href="a02336_gafe8966708bfc658ffa1b8b83550624c1.html#gafe8966708bfc658ffa1b8b83550624c1">mficom</a></div><div class="ttdeci">subroutine mficom(fname, hdfok, medok, cret)</div><div class="ttdoc">Vérification de la compatibilité d'un fichier avec HDF et MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00170">medfile.f:170</a></div></div>
-<div class="ttc" id="aa02336_ga68bd28216f39b6aac3f3cdeb58ca0343_html_ga68bd28216f39b6aac3f3cdeb58ca0343"><div class="ttname"><a href="a02336_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a></div><div class="ttdeci">subroutine mfiope(fid, name, access, cret)</div><div class="ttdoc">Ouverture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00042">medfile.f:42</a></div></div>
-<div class="ttc" id="aa02342_gaccce02e88f72eed44705c3b5dfbab820_html_gaccce02e88f72eed44705c3b5dfbab820"><div class="ttname"><a href="a02342_gaccce02e88f72eed44705c3b5dfbab820.html#gaccce02e88f72eed44705c3b5dfbab820">mmhunw</a></div><div class="ttdeci">subroutine mmhunw(fid, name, cret)</div><div class="ttdoc">Cette routine permet l'écriture du nom universel d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02033_source.html#l00150">medmesh.f:150</a></div></div>
-<div class="ttc" id="aa02336_ga25a050e72faf164453471cdd0e2d1ffc_html_ga25a050e72faf164453471cdd0e2d1ffc"><div class="ttname"><a href="a02336_ga25a050e72faf164453471cdd0e2d1ffc.html#ga25a050e72faf164453471cdd0e2d1ffc">mfiexi</a></div><div class="ttdeci">subroutine mfiexi(fname, access, fexist, accok, cret)</div><div class="ttdoc">Interroge l'existence d'un fichier de nom filename et la possibilité de l'ouvrir selon le mode d'accè...</div><div class="ttdef"><b>Definition:</b> <a href="a02012_source.html#l00244">medfile.f:244</a></div></div>
+<div class="ttc" id="aa02339_gaccce02e88f72eed44705c3b5dfbab820_html_gaccce02e88f72eed44705c3b5dfbab820"><div class="ttname"><a href="a02339_gaccce02e88f72eed44705c3b5dfbab820.html#gaccce02e88f72eed44705c3b5dfbab820">mmhunw</a></div><div class="ttdeci">subroutine mmhunw(fid, name, cret)</div><div class="ttdoc">Cette routine permet l'écriture du nom universel d'un maillage.</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00150">medmesh.f:150</a></div></div>
+<div class="ttc" id="aa02339_ga2197e06484561ced5e71f6edd39fd1fd_html_ga2197e06484561ced5e71f6edd39fd1fd"><div class="ttname"><a href="a02339_ga2197e06484561ced5e71f6edd39fd1fd.html#ga2197e06484561ced5e71f6edd39fd1fd">mmhcre</a></div><div class="ttdeci">subroutine mmhcre(fid, name, sdim, mdim, mtype, desc, dtunit, stype, atype, aname, aunit, cret)</div><div class="ttdoc">Cette routine permet de créer un maillage dans un fichier.</div><div class="ttdef"><b>Definition:</b> <a href="a02030_source.html#l00020">medmesh.f:20</a></div></div>
+<div class="ttc" id="aa02333_gabaf92f77da8cad332344587fca32c410_html_gabaf92f77da8cad332344587fca32c410"><div class="ttname"><a href="a02333_gabaf92f77da8cad332344587fca32c410.html#gabaf92f77da8cad332344587fca32c410">mficlo</a></div><div class="ttdeci">subroutine mficlo(fid, cret)</div><div class="ttdoc">Fermeture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00082">medfile.f:82</a></div></div>
+<div class="ttc" id="aa02333_ga25a050e72faf164453471cdd0e2d1ffc_html_ga25a050e72faf164453471cdd0e2d1ffc"><div class="ttname"><a href="a02333_ga25a050e72faf164453471cdd0e2d1ffc.html#ga25a050e72faf164453471cdd0e2d1ffc">mfiexi</a></div><div class="ttdeci">subroutine mfiexi(fname, access, fexist, accok, cret)</div><div class="ttdoc">Interroge l'existence d'un fichier de nom filename et la possibilité de l'ouvrir selon le mode d'accè...</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00244">medfile.f:244</a></div></div>
+<div class="ttc" id="aa02333_gab26d974190257fbd793fe0ea03b7efe0_html_gab26d974190257fbd793fe0ea03b7efe0"><div class="ttname"><a href="a02333_gab26d974190257fbd793fe0ea03b7efe0.html#gab26d974190257fbd793fe0ea03b7efe0">mficor</a></div><div class="ttdeci">subroutine mficor(fid, cmt, cret)</div><div class="ttdoc">Lecture d'un descripteur dans un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00116">medfile.f:116</a></div></div>
+<div class="ttc" id="aa02333_ga68bd28216f39b6aac3f3cdeb58ca0343_html_ga68bd28216f39b6aac3f3cdeb58ca0343"><div class="ttname"><a href="a02333_ga68bd28216f39b6aac3f3cdeb58ca0343.html#ga68bd28216f39b6aac3f3cdeb58ca0343">mfiope</a></div><div class="ttdeci">subroutine mfiope(fid, name, access, cret)</div><div class="ttdoc">Ouverture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a02009_source.html#l00042">medfile.f:42</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 8 Octobre 2021 13:44:06 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 6 Juin 2023 16:57:43 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

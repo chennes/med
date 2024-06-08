@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ MEDpolyedreInfo(med_idt fid, char *maa,med_connectivite type_conn,med_int *nf,
   char nom_ent[MED_TAILLE_NOM_ENTITE+1];
   char nom_geo[MED_TAILLE_NOM_ENTITE+1];
   char nom_dataset[MED_TAILLE_NOM_ENTITE+1];
-  med_int res = 0;
+  /* med_int res = 0; */
   med_entite_maillage type_ent;
   med_geometrie_element type_geo;
 

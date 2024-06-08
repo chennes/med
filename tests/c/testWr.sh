@@ -4,6 +4,16 @@ h5dumpArgs=""
 optfile=""
 #medint permet de différencier les ./configure avec--with-med_int=int|long
 medint=""
+
+filter_hdf_type() {
+sed -e 's/H5T_STD_[BI]32[LB]E//g' -e 's/H5T_STD_I64[LB]E//g'  \
+    -e 's/H5T_IEEE_F64[LB]E//g'   -e 's/H5T_IEEE_F32[LB]E//g' \
+    -e 's/H5T_STD_[IU]8[LB]E//g' \
+    -e 's/HDF5.*{//g' \
+        $1 > $2
+}
+
+
 case $file in
        test2)  h5dumpArgs="-a /ENS_MAA/maa1/DIM -a /ENS_MAA/maa1/DES -a /ENS_MAA/maa1/TYP -g /ENS_MAA/maa2 -g /ENS_MAA/maa3 -g /INFOS_GENERALES" 
                test "x${CPYMED}" = "xyes" && ${CP} ${SRCDIR}/test.med.ref ${BUILDDIR}/${file}.med && chmod 644 ${BUILDDIR}/${file}.med
@@ -28,16 +38,9 @@ case $file in
 esac
 output=/dev/null && test "x${OUTPUT}" = "xyes" && output=${file}.out
 ${CHECKER} ${EXECDIR}/${file} ${optfile} > ${output} 2>&1 && ${H5DUMP} ${h5dumpArgs} ${BUILDDIR}/${file}.med > ${BUILDDIR}/${file}.dump  && ( \
-sed -e 's/H5T_STD_[BI]32[LB]E//g'  -e 's/H5T_STD_I64[LB]E//g' -e 's/H5T_IEEE_F64[LB]E//g' -e 's/H5T_IEEE_F32[LB]E//g' \
-    -e 's/H5T_STD_[IU]8[LB]E//g' \
-    -e 's/HDF5.*{//g' \
-	${BUILDDIR}/${file}.dump > ${BUILDDIR}/${file}.dump.tmp && \
-sed -e 's/H5T_STD_[BI]32[LB]E//g'  -e 's/H5T_STD_I64[LB]E//g'  \
-    -e 's/H5T_IEEE_F64[LB]E//g' -e 's/H5T_IEEE_F32[LB]E//g' \
-    -e 's/H5T_STD_[IU]8[LB]E//g'  \
-    -e 's/HDF5.*{//g' \
-	 ${BUILDDIR}/dumps.ref/${file}${medint}.dump > ${BUILDDIR}/${file}${medint}.dump.ref && \
-	diff ${BUILDDIR}/${file}${medint}.dump.ref ${BUILDDIR}/${file}.dump.tmp && \
+filter_hdf_type	${BUILDDIR}/${file}.dump                     ${BUILDDIR}/${file}.dump.tmp && \
+filter_hdf_type ${BUILDDIR}/dumps.ref/${file}${medint}.dump  ${BUILDDIR}/${file}${medint}.dump.ref && \
+diff ${BUILDDIR}/${file}${medint}.dump.ref ${BUILDDIR}/${file}.dump.tmp && \
 rm -f ${BUILDDIR}/${file}.dump.tmp && rm -f ${BUILDDIR}/${file}${medint}.dump.ref ) 
 exit_code=$?
 test "x${UPDATE}" = "xyes"  && test $exit_code -ne 0 && cp ${BUILDDIR}/${file}.med ${SRCDIR}/dumps.ref/${file}${medint}.med && svn st -v ${SRCDIR}/dumps.ref/${file}${medint}.med

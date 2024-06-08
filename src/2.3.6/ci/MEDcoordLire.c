@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -33,8 +33,7 @@ MEDcoordLire(med_idt fid, char *maa, med_int mdim, med_float *coo,
   med_idt   maaid, noeid, dataset;
   med_err   ret;
   char      chemin[MED_TAILLE_MAA+MED_TAILLE_NOM+1];
-  int       i,j;
-  med_float *new_coo;
+  int       i;
   med_int   type_rep_int;
   med_size * pfltab;
 

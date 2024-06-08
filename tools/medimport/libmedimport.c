@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -176,7 +176,7 @@ int MEDimport(char * filein, char *  fileout) {
   system(commande);
   free(commande);
 
-  fid = MEDfileOpen(_fileout,MED_ACC_RDWR);
+  fid = _MEDfileOpenForImport(_fileout,MED_ACC_RDWR);
   EXIT_IF(fid < 0,"Ouverture du fichier : ", _fileout);
 
   /* Verification du numero de version */
@@ -202,7 +202,7 @@ int MEDimport(char * filein, char *  fileout) {
     MAJ_310_320 = 1;
   if (strcmp(version, "3_3_0") < 0)
     MAJ_320_330 = 1;
-  if (strcmp(version, "4_0_0") < 0)
+  if (strcmp(version, "4_1_0") < 0)
     MAJ_400_410 = 1;
 
   /* Ne pas oublier que la version cible du fichier à convertir est celui de la bibliothèque. */
@@ -348,7 +348,6 @@ int MEDimport(char * filein, char *  fileout) {
     _MEDfileVersion(fid);
     /* Si le cache était dèjà instancié, met à jour le cache */
     MAJ_version_num(fid,4,0,0);
-
     /* Mise a jour des champs */
     fprintf(stdout,"- Lancement de la mise à jour des meta-données sur les champs (400_410) ... \n");
     MAJ_400_410_champs(fid);

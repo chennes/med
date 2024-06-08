@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MED fichier:  Fichier source de MEDfileObjectsUnmount.c</title>
+<title>MED fichier:  Fichier source de MEDfileOpen.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,17 +38,17 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_21ff39c74838e10d1b918a45b9d185d5.html">src</a></li><li class="navelem"><a class="el" href="dir_48027acf4688ac8b76ff5eb90d59af4a.html">ci</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_1cb39d0f3f5bf519338bdc18a980bd54.html">src</a></li><li class="navelem"><a class="el" href="dir_cb4bef0e40e864f8e054fdec99234f31.html">ci</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">MEDfileObjectsUnmount.c</div>  </div>
+<div class="title">MEDfileOpen.c</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a01580.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*  This file is part of MED.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  COPYRIGHT (C) 1999 - 2021  EDF R&amp;D, CEA/DEN</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  COPYRIGHT (C) 1999 - 2023  EDF R&amp;D, CEA/DEN</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  MED is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  it under the terms of the GNU Lesser General Public License as published by</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -64,46 +64,40 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a02312.html">med_config.h</a>&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a02309.html">med.h</a>&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a01340.html">med_outils.h</a>&gt;</span> </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a02321_ga73ad912a369c3da7f22caf482093e47b.html#ga73ad912a369c3da7f22caf482093e47b">   33</a></span>&#160;<a class="code" href="a02309_abd29d7c6abaef5da2a5ed1b73464f0ba.html#abd29d7c6abaef5da2a5ed1b73464f0ba">med_err</a> <a class="code" href="a02321_ga73ad912a369c3da7f22caf482093e47b.html#ga73ad912a369c3da7f22caf482093e47b">MEDfileObjectsUnmount</a>(<span class="keyword">const</span> <a class="code" href="a02309_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a> fid,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                              <span class="keyword">const</span> <a class="code" href="a02309_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a> mid,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                              <span class="keyword">const</span> <a class="code" href="a02309_a5e06cfaa421118c530bd15f0628dc648.html#a5e06cfaa421118c530bd15f0628dc648">med_class</a> medclass )</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">char</span> *  name = <span class="stringliteral">&quot;_MEDfileObjectsUnmount&quot;</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">int</span>     dummy=0;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="a02309_abd29d7c6abaef5da2a5ed1b73464f0ba.html#abd29d7c6abaef5da2a5ed1b73464f0ba">med_err</a> fret=-1;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a> majeur, mineur, release;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="a01337_af20d4eee3abe4dd6f20146af0d0e7360.html#af20d4eee3abe4dd6f20146af0d0e7360">MedFuncType</a> func;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="a02321_gaec83c9561b5640ca32a12e58c5d2e10d.html#gaec83c9561b5640ca32a12e58c5d2e10d">MEDfileNumVersionRd</a>(fid, &amp;majeur, &amp;mineur, &amp;release);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  func = <a class="code" href="a01337_a14c531f20e56872270a13d943ce41e58.html#a14c531f20e56872270a13d943ce41e58">_MEDversionedApi3</a>(name,majeur,mineur,release);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> ( func != (<a class="code" href="a01337_af20d4eee3abe4dd6f20146af0d0e7360.html#af20d4eee3abe4dd6f20146af0d0e7360">MedFuncType</a>) NULL )</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    func (dummy,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;          fid,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;          mid,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;          medclass,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;          &amp;fret);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordflow">return</span> fret;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a02306.html">med.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a02309.html">med_config.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a01337.html">med_outils.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/* #ifdef PPRO_NT_CALL */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/* #define F_OK 0 */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* #else */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* #include &lt;unistd.h&gt; */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* #endif */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="a02306_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a02318_ga9376a1654b7bf099c3f8941074c5fdfb.html#ga9376a1654b7bf099c3f8941074c5fdfb">   42</a></span>&#160;<a class="code" href="a02318_ga9376a1654b7bf099c3f8941074c5fdfb.html#ga9376a1654b7bf099c3f8941074c5fdfb">MEDfileOpen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> <a class="code" href="a03319_abe2fedc3a963bcd397037e60e16adabb.html#abe2fedc3a963bcd397037e60e16adabb">filename</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">const</span> <a class="code" href="a02306_adcd0322de9fec3b5e199ffeda3f44c85.html#adcd0322de9fec3b5e199ffeda3f44c85">med_access_mode</a> accessmode)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a02318_gabe89ecd6d84af8f7bc926c97cf2d3be4.html#gabe89ecd6d84af8f7bc926c97cf2d3be4">MEDfileVersionOpen</a>( <a class="code" href="a03319_abe2fedc3a963bcd397037e60e16adabb.html#abe2fedc3a963bcd397037e60e16adabb">filename</a>, accessmode,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                             <a class="code" href="a02306_a6747c1ac7c0589009db553b675e3b6a7.html#a6747c1ac7c0589009db553b675e3b6a7">MED_NUM_MAJEUR</a>, <a class="code" href="a02306_a9acc99e52c9a7bd3208f9c934b473baa.html#a9acc99e52c9a7bd3208f9c934b473baa">MED_NUM_MINEUR</a>, <a class="code" href="a02306_adaf617ec343314cca1a68e62bbc2709d.html#adaf617ec343314cca1a68e62bbc2709d">MED_NUM_RELEASE</a> );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa01337_a14c531f20e56872270a13d943ce41e58_html_a14c531f20e56872270a13d943ce41e58"><div class="ttname"><a href="a01337_a14c531f20e56872270a13d943ce41e58.html#a14c531f20e56872270a13d943ce41e58">_MEDversionedApi3</a></div><div class="ttdeci">MEDC_EXPORT MedFuncType _MEDversionedApi3(const char *const name, const med_int majeur, const med_int mineur, const med_int release)</div></div>
-<div class="ttc" id="aa02309_afa4ec8284026c8c5545e5333475fb65a_html_afa4ec8284026c8c5545e5333475fb65a"><div class="ttname"><a href="a02309_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a></div><div class="ttdeci">hid_t med_idt</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00331">med.h:331</a></div></div>
-<div class="ttc" id="aa02309_abd29d7c6abaef5da2a5ed1b73464f0ba_html_abd29d7c6abaef5da2a5ed1b73464f0ba"><div class="ttname"><a href="a02309_abd29d7c6abaef5da2a5ed1b73464f0ba.html#abd29d7c6abaef5da2a5ed1b73464f0ba">med_err</a></div><div class="ttdeci">herr_t med_err</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00332">med.h:332</a></div></div>
-<div class="ttc" id="aa02321_ga73ad912a369c3da7f22caf482093e47b_html_ga73ad912a369c3da7f22caf482093e47b"><div class="ttname"><a href="a02321_ga73ad912a369c3da7f22caf482093e47b.html#ga73ad912a369c3da7f22caf482093e47b">MEDfileObjectsUnmount</a></div><div class="ttdeci">med_err MEDfileObjectsUnmount(const med_idt fid, const med_idt mid, const med_class medclass)</div><div class="ttdoc">Une fois le démontage effectué, les données précédemment montées ne sont plus accessibles.</div><div class="ttdef"><b>Definition:</b> <a href="a01580_source.html#l00033">MEDfileObjectsUnmount.c:33</a></div></div>
-<div class="ttc" id="aa01337_af20d4eee3abe4dd6f20146af0d0e7360_html_af20d4eee3abe4dd6f20146af0d0e7360"><div class="ttname"><a href="a01337_af20d4eee3abe4dd6f20146af0d0e7360.html#af20d4eee3abe4dd6f20146af0d0e7360">MedFuncType</a></div><div class="ttdeci">void(* MedFuncType)(int,...)</div><div class="ttdef"><b>Definition:</b> <a href="a01337_source.html#l00029">med_misc.h:29</a></div></div>
-<div class="ttc" id="aa02309_a88dc15143f934cc7b771bc89f46372dc_html_a88dc15143f934cc7b771bc89f46372dc"><div class="ttname"><a href="a02309_a88dc15143f934cc7b771bc89f46372dc.html#a88dc15143f934cc7b771bc89f46372dc">med_int</a></div><div class="ttdeci">int med_int</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00342">med.h:342</a></div></div>
-<div class="ttc" id="aa02309_html"><div class="ttname"><a href="a02309.html">med.h</a></div></div>
-<div class="ttc" id="aa02321_gaec83c9561b5640ca32a12e58c5d2e10d_html_gaec83c9561b5640ca32a12e58c5d2e10d"><div class="ttname"><a href="a02321_gaec83c9561b5640ca32a12e58c5d2e10d.html#gaec83c9561b5640ca32a12e58c5d2e10d">MEDfileNumVersionRd</a></div><div class="ttdeci">MEDC_EXPORT med_err MEDfileNumVersionRd(const med_idt fid, med_int *const major, med_int *const minor, med_int *const release)</div><div class="ttdoc">Lecture du numéro de version de la bibliothèque MED utilisée pour créer le fichier.</div><div class="ttdef"><b>Definition:</b> <a href="a01568_source.html#l00034">MEDfileNumVersionRd.c:34</a></div></div>
-<div class="ttc" id="aa02309_a5e06cfaa421118c530bd15f0628dc648_html_a5e06cfaa421118c530bd15f0628dc648"><div class="ttname"><a href="a02309_a5e06cfaa421118c530bd15f0628dc648.html#a5e06cfaa421118c530bd15f0628dc648">med_class</a></div><div class="ttdeci">med_class</div><div class="ttdef"><b>Definition:</b> <a href="a02309_source.html#l00188">med.h:188</a></div></div>
-<div class="ttc" id="aa01340_html"><div class="ttname"><a href="a01340.html">med_outils.h</a></div></div>
-<div class="ttc" id="aa02312_html"><div class="ttname"><a href="a02312.html">med_config.h</a></div></div>
+<div class="ttc" id="aa02318_gabe89ecd6d84af8f7bc926c97cf2d3be4_html_gabe89ecd6d84af8f7bc926c97cf2d3be4"><div class="ttname"><a href="a02318_gabe89ecd6d84af8f7bc926c97cf2d3be4.html#gabe89ecd6d84af8f7bc926c97cf2d3be4">MEDfileVersionOpen</a></div><div class="ttdeci">MEDC_EXPORT med_idt MEDfileVersionOpen(const char *const filename, const med_access_mode accessmode, const med_int major, const med_int minor, const med_int release)</div><div class="ttdoc">Ouverture d'un fichier MED en indiquant la version du modèle à utiliser en cas de création d'un nouve...</div><div class="ttdef"><b>Definition:</b> <a href="a01586_source.html#l00045">MEDfileVersionOpen.c:45</a></div></div>
+<div class="ttc" id="aa03319_abe2fedc3a963bcd397037e60e16adabb_html_abe2fedc3a963bcd397037e60e16adabb"><div class="ttname"><a href="a03319_abe2fedc3a963bcd397037e60e16adabb.html#abe2fedc3a963bcd397037e60e16adabb">filename</a></div><div class="ttdeci">#define filename</div><div class="ttdef"><b>Definition:</b> <a href="a03319_source.html#l00075">4.0.1/test10.c:75</a></div></div>
+<div class="ttc" id="aa02306_afa4ec8284026c8c5545e5333475fb65a_html_afa4ec8284026c8c5545e5333475fb65a"><div class="ttname"><a href="a02306_afa4ec8284026c8c5545e5333475fb65a.html#afa4ec8284026c8c5545e5333475fb65a">med_idt</a></div><div class="ttdeci">hid_t med_idt</div><div class="ttdef"><b>Definition:</b> <a href="a02306_source.html#l00333">med.h:333</a></div></div>
+<div class="ttc" id="aa01337_html"><div class="ttname"><a href="a01337.html">med_outils.h</a></div></div>
+<div class="ttc" id="aa02306_adaf617ec343314cca1a68e62bbc2709d_html_adaf617ec343314cca1a68e62bbc2709d"><div class="ttname"><a href="a02306_adaf617ec343314cca1a68e62bbc2709d.html#adaf617ec343314cca1a68e62bbc2709d">MED_NUM_RELEASE</a></div><div class="ttdeci">#define MED_NUM_RELEASE</div><div class="ttdef"><b>Definition:</b> <a href="a02306_source.html#l00069">med.h:69</a></div></div>
+<div class="ttc" id="aa02309_html"><div class="ttname"><a href="a02309.html">med_config.h</a></div></div>
+<div class="ttc" id="aa02306_adcd0322de9fec3b5e199ffeda3f44c85_html_adcd0322de9fec3b5e199ffeda3f44c85"><div class="ttname"><a href="a02306_adcd0322de9fec3b5e199ffeda3f44c85.html#adcd0322de9fec3b5e199ffeda3f44c85">med_access_mode</a></div><div class="ttdeci">med_access_mode</div><div class="ttdef"><b>Definition:</b> <a href="a02306_source.html#l00122">med.h:122</a></div></div>
+<div class="ttc" id="aa02306_html"><div class="ttname"><a href="a02306.html">med.h</a></div></div>
+<div class="ttc" id="aa02318_ga9376a1654b7bf099c3f8941074c5fdfb_html_ga9376a1654b7bf099c3f8941074c5fdfb"><div class="ttname"><a href="a02318_ga9376a1654b7bf099c3f8941074c5fdfb.html#ga9376a1654b7bf099c3f8941074c5fdfb">MEDfileOpen</a></div><div class="ttdeci">med_idt MEDfileOpen(const char *const filename, const med_access_mode accessmode)</div><div class="ttdoc">Ouverture d'un fichier MED.</div><div class="ttdef"><b>Definition:</b> <a href="a01580_source.html#l00042">MEDfileOpen.c:42</a></div></div>
+<div class="ttc" id="aa02306_a9acc99e52c9a7bd3208f9c934b473baa_html_a9acc99e52c9a7bd3208f9c934b473baa"><div class="ttname"><a href="a02306_a9acc99e52c9a7bd3208f9c934b473baa.html#a9acc99e52c9a7bd3208f9c934b473baa">MED_NUM_MINEUR</a></div><div class="ttdeci">#define MED_NUM_MINEUR</div><div class="ttdef"><b>Definition:</b> <a href="a02306_source.html#l00068">med.h:68</a></div></div>
+<div class="ttc" id="aa02306_a6747c1ac7c0589009db553b675e3b6a7_html_a6747c1ac7c0589009db553b675e3b6a7"><div class="ttname"><a href="a02306_a6747c1ac7c0589009db553b675e3b6a7.html#a6747c1ac7c0589009db553b675e3b6a7">MED_NUM_MAJEUR</a></div><div class="ttdeci">#define MED_NUM_MAJEUR</div><div class="ttdef"><b>Definition:</b> <a href="a02306_source.html#l00067">med.h:67</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 8 Octobre 2021 13:44:05 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 6 Juin 2023 16:57:42 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

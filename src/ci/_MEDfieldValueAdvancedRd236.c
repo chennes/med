@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -38,11 +38,11 @@ void _MEDfieldValueAdvancedRd236(int dummy,...) {
 
   char _localizationname   [MED_NAME_SIZE+1]=""; /*TODO DEFAULT? */
   char _profilename        [MED_NAME_SIZE+1]=""; /*TODO DEFAULT? */
-  char _geotypename[MED_TAILLE_NOM_ENTITE+1]="";
+  /* char _geotypename[MED_TAILLE_NOM_ENTITE+1]=""; */
   char _pfltmp             [MED_NAME_SIZE+1]="";
   med_filter *               _filter           = NULL;
   med_filter                 _tmpfilter        = MED_FILTER_INIT;
-  med_filter                 _paramfilter      = MED_FILTER_INIT;
+  /* med_filter                 _paramfilter      = MED_FILTER_INIT; */
 
   MED_VARGS_DECL(const, med_idt               , , fid              );
   MED_VARGS_DECL(const, char * , const          , fieldname        );
@@ -101,7 +101,7 @@ void _MEDfieldValueAdvancedRd236(int dummy,...) {
   /*
    * Il n'existe pas de possibilité de filtrage par n° d'entité sur les champs en 2.3.6
    */
-  if (_filterparameterexist) 
+  if (_filterparameterexist)
     if ( (*_filter).filterarraysize ) {
       MED_ERR_(_ret,MED_ERR_NULL,MED_ERR_FILTER,MED_ERR_VALUE_MSG);
       ISCRUTE((*_filter).filterarraysize);
@@ -123,7 +123,7 @@ void _MEDfieldValueAdvancedRd236(int dummy,...) {
   }
 
 
-  /*Pour vérifier les paramètres nvaluesperentity et nconstituentpervalue, il faudrait 
+  /*Pour vérifier les paramètres nvaluesperentity et nconstituentpervalue, il faudrait
    appeler _MEDfieldnValue236 mais qui effectue aussi un check */
 /*   if ( _nvaluesperentityfromloc != _nvaluesperentity ) { */
 /*     MED_ERR_(_ret,MED_ERR_NOTEQUAL,MED_ERR_ATTRIBUTE,MED_ERR_LOCALIZATION_MSG); */
@@ -173,10 +173,10 @@ void _MEDfieldValueAdvancedRd236(int dummy,...) {
   ERROR:
 
 /*   if ( pfluse ) { free(pfltab); free(pfltabtmp);} */
-    
+
   va_end(params);
   *fret = _ret;
   return;
   }
-  
+
 

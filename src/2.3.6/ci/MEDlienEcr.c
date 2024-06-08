@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -31,17 +31,17 @@
  *   - lienval (IN) : le chemin d'accès au fichier contenant le maillage distant
  *   - maa     (IN) : le nom du maillage distant
  * - Resultat : 0 en cas de succes, -1 sinon
- */ 
+ */
 
 med_err
 MEDlienEcr(med_idt fid, char *lienval, char *maa)
 {
-  med_idt gid=0, chid=0, did=0;
+  med_idt gid=0, chid=0;
   med_size dimd[1];
   med_err ret=-1;
   char chemin[MED_TAILLE_LIENS+1];
   med_int n ;
-  
+
   /*
    * On inhibe le gestionnaire d'erreur HDF 5
    */

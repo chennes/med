@@ -38,10 +38,10 @@ libmedC_la_LDFLAGS = -no-undefined -version-info @MED_LIBTOOL_MAJ@:@MED_LIBTOOL_
 libmedC_la_LIBADD  = 2.3.6/libmedC23.la 2.3.6/libmedVV.la ci/libci.la misc/libmisc.la hdfi/libhdfi.la
 
 settingsdir = $(libdir)
-nodist_settings_DATA = libmed4.settings
+nodist_settings_DATA = libmed5.settings
 libmed3.settings: Makefile
 
-EXTRA_DIST = CMakeLists.txt CMakeLists.txt.in libmed4.settings.in
-CLEANFILES = libmed4.settings
+EXTRA_DIST = CMakeLists.txt CMakeLists.txt.in libmed5.settings.in
+CLEANFILES = libmed5.settings
 
 

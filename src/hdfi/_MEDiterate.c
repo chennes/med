@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,6 @@ _MEDiterate(const med_idt fid,  herr_t (*func)(), void * itdatas )
 {
 
   med_err    _ret=-1;
-  med_size   _n;
   hsize_t    _idx=0;
 
   if ( H5Literate( fid, H5_INDEX_NAME, H5_ITER_NATIVE, &_idx, func, itdatas ) < 0 ) {

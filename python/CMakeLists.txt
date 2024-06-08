@@ -53,11 +53,13 @@ FOREACH(f ${_swig_files})
   # set to avoid unnecessary rebuilds:
   SET_SOURCE_FILES_PROPERTIES(${f} PROPERTIES SWIG_MODULE_NAME ${_module_name})
 
-  SET(SWIG_MODULE_libbatch_EXTRA_DEPS ${SWIG_LB_DPYS})
 #EF: (OLDWAY)  SWIG_ADD_MODULE(${_module_name} python ${f})
   SWIG_ADD_LIBRARY(${_module_name} TYPE MODULE LANGUAGE python SOURCES ${f})
   SWIG_LINK_LIBRARIES(${_module_name} ${_link_libs})
-
+#EF: place les module .so ds le répertoire med pour lancer les tests en Python3 dans le répertoire de construction.
+  SET_TARGET_PROPERTIES( ${SWIG_MODULE_${_module_name}_REAL_NAME} 
+      PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/med/" )
+  
   INSTALL(TARGETS ${SWIG_MODULE_${_module_name}_REAL_NAME} DESTINATION ${_install_dir})
   INSTALL_AND_COMPILE_PYTHON_FILE("${CMAKE_CURRENT_BINARY_DIR}/med/${_module_name}.py" ${_install_dir})
   

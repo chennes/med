@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ med_err MEDchampCr( med_idt fid,  char *  champ,  med_type_champ type,  char *  
   med_err ret=-1;
   med_idt root=0,gid=0;
   char chemin[MED_TAILLE_CHA+1];
-  med_size dimd[1];
+  /* med_size dimd[1]; */
   med_int _type = (med_int) type;
   med_mode_acces MED_MODE_ACCES;
 

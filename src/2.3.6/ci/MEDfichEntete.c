@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -21,17 +21,17 @@
 
 #include <string.h>
 
-med_err 
+med_err
 MEDfichEntete(med_idt fid, med_fich_info quoi, char str[])
 {
-  med_idt atid, root;
+  med_idt root;
   med_err ret;
   char locale[MED_TAILLE_DESC+1];
   char chemin[MED_TAILLE_MAA+1];
 
   switch (quoi)
     {
-    case MED_HDF_VERSION : 
+    case MED_HDF_VERSION :
       strcpy(str,HDF_VERSION_ACTUELLE);
       break;
 

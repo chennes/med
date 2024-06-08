@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -31,7 +31,8 @@ void  _MEDfieldValueAdvancedWr33(int dummy,...) {
   med_int               _nconstituentpervalue=0, _profilearraysize=0;
   med_bool              _defaultprofileexist=MED_FALSE,_defaultlocalizationexist=MED_FALSE;
   med_bool              _attexist=MED_FALSE;
-  med_bool              _profilehaschanged=MED_FALSE,_filterparameterexist=MED_FALSE;
+  /* med_bool              _profilehaschanged=MED_FALSE; */
+  med_bool              _filterparameterexist=MED_FALSE;
   med_int               _nvaluesperentity=0,_nsectioncell=1;
   med_field_type        _fieldtype=0;
   med_int               _intfieldtype=0;
@@ -43,7 +44,7 @@ void  _MEDfieldValueAdvancedWr33(int dummy,...) {
   char _profilename            [MED_NAME_SIZE+1]="";
   char _locgidname             [MED_LOCALIZATION_GRP_SIZE+MED_NAME_SIZE+1]=MED_LOCALIZATION_GRP;
   char _sectionmeshname        [MED_NAME_SIZE+1]="";
-  char _sectiongeotypename     [MED_NAME_SIZE+1]="";
+  /* char _sectiongeotypename     [MED_NAME_SIZE+1]=""; */
   char _defaultprofilename     [MED_NAME_SIZE+1]=MED_NO_PROFILE;
   char _defaultlocalizationname[MED_NAME_SIZE+1]=MED_NO_LOCALIZATION;
   med_filter *               _filter           = NULL;
@@ -51,7 +52,7 @@ void  _MEDfieldValueAdvancedWr33(int dummy,...) {
   med_filter                 _paramfilter      = MED_FILTER_INIT;
   med_int                    _MED_NO_DT = MED_NO_DT;
   med_int                    _MED_NO_IT = MED_NO_IT;
-  med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE;
+  /* med_bool                   _chgt=MED_FALSE,_trsf=MED_FALSE; */
 
 
   MED_VARGS_DECL(const, med_idt               , , fid              );
@@ -91,7 +92,7 @@ void  _MEDfieldValueAdvancedWr33(int dummy,...) {
   MED_VARGS_DEF(const, unsigned char*, const   , value            );
   MED_VARGS_DEF(, med_err *                   ,, fret             );
 
-  
+
 if (_MEDcheckVersion30(fid) < 0) goto ERROR;
 
   if (filter) {
@@ -443,7 +444,7 @@ if (_MEDcheckVersion30(fid) < 0) goto ERROR;
 
     if ( MEDfilterEntityCr(fid, (*_filter).nentity,         (*_filter).nvaluesperentity,
 			   (*_filter).nconstituentpervalue, (*_filter).constituentselect,
-			   (*_filter).switchmode,              (*_filter).storagemode, 
+			   (*_filter).switchmode,              (*_filter).storagemode,
 			   (*_filter).profilename, MED_UNDEF_SIZE, NULL, &_paramfilter) < 0 ) {
       MED_ERR_(_ret,MED_ERR_CREATE,MED_ERR_FILTER,MED_ERR_INTERNAL_MSG);
       goto ERROR;
@@ -468,7 +469,7 @@ if (_MEDcheckVersion30(fid) < 0) goto ERROR;
    Avant la 3.3.0 seuls les types : MED_FLOAT64, MED_INT32 et MED_INT64 étaient autorisés dans MEDfieldCr et seuls les types med_int et med_float64 pouvaient être utilisés en C.
      La configuration du med_int était prédominante sur le choix du type de champ pour définir de la taille de stockage interne.
      Il faut garder à l'esprit que les étapes d'écriture et de lecture ne se font pas forcément avec la même configuration de med_int.
- 
+
    A l'écriture :
       - si med_int=int  les champs MED_INT32 sont stockés   en 32bits
       - si med_int=int  les champs MED_INT64 sont interdits
@@ -481,33 +482,33 @@ if (_MEDcheckVersion30(fid) < 0) goto ERROR;
       - si med_int=long les champs MED_INT32 sont lus       en 64bits avec conversion 32->64 s'il avait été stocké en 32bits (configuration écriture med_int=int)
       - si med_int=long les champs MED_INT64 sont lus       en 64bits
 
-   Depuis la 3.3.0 en plus des types MED_FLOAT64, MED_INT32 et MED_INT64, les types MED_FLOAT32 et MED_INT sont autorisés. 
+   Depuis la 3.3.0 en plus des types MED_FLOAT64, MED_INT32 et MED_INT64, les types MED_FLOAT32 et MED_INT sont autorisés.
      Aux types med_int et med_float64 utilisés en C sont ajoutés les types med_float32, med_int32 et med_int64.
      Si la plateforme possède des entiers 64bits testé à la configuration.
 
-   A l'écriture :  
+   A l'écriture :
       - si med_int=int  les champs MED_INT32 sont toujours  stockés              en 32bits  (utiliser med_int32 ou med_int   )
       - si med_int=int  les champs MED_INT64 sont désormais autorisés et stockés en 64bits  (utiliser med_int64              )
       - si med_int=int  les champs MED_INT   sont désormais acceptés  et stockés en 32bits  (utiliser med_int   ou med_int32 )
-      - si med_int=long les champs MED_INT32 sont désormais stockés              en 32bits  (utiliser med_int32) 
+      - si med_int=long les champs MED_INT32 sont désormais stockés              en 32bits  (utiliser med_int32)
       - si med_int=long les champs MED_INT64 sont toujours  autorisés et stockés en 64bits  (utiliser med_int64 ou med_int )
-      - si med_int=long les champs MED_INT   sont désormais acceptés  et stockés en 64bits  (utiliser med_int ou med_int64 ) 
+      - si med_int=long les champs MED_INT   sont désormais acceptés  et stockés en 64bits  (utiliser med_int ou med_int64 )
 
-   A la lecture :  
+   A la lecture :
       - si med_int=int  les champs MED_INT32 sont toujours    lus                en 32bits                 (utiliser med_int32 ou med_int)
       - si med_int=int  les champs MED_INT64 sont acceptés et lus                en 64bits sans conversion (utiliser med_int64)
       - si med_int=int  les champs MED_INT   sont acceptés et lus                en 32bits avec conversion si necessaire (0 si > maxint32 , utiliser med_int ou med_int32)
       - si med_int=long les champs MED_INT32 sont toujours    lus                en 32bits sans conversion (utiliser le type med_int32)
       - si med_int=long les champs MED_INT64 sont toujours    lus                en 64bits sans conversion (utiliser le type med_int64 ou med_int)
       - si med_int=long les champs MED_INT   sont acceptés et lus                en 64bits avec conversion  si necessaire (utiliser le type med_int32)
-  
-REM : 
+
+REM :
    Sur un Unix 32 bits sur architecture 64bits il est possible d'utiliser des MED_INT64, l'étape de configuration vérifier qu'elle peut utiliser ou définit le type C int64_t
 REM2:
    A lecture d'un fichier < 3.3.0 avec une bibliothèque >= 3.3.0 configurée avec med_int=long :
      - Si le fichier contient un champ MED_INT32, le driver 3.0 de la bibliothèque > 3.3.0 relis en 64 bits ce qui provoque une erreur de segmentation si l'allocation n'est pas adéquate.
      - Il est du coup plus cohérent d'utiliser le driver 33 pour la lecture de fichier < 33.
-  */  
+  */
   switch(_fieldtype)
     {
     case MED_FLOAT64 :

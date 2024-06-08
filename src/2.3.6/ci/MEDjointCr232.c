@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void 
+void
 MEDjointCr232(int dummy,...) {
 
 
@@ -34,12 +34,11 @@ MEDjointCr232(int dummy,...) {
   med_int   dom      ;
   char *    maa_dist ;
   med_err * fret     ;
- 
+
   med_idt root=0,jntid=0;
   med_err ret=-1;
   char chemin[MED_TAILLE_MAA+MED_TAILLE_JNT+MED_TAILLE_NOM+1];
   char tmp[MED_TAILLE_JNT+1];
-  med_int nbc=0;
   med_mode_acces MED_MODE_ACCES;
 
   va_list params;
@@ -70,7 +69,7 @@ if (MEDcheckVersion(fid) < 0) {*fret=-1;return;}
     goto ERROR;
   };
 
-  /* 
+  /*
    * Si le Data Group "JNT" n'existe pas, on le cree
    */
   NOFINALBLANK(maa_lcl,ERROR);
@@ -125,19 +124,19 @@ if (MEDcheckVersion(fid) < 0) {*fret=-1;return;}
   }
 
   /*
-   * On ferme tout 
+   * On ferme tout
    */
   ret=0;
  ERROR:
 
   if (jntid>0)     if (_MEDdatagroupFermer(jntid) < 0) {
     MESSAGE("Impossible de fermer le datagroup : ");
-    ISCRUTE_id(jntid);ret = -1; 
+    ISCRUTE_id(jntid);ret = -1;
   }
-  
+
   if (root>0)     if (_MEDdatagroupFermer(root) < 0) {
     MESSAGE("Impossible de fermer le datagroup : ");
-    ISCRUTE_id(root); ret = -1; 
+    ISCRUTE_id(root); ret = -1;
   }
 
   va_end(params);

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -56,10 +56,8 @@ MEDmeshComputationStepCr(const med_idt fid,
   char     _latestcpstname[2*MED_MAX_PARA+1]="";
   char*    _datagroupname1=_datagroupname;
   char     _datagroupname3[2*MED_MAX_PARA+1]="";
-  char     _prevcpstname[2*MED_MAX_PARA+1]="";
   char     _pathsrc[MED_MESH_SUPPORT_GRP_SIZE+MED_NAME_SIZE+1+2*MED_MAX_PARA+1+1]="";
   char     _pathdst[MED_MESH_SUPPORT_GRP_SIZE+MED_NAME_SIZE+1+2*MED_MAX_PARA+1+1]="";
-  med_bool _datagroup1exist = MED_TRUE;
   med_bool _isasupportmesh = MED_FALSE;
   med_int  _nextdt=MED_NO_DT, _nextit=MED_NO_IT,_pvdt=MED_NO_DT, _pvit=MED_NO_IT;
   med_int  _lastnumdt=MED_NO_DT, _lastnumit=MED_NO_IT;
@@ -136,9 +134,9 @@ MEDmeshComputationStepCr(const med_idt fid,
     _datagroupname1 = _latestcpstname;
   }
   /*Vérifie que le _datagroupname2 est bien postérieur ou égal au _datagroupname1
-   REM: _datagroupname1 peut être la première/dernière étape de calcul 
+   REM: _datagroupname1 peut être la première/dernière étape de calcul
    ou une étape intermédiaire */
-  if ( strncmp(_datagroupname2,_datagroupname1,2*MED_MAX_PARA+2) < 0) {
+  if ( strncmp(_datagroupname2,_datagroupname1,2*MED_MAX_PARA+1) < 0) {
     MED_ERR_(_ret,MED_ERR_RANGE,MED_ERR_COMPUTINGSTEP,_datagroupname2);
     SSCRUTE(meshname);SSCRUTE(_datagroupname1);goto ERROR;
   }
@@ -184,7 +182,7 @@ MEDmeshComputationStepCr(const med_idt fid,
     if ( (_nextdt != MED_NO_DT) || (_nextit != MED_NO_IT) ) {
       _MEDgetComputationStepName(_sortingtype,_nextdt,_nextit,_datagroupname3);
 
-      if ( strncmp(_datagroupname3,_datagroupname2,2*MED_MAX_PARA+2) <= 0) {
+      if ( strncmp(_datagroupname3,_datagroupname2,2*MED_MAX_PARA+1) <= 0) {
 	MED_ERR_(_ret,MED_ERR_RANGE,MED_ERR_COMPUTINGSTEP,_datagroupname2);
 	SSCRUTE(meshname);SSCRUTE(_datagroupname3);goto ERROR;
       }
@@ -265,7 +263,7 @@ MEDmeshComputationStepCr(const med_idt fid,
       }
       _MEDgetComputationStepName(_sortingtype,_pvdt,_pvit,_datagroupname1bis);
 
-      if ( strncmp(_datagroupname1,_datagroupname1bis,2*MED_MAX_PARA+2) != 0) {
+      if ( strncmp(_datagroupname1,_datagroupname1bis,2*MED_MAX_PARA+1) != 0) {
 	MED_ERR_(_ret,MED_ERR_NOTEQUAL,MED_ERR_COMPUTINGSTEP,_datagroupname1);
 	SSCRUTE(meshname);SSCRUTE(_datagroupname1bis);goto ERROR;
       }
@@ -350,7 +348,7 @@ MEDmeshComputationStepCr(const med_idt fid,
 
 
   /* Ecriture de NEXT et PREV  au niveau meshid (dernière étape de calcul créée */
-  if ( strncmp(_datagroupname2,_latestcpstname,2*MED_MAX_PARA+2) >= 0) {
+  if ( strncmp(_datagroupname2,_latestcpstname,2*MED_MAX_PARA+1) >= 0) {
 
     if ( _MEDattributeIntWr(_meshid,MED_NOM_NXT,&numdt2) < 0) {
       MED_ERR_(_ret,MED_ERR_WRITE,MED_ERR_ATTRIBUTE,MED_ERR_MESH_MSG);

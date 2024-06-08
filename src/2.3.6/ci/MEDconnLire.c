@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -40,19 +40,19 @@ MEDconnLire(med_idt fid,char *maa,med_int mdim,med_int *connectivite,med_mode_sw
   med_size * pfltab=NULL;
   med_size    psize;
   int dim,nnoe,ndes;
-  int taille;  
-  int i,j;
+  int taille;
+  int i;
   med_entite_maillage _type_ent=type_ent;
 
   if ( type_ent == MED_NOEUD_MAILLE ) _type_ent=MED_NOEUD ;
-  
+
   /*
    * On inhibe le gestionnaire d'erreur HDF 5
    */
   _MEDmodeErreurVerrouiller();
 if (MEDcheckVersion(fid) < 0) return -1;
 
-  
+
   /*
    * Si le maillage n'existe pas => erreur
    */

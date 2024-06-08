@@ -11,6 +11,8 @@ test2.dump: test2.med
 #BUILT_SOURCES = 
 
 check-local:\
+./test10_mem_int.dump\
+./test10_mem_long.dump\
 ./test10_int.dump\
 ./test10_long.dump\
 ./test10_f32_int.dump\
@@ -45,6 +47,8 @@ check-local:\
 
 CLEANFILES = \
 ./test12.dump\
+./test10_mem_int.dump\
+./test10_mem_long.dump\
 ./test10_int.dump\
 ./test10_long.dump\
 ./test10_f32_int.dump\
@@ -76,6 +80,8 @@ CLEANFILES = \
 
 EXTRA_DIST = \
 ./test12.med\
+./test10_mem_int.med\
+./test10_mem_long.med\
 ./test10_int.med\
 ./test10_long.med\
 ./test10_f32_int.med\

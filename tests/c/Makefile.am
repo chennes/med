@@ -6,10 +6,11 @@ TESTS_ENVIRONMENT = eval H5DUMP=@H5DUMP@ SRCDIR="$(abs_srcdir)" BUILDDIR="$(abs_
 		EXECDIR="$(abs_builddir)" CP=${CP} CPYMED="no" MEDINT="_@LONG_OR_INT@"
 
 TESTS_ENVIRONMENT += OUTPUT="yes" DIFFOUTPUT="yes"
-#Une fois les différences validées
+#Une fois les différences du make check validées
 #L'update doit se faire pour les différentes configuration du med_int
 #pour mettre à jour les fichiers de référence.
 #TESTS_ENVIRONMENT += UPDATE="yes"
+#A lancer avant livraison
 #TESTS_ENVIRONMENT += OUTPUT="yes" CHECKER="../../libtool\ --mode=execute\ valgrind"
 
 testcdir = $(bindir)/testc
@@ -130,7 +131,7 @@ TESTS_LEC = test3_Rd.sh test5_Rd.sh test7_Rd.sh test9_Rd.sh \
 	test30_Rd.sh test32_Rd.sh test33_Rd.sh
 
 TESTS_ECR = test1_Wr.sh test2_Wr.sh test4_Wr.sh test6_Wr.sh test8_Wr.sh \
-        test10_Wr.sh  test10_f32_Wr.sh test10_f32_i32_Wr.sh \
+        test10_Wr.sh  test10_mem_Wr.sh test10_f32_Wr.sh test10_f32_i32_Wr.sh \
 	test10_f32_i64_Wr.sh test10_i32_Wr.sh test10_i64_Wr.sh \
 	test12_Wr.sh test14_Wr.sh test16_Wr.sh \
 	test20_Wr.sh test21_Wr.sh test18_Wr.sh  test23_Wr.sh \
@@ -178,6 +179,7 @@ CLEANFILES = \
 ./test6.med\
 ./test8.med\
 ./test10_mem.med\
+./test10_mem_ext.med\
 ./test10.med\
 ./test10_f32.med\
 ./test10_f32_i32.med\
@@ -201,6 +203,8 @@ CLEANFILES = \
 ./test29.med\
 ./test31.med\
 ./test10.dump\
+./test10_mem.dump\
+./test10_mem_ext.dump\
 ./test10_f32.dump\
 ./test10_f32_i32.dump\
 ./test10_f32_i64.dump\
@@ -228,9 +232,9 @@ CLEANFILES+= $(TESTS_ECR) $(TESTS_LEC)
 CLEANFILES+= $(BUILT_SOURCES) *med.out *.out *.out.ref *.out.tmp
 
 if ENABLE_API23
-SUBDIRS          = dumps.ref . 4.0.1 3.2.1 3.1.0 3.0.8 2.3.6 2.3.1 2.3.2 2.3v3.0 2.3.1v3.0 2.3.2v3.0
+SUBDIRS          = dumps.ref . 4.1.1 4.0.1 3.2.1 3.1.0 3.0.8 2.3.6 2.3.1 2.3.2 2.3v3.0 2.3.1v3.0 2.3.2v3.0
 else
-SUBDIRS          = dumps.ref . 4.0.1 3.2.1 3.1.0 3.0.8
+SUBDIRS          = dumps.ref . 4.1.1 4.0.1 3.2.1 3.1.0 3.0.8
 endif
 
 EXTRA_DIST+=CMakeLists.txt

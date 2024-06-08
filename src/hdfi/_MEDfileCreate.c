@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -15,6 +15,87 @@
  *  along with MED.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+#define MED_CREATE_HDF_FILE_FOR_PREVIOUS_MED_VERSION(MED_MAJ,MED_MIN,HMM) \
+  /* SSCRUTE("-------- 1 -------"); */					\
+  if ( major == MED_MAJ ) {					\
+    \
+    /* ISCRUTE(MED_##MED_MAJ##_LATEST_MINOR); */	       \
+    _i8_major = major; \
+    if ( (minor < 0) || (minor > MED_##MED_MAJ##_LATEST_MINOR) ) { \
+      MED_ERR_(_fid,MED_ERR_RANGE,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG); \
+      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release); \
+      ISCRUTE(MED_##MED_MAJ##_LATEST_MINOR); \
+      goto ERROR; \
+    } \
+    _i8_minor=minor; \
+     \
+    /* SSCRUTE("-------- 2 -------"); */					\
+    if ( major < 4 ) {							\
+    /* SSCRUTE("-------- 2a -------"); */					\
+     _h___medfileMMN = malloc(h##HMM##medfile_SIZE); \
+      memcpy(_h___medfileMMN, \
+  	   h##HMM##medfile##MED_MAJ##MED_MIN , h##HMM##medfile_SIZE); \
+      /* Les numéros sont gérés sur 1 digit,      */ \
+      /* Accès en int8 pour éviter les pbs BE/LE */  \
+      /* Checksum ds les fichiers hdf à partir de  major == 4 (hdf 1.10) */  \
+        _h___medfileMMN[MED_FILE_H##HMM##_MAJOR  ]= _i8_major; \
+        _h___medfileMMN[MED_FILE_H##HMM##_MINOR  ]= _i8_minor; \
+        _h___medfileMMN[MED_FILE_H##HMM##_RELEASE]= _i8_release; /* 0 */ \
+        /*  le n°release n'a pas d'impact sur le contenu du fichier */   \
+    } else if (minor == MED_MIN) {\
+   /* SSCRUTE("-------- 2b -------"); */					\
+      _h___medfileMMN = malloc(h##HMM##medfile_SIZE); \
+      memcpy(_h___medfileMMN, \
+  	   h##HMM##medfile##MED_MAJ##MED_MIN , h##HMM##medfile_SIZE); \
+    \
+    } \
+  /* SSCRUTE("-------- 3 -------"); */					\
+    if ( (major < 4) || ((major >= 4) && (minor == MED_MIN) ) ) { \
+    _fp = fopen(filename, "w"); \
+    if(!_fp) { \
+      MED_ERR_(_fid,MED_ERR_CREATE,MED_ERR_FILE,filename); \
+      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release); \
+      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release); \
+      goto ERROR; \
+    } \
+    _fpwritten = fwrite(_h___medfileMMN, \
+			sizeof(_h___medfileMMN[0]), \
+			h##HMM##medfile_SIZE, _fp);			\
+    if ( (_fpwritten != h##HMM##medfile_SIZE) || (ferror(_fp)) ) { \
+      MED_ERR_(_fid,MED_ERR_NOTEQUAL,MED_ERR_PROPERTY,MED_ERR_NAME_MSG); \
+      ISCRUTE_int(_fpwritten);ISCRUTE_int(h##HMM##medfile_SIZE); \
+      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release); \
+      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release); \
+      goto ERROR; \
+    } \
+    fclose(_fp); \
+    free(_h___medfileMMN);_h___medfileMMN=NULL; \
+    \
+    if ( MEDfileCompatibility(filename, &_hdfok, &_medok) < 0 ) { \
+      MED_ERR_(_fid, MED_ERR_CALL,MED_ERR_API,"MEDfileCompatibility"); \
+      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release); \
+      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release); \
+      goto ERROR; \
+    } \
+    if ( ! (_hdfok && _medok) ) { \
+      MED_ERR_(_fid,MED_ERR_CREATE,MED_ERR_FILE,filename); \
+      ISCRUTE_int(_hdfok); \
+      ISCRUTE_int(_medok); \
+      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release); \
+      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release); \
+      goto ERROR; \
+    } \
+    \
+    if ((_fid = _MEDfileOpen((char*) filename, accessmode)) < 0) { \
+      MED_ERR_(_fid,MED_ERR_OPEN,MED_ERR_FILE,filename); \
+      goto ERROR; \
+    } \
+    \
+    goto SORTIE; \
+    } \
+  } \
+  /* SSCRUTE("-------- 4 -------"); */					\
 
 
 #include <med.h>
@@ -37,18 +118,18 @@ med_idt _MEDfileCreate(const char * const filename, const med_access_mode access
 		       const med_int release)
 {
   med_idt _fid=-1,_gid=-1;
-  med_int _major   	  = 0;
-  med_int _minor   	  = 0;
-  med_int _release 	  = 0;
-  uint8_t _i8_major   	  = 0;
-  uint8_t _i8_minor   	  = 0;
-  uint8_t _i8_release 	  = 0;
-  hid_t   _fapl    	  = H5P_DEFAULT;
-  uint8_t *_h518medfileMMN=NULL;
-  FILE    *_fp            =NULL;
-  size_t  _fpwritten      =0; 
-  med_bool _hdfok 	  = MED_FALSE;
-  med_bool _medok 	  = MED_FALSE;
+  med_int _major   	   = 0;
+  med_int _minor   	   = 0;
+  med_int _release 	   = 0;
+  uint8_t _i8_major   	   = 0;
+  uint8_t _i8_minor   	   = 0;
+  uint8_t _i8_release 	   = 0;
+  hid_t   _fapl    	   = H5P_DEFAULT;
+  uint8_t *_h___medfileMMN = NULL;
+  FILE    *_fp             = NULL;
+  size_t  _fpwritten       = 0; 
+  med_bool _hdfok 	   = MED_FALSE;
+  med_bool _medok 	   = MED_FALSE;
   /* H5AC_cache_config_t config; */
 
   /*
@@ -60,65 +141,9 @@ med_idt _MEDfileCreate(const char * const filename, const med_access_mode access
    * On autorise depuis 41 la création d'un nouveau fichier de Majeur différent 
    * de celui de la bibliothèque.
    */
-  if ( major == 3 ) {
-    
-    _i8_major = major;
-    if ( (minor < 0) || (minor > MED_3_LATEST_MINOR) ) {
-      MED_ERR_(_fid,MED_ERR_RANGE,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
-      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release);
-      ISCRUTE(MED_3_LATEST_MINOR);
-      goto ERROR;
-    }
-    _i8_minor=minor;
-    
-    _h518medfileMMN = malloc(h518medfileMMN_SIZE);
-    memcpy(_h518medfileMMN,h518medfileMMN,h518medfileMMN_SIZE);
-    /* Les numéros sont gérés sur 1 digit,
-     * Accès en int8 pour éviter les pbs BE/LE */
-    _h518medfileMMN[MED_FILE_H518_MAJOR  ]= _i8_major;
-    _h518medfileMMN[MED_FILE_H518_MINOR  ]= _i8_minor;
-    _h518medfileMMN[MED_FILE_H518_RELEASE]= _i8_release; /* 0 */
-
-    _fp = fopen(filename, "w");
-    if(!_fp) {
-      MED_ERR_(_fid,MED_ERR_CREATE,MED_ERR_FILE,filename);
-      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release);
-      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release);
-      goto ERROR;
-    }
-    _fpwritten = fwrite(_h518medfileMMN, sizeof(_h518medfileMMN[0]), h518medfileMMN_SIZE, _fp);
-    if ( (_fpwritten != h518medfileMMN_SIZE) || (ferror(_fp)) ) {
-      MED_ERR_(_fid,MED_ERR_NOTEQUAL,MED_ERR_PROPERTY,MED_ERR_NAME_MSG);
-      ISCRUTE_int(_fpwritten);ISCRUTE_int(h518medfileMMN_SIZE);
-      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release);
-      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release);
-      goto ERROR;
-    }
-    fclose(_fp);
-    free(_h518medfileMMN);_h518medfileMMN=NULL;
-
-    if ( MEDfileCompatibility(filename, &_hdfok, &_medok) < 0 ) {
-      MED_ERR_(_fid, MED_ERR_CALL,MED_ERR_API,"MEDfileCompatibility");
-      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release);
-      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release);
-      goto ERROR;
-    }
-    if ( ! (_hdfok && _medok) ) {
-      MED_ERR_(_fid,MED_ERR_CREATE,MED_ERR_FILE,filename);
-      ISCRUTE_int(_hdfok);
-      ISCRUTE_int(_medok);
-      ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release);
-      ISCRUTE_int8(_i8_major);ISCRUTE_int8(_i8_minor);ISCRUTE_int8(_i8_release);
-      goto ERROR;
-    }
-
-    if ((_fid = _MEDfileOpen((char*) filename, accessmode)) < 0) {
-      MED_ERR_(_fid,MED_ERR_OPEN,MED_ERR_FILE,filename);
-      goto ERROR;
-    }
-
-    goto SORTIE;
-  }
+  MED_CREATE_HDF_FILE_FOR_PREVIOUS_MED_VERSION(3,0,518)
+  MED_CREATE_HDF_FILE_FOR_PREVIOUS_MED_VERSION(4,0,5110)
+  MED_CREATE_HDF_FILE_FOR_PREVIOUS_MED_VERSION(4,1,5110)    
 
   if ( major != MED_NUM_MAJEUR ) {
     MED_ERR_(_fid,MED_ERR_RANGE,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
@@ -130,19 +155,19 @@ med_idt _MEDfileCreate(const char * const filename, const med_access_mode access
   _minor = minor;
   switch(minor)
     {
-    case 0: _release = MED_40_LATEST_RELEASE; break;
-#if (MED_NUM_MINEUR == 0) && (MED_NUM_RELEASE > 1)
-#error "Don't forget to change the value of MED_40_LATEST_RELEASE when you change the release of version 4.0 of the library !"
+    case 0: _release = MED_50_LATEST_RELEASE; break;
+#if (MED_NUM_MINEUR == 0) && (MED_NUM_RELEASE > 0)
+#error "Don't forget to change the value of MED_50_LATEST_RELEASE when you change the release of version 5.0 of the library !"
 #endif
     /* case 1: _release = 0; break; */
     /* case 2: _release = 1; break; */
-#if MED_NUM_MINEUR > 1
+#if MED_NUM_MINEUR > 0
 #error "Don't forget to add a case line version here when you change the minor version of the library !"
 #endif
-#if MED_NUM_MAJEUR != 4
+#if MED_NUM_MAJEUR != 5
 #error "Don't forget to add a case line version here when you change the major version of the library !"
 #endif
-    case MED_NUM_MINEUR: _release = MED_NUM_RELEASE; break;
+    /* case MED_NUM_MINEUR: _release = MED_NUM_RELEASE; break; */
     default:
       MED_ERR_(_fid,MED_ERR_RANGE,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
       ISCRUTE(major);ISCRUTE(minor);ISCRUTE(release);
@@ -154,16 +179,21 @@ med_idt _MEDfileCreate(const char * const filename, const med_access_mode access
     goto ERROR;
   }
 
-  /*
-   * Cette ligne est censée obliger HDF à ne pas utiliser un modèle interne supérieur à 1.8.z
-   * En HDF5-1.10.0p1 cela n'a aucun effet ! 
+  /* OLD: EN MED4/HDF5-1.10 : 
+   * OLD: Cette ligne est censée obliger HDF à ne pas utiliser un modèle interne supérieur à 1.8.z
+   * OLD: En HDF5-1.10.0p1 cela n'a aucun effet ! 
+   * OLD: Un test autoconf permet de fixer un intervalle de version HDF à MED.
+   */
+
+  /* EN MED5/HDF5-1.12 : 
+   * Cette ligne est censée obliger HDF à ne pas utiliser un modèle interne différent de 1.10.z
    * Un test autoconf permet de fixer un intervalle de version HDF à MED.
    */
-#if H5_VERS_MINOR > 10
+#if H5_VERS_MINOR > 12
 #error "Don't forget to change the compatibility version of the library !"
 #endif
    
-  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_18, H5F_LIBVER_18 ) ) {
+  if ( H5Pset_libver_bounds( _fapl, H5F_LIBVER_V112, H5F_LIBVER_V112 ) ) {
     MED_ERR_(_fid,MED_ERR_INIT,MED_ERR_PROPERTY,MED_ERR_FILEVERSION_MSG);
     goto ERROR;
   }
@@ -228,7 +258,7 @@ med_idt _MEDfileCreate(const char * const filename, const med_access_mode access
 
  SORTIE:
  ERROR:
-  if (_h518medfileMMN) free(_h518medfileMMN);
+  if (_h___medfileMMN) free(_h___medfileMMN);
   
   return _fid;
   

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,7 @@ _MEDmeshCr(const med_idt fid, const char * const root,
   med_int _intaxistype = (med_int) axistype;
   char    _datagroupname1[MED_NAME_SIZE+1]="";
 /*   char    _geotypename[MED_NAME_SIZE_ENTITE+1]=""; */
-  med_int _lastnumdt=MED_NO_DT, _lastnumit=MED_NO_IT;
+  /* med_int _lastnumdt=MED_NO_DT, _lastnumit=MED_NO_IT; */
   med_int _intsortingtype     =(med_int) MED_SORT_UNDEF;
   med_int _intexistingmeshtype=(med_int) MED_UNDEF_MESH_TYPE;
   med_mesh_type    _existingmeshtype    = meshtype;

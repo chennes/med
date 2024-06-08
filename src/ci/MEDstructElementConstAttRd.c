@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -24,19 +24,19 @@
 #include <stdlib.h>
 
 /**\ingroup MEDstructElement
-  \brief \MEDstructElementConstAttRdBrief
-  \param fid                   \fid
-  \param modelname             \modelname
-  \param constattname          \constattname
-  \param value                 \value
+   \brief \MEDstructElementConstAttRdBrief
+   \param fid                   \fid
+   \param modelname             \modelname
+   \param constattname          \constattname
+   \param value                 \value
 
-  \return \error
+   \return \error
 
-  \details \MEDstructElementConstAttRdDetails
-  \remarks \MEDstructElementConstAttswitchCm
-  \see      MEDstructElementConstAttWithProfileWr
-  \see      MEDstructElementConstAttWr
- */
+   \details \MEDstructElementConstAttRdDetails
+   \remarks \MEDstructElementConstAttswitchCm
+   \see      MEDstructElementConstAttWithProfileWr
+   \see      MEDstructElementConstAttWr
+*/
 
 med_err
 MEDstructElementConstAttRd(
@@ -49,7 +49,7 @@ MEDstructElementConstAttRd(
   med_err            _ret=-1;
   med_idt            _attid=0, _elemid=0 ;
   char               _path[MED_ELSTRUCT_GRP_SIZE+MED_NAME_SIZE+1+MED_TAILLE_CSTATR+MED_NAME_SIZE+1]=MED_ELSTRUCT_GRP;
-  med_int            _intentitytype = 0;
+  /* med_int            _intentitytype = 0; */
   med_int            _nentity       = 0;
   med_attribute_type _constatttype  = MED_ATT_UNDEF;
   med_int            _ncomponent = 0;
@@ -115,7 +115,7 @@ MEDstructElementConstAttRd(
 
   if (strlen(_supportmeshname) ) {
 
-    if (_entitytype == MED_CELL )
+    if (_entitytype == MED_CELL ) {
 
       /*
        * Lecture de l'attribut MED_NOM_GEO (type géométrique des mailles support)
@@ -129,11 +129,11 @@ MEDstructElementConstAttRd(
       if ( (_nentity = MEDmeshnEntity(fid,_supportmeshname,MED_NO_DT,MED_NO_IT,
 				      MED_CELL,(med_geometry_type) _medintsgeotype,
 				      MED_CONNECTIVITY,MED_NODAL,
-				     &_chgt,&_trsf) )  < 0) {
-      MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"MEDmeshnEntity");
-      ISCRUTE(_nentity);goto ERROR;
+				      &_chgt,&_trsf) )  < 0) {
+	MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"MEDmeshnEntity");
+	ISCRUTE(_nentity);goto ERROR;
+      }
     }
-
     if (_entitytype == MED_NODE )
       if ( (_nentity = MEDmeshnEntity(fid,_supportmeshname,MED_NO_DT,MED_NO_IT,
 				      MED_NODE,MED_NONE,MED_COORDINATE,MED_NO_CMODE,
@@ -167,14 +167,14 @@ MEDstructElementConstAttRd(
  ERROR:
 
   if (_attid>0)            if (_MEDdatagroupFermer(_attid) < 0) {
-    MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,modelname);
-    ISCRUTE_id(_attid);
-  }
+      MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,modelname);
+      ISCRUTE_id(_attid);
+    }
 
   if (_elemid>0)            if (_MEDdatagroupFermer(_elemid) < 0) {
-    MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,modelname);
-    ISCRUTE_id(_elemid);
-  }
+      MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,modelname);
+      ISCRUTE_id(_elemid);
+    }
 
   return _ret;
 }

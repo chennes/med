@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -59,6 +59,7 @@ _MEDequivalenceCorrespondenceRd33(int dummy, ...) {
   MED_VARGS_DEF(const, med_geometry_type  , , geotype        );
   MED_VARGS_DEF(, med_int *, const          , correspondence );
   MED_VARGS_DEF(, med_err *                ,, fret           );
+
   if ( entitype == MED_NODE_ELEMENT ) _geotype=MED_NODE ;
 
   /* if ( (geotype / 100 ) > 2 )  { */
@@ -75,7 +76,7 @@ _MEDequivalenceCorrespondenceRd33(int dummy, ...) {
    */
   _MEDmodeErreurVerrouiller();
 
- 
+
   /*
    * Ouverture du dataGroup /EQS/
    */
@@ -126,9 +127,9 @@ _MEDequivalenceCorrespondenceRd33(int dummy, ...) {
     ISCRUTE_int(entitype);SSCRUTE(equivname);goto ERROR;
   }
   if ( entitype != MED_NODE ) {
-    if ( _MEDgetInternalGeometryTypeName(fid,_geotypename,geotype) < 0) {
+    if ( _MEDgetInternalGeometryTypeName(fid,_geotypename,_geotype) < 0) {
       MED_ERR_(_ret,MED_ERR_INVALID,MED_ERR_GEOMETRY,MED_ERR_VALUE_MSG);
-      ISCRUTE_int(geotype);SSCRUTE(equivname);goto ERROR;
+      ISCRUTE_int(_geotype);SSCRUTE(equivname);goto ERROR;
     }
       strcat(_datagroupname2,".");
       strcat(_datagroupname2,_geotypename);

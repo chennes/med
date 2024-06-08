@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -62,7 +62,6 @@ med_err MEDmeshNodeCoordinateWr(const med_idt               fid,
   char            _meshpath   [MED_MESH_SUPPORT_GRP_SIZE+MED_NAME_SIZE+1]="";
   char            _geotypename[MED_TAILLE_NOM_ENTITE+1]="";
   char            _datagroup_trsfname[MED_TAILLE_NOM_ENTITE+MED_TAILLE_COOTRF+1]=MED_NOM_NOE MED_COOTRF;
-  int             _i=0;
   med_bool        _isasupportmesh=MED_FALSE,_isasoftlink=MED_FALSE;
   med_int         _0 = 0;
   med_int         _medintgeotype = MED_NO_GEOTYPE;

@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,6 @@
 void _MEDfieldGeometryType41(int dummy, ...)
 
 {
-  int      _it                  =0;
   int      _itgeo               =0;
   int      _itent               =0;
   med_int  _ret			=-1;
@@ -35,15 +34,15 @@ void _MEDfieldGeometryType41(int dummy, ...)
   med_int  _i			=0;
   uint32_t  _lgeometrytype1  	=0;
   uint32_t  _lgeometrytypetmp 	=0;
-  uint32_t  _lglobalgeometrytypetmp=0;
+  /* uint32_t  _lglobalgeometrytypetmp=0; */
   const char * _attname   	= NULL;
   const char * _attallname	= NULL;
   char         _gidname        [MED_FIELD_GRP_SIZE+MED_NAME_SIZE+1+2*MED_MAX_PARA+1]=MED_FIELD_GRP;
   med_int           _usedbyncs       = 0;
   med_int           _tmpusedbyncs    = 0;
   med_geometry_type _geolocaltype    = 0;
-  int               _geoglobaltypeit = 0;
-    
+  /* int               _geoglobaltypeit = 0; */
+
   MED_VARGS_DECL(const, med_idt      	      ,       , fid       	 );
   MED_VARGS_DECL(const, char * 		      , const , fieldname 	 );
   MED_VARGS_DECL(const, med_int               ,       , numdt     	 );
@@ -93,7 +92,7 @@ void _MEDfieldGeometryType41(int dummy, ...)
   if ( (numdt != MED_ALL_DT) && (numit != MED_ALL_IT) ) {
     strcat(_gidname,"/");
     _MEDgetComputationStepName(MED_SORT_DTIT,numdt,numit,&_gidname[strlen(_gidname)]);
-  
+
     if ((_gid = _MEDdatagroupOuvrir(fid,_gidname)) < 0) {
       MED_ERR_(_ret,MED_ERR_OPEN,MED_ERR_DATAGROUP,MED_ERR_FIELD_MSG);
       SSCRUTE(fieldname);SSCRUTE(_gidname); goto ERROR;
@@ -101,17 +100,17 @@ void _MEDfieldGeometryType41(int dummy, ...)
   } else {
     _gid = _gid0;
   }
-  
+
   /*Lecture de la liste des types d'entités utilisés soit :
    - au niveau global
-   - au niveau d'une étape de calcul 
+   - au niveau d'une étape de calcul
   */
   *usedbyncs=0;
   _usedbyncs=-1;
   _tmpusedbyncs=-1;
 
-  /* MED_N_CELL_FIXED_GEO ne prend pas en compte (MED_NODE,MED_NO_GEOTYPE) car 
-    les noeuds sont un autre type d'entité (le MED_N_NODE_FIXED_GEO ==1 n'est 
+  /* MED_N_CELL_FIXED_GEO ne prend pas en compte (MED_NODE,MED_NO_GEOTYPE) car
+    les noeuds sont un autre type d'entité (le MED_N_NODE_FIXED_GEO ==1 n'est
     pas comptabilisé dans MED_N_CELL_FIXED_GEO).
     Si c'était le cas, il faudrait ajouter un MED_NO_GEOTYPE supplémentaire avant POINT1.
    ???
@@ -127,7 +126,7 @@ void _MEDfieldGeometryType41(int dummy, ...)
     for (_itent=1; _itent <= MED_N_ENTITY_TYPES; _itent++) {
 
       _attname                = _MEDgetEntityListAttributeIName(MED_GET_ENTITY_TYPE[_itent]);
-      _lglobalgeometrytypetmp = 0;
+      /* _lglobalgeometrytypetmp = 0; */
       _lgeometrytypetmp       = 0;
       /* SSCRUTE(_attname); */
       /* Lecture de la liste des types géo en numérotation locale au type d'entité   */
@@ -135,9 +134,9 @@ void _MEDfieldGeometryType41(int dummy, ...)
       /* ISCRUTE_int32(_lgeometrytypetmp); */
       /* Renumérotation de la liste des types géo utilisés en numérotation globale  */
       for (_itgeo=1; _itgeo <= MED_GET_N_FIXED_GEO_FOR_ENTITY_TYPE_IT[_itent]; _itgeo++) {
-	
+
 	_geolocaltype    = (MED_GET_GEOMETRY_TYPE_IT_FROM_ENTITY_TYPE_IT[_itent])[_itgeo];
-	_geoglobaltypeit =  MEDgetCellGeometryTypeIt(_geolocaltype);
+	/* _geoglobaltypeit =  MEDgetCellGeometryTypeIt(_geolocaltype); */
 	/* SSCRUTE(MED_GET_CELL_GEOMETRY_TYPENAME[_geoglobaltypeit]); */
 	/* ISCRUTE(_MEDtest32bits(_lgeometrytypetmp,(_itgeo-1))); */
 	if( _MEDtest32bits(_lgeometrytypetmp,(_itgeo-1)) ) {
@@ -148,7 +147,7 @@ void _MEDfieldGeometryType41(int dummy, ...)
 	}
       }
       /* _lgeometrytype1_without-1 |= _lglobalgeometrytypetmp; */
-	
+
       _attallname = _MEDgetEntityListAttributeINameAll(MED_GET_ENTITY_TYPE[_itent]);
       if (_MEDattrEntierLire(_gid0,_attallname,&_tmpusedbyncs) >= 0) {
 	if ( _usedbyncs == -1 )
@@ -157,16 +156,16 @@ void _MEDfieldGeometryType41(int dummy, ...)
 	  _usedbyncs=MIN(_usedbyncs,_tmpusedbyncs);
 	}
       }
-  
+
     } /*Fin : MED_N_ENTITY_TYPES*/
 
     if ( _usedbyncs == -1 )
       *usedbyncs=0;
     else
       *usedbyncs=_usedbyncs;
-    
+
   } else {
-    
+
     _attname    = _MEDgetEntityListAttributeIName    (entitytype);
 
     if (_MEDattributeInt32Rd(_gid,_attname,&_lgeometrytype1) < 0) {
@@ -177,9 +176,9 @@ void _MEDfieldGeometryType41(int dummy, ...)
     _lgeometrytypetmp       = 0;
     _itent=MEDgetEntityTypeIt(entitytype);
     for (_itgeo=1; _itgeo <= MED_GET_N_FIXED_GEO_FOR_ENTITY_TYPE_IT[_itent]; _itgeo++) {
-	
+
       _geolocaltype    = (MED_GET_GEOMETRY_TYPE_IT_FROM_ENTITY_TYPE_IT[_itent])[_itgeo];
-      _geoglobaltypeit =  MEDgetCellGeometryTypeIt(_geolocaltype);
+      /* _geoglobaltypeit =  MEDgetCellGeometryTypeIt(_geolocaltype); */
       /* SSCRUTE(MED_GET_CELL_GEOMETRY_TYPENAME[_geoglobaltypeit]); */
       /* ISCRUTE(_MEDtest32bits(_lgeometrytypetmp,(_itgeo-1))); */
       if( _MEDtest32bits(_lgeometrytype1,(_itgeo-1)) ) {
@@ -194,7 +193,7 @@ void _MEDfieldGeometryType41(int dummy, ...)
       }
     }
 
-    
+
     /*TODO : VERIFIER NB MAX ELSTRUCT*/
     /* FAUX ! */
     /* _i=0; */
@@ -217,13 +216,13 @@ void _MEDfieldGeometryType41(int dummy, ...)
       SSCRUTE(fieldname);SSCRUTE(_attallname);goto ERROR;
     }
     *usedbyncs=_usedbyncs;
-    
+
   }
-  
+
   _ret = 0;
-  
+
  ERROR:
-  
+
   if ((_gid>0) && (_gid != _gid0))  if (_MEDdatagroupFermer(_gid) < 0) {
     MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,_gidname);
     ISCRUTE_id(_gid);

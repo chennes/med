@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -107,7 +107,7 @@ med_err _MEDfilterBlockOfEntityNoICompactCr(const med_idt          fid,
 /*   ISCRUTE(_countfilelastblock[0]); */
 
   /* Conditionne les traitements à l'existence d'un profil */
-  if ( _anyprofil=(strlen(profilename)) ) {
+  if ( (_anyprofil=(strlen(profilename))) ) {
     profilearraysize = MEDprofileSizeByName(fid,profilename);
     _profilearraysize=profilearraysize;
   } else {

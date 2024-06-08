@@ -1,6 +1,6 @@
 dnl  This file is part of MED.
 dnl
-dnl  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+dnl  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
 dnl  MED is free software: you can redistribute it and/or modify
 dnl  it under the terms of the GNU Lesser General Public License as published by
 dnl  the Free Software Foundation, either version 3 of the License, or
@@ -126,13 +126,13 @@ AC_REQUIRE([AC_PROG_GREP])
       HDF5_VERSION="0"
       if test -n "$HDF5_ABS_PATH" ; then 
          HDF5_USED_VER=` grep H5_VERS_INFO $HDF5_ABS_PATH | sed  's/\([[^"]]*\)\(".*"\)\([[^"]]*\)/\2/g' `
-         H5_VER_MAJOR=`  grep '#define *H5_VERS_MAJOR' $HDF5_ABS_PATH | sed  's/^.*H5_VERS_MAJOR[[ \t]]*\([0-9]*\)[[ \t]]*.*$/\1/g' `
-         H5_VER_MINOR=`  grep '#define *H5_VERS_MINOR' $HDF5_ABS_PATH | sed  's/^.*H5_VERS_MINOR[[ \t]]*\([0-9]*\)[[ \t]]*.*$/\1/g' `
-         H5_VER_RELEASE=`grep '#define *H5_VERS_RELEASE' $HDF5_ABS_PATH | sed  's/^.*H5_VERS_RELEASE[[ \t]]*\([0-9]*\)[[ \t]]*.*$/\1/g' `
+         H5_VER_MAJOR=`  grep '#define *H5_VERS_MAJOR' $HDF5_ABS_PATH | sed  's/^.*H5_VERS_MAJOR[ \t]*\([0-9]*\)[ \t]*.*$/\1/g' `
+         H5_VER_MINOR=`  grep '#define *H5_VERS_MINOR' $HDF5_ABS_PATH | sed  's/^.*H5_VERS_MINOR[ \t]*\([0-9]*\)[ \t]*.*$/\1/g' `
+         H5_VER_RELEASE=`grep '#define *H5_VERS_RELEASE' $HDF5_ABS_PATH | sed  's/^.*H5_VERS_RELEASE[ \t]*\([0-9]*\)[ \t]*.*$/\1/g' `
          HDF5_VERSION=`  expr 10000 \* ${H5_VER_MAJOR} + 100 \* ${H5_VER_MINOR} + ${H5_VER_RELEASE} `
-         test "0${HDF5_VERSION}" -gt "11100" || test "0${HDF5_VERSION}" -lt "11002" && AC_MSG_ERROR([
+         test "0${HDF5_VERSION}" -gt "11300" || test "0${HDF5_VERSION}" -lt "11200" && AC_MSG_ERROR([
 This HDF5 version ${H5_VER_MAJOR}.${H5_VER_MINOR}.${H5_VER_RELEASE} must not be used with med-fichier${MED_NUM_MAJEUR}.${MED_NUM_MINEUR}.${MED_NUM_RELEASE}.
-The HDF5 library version used by med-fichier${MED_NUM_MAJEUR}.y.z MUST NOT be > 1.10 and have to be at least HDF${HDF_VERSION_REF}.
+The HDF5 library version used by med-fichier${MED_NUM_MAJEUR}.y.z MUST NOT be > 1.12 and have to be at least HDF${HDF_VERSION_REF}.
 DO NOT TRY TO COMPILE med-fichier${MED_NUM_MAJEUR}.${MED_NUM_MINEUR}.${MED_NUM_RELEASE} version with an HDF5 library which would generate an hdf5 file not compliant with HDF5-${HDF_VERSION_MAJOR_REF}.${HDF_VERSION_MINOR_REF}.z library.
 This would BREAK med-fichier compatibility between files with the same revision number !
       ])
@@ -163,7 +163,7 @@ This would BREAK med-fichier compatibility between files with the same revision 
 
 
 #      AC_DEFINE(H5_USE_16_API,[],[Using HDF5-1.6 API compatibility with HDF5 1.8 libraries])
-      HDF5_CPPFLAGS="-DH5_USE_16_API"
+      HDF5_CPPFLAGS="-DH5_USE_16_API -DH5Oget_info_by_name_vers=1 -DH5O_info_t_vers=1"
       HDF5_CPPFLAGS="$HDF5_CPPFLAGS -I$hdf5include"
       HDF5_LDFLAGS="-L$hdf5lib"
       LDFLAGS="$LDFLAGS_save"

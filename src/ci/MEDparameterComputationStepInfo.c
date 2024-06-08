@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -42,14 +42,14 @@ MEDparameterComputationStepInfo(const med_idt      fid,
 				med_int * const    numit,
 				med_float * const  dt )
 {
-  med_err _ret = -1, _err = -1;
+  med_err _ret = -1;
   med_idt _cpstidt = 0;
   char    _path[(MED_NUMERICAL_DATA_GRP_SIZE+MED_NAME_SIZE+1)+2*MED_MAX_PARA+1]=MED_NUMERICAL_DATA_GRP;
   int     _num=csit-1;
   char    _cstpname[2*MED_MAX_PARA+1]="";
 
   _MEDmodeErreurVerrouiller();
-  
+
   /* On recupere le nom du pas de temps */
   strcat(_path, paramname);
   if ( _MEDobjectGetName(fid, _path ,_num, _cstpname) < 0 ) {
@@ -83,7 +83,7 @@ MEDparameterComputationStepInfo(const med_idt      fid,
  ERROR:
 
   /* on ferme tout */
-  if (_cpstidt > 0)            
+  if (_cpstidt > 0)
     if (_MEDdatagroupFermer(_cpstidt) < 0) {
       MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,_path);
       ISCRUTE_id(_cpstidt);

@@ -1,7 +1,7 @@
 /* -*- mode:C; coding:utf-8 -*- */
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -58,8 +58,10 @@ extern "C" {
 #define MED_MINOR_NUM @MED_NUM_MINEUR@
 #define MED_RELEASE_NUM @MED_NUM_RELEASE@
 #define MED_3_LATEST_MINOR @MED_3_LATEST_MINOR@
-#define MED_4_LATEST_MINOR @MED_NUM_MINEUR@
+#define MED_4_LATEST_MINOR @MED_4_LATEST_MINOR@
 #define MED_40_LATEST_RELEASE @MED_40_LATEST_RELEASE@
+#define MED_5_LATEST_MINOR @MED_NUM_MINEUR@
+#define MED_50_LATEST_RELEASE @MED_50_LATEST_RELEASE@
 
 /*En franglais*/
 #define MED_NUM_MAJEUR @MED_NUM_MAJEUR@

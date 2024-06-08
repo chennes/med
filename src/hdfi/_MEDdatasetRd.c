@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -34,13 +34,13 @@ med_err _MEDdatasetRd(const med_idt               id,
   med_err         _ret=-1;
   med_idt         _hdftype=0;
   int             _datasetsizeEqualTosizespace = 0;
-  med_access_mode _MED_ACCESS_MODE;
+  /* med_access_mode _MED_ACCESS_MODE; */
   med_int         _nvaluesperentity=0,_nconstituentpervalue=0;
   int             _i=1;
 
   hsize_t   _sizespace   [H5S_MAX_RANK];
   hsize_t   _maxsizespace[H5S_MAX_RANK];
-  hsize_t   _memspacesizetmp[H5S_MAX_RANK];
+  /* hsize_t   _memspacesizetmp[H5S_MAX_RANK]; */
   hsize_t   _maxmemspacesize[H5S_MAX_RANK];
   hsize_t   _memspacesize=0;
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MED fichier:  Fichier source de med_versioned_hdfi.h</title>
+<title>MED fichier:  Fichier source de med_versioned_misc.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,17 +38,17 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4355a2d485e74099746b5ef7b7753b0d.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_25311ca10a1d5995df4ae63181288dde.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">med_versioned_hdfi.h</div>  </div>
+<div class="title">med_versioned_misc.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a01355.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*  This file is part of MED.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  COPYRIGHT (C) 1999 - 2021  EDF R&amp;D, CEA/DEN</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  COPYRIGHT (C) 1999 - 2023  EDF R&amp;D, CEA/DEN</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  MED is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  it under the terms of the GNU Lesser General Public License as published by</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  the Free Software Foundation, either version 3 of the License, or</span></div>
@@ -63,28 +63,24 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *  along with MED.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef MED_VERSIONED_HDFI_H</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define MED_VERSIONED_HDFI_H</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef MED_VERSIONED_MISC_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define MED_VERSIONED_MISC_H</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/* Interfaces versionnées de l&#39;API HDFI */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/* Interfaces versionnées de l&#39;API MISC */</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/* Il faut ajouter une ligne dans le fichier misc/MEDversionedApi.cxx */</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a01355_a939357d47c9c09265c7f476f02790bc0.html#a939357d47c9c09265c7f476f02790bc0">_MEDdatasetNumEcrire231</a> (<span class="keywordtype">int</span> foo,...);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a01355_a4c50cf35a5dc608287805b5204a19517.html#a4c50cf35a5dc608287805b5204a19517">_MEDdatasetNumEcrire232</a> (<span class="keywordtype">int</span> foo,...);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a01355_ae8a521c90643cebf36109ac03523eb5b.html#ae8a521c90643cebf36109ac03523eb5b">_MEDdatasetNumLire231</a>   (<span class="keywordtype">int</span> foo,...);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a01355_a31481859fab323efc3f67c761ca24d32.html#a31481859fab323efc3f67c761ca24d32">_MEDdatasetNumLire232</a>   (<span class="keywordtype">int</span> foo,...);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a01355_ad64de9fce436de2106ce547abfd907ad.html#ad64de9fce436de2106ce547abfd907ad">_MEDgetInternalGeometryTypeName30</a> (<span class="keywordtype">int</span> foo,...);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a01355_a4fb6002e8a196d07f11443f389ca55ad.html#a4fb6002e8a196d07f11443f389ca55ad">_MEDgetInternalGeometryTypeName33</a> (<span class="keywordtype">int</span> foo,...);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aa01355_ae8a521c90643cebf36109ac03523eb5b_html_ae8a521c90643cebf36109ac03523eb5b"><div class="ttname"><a href="a01355_ae8a521c90643cebf36109ac03523eb5b.html#ae8a521c90643cebf36109ac03523eb5b">_MEDdatasetNumLire231</a></div><div class="ttdeci">void _MEDdatasetNumLire231(int foo,...)</div></div>
-<div class="ttc" id="aa01355_a939357d47c9c09265c7f476f02790bc0_html_a939357d47c9c09265c7f476f02790bc0"><div class="ttname"><a href="a01355_a939357d47c9c09265c7f476f02790bc0.html#a939357d47c9c09265c7f476f02790bc0">_MEDdatasetNumEcrire231</a></div><div class="ttdeci">void _MEDdatasetNumEcrire231(int foo,...)</div></div>
-<div class="ttc" id="aa01355_a4c50cf35a5dc608287805b5204a19517_html_a4c50cf35a5dc608287805b5204a19517"><div class="ttname"><a href="a01355_a4c50cf35a5dc608287805b5204a19517.html#a4c50cf35a5dc608287805b5204a19517">_MEDdatasetNumEcrire232</a></div><div class="ttdeci">void _MEDdatasetNumEcrire232(int foo,...)</div></div>
-<div class="ttc" id="aa01355_a31481859fab323efc3f67c761ca24d32_html_a31481859fab323efc3f67c761ca24d32"><div class="ttname"><a href="a01355_a31481859fab323efc3f67c761ca24d32.html#a31481859fab323efc3f67c761ca24d32">_MEDdatasetNumLire232</a></div><div class="ttdeci">void _MEDdatasetNumLire232(int foo,...)</div></div>
+<div class="ttc" id="aa01355_a4fb6002e8a196d07f11443f389ca55ad_html_a4fb6002e8a196d07f11443f389ca55ad"><div class="ttname"><a href="a01355_a4fb6002e8a196d07f11443f389ca55ad.html#a4fb6002e8a196d07f11443f389ca55ad">_MEDgetInternalGeometryTypeName33</a></div><div class="ttdeci">void _MEDgetInternalGeometryTypeName33(int foo,...)</div></div>
+<div class="ttc" id="aa01355_ad64de9fce436de2106ce547abfd907ad_html_ad64de9fce436de2106ce547abfd907ad"><div class="ttname"><a href="a01355_ad64de9fce436de2106ce547abfd907ad.html#ad64de9fce436de2106ce547abfd907ad">_MEDgetInternalGeometryTypeName30</a></div><div class="ttdeci">void _MEDgetInternalGeometryTypeName30(int foo,...)</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 8 Octobre 2021 13:44:05 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 6 Juin 2023 16:57:42 pour MED fichier par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

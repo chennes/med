@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,6 @@ void _MEDsubdomainComputingStepInfo236(int dummy, ...) {
   med_idt  _jntid=0;
   med_err  _ret=-1,_err=-1;
   char     _path[MED_MESH_GRP_SIZE+MED_TAILLE_NOM+MED_JOINT_GRP_SIZE+MED_TAILLE_NOM+1]=MED_MESH_GRP;
-  int      _num;
   med_size _nocstpncorrespondence=0;
 
 
@@ -57,7 +56,7 @@ void _MEDsubdomainComputingStepInfo236(int dummy, ...) {
   MED_VARGS_DEF(, med_int *, const    , ncorrespondence );
   MED_VARGS_DEF(, med_err *          ,, fret            );
 
-  _num=csit-1;
+  /* _num=csit-1; */
 
   /*
    * On inhibe le gestionnaire d'erreur
@@ -86,13 +85,13 @@ void _MEDsubdomainComputingStepInfo236(int dummy, ...) {
    * Nombre de correspondances dans le joint
    */
 
-  if ((_err=_MEDnObjects(_jntid, _path, &_nocstpncorrespondence)) < 0 )
+  if ((_err=_MEDnObjects(_jntid, _path, &_nocstpncorrespondence)) < 0 ) {
     if ( _err == (MED_ERR_COUNT + MED_ERR_DATAGROUP) ) {
       MED_ERR_(_ret,MED_ERR_COUNT,MED_ERR_DATAGROUP,_path);
       goto ERROR;
     } else
       _nocstpncorrespondence =  0;
-
+  }
   *ncorrespondence = (med_int) _nocstpncorrespondence;
 
 
@@ -103,7 +102,7 @@ void _MEDsubdomainComputingStepInfo236(int dummy, ...) {
 
  ERROR:
 
-  if (_jntid>0)            if (_MEDdatagroupFermer(_jntid) < 0) {
+  if (_jntid>0) if (_MEDdatagroupFermer(_jntid) < 0) {
     MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATAGROUP,_path);
     ISCRUTE_id(_jntid);
   }

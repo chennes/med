@@ -1,5 +1,5 @@
 # ===========================================================================
-#       http://www.nongnu.org/autoconf-archive/ax_absolute_header.html
+#    https://www.gnu.org/software/autoconf-archive/ax_absolute_header.html
 # ===========================================================================
 #
 # SYNOPSIS
@@ -24,7 +24,10 @@
 #
 #   Copying and distribution of this file, with or without modification, are
 #   permitted in any medium without royalty provided the copyright notice
-#   and this notice are preserved.
+#   and this notice are preserved. This file is offered as-is, without any
+#   warranty.
+
+#serial 8
 
 dnl Copyright (C) 2006, 2007 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
@@ -34,9 +37,11 @@ dnl with or without modifications, as long as this notice is preserved.
 dnl From Derek Price.
 dnl Modified by Rhys Ulerich to use AC_CHECK_HEADERS instead of _ONCE
 
+AU_ALIAS([GL_TRILINOS_ABSOLUTE_HEADER], [AX_ABSOLUTE_HEADER])
 AC_DEFUN([AX_ABSOLUTE_HEADER],
 [AC_LANG_PREPROC_REQUIRE()dnl
-m4_foreach_w([gl_HEADER_NAME],[$1],[AS_VAR_PUSHDEF([gl_absolute_header],
+m4_foreach_w([gl_HEADER_NAME], [$1],
+  [AS_VAR_PUSHDEF([gl_absolute_header],
                   [gl_cv_absolute_]m4_quote(m4_defn([gl_HEADER_NAME])))dnl
   AC_CACHE_CHECK([absolute name of <]m4_quote(m4_defn([gl_HEADER_NAME]))[>],
     m4_quote(m4_defn([gl_absolute_header])),
@@ -50,10 +55,10 @@ dnl Ultrix and Pyramid sh refuse to redirect output of eval, so use subshell.
       AS_VAR_SET(gl_absolute_header,
 [`(eval "$ac_cpp conftest.$ac_ext") 2>&AS_MESSAGE_LOG_FD |
 sed -n '\#/]m4_quote(m4_defn([gl_HEADER_NAME]))[#{
-        s#.*"\(.*/]m4_quote(m4_defn([gl_HEADER_NAME]))[\)".*#\1#
-        s#^/[^/]#//&#
-        p
-        q
+	s#.*"\(.*/]m4_quote(m4_defn([gl_HEADER_NAME]))[\)".*#\1#
+	s#^/[^/]#//&#
+	p
+	q
 }'`])
     fi
     AS_VAR_POPDEF([ac_header_exists])dnl

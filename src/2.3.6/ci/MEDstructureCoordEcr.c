@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ MEDstructureCoordEcr(med_idt fid,char *maillage,med_int mdim,med_int *structure)
 {
   med_idt maaid, noeid, dataset;
   med_err ret;
-  med_size dimd[1];
+  /* med_size dimd[1]; */
   char chemin[MED_TAILLE_MAA+MED_TAILLE_NOM+1];
   char nom_dataset[MED_TAILLE_NOM_ENTITE+1];
   char nom_attribut[MED_TAILLE_NOM_ENTITE+1];

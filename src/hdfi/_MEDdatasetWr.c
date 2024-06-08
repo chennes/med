@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -39,15 +39,15 @@ med_err _MEDdatasetWr(const med_idt               id,
   hsize_t         _dim=0;
   const void      *_value= value;
 
- /*  ISCRUTE((*filter).nentity              ); */
-/*   ISCRUTE((*filter).nvaluesperentity     ); */
-/*   ISCRUTE((*filter).nconstituentpervalue ); */
-/*   ISCRUTE((*filter).constituentselect       ); */
-/*   ISCRUTE((*filter).switchmode              ); */
-/*   ISCRUTE((*filter).filterarraysize         ); */
-/*   ISCRUTE((*filter).profilearraysize        ); */
-/*   ISCRUTE((*filter).storagemode             ); */
-/*   SSCRUTE((*filter).profilename             ); */
+  /*  ISCRUTE((*filter).nentity              ); */
+  /*   ISCRUTE((*filter).nvaluesperentity     ); */
+  /*   ISCRUTE((*filter).nconstituentpervalue ); */
+  /*   ISCRUTE((*filter).constituentselect       ); */
+  /*   ISCRUTE((*filter).switchmode              ); */
+  /*   ISCRUTE((*filter).filterarraysize         ); */
+  /*   ISCRUTE((*filter).profilearraysize        ); */
+  /*   ISCRUTE((*filter).storagemode             ); */
+  /*   SSCRUTE((*filter).profilename             ); */
 
 
   if ( (_MED_ACCESS_MODE = _MEDmodeAcces(id) ) == MED_ACC_UNDEF ) {
@@ -102,7 +102,7 @@ med_err _MEDdatasetWr(const med_idt               id,
     case MED_INTERNAL_LNAME:
       if (!_dim) _dim = MED_LNAME_SIZE;
 
-/*       ISCRUTE(_dim); */
+      /*       ISCRUTE(_dim); */
       if( (_hdftype =  H5Tarray_create1( H5T_NATIVE_CHAR, 1, &_dim, 0 )) < 0) {
 	MED_ERR_(_ret,MED_ERR_CREATE,MED_ERR_DATATYPE,"");goto ERROR;
       }
@@ -125,11 +125,11 @@ med_err _MEDdatasetWr(const med_idt               id,
   }
   _datasetsize[0] = (*filter).nvaluesperentity * (*filter).nconstituentpervalue;
   if ( (*filter).profilearraysize == MED_UNDEF_SIZE ) {
-/*     if ( ! (*filter).nentity )  { */
-/*       MED_ERR_(_ret,MED_ERR_NOTNULL,MED_ERR_FILTER,""); */
-/*       ISCRUTE((*filter).nentity); */
-/*       goto ERROR; */
-/*     } */
+    /*     if ( ! (*filter).nentity )  { */
+    /*       MED_ERR_(_ret,MED_ERR_NOTNULL,MED_ERR_FILTER,""); */
+    /*       ISCRUTE((*filter).nentity); */
+    /*       goto ERROR; */
+    /*     } */
     _datasetsize[0]*= (*filter).nentity;
   }  else
     _datasetsize[0]*= (*filter).profilearraysize;
@@ -224,29 +224,29 @@ med_err _MEDdatasetWr(const med_idt               id,
       }
     }
 
-    _ret = 0;
+  _ret = 0;
 
-  ERROR:
+ ERROR:
 
-    if ( _dataspace > 0 ) if ( H5Sclose(_dataspace) < 0) {
+  if ( _dataspace > 0 ) if ( H5Sclose(_dataspace) < 0) {
       MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATASPACE, MED_ERR_ID_MSG );
       ISCRUTE_id(_dataspace);
     }
 
-    if ( _datadiskspace > 0 ) if ( H5Sclose(_datadiskspace) < 0) {
+  if ( _datadiskspace > 0 ) if ( H5Sclose(_datadiskspace) < 0) {
       MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATASPACE, MED_ERR_ID_MSG );
       ISCRUTE_id(_datadiskspace);
     }
 
-    if ( _dataset > 0 ) if ( H5Dclose(_dataset) < 0) {
+  if ( _dataset > 0 ) if ( H5Dclose(_dataset) < 0) {
       MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATASET, MED_ERR_ID_MSG );
       ISCRUTE_id(_dataset);
     }
 
-    if ( _dim > 1 ) if ( H5Tclose(_hdftype) < 0 ) {
+  if ( _dim > 1 ) if ( H5Tclose(_hdftype) < 0 ) {
       MED_ERR_(_ret,MED_ERR_CLOSE,MED_ERR_DATATYPE, MED_ERR_ID_MSG );
       ISCRUTE_id(_hdftype);
     }
 
-    return _ret;
-  }
+  return _ret;
+}

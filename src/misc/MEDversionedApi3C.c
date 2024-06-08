@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -55,6 +55,7 @@ MedFuncType _MEDversionedApi3( const char * const key,
   int         _litmajeur   = majeur;
   const int   _lminminor3   = 0;
   const int   _lminminor4   = 0;
+  const int   _lminminor5   = 0;
 
   /* SSCRUTE(key); */
   
@@ -113,6 +114,45 @@ MedFuncType _MEDversionedApi3( const char * const key,
   /*      (_fversionMM <= (100*MED_NUM_MAJEUR+10*MED_NUM_MINEUR) ) */
   /*      ) { */
 
+#if H5_VERS_MINOR > 12
+#error "Don't forget to change the compatibility version of the library !"
+#endif
+  
+  if (_litmajeur == 5) {
+ 
+    if (_litminor > MED_5_LATEST_MINOR) {
+      MESSAGE("Cette bibliothèque MED n'est pas capable de lire un fichier med-5 dont le mineur de la version "
+	      "excède celui dont la bibliothèque à connaissance.");
+      MESSAGE("La version demandée est       : ");ISCRUTE_int(_fversionMMR);
+      MESSAGE("La dernière version med-5 connue de cette bibliothèque : ");ISCRUTE_int(500+10*MED_5_LATEST_MINOR+9);
+      }
+    // Fait à l'initialisation.
+    // _litmajeur=5;_litminor=mineur;
+  
+    /* Recherche décroissante à partir du numéro de release de la bibliothèque */
+    while ( ( func == (MedFuncType)NULL) && (_litminor >= _lminminor5 ) ) {
+
+#ifdef PPRO_NT_CALL
+      _n = _snprintf(_version,4,"%d%d%d",(int) _litmajeur,_litminor,0);
+#else
+      _n = snprintf(_version,4,"%d%d%d",(int) _litmajeur,_litminor,0);
+#endif
+      if ( (_n < 0) || (_n > 3) ) {
+	MESSAGE("Impossible d'obtenir un numéro de version valide : ");
+	_version[3]='\0';SSCRUTE(_version);
+	break;
+      }
+
+      func=getVersionedApi3(key,_version);
+      --_litminor;
+    }
+
+    /* SSCRUTE(_version); */
+    if (func != NULL) { goto QUIT; }
+    else {_litmajeur=4;_litminor=MED_4_LATEST_MINOR;}
+    /* XSCRUTE(func); */
+
+  }
 
   if (_litmajeur == 4) {
  

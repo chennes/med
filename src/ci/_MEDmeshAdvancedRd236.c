@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -44,7 +44,7 @@ void _MEDmeshAdvancedRd236(int dummy, ...)
   med_filter *          _filter           = NULL;
   med_filter            _tmpfilter        = MED_FILTER_INIT;
   med_int               _nconstituentpervalue=0,_spacedim=0;
-  med_internal_type     _datatype;
+  /* med_internal_type     _datatype; */
   med_int               _nvalueperentity=0;
   med_mesh_type         _meshtype=MED_UNDEF_MESH_TYPE;
   med_int               _intmeshtype=0;
@@ -92,7 +92,7 @@ void _MEDmeshAdvancedRd236(int dummy, ...)
   MED_VARGS_DEF(,unsigned char*, const         , value       );
   MED_VARGS_DEF(, med_err *                   ,, fret        );
 
-  _datatype=datatype;
+  /* _datatype=datatype; */
 
   if (filter) {
     _filter=(med_filter*)(filter); _filterparameterexist=MED_TRUE;

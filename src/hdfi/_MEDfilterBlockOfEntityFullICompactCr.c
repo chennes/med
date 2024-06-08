@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -62,15 +62,19 @@ med_err _MEDfilterBlockOfEntityFullICompactCr(const med_idt          fid,
   med_size   _1[1]={1};
   med_idt    _memspace [MED_MAX_FILTER_SPACES]= MED_MAX_FILTER_SPACES_INIT;
   med_idt    _filespace[MED_MAX_FILTER_SPACES]= MED_MAX_FILTER_SPACES_INIT;
-  med_size   _memspacesize[1]={0},_filespacesize[1]={0};
-  med_size   _startmem[1]={0}, _startmem_adim[1]={0}, _startmem_lastblock[1]={0};
+  med_size   _filespacesize[1]={0};
+  med_size   _memspacesize[1]={0};
+  /* med_size   _startmem_adim[1]={0}; */
+  med_size   _startmem[1]={0}, _startmem_lastblock[1]={0};
   med_size   _startfile[1]={0}, _startfile_lastblock[1]={0};
   med_size   _stridemem[1]={0}, _stridefile[1]  ={0};
   med_size   _countmem [1]={0}, _countmemlastblock[1] ={0}, _countfilelastblock[1]={0};
-  med_size   _memblocksize[1] ={0}, _memlastblocksize[1]={0}, _blocksize[1]={0} ;
-  med_size   _fileblocksize[1]={0}, _filelastblocksize[1]={0};
+  /* med_size   _memlastblocksize[1]={0}; */
+  med_size   _memblocksize[1] ={0}, _blocksize[1]={0} ;
+  /* med_size   _fileblocksize[1]={0}; */
+  med_size   _filelastblocksize[1]={0};
   med_size   _onedimallvaluesfileoffset=0,_oneentitymemoffset=0;
-  med_size   _nconstituentpervalue[1]={0};
+  /* med_size   _nconstituentpervalue[1]={0}; */
   med_err    _ret=-1;
   int        _dim=0, _firstdim=0, _dimutil=0, _lastdim=0,_index=0 ;
   int        _anyprofil=0,_anylastblock=0;
@@ -112,7 +116,7 @@ med_err _MEDfilterBlockOfEntityFullICompactCr(const med_idt          fid,
     goto SAVEFILTER;
   }
 
-  _nconstituentpervalue[0] = nconstituentpervalue;
+  /* _nconstituentpervalue[0] = nconstituentpervalue; */
   if ( (count > 1) && (lastblocksize != blocksize) && lastblocksize ) /*Tester ou non si lastblocksize est bien > blocksize */
     {--_count;_anylastblock=1;_countmemlastblock[0]=1;_countfilelastblock[0]=1;}
 /*   ISCRUTE(_start); */

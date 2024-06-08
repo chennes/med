@@ -1,6 +1,6 @@
 /*  This file is part of MED.
  *
- *  COPYRIGHT (C) 1999 - 2021  EDF R&D, CEA/DEN
+ *  COPYRIGHT (C) 1999 - 2023  EDF R&D, CEA/DEN
  *  MED is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,9 @@ med_err _MEDlinkobjs(med_idt id,const char *lname, const H5L_info_t *linfo, visi
   med_int  _attfalse=0;
   char *   _tmppath=0;
   hsize_t  _it;
-  H5O_info_t oinfo;
+  /* H5O_info_t oinfo; */
+  /*Depuis hdf5-1.12, malgré -DH5_USE_16_API, H5version.h choisi la version 3*/
+  H5O_info1_t oinfo;
 
 /*   hid_t   _ocp_plist_id = H5Pcreate( H5P_OBJECT_COPY ); */
 /*   hid_t   _lcp_plist_id = H5Pcreate( H5P_LINK_CREATE ); */
@@ -57,12 +59,14 @@ med_err _MEDlinkobjs(med_idt id,const char *lname, const H5L_info_t *linfo, visi
     oinfo.type=H5G_LINK;
     break;
   case H5L_TYPE_HARD:
-    /* Le pb de cette routine c'est qu'elle renvoie seulement :
+    /* Le pb de cette routine est qu'elle renvoie seulement :
        H5O_TYPE_GROUP, H5O_TYPE_DATASET, H5O_TYPE_NAMED_DATATYPE, H5O_TYPE_NTYPES
        sur un lien hard
        Sur un lien soft H5O_TYPE_UNKNOWN
     */
-    if ( H5Oget_info_by_name( id, lname, &oinfo, H5P_DEFAULT ) <0) {
+    /*Depuis hdf5-1.12, malgré -DH5_USE_16_API, H5version.h choisi la version 3*/
+    /* if ( H5Oget_info_by_name( id, lname, &oinfo, H5P_DEFAULT ) <0) { */
+    if ( H5Oget_info_by_name1( id, lname, &oinfo, H5P_DEFAULT ) <0) {
       MED_ERR_(_ret,MED_ERR_CALL,MED_ERR_API,"H5Oget_info_by_name");
       SSCRUTE(lname);
     }
